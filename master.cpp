@@ -4,12 +4,12 @@
 #include <vector>
 #include <map>
 #include <list>
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/split.hpp>
+//#include <boost/algorithm/string/classification.hpp>
+//#include <boost/algorithm/string/split.hpp>
 
 using namespace std;
 
-char delim[] = " ;,()";
+const char *delim = " ;,()";
 
 class Server
 {
@@ -25,26 +25,26 @@ private:
 
 public:
 	Server():bankName(0),startup_delay(0),life_time(0),sName(make_pair("",-1)),prev(make_pair("",-1)),next(make_pair("",-1)){}
-	void SetbankName(string str)
+	void SetbankName(char *s)
 	{
-		bankName = atoi(str.c_str());
+		bankName = atoi(s);
 	}
-	void Setipaddr(string str)
+	void Setipaddr(char *s)
 	{
-		ip_addr = str;
+		ip_addr = s;
 	}
-	void Setportnum(string str)
+	void Setportnum(char *s)
 	{
-		port_num = atoi(str.c_str());
+		port_num = atoi(s);
 		sName = make_pair (ip_addr, port_num);
 	}
-	void Setdelay(string str)
+	void Setdelay(char *s)
 	{
-		startup_delay = atoi(str.c_str());
+		startup_delay = atoi(s);
 	}
-	void Setlifetime(string str)
+	void Setlifetime(char *s)
 	{
-		life_time = atoi(str.c_str());
+		life_time = atoi(s);
 	}
 	void Setprev(Server *s)
 	{
@@ -110,7 +110,8 @@ int main()
 {
 	ifstream fin;
 	fin.open("config.txt");
-	char *input;	
+	char *input;
+	char *p;
 	string input_str;
 	vector<string>vStr;
 	int tmp_bank = 1;
@@ -125,29 +126,31 @@ int main()
 		if (strncmp(input, "//", 2) == 0)
 			continue;
 		Server *s = new Server();
-		boost::split(vStr, input_str, boost::is_any_of(delim), boost::token_compress_on );
-		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++ it,++index)
+		p = strtok(input, delim);
+		while(p)
 		{
-			//cout << *it << endl;
+			cout<<p<<endl;
+			p = strtok(NULL, delim);
 			switch(index)
 			{
 				case 0:
-					s->SetbankName(*it);
+					s->SetbankName(p);
 					break;
 				case 1:
-					s->Setipaddr(*it);
+					s->Setipaddr(p);
 					break;
 				case 2:
-					s->Setportnum(*it);
+					s->Setportnum(p);
 					break;
 				case 3:
-					s->Setdelay(*it);
+					s->Setdelay(p);
 					break;
 				case 4:
-					s->Setlifetime(*it);
+					s->Setlifetime(p);
 				default:
 					break;
-			}												
+			}
+			index++;
 		}
 		ms.Addserver(s);
 	}
@@ -177,6 +180,6 @@ int main()
 			cout<<(*it2)<<endl;
 		}
 	}
-	system("pause");
+//	system("pause");
 	return 1;
 }
