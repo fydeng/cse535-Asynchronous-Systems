@@ -1,15 +1,25 @@
+<<<<<<< HEAD
+#include "master.h"
+
+void Master::InitMS(ifstream &fin)
+{
+	char *input;
+	string input_str;
+	while(fin.good())
+	{
+=======
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
 #include <map>
 #include <list>
-#include <boost/algorithm/string/classification.hpp>
-#include <boost/algorithm/string/split.hpp>
+//#include <boost/algorithm/string/classification.hpp>
+//#include <boost/algorithm/string/split.hpp>
 
 using namespace std;
 
-char delim[] = " ;,()";
+const char *delim = " ;,()";
 
 class Server
 {
@@ -25,26 +35,26 @@ private:
 
 public:
 	Server():bankName(0),startup_delay(0),life_time(0),sName(make_pair("",-1)),prev(make_pair("",-1)),next(make_pair("",-1)){}
-	void SetbankName(string str)
+	void SetbankName(char *s)
 	{
-		bankName = atoi(str.c_str());
+		bankName = atoi(s);
 	}
-	void Setipaddr(string str)
+	void Setipaddr(char *s)
 	{
-		ip_addr = str;
+		ip_addr = s;
 	}
-	void Setportnum(string str)
+	void Setportnum(char *s)
 	{
-		port_num = atoi(str.c_str());
+		port_num = atoi(s);
 		sName = make_pair (ip_addr, port_num);
 	}
-	void Setdelay(string str)
+	void Setdelay(char *s)
 	{
-		startup_delay = atoi(str.c_str());
+		startup_delay = atoi(s);
 	}
-	void Setlifetime(string str)
+	void Setlifetime(char *s)
 	{
-		life_time = atoi(str.c_str());
+		life_time = atoi(s);
 	}
 	void Setprev(Server *s)
 	{
@@ -71,6 +81,7 @@ public:
 		cout<<"life time: "<<s->life_time<<endl;
 		cout<<"predecessor is: "<<s->prev.first<<" "<<s->prev.second<<endl;
 		cout<<"next is: "<<s->next.first<<" "<<s->next.second<<endl;
+		return cout;
 	}
 };
 
@@ -109,7 +120,8 @@ int main()
 {
 	ifstream fin;
 	fin.open("config.txt");
-	char *input;	
+	char *input;
+	char *p;
 	string input_str;
 	vector<string>vStr;
 	int tmp_bank = 1;
@@ -117,6 +129,7 @@ int main()
 	while(fin.good())
 	{	
 		int index = 0;	
+>>>>>>> bb5dfbb6364d0e1ae528cd2d6f2e6a914cff8168
 		getline(fin, input_str);
 		if (input_str == "\0")
 			continue;
@@ -124,46 +137,61 @@ int main()
 		if (strncmp(input, "//", 2) == 0)
 			continue;
 		Server *s = new Server();
-		boost::split(vStr, input_str, boost::is_any_of(delim), boost::token_compress_on );
-		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++ it,++index)
+<<<<<<< HEAD
+		s->InitServ(input);
+		Addserver(s);
+	}
+	for(map<int, list<Server*> >::iterator it1 = Getschain().begin(); it1 != Getschain().end(); ++it1)
+=======
+		p = strtok(input, delim);
+		while(p)
 		{
-			//cout << *it << endl;
+			cout<<p<<endl;
+			p = strtok(NULL, delim);
 			switch(index)
 			{
 				case 0:
-					s->SetbankName(*it);
+					s->SetbankName(p);
 					break;
 				case 1:
-					s->Setipaddr(*it);
+					s->Setipaddr(p);
 					break;
 				case 2:
-					s->Setportnum(*it);
+					s->Setportnum(p);
 					break;
 				case 3:
-					s->Setdelay(*it);
+					s->Setdelay(p);
 					break;
 				case 4:
-					s->Setlifetime(*it);
+					s->Setlifetime(p);
 				default:
 					break;
-			}												
+			}
+			index++;
 		}
 		ms.Addserver(s);
 	}
-	int count = 0;
 	for(map<int, list<Server*> >::iterator it1 = ms.Getschain().begin(); it1 != ms.Getschain().end(); ++it1)
+>>>>>>> bb5dfbb6364d0e1ae528cd2d6f2e6a914cff8168
 	{
+		int count = 0;
 		for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
 		{
 			list<Server *>::iterator cur = it2;
 			if(cur == it1->second.begin())
 			{
+<<<<<<< HEAD
+=======
 				cout<<"front"<<endl;
+>>>>>>> bb5dfbb6364d0e1ae528cd2d6f2e6a914cff8168
 				(*cur)->Setnext(*(++it2));
 			}
 			else if(count == it1->second.size() - 1)
 			{
+<<<<<<< HEAD
+=======
 				cout<<"back"<<endl;
+>>>>>>> bb5dfbb6364d0e1ae528cd2d6f2e6a914cff8168
 				(*cur)->Setprev(*(--it2));
 			}
 			else
@@ -173,8 +201,26 @@ int main()
 				(*cur)->Setprev(*(--it2));
 			}
 			it2 = cur;
+<<<<<<< HEAD
+		}
+	}
+};
+
+/*int main()
+{
+	ifstream fin;
+	fin.open("config.txt");
+	Master ms;
+	ms.InitMS(fin);
+	cout<<ms;
+	system("pause");
+	return 1;
+}*/
+=======
 			cout<<(*it2)<<endl;
 		}
-	}		
+	}
+//	system("pause");
 	return 1;
 }
+>>>>>>> bb5dfbb6364d0e1ae528cd2d6f2e6a914cff8168

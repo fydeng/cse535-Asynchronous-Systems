@@ -6,7 +6,7 @@ void Master::InitMS(ifstream &fin)
 	string input_str;
 	while(fin.good())
 	{
-		getline(fin, input_str);
+	getline(fin, input_str);
 		if (input_str == "\0")
 			continue;
      		input = const_cast<char*>(input_str.c_str());		
@@ -17,7 +17,7 @@ void Master::InitMS(ifstream &fin)
 		Addserver(s);
 	}
 	for(map<int, list<Server*> >::iterator it1 = Getschain().begin(); it1 != Getschain().end(); ++it1)
-	{
+{
 		int count = 0;
 		for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
 		{
