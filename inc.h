@@ -7,10 +7,14 @@
 #include <vector>
 #include <map>
 #include <list>
+#include "unpthread.h"
 
 using namespace std;
 
-const char *delim = " ;,()";
+#ifndef _INC_H__
+#define _INC_H__
+
+const char *delim = ": ;,()";
 
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
@@ -27,3 +31,5 @@ class Reply
 	Outcome outcome;
 	float balance;
 };
+
+#endif

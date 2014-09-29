@@ -1,16 +1,20 @@
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
-#include <cstring>
+#include <string.h>
 #include <string>
 #include <fstream>
 #include <vector>
 #include <map>
 #include <list>
+#include "unpthread.h"
 
 using namespace std;
 
-const char *delim = " ;,()";
+#ifndef _INC_H__
+#define _INC_H__
+
+const char *delim = ": ;,()";
 
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
@@ -27,3 +31,6 @@ class Reply
 	Outcome outcome;
 	float balance;
 };
+
+std::pair<string, int> msName;
+#endif

@@ -87,12 +87,11 @@ public:
 	friend ostream & operator << (ostream & cout, Server *s)
 	{
 		cout<<"bank name: "<<s->bankName<<endl;
-		cout<<"ip address: "<<s->sName.first<<endl;
-		cout<<"port number: "<<s->sName.second<<endl;
+		cout<<"server name: "<<s->sName.first<<":"<<s->sName.second<<endl;
 		cout<<"start up delay: "<<s->startup_delay<<endl;
 		cout<<"life time: "<<s->life_time<<endl;
-		cout<<"predecessor is: "<<s->prev.first<<" "<<s->prev.second<<endl;
-		cout<<"next is: "<<s->next.first<<" "<<s->next.second<<endl;
+		cout<<"predecessor is: "<<s->prev.first<<":"<<s->prev.second<<endl;
+		cout<<"next is: "<<s->next.first<<":"<<s->next.second<<endl;
 		return cout;
 	}
 };

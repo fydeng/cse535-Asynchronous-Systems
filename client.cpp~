@@ -14,6 +14,7 @@ int main()
 		if (input_str == "\0")
 			continue;
 		input = const_cast<char*>(input_str.c_str());
+		cout<<input<<endl;
 		if (strncmp(input, "//Client", 8) == 0)
 		{
 			flag_client = 1;

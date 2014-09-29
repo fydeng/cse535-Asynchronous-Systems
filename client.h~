@@ -1,8 +1,5 @@
 #include "inc.h"
 
-#ifndef _CLI_H__
-#define _CLI_H__
-
 class Client
 {
 private:	
@@ -72,4 +69,3 @@ public:
 		return cout;
 	}
 };
-#endif
