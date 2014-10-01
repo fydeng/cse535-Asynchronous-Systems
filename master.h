@@ -2,6 +2,7 @@
 #include "client.h"
 class Master
 {
+	int sockfd_tcp;
 	struct sockaddr_in msaddr;
 	string ip_addr;
 	int port;
@@ -21,14 +22,25 @@ public:
 		mName = make_pair(ip_addr, port);
 		bzero(&msaddr, sizeof(msaddr));
 		msaddr.sin_family = AF_INET;
-		inet_pton(AF_INET, mName.first.c_str(), &msaddr.sin_addr);
+		Inet_pton(AF_INET, mName.first.c_str(), &msaddr.sin_addr);
 		msaddr.sin_port = htons(mName.second);
+	}
+	void Setsocket()
+	{
+		const int on = 1;
+		sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
+		Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+		Bind(sockfd_tcp, ((SA *) & msaddr), sizeof(msaddr));
 	}
 	pair<string, int> & GetmsName()
 	{
 		return mName;
 	}
-	struct sockaddr_in &Getsockaddr()
+	int Getsockfd_tcp()
+	{
+		return sockfd_tcp;
+	}
+	struct sockaddr_in & Getsockaddr()
 	{
 		return msaddr;
 	}
@@ -118,7 +130,7 @@ public:
 				cout<<(*it2)<<endl;
 			}
 		}
-		for(map<int, list<Client*> >::iterator it3 = ms.Getclients().begin(); it3 != ms.Getclients().end(); ++it3, ++chainnum)
+/*		for(map<int, list<Client*> >::iterator it3 = ms.Getclients().begin(); it3 != ms.Getclients().end(); ++it3, ++chainnum)
 		{
 			cout<<"-----------------Clients in bank "<<it3->first<<"---------------------"<<endl;
 			int count = 0;
@@ -126,7 +138,11 @@ public:
 			{
 				cout<<(*it4)<<endl;
 			}
-		}
+		}*/
 		return cout;
+	}
+	friend ostream & operator << (ostream & cout, Master *ms)
+	{
+		cout<<"Master name is: "<<ms->GetmsName().first<<":"<<ms->GetmsName().second<<endl;
 	}
 };

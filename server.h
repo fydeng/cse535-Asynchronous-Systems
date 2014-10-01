@@ -6,7 +6,9 @@
 class Server
 {
 private:
+	int sockfd_tcp;
 	int bankName;
+	struct sockaddr_in srvaddr;
 	string ip_addr;
 	int port_num;	
 	std::pair<string,int> sName;
@@ -31,6 +33,17 @@ public:
 	{
 		port_num = atoi(s);
 		sName = make_pair (ip_addr, port_num);
+		bzero(&srvaddr, sizeof(srvaddr));
+		srvaddr.sin_family = AF_INET;
+		Inet_pton(AF_INET, sName.first.c_str(), &srvaddr.sin_addr);
+		srvaddr.sin_port = htons(sName.second);
+	}
+	void Setsocket()
+	{
+		const int on = 1;
+		sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
+		Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+		Bind(sockfd_tcp, (SA*) & srvaddr, sizeof(srvaddr));
 	}
 	void Setdelay(char *s)
 	{
@@ -55,6 +68,10 @@ public:
 	pair<string,int> & GetserverName()
 	{
 		return sName;
+	}
+	int Getsockfd_tcp()
+	{
+		return sockfd_tcp;
 	}
 	void InitServ(char *input)
 	{

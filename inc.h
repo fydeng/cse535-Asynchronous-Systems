@@ -7,7 +7,7 @@
 #include <vector>
 #include <map>
 #include <list>
-#include "unpthread.h"
+#include "unp.h"
 
 using namespace std;
 
@@ -21,12 +21,16 @@ enum ReqType {Query, Deposit, Withdraw, Transfer};
 
 class Request
 {
+public:
 	string reqID;
 	ReqType reqtype;
+	int account_num;
+	int amount;
 };
 
 class Reply
 {
+public:
 	string reqID;
 	Outcome outcome;
 	float balance;

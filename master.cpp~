@@ -1,11 +1,14 @@
+extern "C"
+{
+	#include "unpthread.h"
+}
 #include "master.h"
-#include "inc.h"
 
 void Master::InitMS(ifstream &fin)
 {
 	char *input;
 	string input_str;
-	int flag_master = 0, flag_server = 0, flag_client = 0;
+	int flag_master = 0, flag_server = 0;
 	while(fin.good())
 	{
 		getline(fin, input_str);
@@ -24,9 +27,7 @@ void Master::InitMS(ifstream &fin)
 		}
 		else if (strncmp(input, "//Client", 8) == 0)
 		{
-			flag_client = 1;
-			flag_server = 0;
-			continue;
+			break;
 		}
 
 		if (flag_master)
@@ -40,12 +41,6 @@ void Master::InitMS(ifstream &fin)
 			Server *s = new Server();
 			s->InitServ(input);
 			Addserver(s);
-		}
-		if (flag_client)
-		{
-			Client *c = new Client();
-			c->InitCli(input);
-			Addclient(c);
 		}
 	}
 	for(map<int, list<Server*> >::iterator it1 = Getschain().begin(); it1 != Getschain().end(); ++it1)
@@ -86,15 +81,15 @@ int main()
 	ms.InitMS(fin);
 	cout<<ms;
 
-	setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-	bind(listen_fd, ((SA *) & ms.Getsockaddr()), sizeof(ms.Getsockaddr()));
-	cout<<sizeof(ms.Getsockaddr())<<endl;
+	ms.Setsocket();
+	listen_fd = ms.Getsockfd_tcp();
 	listen(listen_fd, LISTENQ);
 	maxfd = listen_fd + 1;
 	FD_ZERO(&allset);
 	FD_SET(listen_fd, &allset);
 	while(1)
 	{
+		bzero(&srvaddr, sizeof(srvaddr));
 		rset = allset;
 		if(nready=(select(maxfd, &rset, NULL, NULL, NULL)) < 1)
 			continue;
@@ -105,16 +100,20 @@ int main()
 		else
 		{	
 			char str_srv[INET_ADDRSTRLEN];
-			inet_ntop(AF_INET, &srvaddr.sin_addr, str_srv, sizeof(str_srv));
-			cout<<"connection from "<<str_srv<<endl;
+		//	Inet_ntop(AF_INET, &srvaddr.sin_addr, str_srv, sizeof(str_srv));
+		//	cout<<"connection from "<<Sock_ntop((SA*)&srvaddr,len)<<endl;
+		//	cout<<"connection from "<<str_srv<<endl;
+			printf("connection from %s\n", Sock_ntop((SA*)&srvaddr,len));
 			int n;
 			char buf[MAXLINE];
 			if((n=read(connfd, buf, MAXLINE))>0)
 			{
 				cout<<buf<<endl;
 			}
+			if((n=write(connfd, "hello", 6))<0)
+				cout<<"write error"<<endl;
 		}
-		continue;
+		close(connfd);
 	}
 //	system("pause");
 	return 1;

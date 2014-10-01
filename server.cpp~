@@ -1,18 +1,24 @@
+extern "C"
+{
+#include "unpthread.h"
+}
 #include "server.h"
 #include "master.h"
 
-int main()
+int main(int argc, char **argv)
 {
 	int sockfd;
-	struct sockaddr_in msaddr, srvaddr, cliaddr;
+	struct sockaddr_in srvaddr, cliaddr;
 	ifstream fin;
 	fin.open("config.txt");
 	string input_str;
 	char *input;
 	Server *s = new Server();
-	int index = 2;
+	Master *ms = new Master();
+	int index = atoi(argv[1]);
 	int i = 0;
-	int flag_server = 0;
+	int flag_server = 0, flag_master = 0;
+	const int on = 1;
 	while(fin.good())
 	{
 		getline(fin, input_str);
@@ -24,6 +30,17 @@ int main()
 			flag_server = 1;
 			continue;
 		}
+		else if (strncmp(input, "//Master", 8) == 0)
+		{
+			flag_master = 1;
+			continue;
+		}
+		if (flag_master)
+		{
+			ms->Init(input);
+			flag_master = 0;
+			continue;
+		}
 		if (flag_server && ((++i) == index))
 		{
 			s->InitServ(input);
@@ -31,16 +48,18 @@ int main()
 		}
 	}
 	cout<<s;
-	sockfd = socket(AF_INET, SOCK_STREAM, 0);
-	bzero(&srvaddr, sizeof(srvaddr));
-	srvaddr.sin_family = AF_INET;
-	inet_pton(AF_INET, msName.first.c_str(), &msaddr.sin_addr);
-	srvaddr.sin_port = htons(s->GetserverName().second);
-	if((connect(sockfd, (SA*) &msaddr, sizeof(msaddr))) < 0)
-	{
-		cout<<"error connection"<<endl;
-	}
+//	cout<<"master name is: "<<ms->GetmsName().first<<":"<<ms->GetmsName().second<<endl;
+	cout<<ms;
+	s->Setsocket();
+	sockfd = s->Getsockfd_tcp();
+	Connect(sockfd, (SA*) &(ms->Getsockaddr()), sizeof(ms->Getsockaddr()));
 	string str = "hello world";
+	char buf[MAXLINE];
+	int n;
 	if((write(sockfd, str.c_str(), strlen(str.c_str()) + 1)) < 0)
 		cout<<"write error"<<endl;
+	if((n = read(sockfd, buf, MAXLINE)) > 0)
+	{
+		cout<<buf<<endl;
+	}
 }
