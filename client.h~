@@ -7,34 +7,87 @@ bool retrans;
 int retrans_inteval;
 int retrans_time;
 
-void parse_config(char *input)
+void parse_config(string input_str)
 {
+	char *input;
+	vector<string> vStr;
+	tokenizer(input_str,vStr);
 	int index = 0;
-	char *p = NULL;
-	char *next_token = NULL;
-	p = strtok_r(input, delim, &next_token);
-	while(p)
+	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
 	{
+		input = const_cast<char *>((*it).c_str());
 		switch(index)
 		{
 			case 0:
-				if (atoi(p))
+				if (atoi(input))
+				{
 					retrans = true;
+					cout<<"retransmission enabled"<<endl;
+				}
 				else
 					retrans = false;
 				break;
 			case 1:
-				retrans_inteval = atoi(p);
+				retrans_inteval = atoi(input);
+				cout<<"retransmission interval is: "<<retrans_inteval<<endl;
 				break;
 			case 2:
-				retrans_time = atoi(p);
+				retrans_time = atoi(input);
+				cout<<"retransmission time is: "<<retrans_time<<endl;
 				break;
 			default:
 				break;
 		}
-		p = strtok_r(NULL, delim, &next_token);
-		index++;
 	}
+}
+
+vector<Request *> req_list;
+
+void Parsereq(string input_str)
+{
+	char *input;
+	vector<string> vStr;
+	tokenizer(input_str,vStr);
+	int index = 0;
+//	Request *req = new Request();
+	struct Request *req = new Request;
+	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
+	{	
+		input = const_cast<char *>((*it).c_str());
+		if (!strlen(input))
+		{
+			index --;
+			continue;
+		}
+		cout<<input<<endl;
+		switch(index)
+		{
+			case 0:
+				if (!strncmp(input,"getBalance",10))
+				{
+					req->reqtype = Query;
+				}
+				else if (!strcmp(input, "deposit"))
+					req->reqtype = Deposit;
+				else if (!strcmp(input, "withdraw"))
+					req->reqtype = Withdraw;
+				else if (!strcmp(input, "Transfer"))				
+					req->reqtype = Transfer;
+				break;
+			case 1:
+				req->reqID = input;
+				break;
+			case 2:
+				req->account_num = atoi(input);
+				break;
+			case 3:
+				req->amount = atoi(input);
+				break;
+			default:
+				break;
+		}
+	}
+	req_list.push_back(req);
 }
 
 class Client
@@ -45,7 +98,6 @@ private:
 	string ip_addr;
 	int port_num;
 	std::pair<string, int> cName;
-	vector<Request *>req_list;
 
 public:
 	void SetbankName(char *p)
@@ -69,73 +121,35 @@ public:
 	{
 		return bankName;
 	}
-	void InitCli(char *input)
+	void InitCli(string input_str)
 	{
+		char *input;
+		vector<string> vStr;
+		tokenizer(input_str,vStr);
 		int index = 0;
-		char *p = NULL;
-		char *next_token = NULL;
-		p = strtok_r(input, delim, &next_token);
-		while(p)
+		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
 		{
+			input = const_cast<char *>((*it).c_str());
 			switch(index)
 			{
 				case 0:
-					SetbankName(p);
+					SetbankName(input);
 					break;
 				case 1:
-					SetAccountNo(p);
+					SetAccountNo(input);
 					break;
 				case 2:
-					Setipaddr(p);
+					Setipaddr(input);
 					break;
 				case 3:
-					Setportnum(p);
+					Setportnum(input);
 					break;
 				default:
 					break;
 			}
-			p = strtok_r(NULL, delim, &next_token);
-			index++;
 		}
 	}
-	void Initreq(char *input)
-	{
-		int index = 0;
-		char *p = NULL;
-		char *next_token = NULL;
-		p = strtok_r(input, delim, &next_token);
-		Request *req = new Request();
-		while(p)
-		{
-			switch(index)
-			{
-				case 0:
-					if (!strcmp(p,"getBalance"))
-						req->reqtype = Query;
-					else if (!strcmp(p, "deposit"))
-						req->reqtype = Deposit;
-					else if (!strcmp(p, "withdraw"))
-						req->reqtype = Withdraw;
-					else if (!strcmp(p, "Transfer"))
-						req->reqtype = Transfer;
-					break;
-				case 1:
-					req->reqId = p;
-					break;
-				case 2:
-					req->account_num = atoi(p);
-					break;
-				case 3:
-					req->amount = atoi(p);
-					break;
-				default:
-					break;
-			}
-			p = strtok_r(NULL, delim, &next_token);
-			index++;
-		}
-		req_list.push_back(req);
-	}
+
 	friend ostream & operator << (ostream & cout, Client *c)
 	{
 		cout<<"bank name: "<<c->bankName<<endl;
@@ -144,4 +158,6 @@ public:
 		return cout;
 	}
 };
+
+vector<Client*> client_list;
 #endif

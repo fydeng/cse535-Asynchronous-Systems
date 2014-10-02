@@ -44,27 +44,26 @@ public:
 	{
 		return msaddr;
 	}
-	void Init(char *input)
+	void Init(string input_str)
 	{
+		char *input;
 		int index = 0;
-		char *p = NULL;
-		char *next_token = NULL;
-		p = strtok_r(input, delim, &next_token);
-		while(p)
+		vector<string> vStr;
+		tokenizer(input_str, vStr);
+		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
 		{
+			input = const_cast<char*>((*it).c_str());
 			switch(index)
 			{
 				case 0:
-					Setipaddr(p);
+					Setipaddr(input);
 					break;
 				case 1:
-					Setportnum(p);
+					Setportnum(input);
 					break;
 				default:
 					break;
 			}
-			p = strtok_r(NULL, delim, &next_token);
-			index++;
 		}
 	}
 	void InitMS(ifstream &fin);

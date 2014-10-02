@@ -1,9 +1,9 @@
 CC = g++
 
-LIBS = -lresolv -lpthread\
+LIBS = -lresolv -lnsl -lpthread\
 		../unpv13e/libunp.a\
 		
-FLAGS = -g -O2 -w
+FLAGS = -g -O2 
 
 CFLAGS = ${FLAGS} -I../unpv13e/lib
 

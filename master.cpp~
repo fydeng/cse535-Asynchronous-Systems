@@ -15,17 +15,17 @@ void Master::InitMS(ifstream &fin)
 		if (input_str == "\0")
 			continue;
     	input = const_cast<char*>(input_str.c_str());		
-		if (strncmp(input, "//Master", 8) == 0)
+		if (!strncmp(input, "//Master", 8))
 		{
 			flag_master = 1;
 			continue;
 		}
-		else if (strncmp(input, "//Server", 8) == 0)
+		else if (!strncmp(input, "//Server", 8))
 		{
 			flag_server = 1;
 			continue;
 		}
-		else if (strncmp(input, "//Client", 8) == 0)
+		else if (!strncmp(input, "//Client", 8))
 		{
 			break;
 		}
@@ -91,7 +91,7 @@ int main()
 	{
 		bzero(&srvaddr, sizeof(srvaddr));
 		rset = allset;
-		if(nready=(select(maxfd, &rset, NULL, NULL, NULL)) < 1)
+		if((select(maxfd, &rset, NULL, NULL, NULL)) < 1)
 			continue;
 		if((connfd = accept(listen_fd, (SA*)&srvaddr, &len)) < 0)
 		{

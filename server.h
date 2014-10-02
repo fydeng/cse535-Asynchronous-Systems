@@ -73,36 +73,34 @@ public:
 	{
 		return sockfd_tcp;
 	}
-	void InitServ(char *input)
+	void InitServ(string input_str)
 	{
+		char *input;
 		int index = 0;
-		char *p = NULL;
-		char *next_token = NULL;
-		p = strtok_r(input, delim, &next_token);
-		while(p)
+		vector<string> vStr;
+		tokenizer(input_str, vStr);
+		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
 		{
-			//cout<<p<<endl;
+			input = const_cast<char*>((*it).c_str());
 			switch(index)
 			{
 				case 0:
-					SetbankName(p);
+					SetbankName(input);
 					break;
 				case 1:
-					Setipaddr(p);
+					Setipaddr(input);
 					break;
 				case 2:
-					Setportnum(p);
+					Setportnum(input);
 					break;
 				case 3:
-					Setdelay(p);
+					Setdelay(input);
 					break;
 				case 4:
-					Setlifetime(p);
+					Setlifetime(input);
 				default:
 					break;
 			}
-			p = strtok_r(NULL, delim, &next_token);
-			index++;
 		}
 	}
 	friend ostream & operator << (ostream & cout, Server *s)

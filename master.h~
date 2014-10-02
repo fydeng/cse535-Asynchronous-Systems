@@ -44,14 +44,15 @@ public:
 	{
 		return msaddr;
 	}
-	void Init(char *input)
+	void Init(string input_str)
 	{
+		char *input;
 		int index = 0;
-		char *p = NULL;
-		char *next_token = NULL;
-		p = strtok_r(input, delim, &next_token);
-		while(p)
+		vector<string> vStr;
+		tokenizer(input_str, vStr);
+		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
 		{
+			input = const_cast<char*>((*it).c_str());
 			switch(index)
 			{
 				case 0:
@@ -63,8 +64,6 @@ public:
 				default:
 					break;
 			}
-			p = strtok_r(NULL, delim, &next_token);
-			index++;
 		}
 	}
 	void InitMS(ifstream &fin);
@@ -130,7 +129,7 @@ public:
 				cout<<(*it2)<<endl;
 			}
 		}
-		for(map<int, list<Client*> >::iterator it3 = ms.Getclients().begin(); it3 != ms.Getclients().end(); ++it3, ++chainnum)
+/*		for(map<int, list<Client*> >::iterator it3 = ms.Getclients().begin(); it3 != ms.Getclients().end(); ++it3, ++chainnum)
 		{
 			cout<<"-----------------Clients in bank "<<it3->first<<"---------------------"<<endl;
 			int count = 0;
@@ -138,11 +137,12 @@ public:
 			{
 				cout<<(*it4)<<endl;
 			}
-		}
+		}*/
 		return cout;
 	}
 	friend ostream & operator << (ostream & cout, Master *ms)
 	{
 		cout<<"Master name is: "<<ms->GetmsName().first<<":"<<ms->GetmsName().second<<endl;
+		return cout;
 	}
 };

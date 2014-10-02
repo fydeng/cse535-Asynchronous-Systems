@@ -21,9 +21,8 @@ const char *delim = ": ;,()";
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
 
-class Request
+struct Request
 {
-public:
 	string reqID;
 	ReqType reqtype;
 	int account_num;
@@ -38,12 +37,8 @@ public:
 	float balance;
 };
 
-vector<string> & tokenizer(string input)
+void tokenizer(string input, vector<string>& vStr)
 {
-	vector<string> vStr;
 	boost::split(vStr, input, boost::is_any_of(delim), boost::token_compress_on);
-	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it)
-		cout<< *it <<endl;
-	return vStr;
 }
 #endif

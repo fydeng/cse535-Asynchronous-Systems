@@ -43,13 +43,13 @@ int main()
 		}
 		if (flag_master)
 		{
-			ms->Init(input);
+			ms->Init(input_str);
 			flag_master = 0;
 			continue;
 		}
 		if (flag_config)
 		{
-			parse_config(input);
+			parse_config(input_str);
 			flag_config = 0;
 /*			if (retrans)
 				cout<<"retransmission"<<endl;
@@ -62,13 +62,26 @@ int main()
 		if (flag_client)
 		{
 			Client *c = new Client();
-			c->InitCli(input);
+			c->InitCli(input_str);
 			cout<<c;
+			client_list.push_back(c);
 		}
 		if (flag_request)
 		{
-			
+			Parsereq(input_str);
 		}
 	}
 	cout<<ms;
+	for(vector<Request*>::iterator it = req_list.begin();it!=req_list.end();++it)
+	{
+		if((*it)->reqtype == Query)
+			cout<<"getBalance ";
+		else if((*it)->reqtype == Deposit)
+			cout<<"Deposit ";
+		else if((*it)->reqtype == Withdraw)
+			cout<<"Withdraw ";
+		else if((*it)->reqtype == Transfer)
+			cout<<"Transfer "<<endl;
+		cout<<"req Id: "<<(*it)->reqID<<" account_num "<<(*it)->account_num<<" amount "<<(*it)->amount<<endl;
+	}
 }
