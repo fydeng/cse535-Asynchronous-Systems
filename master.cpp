@@ -91,7 +91,7 @@ int main()
 	{
 		bzero(&srvaddr, sizeof(srvaddr));
 		rset = allset;
-		if(nready=(select(maxfd, &rset, NULL, NULL, NULL)) < 1)
+		if((select(maxfd, &rset, NULL, NULL, NULL)) < 1)
 			continue;
 		if((connfd = accept(listen_fd, (SA*)&srvaddr, &len)) < 0)
 		{

@@ -37,6 +37,7 @@ int main(int argc, char **argv)
 		}
 		if (flag_master)
 		{
+		    tokenizer(input_str);
 			ms->Init(input);
 			flag_master = 0;
 			continue;

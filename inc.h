@@ -8,6 +8,8 @@
 #include <map>
 #include <list>
 #include "unp.h"
+#include <boost/algorithm/string/classification.hpp>
+#include <boost/algorithm/string/split.hpp>
 
 using namespace std;
 
@@ -36,4 +38,12 @@ public:
 	float balance;
 };
 
+vector<string> & tokenizer(string input)
+{
+	vector<string> vStr;
+	boost::split(vStr, input, boost::is_any_of(delim), boost::token_compress_on);
+	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it)
+		cout<< *it <<endl;
+	return vStr;
+}
 #endif

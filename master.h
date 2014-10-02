@@ -144,5 +144,6 @@ public:
 	friend ostream & operator << (ostream & cout, Master *ms)
 	{
 		cout<<"Master name is: "<<ms->GetmsName().first<<":"<<ms->GetmsName().second<<endl;
+		return cout;
 	}
 };

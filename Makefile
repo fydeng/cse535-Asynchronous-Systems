@@ -1,11 +1,11 @@
 CC = g++
 
-LIBS = -lresolv -lnsl -lpthread\
-		/home/fydeng/unpv13e/libunp.a\
+LIBS = -lresolv -lpthread\
+		../unpv13e/libunp.a\
 		
-FLAGS = -g -O2 
+FLAGS = -g -O2 -w
 
-CFLAGS = ${FLAGS} -I/home/fydeng/unpv13e/lib
+CFLAGS = ${FLAGS} -I../unpv13e/lib
 
 all: server master client
 
@@ -29,8 +29,8 @@ client.o: client.cpp
 
 #using the thread-safe version of readline.c from directory "threads"
 
-readline.o: /home/fydeng/unpv13e/threads/readline.c
-	gcc ${CFLAGS} -c /home/fydeng/unpv13e/threads/readline.c
+readline.o: ../unpv13e/threads/readline.c
+	gcc ${CFLAGS} -c ../unpv13e/threads/readline.c
 
 clean:
 	rm client.o server.o master.o master server client readline.o

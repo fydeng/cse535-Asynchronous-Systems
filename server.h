@@ -20,7 +20,7 @@ private:
 	int life_time;
 
 public:
-	Server():bankName(0),startup_delay(0),life_time(0),sName(make_pair("",-1)),prev(make_pair("",-1)),next(make_pair("",-1)){}
+	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),prev(make_pair("",-1)),next(make_pair("",-1)),life_time(0){}
 	void SetbankName(char *s)
 	{
 		bankName = atoi(s);
