@@ -7,7 +7,7 @@ FLAGS = -g -O2
 
 CFLAGS = ${FLAGS} -I../unpv13e/lib
 
-all: server master client
+all: client server master
 
 server: server.o readline.o
 	${CC} ${FLAGS} -o server server.o readline.o ${LIBS}

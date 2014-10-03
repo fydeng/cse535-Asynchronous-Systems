@@ -108,7 +108,9 @@ int main()
 			char buf[MAXLINE];
 			if((n=read(connfd, buf, MAXLINE))>0)
 			{
-				cout<<buf<<endl;
+				InitReq *req = (InitReq *)buf;
+				if(req->src==server)
+					cout<<"server request"<<endl;
 			}
 			if((n=write(connfd, "hello", 6))<0)
 				cout<<"write error"<<endl;

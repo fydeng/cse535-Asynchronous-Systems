@@ -32,14 +32,14 @@ void Master::InitMS(ifstream &fin)
 
 		if (flag_master)
 		{
-			Init(input);
+			Init(input_str);
 			flag_master = 0;
 			continue;
 		}
 		if (flag_server)
 		{
 			Server *s = new Server();
-			s->InitServ(input);
+			s->InitServ(input_str);
 			Addserver(s);
 		}
 	}

@@ -20,6 +20,7 @@ const char *delim = ": ;,()";
 
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
+enum Source  {server, client};
 
 struct Request
 {
@@ -27,6 +28,14 @@ struct Request
 	ReqType reqtype;
 	int account_num;
 	int amount;
+};
+
+class InitReq
+{
+public:
+	Source src;
+	pair<string, int> src_name;
+	int bankName;
 };
 
 class Reply
