@@ -1,7 +1,3 @@
-extern "C"
-{
-#include "unpthread.h"
-}
 #include "client.h"
 #include "master.h"
 

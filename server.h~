@@ -78,7 +78,7 @@ public:
 		char *input;
 		int index = 0;
 		vector<string> vStr;
-		boost::split(vStr, input_str, boost::is_any_of(delim), boost::token_compress_on);
+		tokenizer(input_str, vStr);
 		for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
 		{
 			input = const_cast<char*>((*it).c_str());

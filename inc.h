@@ -7,12 +7,11 @@
 #include <vector>
 #include <map>
 #include <list>
-#include "unp.h"
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
+#include <boost/asio.hpp>
 
 using namespace std;
-
 #ifndef _INC_H__
 #define _INC_H__
 
@@ -22,8 +21,9 @@ enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
 enum Source  {server, client};
 
-struct Request
+class Request
 {
+public:
 	string reqID;
 	ReqType reqtype;
 	int account_num;
@@ -34,7 +34,8 @@ class InitReq
 {
 public:
 	Source src;
-	pair<string, int> src_name;
+	char ip_addr[INET_ADDRSTRLEN];
+	int port_num;
 	int bankName;
 };
 

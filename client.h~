@@ -49,8 +49,7 @@ void Parsereq(string input_str)
 	vector<string> vStr;
 	tokenizer(input_str,vStr);
 	int index = 0;
-//	Request *req = new Request();
-	struct Request *req = new Request;
+	Request *req = new Request();
 	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
 	{	
 		input = const_cast<char *>((*it).c_str());
@@ -59,7 +58,6 @@ void Parsereq(string input_str)
 			index --;
 			continue;
 		}
-		cout<<input<<endl;
 		switch(index)
 		{
 			case 0:

@@ -1,7 +1,3 @@
-extern "C"
-{
-	#include "unpthread.h"
-}
 #include "master.h"
 
 void Master::InitMS(ifstream &fin)
@@ -70,7 +66,7 @@ void Master::InitMS(ifstream &fin)
 
 int main()
 {
-	struct sockaddr_in srvaddr, cliaddr;
+	using namespace boost::asio;
 	int listen_fd, connfd, maxfd, nready;
 	const int on = 1;
 	fd_set allset, rset;
@@ -80,8 +76,23 @@ int main()
 	Master ms;
 	ms.InitMS(fin);
 	cout<<ms;
+	io_service iosev;
+	ip::tcp::acceptor acceptor(iosev, ip::tcp::endpoint(ip::tcp::v4(), ms->GetmsName().second));
+	for(;;)
+	{
+		ip::tcp::socket socket(iosev);
+		acceptor.accept(socket);
+		cout<<socket.remote_endpoint().address()<<endl;
+        boost::system::error_code ec;
+        socket.write_some(buffer("hello world!"), ec);
+        if(ec)
+        {
+			std::cout <<boost::system::system_error(ec).what() << std::endl;
+            break;
+        }
+	}
 
-	ms.Setsocket();
+/*	ms.Setsocket();
 	listen_fd = ms.Getsockfd_tcp();
 	listen(listen_fd, LISTENQ);
 	maxfd = listen_fd + 1;
@@ -104,19 +115,25 @@ int main()
 		//	cout<<"connection from "<<Sock_ntop((SA*)&srvaddr,len)<<endl;
 		//	cout<<"connection from "<<str_srv<<endl;
 			printf("connection from %s\n", Sock_ntop((SA*)&srvaddr,len));
-			int n;
 			char buf[MAXLINE];
-			if((n=read(connfd, buf, MAXLINE))>0)
+			int n;
+			if((n=read(connfd, buf, MAXLINE)) > 0)
 			{
-				InitReq *req = (InitReq *)buf;
-				if(req->src==server)
-					cout<<"server request"<<endl;
+				buf[n] = '\0';
+				struct InitReq *req = (struct InitReq *)buf;
+//				if(req->src == client)
+//					cout<<"Init request from client"<<endl;
+//				else if(req->src == server)
+//				{
+					cout<<"server request from "<<":"<<req->port_num<<endl;
+					cout<<"bank name:"<<req->bankName<<endl;
+//				}
 			}
-			if((n=write(connfd, "hello", 6))<0)
+			if((write(connfd, "hello", 6)) < 0)
 				cout<<"write error"<<endl;
 		}
-		close(connfd);
-	}
+		close(connfd);*/
+	
 //	system("pause");
 	return 1;
 }

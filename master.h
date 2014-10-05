@@ -3,7 +3,7 @@
 class Master
 {
 	int sockfd_tcp;
-	struct sockaddr_in msaddr;
+//	struct sockaddr_in msaddr;
 	string ip_addr;
 	int port;
 	std::pair<string,int> mName;
@@ -20,18 +20,18 @@ public:
 	{
 		port = atoi(p);
 		mName = make_pair(ip_addr, port);
-		bzero(&msaddr, sizeof(msaddr));
-		msaddr.sin_family = AF_INET;
-		Inet_pton(AF_INET, mName.first.c_str(), &msaddr.sin_addr);
-		msaddr.sin_port = htons(mName.second);
+//		bzero(&msaddr, sizeof(msaddr));
+//		msaddr.sin_family = AF_INET;
+//		Inet_pton(AF_INET, mName.first.c_str(), &msaddr.sin_addr);
+//		msaddr.sin_port = htons(mName.second);
 	}
-	void Setsocket()
+/*	void Setsocket()
 	{
 		const int on = 1;
 		sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
 		Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
 		Bind(sockfd_tcp, ((SA *) & msaddr), sizeof(msaddr));
-	}
+	}*/
 	pair<string, int> & GetmsName()
 	{
 		return mName;
@@ -40,10 +40,10 @@ public:
 	{
 		return sockfd_tcp;
 	}
-	struct sockaddr_in & Getsockaddr()
+/*	struct sockaddr_in & Getsockaddr()
 	{
 		return msaddr;
-	}
+	}*/
 	void Init(string input_str)
 	{
 		char *input;
