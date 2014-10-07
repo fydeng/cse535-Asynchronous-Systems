@@ -1,6 +1,6 @@
 CC = g++
 
-FLAGS = -g -O2 
+FLAGS = -lboost_system-mt -g -O2 
 
 all: client server master
 
