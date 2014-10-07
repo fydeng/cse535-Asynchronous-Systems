@@ -67,73 +67,75 @@ void Master::InitMS(ifstream &fin)
 int main()
 {
 	using namespace boost::asio;
-	int listen_fd, connfd, maxfd, nready;
-	const int on = 1;
-	fd_set allset, rset;
-	socklen_t len;
 	ifstream fin;
 	fin.open("config.txt");
 	Master ms;
 	ms.InitMS(fin);
 	cout<<ms;
 	io_service iosev;
-	ip::tcp::acceptor acceptor(iosev, ip::tcp::endpoint(ip::tcp::v4(), ms->GetmsName().second));
+	ip::tcp::acceptor acceptor(iosev, ip::tcp::endpoint(ip::address_v4::from_string(ms.GetmsName().first), ms.GetmsName().second));
+    acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
 	for(;;)
 	{
-		ip::tcp::socket socket(iosev);
-		acceptor.accept(socket);
-		cout<<socket.remote_endpoint().address()<<endl;
+        char buf[100];
+        string send_str;
+        ip::udp::endpoint local_udp(ip::address_v4::from_string(ms.GetmsName().first), ms.GetmsName().second);
+        boost::system::error_code error;
+		ip::tcp::socket socket_tcp(iosev);
+        ip::udp::socket socket_udp(iosev);
+        socket_udp.open(ip::udp::v4());
+        socket_udp.bind(local_udp);
+        ip::udp::endpoint udp_ep;
+        socket_udp.receive_from(boost::asio::buffer(buf),udp_ep, 0, error);
+        cout<<buf<<endl;
+        InitReq *req = new InitReq();
+        req->depacketize(buf);
+        if (req->src == client)
+        {
+            cout<<"client come"<<endl;
+            string ip_addr = udp_ep.address().to_string();
+            int port = udp_ep.port();
+            cout<<ip_addr<<":"<<port<<endl;
+            Client *cli = new Client(req->bankName, ip_addr, port);
+            ms.Addclient(cli);
+            Server *srv;
+            srv = ms.Search_Head_Server(cli->GetbankName());
+            srv->packetize(send_str);
+            
+        }
+        if (error && error != boost::asio::error::message_size)
+            throw boost::system::system_error(error);
+        
+        //send_str = "hello i am master";
+        boost::system::error_code ignored_error;
+        socket_udp.send_to(boost::asio::buffer(send_str),
+                       udp_ep, 0, ignored_error);
+		/*acceptor.accept(socket_tcp);
         boost::system::error_code ec;
-        socket.write_some(buffer("hello world!"), ec);
+        socket.read_some(buffer(buf), ec);
+        string ip_addr = socket.remote_endpoint().address().to_string();
+        int port = socket.remote_endpoint().port();
+        cout<<buf<<endl;
+        InitReq *req = new InitReq();
+        req->depacketize(buf);
+        if (req->src == server)
+        {
+            cout<<"server come"<<endl;
+            Server *srv;
+            srv = ms.Search_Server(req, ip_addr, port);
+            cout<<srv<<endl;
+            srv->packetize(send_str);
+        }
+        else if (req->src == client)
+            cout<<"client come"<<endl;
+        cout<<ip_addr<<":"<<port<<endl;
+        socket.write_some(buffer(send_str),ec);
         if(ec)
         {
 			std::cout <<boost::system::system_error(ec).what() << std::endl;
             break;
-        }
+        }*/
 	}
 
-/*	ms.Setsocket();
-	listen_fd = ms.Getsockfd_tcp();
-	listen(listen_fd, LISTENQ);
-	maxfd = listen_fd + 1;
-	FD_ZERO(&allset);
-	FD_SET(listen_fd, &allset);
-	while(1)
-	{
-		bzero(&srvaddr, sizeof(srvaddr));
-		rset = allset;
-		if((select(maxfd, &rset, NULL, NULL, NULL)) < 1)
-			continue;
-		if((connfd = accept(listen_fd, (SA*)&srvaddr, &len)) < 0)
-		{
-			cout<<"accept error"<<endl;
-		}
-		else
-		{	
-			char str_srv[INET_ADDRSTRLEN];
-		//	Inet_ntop(AF_INET, &srvaddr.sin_addr, str_srv, sizeof(str_srv));
-		//	cout<<"connection from "<<Sock_ntop((SA*)&srvaddr,len)<<endl;
-		//	cout<<"connection from "<<str_srv<<endl;
-			printf("connection from %s\n", Sock_ntop((SA*)&srvaddr,len));
-			char buf[MAXLINE];
-			int n;
-			if((n=read(connfd, buf, MAXLINE)) > 0)
-			{
-				buf[n] = '\0';
-				struct InitReq *req = (struct InitReq *)buf;
-//				if(req->src == client)
-//					cout<<"Init request from client"<<endl;
-//				else if(req->src == server)
-//				{
-					cout<<"server request from "<<":"<<req->port_num<<endl;
-					cout<<"bank name:"<<req->bankName<<endl;
-//				}
-			}
-			if((write(connfd, "hello", 6)) < 0)
-				cout<<"write error"<<endl;
-		}
-		close(connfd);*/
-	
-//	system("pause");
 	return 1;
 }
