@@ -41,52 +41,6 @@ void parse_config(string input_str)
 	}
 }
 
-vector<Request *> req_list;
-
-void Parsereq(string input_str)
-{
-	char *input;
-	vector<string> vStr;
-	tokenizer(input_str,vStr);
-	int index = 0;
-	Request *req = new Request();
-	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
-	{	
-		input = const_cast<char *>((*it).c_str());
-		if (!strlen(input))
-		{
-			index --;
-			continue;
-		}
-		switch(index)
-		{
-			case 0:
-				if (!strncmp(input,"getBalance",10))
-				{
-					req->reqtype = Query;
-				}
-				else if (!strcmp(input, "deposit"))
-					req->reqtype = Deposit;
-				else if (!strcmp(input, "withdraw"))
-					req->reqtype = Withdraw;
-				else if (!strcmp(input, "Transfer"))				
-					req->reqtype = Transfer;
-				break;
-			case 1:
-				req->reqID = input;
-				break;
-			case 2:
-				req->account_num = atoi(input);
-				break;
-			case 3:
-				req->amount = atoi(input);
-				break;
-			default:
-				break;
-		}
-	}
-	req_list.push_back(req);
-}
 
 class Client
 {
@@ -98,6 +52,15 @@ private:
 	std::pair<string, int> cName;
 
 public:
+    Client():bankName(0),account_no(0),ip_addr(""),port_num(0),cName(make_pair("",-1)){}
+    Client(int bankname, string ipaddr, int portnum)
+    {
+        bankName = bankname;
+        account_no = 0;
+        ip_addr = ipaddr;
+        port_num = portnum;
+        cName = make_pair(ip_addr, port_num);
+    }
 	void SetbankName(char *p)
 	{
 		bankName = atoi(p);
@@ -119,6 +82,10 @@ public:
 	{
 		return bankName;
 	}
+    pair<string,int> GetclientName()
+    {
+        return cName;
+    }
 	void InitCli(string input_str)
 	{
 		char *input;
@@ -156,6 +123,4 @@ public:
 		return cout;
 	}
 };
-
-vector<Client*> client_list;
 #endif

@@ -1,4 +1,4 @@
-//#include "inc.h"
+#include "inc.h"
 
 #ifndef _SERVER_H__
 #define _SERVER_H__
@@ -8,7 +8,6 @@ class Server
 private:
 	int sockfd_tcp;
 	int bankName;
-//	struct sockaddr_in srvaddr;
 	string ip_addr;
 	int port_num;	
 	std::pair<string,int> sName;
@@ -33,18 +32,7 @@ public:
 	{
 		port_num = atoi(s);
 		sName = make_pair (ip_addr, port_num);
-//		bzero(&srvaddr, sizeof(srvaddr));
-//		srvaddr.sin_family = AF_INET;
-//		Inet_pton(AF_INET, sName.first.c_str(), &srvaddr.sin_addr);
-//		srvaddr.sin_port = htons(sName.second);
-	}
-/*	void Setsocket()
-	{
-		const int on = 1;
-		sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
-		Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-		Bind(sockfd_tcp, (SA*) & srvaddr, sizeof(srvaddr));
-	}*/
+    }
 	void Setdelay(char *s)
 	{
 		startup_delay = atoi(s);
@@ -103,6 +91,50 @@ public:
 			}
 		}
 	}
+    void packetize (string &str)
+    {
+        str.append(prev.first);
+        str.append(":");
+        str.append(std::to_string(prev.second));
+        str.append(seperator);
+        str.append(next.first);
+        str.append(":");
+        str.append(std::to_string(next.second));
+    }
+    
+    void depacketize(string str)
+    {
+        string ip_addr;
+        int port_num;
+        int index = 0;
+        vector<string> vStr;
+        tokenizer(str, vStr);
+        char *input;
+        for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
+        {
+            input = const_cast<char*>((*it).c_str());
+            switch(index)
+            {
+                case 0:
+                    ip_addr = input;
+                    break;
+                case 1:
+                    port_num = atoi(input);
+                    prev = make_pair(ip_addr,port_num);
+                    break;
+                case 2:
+                    ip_addr = input;
+                    break;
+                case 3:
+                    port_num = atoi(input);
+                    next = make_pair(ip_addr, port_num);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
 	friend ostream & operator << (ostream & cout, Server *s)
 	{
 		cout<<"bank name: "<<s->bankName<<endl;
