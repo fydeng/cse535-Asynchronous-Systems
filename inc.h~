@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <algorithm>
 #include <fstream>
 #include <vector>
 #include <map>
@@ -32,12 +31,12 @@ public:
     Source src;
     int bankName;
     
-    void packetize(string &str)
+/*    void packetize(string &str)
     {
         str.append(std::to_string(src));
         str.append(seperator);
         str.append(std::to_string(bankName));
-    }
+    }*/
     
     void depacketize(string str)
     {

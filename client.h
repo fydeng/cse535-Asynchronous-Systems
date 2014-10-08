@@ -45,6 +45,8 @@ void parse_config(string input_str)
 class Client
 {
 private:	
+	struct sockaddr_in cliaddr;
+	int sockfd_udp;
 	int bankName;
 	int account_no;
 	string ip_addr;
@@ -77,10 +79,25 @@ public:
 	{
 		port_num = atoi(p);
 		cName = make_pair(ip_addr, port_num);
+		bzero(&cliaddr, sizeof(cliaddr));
+		cliaddr.sin_family = AF_INET;
+		Inet_pton(AF_INET, cName.first.c_str(), &cliaddr.sin_addr);
+		cliaddr.sin_port = htons(cName.second);
+	}
+	void Setsocket()
+	{
+		const int on = 1;
+		sockfd_udp = Socket(AF_INET, SOCK_DGRAM, 0);
+        	Setsockopt(sockfd_udp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        	Bind(sockfd_udp, (SA*) & cliaddr, sizeof(cliaddr));
 	}
 	int GetbankName()
 	{
 		return bankName;
+	}
+	int Getsocket()
+	{
+		return sockfd_udp;
 	}
     pair<string,int> GetclientName()
     {

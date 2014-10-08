@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include <algorithm>
 #include <fstream>
 #include <vector>
 #include <map>
 #include <list>
+#include "unp.h"
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
 
@@ -32,12 +32,12 @@ public:
     Source src;
     int bankName;
     
-    void packetize(string &str)
+/*    void packetize(string &str)
     {
-        str.append(to_string(src));
+        str.append(std::to_string(src));
         str.append(seperator);
         str.append(std::to_string(bankName));
-    }
+    }*/
     
     void depacketize(string str)
     {

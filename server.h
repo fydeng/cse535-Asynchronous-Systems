@@ -7,19 +7,20 @@ class Server
 {
 private:
 	int sockfd_tcp;
+    int sockfd_udp;
 	int bankName;
+	struct sockaddr_in srvaddr;
 	string ip_addr;
 	int port_num;	
 	std::pair<string,int> sName;
-	std::pair<string,int> prev;
-	std::pair<string,int> next;
+    Server *next;
 	std::vector<Request *> sentTrans;
 	std::vector<Request *> procTrans;
 	int startup_delay;
 	int life_time;
 
 public:
-	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),prev(make_pair("",-1)),next(make_pair("",-1)),life_time(0){}
+	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),next(NULL),life_time(0){}
 	void SetbankName(char *s)
 	{
 		bankName = atoi(s);
@@ -32,6 +33,20 @@ public:
 	{
 		port_num = atoi(s);
 		sName = make_pair (ip_addr, port_num);
+        bzero(&srvaddr, sizeof(srvaddr));
+        srvaddr.sin_family = AF_INET;
+        Inet_pton(AF_INET, sName.first.c_str(), &srvaddr.sin_addr);
+        srvaddr.sin_port = htons(sName.second);
+    }
+    void Setsocket()
+    {
+        const int on = 1;
+        sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
+        Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        Bind(sockfd_tcp, (SA*) & srvaddr, sizeof(srvaddr));
+        sockfd_udp = Socket(AF_INET, SOCK_DGRAM, 0);
+        Setsockopt(sockfd_udp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        Bind(sockfd_udp, (SA*) & srvaddr, sizeof(srvaddr));
     }
 	void Setdelay(char *s)
 	{
@@ -41,14 +56,15 @@ public:
 	{
 		life_time = atoi(s);
 	}
-	void Setprev(Server *s)
+	void Setnext(string input_str)
 	{
-		prev = make_pair(s->GetserverName().first, s->GetserverName().second);
+        next = new Server();
+        next->InitServ(input_str);
 	}
-	void Setnext(Server *s)
-	{
-		next = make_pair(s->GetserverName().first, s->GetserverName().second);
-	}
+    Server * Getnext()
+    {
+        return next;
+    }
 	int GetbankName()
 	{
 		return bankName;
@@ -57,10 +73,18 @@ public:
 	{
 		return sName;
 	}
+	struct sockaddr_in & Getsockaddr()
+	{
+		return srvaddr;
+	}
 	int Getsockfd_tcp()
 	{
 		return sockfd_tcp;
 	}
+    int Getsockfd_udp()
+    {
+        return sockfd_udp;
+    }
 	void InitServ(string input_str)
 	{
 		char *input;
@@ -91,7 +115,8 @@ public:
 			}
 		}
 	}
-    void packetize (string &str)
+    /*void packetize (string &str)
+>>>>>>> 7a861062dbe98953733f136174114e508710465a
     {
         str.append(prev.first);
         str.append(":");
@@ -133,7 +158,7 @@ public:
                     break;
             }
         }
-    }
+    }*/
     
 	friend ostream & operator << (ostream & cout, Server *s)
 	{
@@ -141,8 +166,8 @@ public:
 		cout<<"server name: "<<s->sName.first<<":"<<s->sName.second<<endl;
 		cout<<"start up delay: "<<s->startup_delay<<endl;
 		cout<<"life time: "<<s->life_time<<endl;
-		cout<<"predecessor is: "<<s->prev.first<<":"<<s->prev.second<<endl;
-		cout<<"next is: "<<s->next.first<<":"<<s->next.second<<endl;
+        if (s->Getnext() != NULL)
+            cout<<"next is: "<<s->next->GetserverName().first<<":"<<s->next->GetserverName().second<<endl;
 		return cout;
 	}
 };

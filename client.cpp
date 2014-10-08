@@ -1,3 +1,7 @@
+extern "C"
+{
+#include "unpthread.h"
+}
 #include "client.h"
 #include "master.h"
 #include "server.h"
@@ -39,7 +43,7 @@ void Addclient(Client *c)
     }
 }
 
-void displayschain()
+void displaychain()
 {
     int chainnum = 1;
     for(map<int, list<Server*> >::iterator it1 = sChain.begin(); it1 != sChain.end(); ++it1, ++chainnum)
@@ -148,5 +152,17 @@ int main()
 	{
         cout<<(*it)<<endl;
 	}
-    displayschain();
+    	displaychain();
+	Client *c = cChain[1].front();
+	c->Setsocket();
+	int sockfd = c->Getsocket();
+	struct sockaddr_in srvaddr = sChain[1].front()->Getsockaddr();	
+	socklen_t len = sizeof(srvaddr);
+	Sendto(sockfd, "helloworld", 11, 0, (SA*)&srvaddr, len);
+	int i;
+	char buf[MAXLINE];
+	if ((i = recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
+		cout<<"error recvfrom"<<endl;
+	else
+		cout<<buf<<endl; 
 }
