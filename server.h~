@@ -43,9 +43,11 @@ public:
         const int on = 1;
         sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
         Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+	Setsockopt(sockfd_tcp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         Bind(sockfd_tcp, (SA*) & srvaddr, sizeof(srvaddr));
         sockfd_udp = Socket(AF_INET, SOCK_DGRAM, 0);
         Setsockopt(sockfd_udp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+	Setsockopt(sockfd_udp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         Bind(sockfd_udp, (SA*) & srvaddr, sizeof(srvaddr));
     }
 	void Setdelay(char *s)
@@ -73,6 +75,10 @@ public:
 	{
 		return sName;
 	}
+	struct sockaddr_in & Getsockaddr()
+	{
+		return srvaddr;
+	}
 	int Getsockfd_tcp()
 	{
 		return sockfd_tcp;
@@ -81,6 +87,13 @@ public:
     {
         return sockfd_udp;
     }
+	bool isTail()
+	{
+		if (next == NULL)
+			return true;
+		else 
+			return false;
+	}
 	void InitServ(string input_str)
 	{
 		char *input;
@@ -162,7 +175,7 @@ public:
 		cout<<"server name: "<<s->sName.first<<":"<<s->sName.second<<endl;
 		cout<<"start up delay: "<<s->startup_delay<<endl;
 		cout<<"life time: "<<s->life_time<<endl;
-        if (s->Getnext() != NULL)
+        if (!(s->isTail()))
             cout<<"next is: "<<s->next->GetserverName().first<<":"<<s->next->GetserverName().second<<endl;
 		return cout;
 	}

@@ -26,43 +26,6 @@ void tokenizer(string input, vector<string>& vStr)
     boost::split(vStr, input, boost::is_any_of(delim), boost::token_compress_on);
 }
 
-class InitReq
-{
-public:
-    Source src;
-    int bankName;
-    
-/*    void packetize(string &str)
-    {
-        str.append(std::to_string(src));
-        str.append(seperator);
-        str.append(std::to_string(bankName));
-    }*/
-    
-    void depacketize(string str)
-    {
-        int index = 0;
-        vector<string> vStr;
-        tokenizer(str, vStr);
-        char *input;
-        for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
-        {
-            input = const_cast<char*>((*it).c_str());
-            switch(index)
-            {
-                case 0:
-                    src = (enum Source)atoi(input);
-                    break;
-                case 1:
-                    bankName = atoi(input);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-};
-
 class Request
 {
 public:
@@ -71,7 +34,7 @@ public:
 	ReqType reqtype;
 	int account_num;
 	int amount;
-    
+
     void Parsereq(string input_str)
     {
         req_str = input_str;
@@ -130,8 +93,6 @@ public:
         return cout;
     }
 };
-
-vector<Request *> req_list;
 
 class Reply
 {

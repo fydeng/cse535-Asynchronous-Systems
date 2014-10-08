@@ -41,7 +41,7 @@ void parse_config(string input_str)
 	}
 }
 
-
+vector <Request *> req_list;
 class Client
 {
 private:	
@@ -89,7 +89,20 @@ public:
 		const int on = 1;
 		sockfd_udp = Socket(AF_INET, SOCK_DGRAM, 0);
         	Setsockopt(sockfd_udp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+		Setsockopt(sockfd_udp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         	Bind(sockfd_udp, (SA*) & cliaddr, sizeof(cliaddr));
+	}
+	void Packetize(Request *req, string &send_str)
+	{
+		string str;
+		stringstream sstream;
+		send_str = req->req_str;
+		sstream << ip_addr;
+		sstream << "|";
+		sstream << port_num;
+		sstream >> str;
+		send_str.append("|");
+		send_str.append(str);
 	}
 	int GetbankName()
 	{

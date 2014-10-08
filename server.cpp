@@ -5,6 +5,15 @@ extern "C"
 #include "server.h"
 #include "master.h"
 
+struct ARGS
+{
+	Server *srv;
+	char *buf;
+	int connfd;
+};
+
+static void *Sync(void *arg);
+
 int main(int argc, char **argv)
 {
     struct sockaddr_in srvaddr, cliaddr;
@@ -20,8 +29,9 @@ int main(int argc, char **argv)
 	int flag_server = 0, flag_next = 0, flag_master = 0;
 	const int on = 1;
     fd_set allset, rset;
-    socklen_t len;
+    socklen_t len = sizeof(struct sockaddr_in);
     char buf[MAXLINE];
+	pthread_t tid;
 	while(fin.good())
 	{
 		getline(fin, input_str);
@@ -91,15 +101,11 @@ int main(int argc, char **argv)
 			else 
 			{
 				cout<<buf<<endl;
-				len = sizeof(cliaddr);
             	cout<<"receive from "<<Sock_ntop((SA*)&cliaddr,len)<<endl;
-				const int on = 1;
-				int sockfd;				
-				sockfd = Socket(AF_INET, SOCK_STREAM, 0);
-       				Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-        			//Bind(sockfd, (SA*) & (s->Getsockaddr()), sizeof(s->Getsockaddr()));
-				Connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
-				Write(sockfd, buf, MAXLINE);
+				struct ARGS args;
+				args.srv = s;
+				args.buf = buf;
+				Pthread_create(&tid,NULL,&Sync,(void *)&args);
 			}
         }
 		if (FD_ISSET(sockfd_tcp, &rset))
@@ -115,11 +121,28 @@ int main(int argc, char **argv)
             	{
                 	cout<<buf<<endl;
             	}
-            	if((i = write(connfd, "hello", 6))<0)
-                	cout<<"write error"<<endl;
-        		close(connfd);
+				struct ARGS args;
+				args.srv = s;
+				args.buf = buf;
+				args.connfd = connfd;
+				Pthread_create(&tid,NULL,&Sync,(void *)&args);
+				close(connfd);
         	}
 		}
     }
     return -1;
+}
+
+static void *Sync(void *arg)
+{
+	const int on = 1;
+	int sockfd;
+	struct ARGS *args = (struct ARGS *) arg;
+	Server *s = args->srv;
+	Pthread_detach(pthread_self());				
+	sockfd = Socket(AF_INET, SOCK_STREAM, 0);
+    Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+	Connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
+	Write(sockfd, args->buf, MAXLINE);
+	close(sockfd);
 }

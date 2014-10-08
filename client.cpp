@@ -152,15 +152,19 @@ int main()
 	{
         cout<<(*it)<<endl;
 	}
-    	displaychain();
+   	displaychain();
 	Client *c = cChain[1].front();
 	c->Setsocket();
 	int sockfd = c->Getsocket();
 	struct sockaddr_in srvaddr = sChain[1].front()->Getsockaddr();	
 	socklen_t len = sizeof(srvaddr);
-	Sendto(sockfd, "helloworld", 11, 0, (SA*)&srvaddr, len);
-	int i;
+	string send_str;
+	c->Packetize(req_list.front(), send_str);
 	char buf[MAXLINE];
+	strcpy(buf, send_str.c_str());
+	cout<<buf<<endl;
+	Sendto(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, len);
+	int i;
 	if ((i = recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
 		cout<<"error recvfrom"<<endl;
 	else
