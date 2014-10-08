@@ -1,12 +1,12 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <fstream>
 #include <vector>
 #include <map>
 #include <list>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
-#include <boost/asio.hpp>
 
 using namespace std;
 #ifndef _INC_H__

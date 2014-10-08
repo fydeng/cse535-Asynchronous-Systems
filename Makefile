@@ -1,17 +1,30 @@
 CC = g++
 
-FLAGS = -lboost_system-mt -g -O2 
+LIBS = -lresolv -lpthread\
+		../unpv13e/libunp.a\
+		
+FLAGS = -g -w -O2 
 
-all: client server master
+CFLAGS = ${FLAGS} -I../unpv13e/lib
 
-server: server.cpp
-	${CC} ${FLAGS} -o server server.cpp
+all: client server 
 
-master: master.cpp
-	${CC} ${FLAGS} -o master master.cpp
+server: server.o readline.o
+	${CC} ${FLAGS} -o server server.o readline.o ${LIBS}
 
-client: client.cpp
-	${CC} ${FLAGS} -o client client.cpp
+server.o: server.cpp 
+	${CC} ${CFLAGS} -c server.cpp
+
+client: client.o
+	${CC} ${FLAGS} -o client client.o ${LIBS}
+
+client.o: client.cpp
+	${CC} ${CFLAGS} -c client.cpp
+
+#using the thread-safe version of readline.c from directory "threads"
+
+readline.o: ../unpv13e/threads/readline.c
+	gcc ${CFLAGS} -c ../unpv13e/threads/readline.c
 
 clean:
-	rm master server client
+	rm client.o server.o server client readline.o

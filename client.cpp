@@ -1,3 +1,7 @@
+extern "C"
+{
+#include "unpthread.h"
+}
 #include "client.h"
 #include "master.h"
 #include "server.h"
@@ -73,7 +77,6 @@ void displayschain()
 
 int main()
 {
-    using namespace boost::asio;
 	ifstream fin;
 	fin.open("config.txt");
 	string input_str;
