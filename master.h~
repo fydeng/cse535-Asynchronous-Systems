@@ -3,7 +3,6 @@
 class Master
 {
 	int sockfd_tcp;
-//	struct sockaddr_in msaddr;
 	string ip_addr;
 	int port;
 	std::pair<string,int> mName;
@@ -20,18 +19,7 @@ public:
 	{
 		port = atoi(p);
 		mName = make_pair(ip_addr, port);
-//		bzero(&msaddr, sizeof(msaddr));
-//		msaddr.sin_family = AF_INET;
-//		Inet_pton(AF_INET, mName.first.c_str(), &msaddr.sin_addr);
-//		msaddr.sin_port = htons(mName.second);
-	}
-/*	void Setsocket()
-	{
-		const int on = 1;
-		sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
-		Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
-		Bind(sockfd_tcp, ((SA *) & msaddr), sizeof(msaddr));
-	}*/
+    }
 	pair<string, int> & GetmsName()
 	{
 		return mName;
@@ -40,10 +28,6 @@ public:
 	{
 		return sockfd_tcp;
 	}
-/*	struct sockaddr_in & Getsockaddr()
-	{
-		return msaddr;
-	}*/
 	void Init(string input_str)
 	{
 		char *input;
@@ -98,7 +82,7 @@ public:
 			clientchain.push_back(c);
 			clients.insert(std::pair<int,std::list<Client*> >(bankname,clientchain));
 		}
-	}
+    }
 	map<int, std::list<Server*> > & Getschain()
 	{
 		return sChain;
@@ -107,6 +91,31 @@ public:
 	{
 		return clients;
 	}
+    Server * Search_Head_Server(int bankname)
+    {
+        map<int, list<Server*> >::iterator it = sChain.find(bankname);
+        if (it == sChain.end())
+        {
+            cout<<"did not find the server"<<endl;
+            return NULL;
+        }
+        return it->second.front();
+    }
+    Server * Search_Server(InitReq *req, string ip_addr, int port_num)
+    {
+        map<int, list<Server*> >::iterator it = sChain.find(req->bankName);
+        if (it == sChain.end())
+        {
+            cout<<"did not find the server"<<endl;
+            return NULL;
+        }
+        for(list<Server *>::iterator it1 = (it->second).begin(); it1 != (it->second).end(); ++it1)
+        {
+            if (((*it1)->GetserverName().first == ip_addr) && ((*it1)->GetserverName().second == port_num))
+                return (*it1);
+        }
+        return NULL;
+    }
 	friend ostream & operator << (ostream & cout, Master &ms)
 	{
 		int chainnum = 1;
@@ -129,7 +138,7 @@ public:
 				cout<<(*it2)<<endl;
 			}
 		}
-/*		for(map<int, list<Client*> >::iterator it3 = ms.Getclients().begin(); it3 != ms.Getclients().end(); ++it3, ++chainnum)
+		for(map<int, list<Client*> >::iterator it3 = ms.Getclients().begin(); it3 != ms.Getclients().end(); ++it3, ++chainnum)
 		{
 			cout<<"-----------------Clients in bank "<<it3->first<<"---------------------"<<endl;
 			int count = 0;
@@ -137,7 +146,7 @@ public:
 			{
 				cout<<(*it4)<<endl;
 			}
-		}*/
+		}
 		return cout;
 	}
 	friend ostream & operator << (ostream & cout, Master *ms)

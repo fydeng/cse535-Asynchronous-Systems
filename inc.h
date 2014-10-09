@@ -26,43 +26,6 @@ void tokenizer(string input, vector<string>& vStr)
     boost::split(vStr, input, boost::is_any_of(delim), boost::token_compress_on);
 }
 
-class InitReq
-{
-public:
-    Source src;
-    int bankName;
-    
-/*    void packetize(string &str)
-    {
-        str.append(std::to_string(src));
-        str.append(seperator);
-        str.append(std::to_string(bankName));
-    }*/
-    
-    void depacketize(string str)
-    {
-        int index = 0;
-        vector<string> vStr;
-        tokenizer(str, vStr);
-        char *input;
-        for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
-        {
-            input = const_cast<char*>((*it).c_str());
-            switch(index)
-            {
-                case 0:
-                    src = (enum Source)atoi(input);
-                    break;
-                case 1:
-                    bankName = atoi(input);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-};
-
 class Request
 {
 public:
@@ -71,7 +34,7 @@ public:
 	ReqType reqtype;
 	int account_num;
 	int amount;
-    
+
     void Parsereq(string input_str)
     {
         req_str = input_str;
@@ -131,14 +94,69 @@ public:
     }
 };
 
-vector<Request *> req_list;
-
 class Reply
 {
 public:
 	string reqID;
 	Outcome outcome;
 	float balance;
+    Reply(){}
+    Reply(Request *req)
+    {
+        reqID = req->reqID;
+    }
+    void Packetize(char *buf)
+    {
+        string str;
+        string str1;
+        stringstream sstream;
+        str = reqID;
+        sstream << ",";
+        sstream << outcome;
+        sstream << ",";
+        sstream << balance;
+        sstream >> str1;
+        str.append(str1);
+        strcpy(buf, str.c_str());
+    }
+    void Depacketize(char *buf)
+    {
+        string input_str = buf;
+        char *input;
+        vector<string> vStr;
+        tokenizer(input_str,vStr);
+        int index = 0;
+        for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
+        {
+            input = const_cast<char *>((*it).c_str());
+            switch(index)
+            {
+                case 0:
+                    reqID = input;
+                    break;
+                case 1:
+                    outcome = (enum Outcome)(atoi(input));
+                    break;
+                case 2:
+                    balance = atof(input);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    friend ostream & operator << (ostream & cout, Reply *reply)
+    {
+        if(reply->outcome == Processed)
+            cout<<"Processed ";
+        else if(reply->outcome == InsufficientFunds)
+            cout<<"InsufficientFunds ";
+        else if(reply->outcome == InconsistentWithHistory)
+            cout<<"InconsistentWithHistory ";
+        cout<<"req Id: "<<reply->reqID<<" balance: "<<reply->balance<<endl;
+        return cout;
+    }
+    
 };
 
 #endif

@@ -14,6 +14,7 @@ private:
 	int port_num;	
 	std::pair<string,int> sName;
     Server *next;
+    std::map<int, float> Account_Info;
 	std::vector<Request *> sentTrans;
 	std::vector<Request *> procTrans;
 	int startup_delay;
@@ -43,9 +44,11 @@ public:
         const int on = 1;
         sockfd_tcp = Socket(AF_INET, SOCK_STREAM, 0);
         Setsockopt(sockfd_tcp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        Setsockopt(sockfd_tcp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         Bind(sockfd_tcp, (SA*) & srvaddr, sizeof(srvaddr));
         sockfd_udp = Socket(AF_INET, SOCK_DGRAM, 0);
         Setsockopt(sockfd_udp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        Setsockopt(sockfd_udp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         Bind(sockfd_udp, (SA*) & srvaddr, sizeof(srvaddr));
     }
 	void Setdelay(char *s)
@@ -85,6 +88,13 @@ public:
     {
         return sockfd_udp;
     }
+	bool isTail()
+	{
+		if (next == NULL)
+			return true;
+		else 
+			return false;
+	}
 	void InitServ(string input_str)
 	{
 		char *input;
@@ -115,6 +125,53 @@ public:
 			}
 		}
 	}
+    void ProcReq(Request *req, Reply *reply)
+    {
+        float cur_bal = Checkbal(req->account_num);
+        float new_bal = 0;
+        if (req->reqtype == Query)
+        {
+            reply->balance = cur_bal;
+            reply->outcome = Processed;
+        }
+        else if (req->reqtype == Deposit)
+        {
+            new_bal = cur_bal + req->amount;
+            Account_Info[req->account_num] = new_bal;
+            reply->balance = new_bal;
+            reply->outcome = Processed;
+        }
+        else if (req->reqtype == Withdraw)
+        {
+            new_bal = cur_bal - (req->account_num);
+            if (new_bal < 0)
+            {
+                reply->outcome = InsufficientFunds;
+                new_bal = cur_bal;
+            }
+            else
+            {
+                reply->outcome = Processed;
+                Account_Info[req->account_num] = new_bal;
+            }
+            reply->balance = new_bal;
+        }
+    }
+    
+    float Checkbal(int account_num)
+    {
+        std::map<int, float>::iterator it;
+        it=Account_Info.find(account_num);
+        if(it!=Account_Info.end())
+        {
+            return it->second;
+        }
+        else
+        {
+            Account_Info.insert(make_pair(account_num, 0));
+            return 0;
+        }
+    }
     /*void packetize (string &str)
 >>>>>>> 7a861062dbe98953733f136174114e508710465a
     {
@@ -166,7 +223,7 @@ public:
 		cout<<"server name: "<<s->sName.first<<":"<<s->sName.second<<endl;
 		cout<<"start up delay: "<<s->startup_delay<<endl;
 		cout<<"life time: "<<s->life_time<<endl;
-        if (s->Getnext() != NULL)
+        if (!(s->isTail()))
             cout<<"next is: "<<s->next->GetserverName().first<<":"<<s->next->GetserverName().second<<endl;
 		return cout;
 	}

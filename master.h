@@ -101,7 +101,7 @@ public:
         }
         return it->second.front();
     }
-    Server * Search_Server(InitReq *req, string ip_addr, int port_num)
+   /* Server * Search_Server(InitReq *req, string ip_addr, int port_num)
     {
         map<int, list<Server*> >::iterator it = sChain.find(req->bankName);
         if (it == sChain.end())
@@ -115,7 +115,7 @@ public:
                 return (*it1);
         }
         return NULL;
-    }
+    }*/
 	friend ostream & operator << (ostream & cout, Master &ms)
 	{
 		int chainnum = 1;

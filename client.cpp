@@ -9,71 +9,11 @@ extern "C"
 std::map<int, std::vector<Client*> >cChain;
 std::map<int, std::list<Server*> > sChain;
 
-void Addserver(Server *s)
-{
-    int bankname = s->GetbankName();
-    std::map<int, std::list<Server*> >::iterator it;
-    it=sChain.find(bankname);
-    if(it!=sChain.end())
-    {
-        it->second.push_back(s);
-    }
-    else
-    {
-        std::list<Server*> serverchain;
-        serverchain.push_back(s);
-        sChain.insert(std::pair<int,std::list<Server*> >(bankname,serverchain));
-    }
-}
-
-void Addclient(Client *c)
-{
-    int bankname = c->GetbankName();
-    std::map<int, std::vector<Client*> >::iterator it;
-    it=cChain.find(bankname);
-    if(it!=cChain.end())
-    {
-        it->second.push_back(c);
-    }
-    else
-    {
-        std::vector<Client*> clientchain;
-        clientchain.push_back(c);
-        cChain.insert(std::pair<int,std::vector<Client*> >(bankname,clientchain));
-    }
-}
-
-void displaychain()
-{
-    int chainnum = 1;
-    for(map<int, list<Server*> >::iterator it1 = sChain.begin(); it1 != sChain.end(); ++it1, ++chainnum)
-    {
-        cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
-        int count = 0;
-        for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
-        {
-            if(it2 == it1->second.begin())
-            {
-                cout<<"Head"<<endl;
-            }
-            else if(count == it1->second.size() - 1)
-            {
-                cout<<"Tail"<<endl;
-            }
-            cout<<(*it2)<<endl;
-        }
-    }
-    chainnum = 1;
-    for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1, ++chainnum)
-    {
-        cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
-        int count = 0;
-        for(vector<Client *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
-        {
-            cout<<(*it2)<<endl;
-        }
-    }
-}
+void Addserver(Server *s);
+void Addclient(Client *c);
+static Client * SearchClient(Request *);
+static Server * SearchServer(Request *);
+void displaychain();
 
 int main()
 {
@@ -148,21 +88,130 @@ int main()
 		}
 	}
 	cout<<ms;
+    displaychain();
 	for(vector<Request*>::iterator it = req_list.begin();it!=req_list.end();++it)
 	{
+        cout<<"Request is: ";
         cout<<(*it)<<endl;
+        Client *c = SearchClient((*it));
+        if (c == NULL)
+        {
+            cout<<"Do not find the client"<<endl;
+            continue;
+        }
+        c->Setsocket();
+        int sockfd = c->Getsocket();
+        struct sockaddr_in srvaddr = SearchServer((*it))->Getsockaddr();
+        socklen_t len = sizeof(srvaddr);
+        char buf[MAXLINE];
+        c->Packetize((*it), buf);
+        Sendto(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, len);
+        int i;
+        if ((i = recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
+            cout<<"error recvfrom"<<endl;
+        else
+        {
+            Reply *reply = new Reply();
+            reply->Depacketize(buf);
+            cout<<"Result is: ";
+            cout<<reply<<endl;
+        }
+        close(sockfd);
 	}
-    	displaychain();
-	Client *c = cChain[1].front();
-	c->Setsocket();
-	int sockfd = c->Getsocket();
-	struct sockaddr_in srvaddr = sChain[1].front()->Getsockaddr();	
-	socklen_t len = sizeof(srvaddr);
-	Sendto(sockfd, "helloworld", 11, 0, (SA*)&srvaddr, len);
-	int i;
-	char buf[MAXLINE];
-	if ((i = recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
-		cout<<"error recvfrom"<<endl;
-	else
-		cout<<buf<<endl; 
+}
+
+static Client * SearchClient(Request *req)
+{
+    stringstream sstream;
+    sstream << req->reqID[0];
+    int bankname;
+    sstream >> bankname;
+    std::map<int,std::vector<Client*> >::iterator it;
+    it = cChain.find(bankname);
+    for (vector<Client*>::iterator it1 = it->second.begin(); it1 != it->second.end(); it1++)
+    {
+        if (((*it1)->GetAccountno()) == (req->account_num))
+            return (*it1);
+    }
+    return NULL;
+}
+
+static Server * SearchServer(Request *req)
+{
+    stringstream sstream;
+    sstream << req->reqID[0];
+    int bankname;
+    sstream >> bankname;
+    std::map<int,std::list<Server*> >::iterator it;
+    it = sChain.find(bankname);
+    if (req->reqtype == Query)
+        return it->second.back();
+    else
+        return it->second.front();
+}
+
+void Addserver(Server *s)
+{
+    int bankname = s->GetbankName();
+    std::map<int, std::list<Server*> >::iterator it;
+    it=sChain.find(bankname);
+    if(it!=sChain.end())
+    {
+        it->second.push_back(s);
+    }
+    else
+    {
+        std::list<Server*> serverchain;
+        serverchain.push_back(s);
+        sChain.insert(std::pair<int,std::list<Server*> >(bankname,serverchain));
+    }
+}
+
+void Addclient(Client *c)
+{
+    int bankname = c->GetbankName();
+    std::map<int, std::vector<Client*> >::iterator it;
+    it=cChain.find(bankname);
+    if(it!=cChain.end())
+    {
+        it->second.push_back(c);
+    }
+    else
+    {
+        std::vector<Client*> clientchain;
+        clientchain.push_back(c);
+        cChain.insert(std::pair<int,std::vector<Client*> >(bankname,clientchain));
+    }
+}
+
+void displaychain()
+{
+    int chainnum = 1;
+    for(map<int, list<Server*> >::iterator it1 = sChain.begin(); it1 != sChain.end(); ++it1, ++chainnum)
+    {
+        cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
+        int count = 0;
+        for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
+        {
+            if(it2 == it1->second.begin())
+            {
+                cout<<"Head"<<endl;
+            }
+            else if(count == it1->second.size() - 1)
+            {
+                cout<<"Tail"<<endl;
+            }
+            cout<<(*it2)<<endl;
+        }
+    }
+    chainnum = 1;
+    for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1, ++chainnum)
+    {
+        cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
+        int count = 0;
+        for(vector<Client *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
+        {
+            cout<<(*it2)<<endl;
+        }
+    }
 }
