@@ -119,8 +119,6 @@ int main(int argc, char **argv)
                 Request *req = new Request(buf);
                 class Reply *reply = new class Reply(req);
 				s->ProcReq(req, reply);
-                cout<<req<<endl;
-                cout<<reply<<endl;
                 ARGS args(s, buf, req, reply, -1);
                 if (s->isTail())
                     Pthread_create(&tid,NULL,&Reply,(void *)&args);
@@ -148,8 +146,6 @@ int main(int argc, char **argv)
                     Request *req = new Request(buf);
                     class Reply *reply = new class Reply(req);
                     s->ProcReq(req, reply);
-                    cout<<req<<endl;
-                    cout<<reply<<endl;
                     ARGS args(s, buf, req, reply, connfd);
                     if (s->isTail())
                         Pthread_create(&tid,NULL,&Reply,(void *)&args);
@@ -169,6 +165,8 @@ static void *Sync(void *arg)
 	const int on = 1;
 	int sockfd;
 	struct ARGS *args = (struct ARGS *) arg;
+	cout<<args->req<<endl;
+	cout<<args->reply<<endl;
 	Server *s = args->srv;
 	sockfd = Socket(AF_INET, SOCK_STREAM, 0);
     Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
@@ -195,6 +193,8 @@ static void *Reply(void *arg)
 {
     Pthread_detach(pthread_self());
     struct ARGS *args = (struct ARGS *) arg;
+	cout<<args->req<<endl;
+	cout<<args->reply<<endl;
     Server *s = args->srv;
     struct sockaddr_in cliaddr;
     socklen_t len = sizeof(struct sockaddr_in);

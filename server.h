@@ -140,7 +140,7 @@ public:
     void AddsentTrans(Request *req)
     {
         sentTrans.push_back(req);
-		cout<<req->reqID<<" has been added to sentTranc"<<endl;
+		cout<<"Request "<<req->reqID<<" has been added to sentTranc"<<endl;
     }
     
     void AckHist(Request *req)
