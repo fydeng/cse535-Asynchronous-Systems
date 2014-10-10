@@ -15,8 +15,8 @@ private:
 	std::pair<string,int> sName;
     Server *next;
     std::map<int, float> Account_Info;
-	std::vector<Request *> sentTrans;
-	std::vector<Request *> procTrans;
+	std::list<Request *> sentTrans;
+	std::list<Request *> procTrans;
 	int startup_delay;
 	int life_time;
 
@@ -125,6 +125,35 @@ public:
 			}
 		}
 	}
+    
+    bool CheckHist(Request *req)
+    {
+        for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
+        {
+            if ((*it) == req)
+                return true;
+        }
+        return false;
+    }
+    
+    void AddsentTrans(Request *req)
+    {
+        sentTrans.push_back(req);
+    }
+    
+    void AckHist(Request *req)
+    {
+        for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
+        {
+            if ((*it) == req)
+            {
+                sentTrans.erase(it);
+                procTrans.push_back(req);
+            }
+            
+        }
+    }
+    
     void ProcReq(Request *req, Reply *reply)
     {
         float cur_bal = Checkbal(req->account_num);
@@ -143,7 +172,7 @@ public:
         }
         else if (req->reqtype == Withdraw)
         {
-            new_bal = cur_bal - (req->account_num);
+            new_bal = cur_bal - (req->amount);
             if (new_bal < 0)
             {
                 reply->outcome = InsufficientFunds;

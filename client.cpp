@@ -82,8 +82,7 @@ int main()
 		}
 		else if (flag_request)
 		{
-            Request *req = new Request();
-			req->Parsereq(input_str);
+            Request *req = new Request(input_str);
             req_list.push_back(req);
 		}
 	}
@@ -91,7 +90,6 @@ int main()
     displaychain();
 	for(vector<Request*>::iterator it = req_list.begin();it!=req_list.end();++it)
 	{
-        cout<<"Request is: ";
         cout<<(*it)<<endl;
         Client *c = SearchClient((*it));
         if (c == NULL)
@@ -113,7 +111,6 @@ int main()
         {
             Reply *reply = new Reply();
             reply->Depacketize(buf);
-            cout<<"Result is: ";
             cout<<reply<<endl;
         }
         close(sockfd);

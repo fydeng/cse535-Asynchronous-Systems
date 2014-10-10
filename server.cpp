@@ -9,7 +9,18 @@ struct ARGS
 {
 	Server *srv;
 	char *buf;
+    Request *req;
+    class Reply *reply;
 	int connfd;
+    
+    ARGS(Server *s, char *buffer, Request *request, Reply *rep, int conn_fd)
+    {
+        srv = s;
+        buf = buffer;
+        req = request;
+        reply = rep;
+        connfd = conn_fd;
+    }
 };
 
 static void *Sync(void *);
@@ -101,13 +112,15 @@ int main(int argc, char **argv)
 				continue;
 			}
 			else 
-			{
-            	cout<<"receive from "<<Sock_ntop((SA*)&cliaddr,len)<<endl;
-                cout<<buf<<endl;
-                pthread_t tid;
-				struct ARGS args;
-				args.srv = s;
-				args.buf = buf;
+            {   pthread_t tid;
+                Request *req = new Request(buf);
+                class Reply *reply = new class Reply(req);
+                s->ProcReq(req, reply);
+                s->AddsentTrans(req);
+                cout<<"Receive from client: "<<Sock_ntop((SA*)&cliaddr,len)<<endl;
+                cout<<req<<endl;
+                cout<<reply<<endl;
+                ARGS args(s, buf, req, reply, -1);
                 if (s->isTail())
                     Pthread_create(&tid,NULL,&Reply,(void *)&args);
                 else
@@ -122,7 +135,7 @@ int main(int argc, char **argv)
         	}
         	else
         	{
-            	printf("connection from %s\n", Sock_ntop((SA*)&srvaddr,len));
+                cout<<"Syncronization connection from previous server: "<<Sock_ntop((SA*)&srvaddr,len)<<endl;
                 i = read(connfd, buf, MAXLINE);
                 if(i < 0)
                 {
@@ -130,17 +143,19 @@ int main(int argc, char **argv)
                 }
                 else
             	{
-                    struct ARGS args;
-                    args.srv = s;
-                    args.buf = buf;
-                    args.connfd = connfd;
                     pthread_t tid;
+                    Request *req = new Request(buf);
+                    class Reply *reply = new class Reply(req);
+                    s->ProcReq(req, reply);
+                    s->AddsentTrans(req);
+                    cout<<req<<endl;
+                    cout<<reply<<endl;
+                    ARGS args(s, buf, req, reply, connfd);
                     if (s->isTail())
                         Pthread_create(&tid,NULL,&Reply,(void *)&args);
                     else
                         Pthread_create(&tid,NULL,&Sync,(void *)&args);
             	}
-                close(connfd);
         	}
 		}
     }
@@ -149,20 +164,23 @@ int main(int argc, char **argv)
 
 static void *Sync(void *arg)
 {
+    char recvbuf[MAXLINE];
     Pthread_detach(pthread_self());
 	const int on = 1;
 	int sockfd;
 	struct ARGS *args = (struct ARGS *) arg;
 	Server *s = args->srv;
-    Request *req = new Request();
-    req->Parsereq(args->buf);
-    class Reply *reply = new class Reply(req);
-    s->ProcReq(req, reply);
-    cout<<reply<<endl;
 	sockfd = Socket(AF_INET, SOCK_STREAM, 0);
     Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
 	Connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
 	Write(sockfd, args->buf, MAXLINE);
+    if (read(sockfd, recvbuf, MAXLINE) < 0)
+        cout<<"Read error"<<endl;
+    else
+    {
+        cout<<recvbuf<<endl;
+        s->AckHist(args->req);
+    }
 	close(sockfd);
 }
 
@@ -171,17 +189,19 @@ static void *Reply(void *arg)
     Pthread_detach(pthread_self());
     struct ARGS *args = (struct ARGS *) arg;
     Server *s = args->srv;
-    Request *req = new Request();
-    req->Parsereq(args->buf);
-    class Reply *reply = new class Reply(req);
-    s->ProcReq(req, reply);
-    cout<<reply<<endl;
     struct sockaddr_in cliaddr;
     socklen_t len = sizeof(struct sockaddr_in);
     ParseIpaddr(args->buf, cliaddr);
     char sendbuf[MAXLINE];
-    reply->Packetize(sendbuf);
+    (args->reply)->Packetize(sendbuf);
     Sendto(s->Getsockfd_udp(), sendbuf, MAXLINE, 0, (SA*)&cliaddr, len);
+    char ack[4] = "ack";
+    if (args->connfd > 0)
+    {
+        Write(args->connfd, ack, 4);
+        close(args->connfd);
+    }
+    s->AckHist(args->req);
 }
 
 static void ParseIpaddr(string input_str, struct sockaddr_in &cliaddr)

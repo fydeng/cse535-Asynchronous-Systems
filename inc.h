@@ -34,6 +34,12 @@ public:
 	ReqType reqtype;
 	int account_num;
 	int amount;
+    
+    Request(){}
+    Request(string input_str)
+    {
+        Parsereq(input_str);
+    }
 
     void Parsereq(string input_str)
     {
@@ -79,8 +85,17 @@ public:
         }
     }
     
+    bool operator == (Request *req) const
+    {
+        if ((!(reqID.compare(req->reqID))) &&  (reqtype == req->reqtype))
+            return true;
+        else
+            return false;
+    }
+    
     friend ostream & operator << (ostream & cout, Request *req)
     {
+        cout<<"Request type: ";
         if(req->reqtype == Query)
             cout<<"getBalance ";
         else if(req->reqtype == Deposit)
@@ -89,7 +104,7 @@ public:
             cout<<"Withdraw ";
         else if(req->reqtype == Transfer)
             cout<<"Transfer "<<endl;
-        cout<<"req Id: "<<req->reqID<<" account_num "<<req->account_num<<" amount "<<req->amount<<endl;
+        cout<<"Req Id: "<<req->reqID<<" Account number: "<<req->account_num<<" Amount: "<<req->amount<<endl;
         return cout;
     }
 };
@@ -145,18 +160,20 @@ public:
             }
         }
     }
+    
     friend ostream & operator << (ostream & cout, Reply *reply)
     {
+        cout<<"Result: ";
         if(reply->outcome == Processed)
             cout<<"Processed ";
         else if(reply->outcome == InsufficientFunds)
             cout<<"InsufficientFunds ";
         else if(reply->outcome == InconsistentWithHistory)
             cout<<"InconsistentWithHistory ";
-        cout<<"req Id: "<<reply->reqID<<" balance: "<<reply->balance<<endl;
+        cout<<"Req Id: "<<reply->reqID<<" Balance: "<<reply->balance<<endl;
+        cout<<"------------------------------------";
         return cout;
     }
-    
 };
 
 #endif
