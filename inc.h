@@ -38,6 +38,7 @@ public:
     Request(){}
     Request(string input_str)
     {
+		amount = 0;
         Parsereq(input_str);
     }
 
@@ -85,7 +86,7 @@ public:
         }
     }
     
-    bool operator == (Request *req) const
+    bool operator == (Request *req) 
     {
         if ((!(reqID.compare(req->reqID))) &&  (reqtype == req->reqtype))
             return true;
@@ -171,9 +172,36 @@ public:
         else if(reply->outcome == InconsistentWithHistory)
             cout<<"InconsistentWithHistory ";
         cout<<"Req Id: "<<reply->reqID<<" Balance: "<<reply->balance<<endl;
-        cout<<"------------------------------------";
         return cout;
     }
 };
 
+class ACK
+{
+public:
+	string reqID;
+
+	ACK(Request *req)
+	{
+		reqID = req->reqID;
+	}
+
+	ACK(char *buf)
+	{
+		reqID = buf;
+	}
+
+	void Packetize(char *buf)
+	{
+		strcpy(buf, reqID.c_str());
+	}
+
+    friend ostream & operator << (ostream & cout, ACK *ack)
+    {
+        cout<<"ACK for reqID: "<<ack->reqID<<" has been received"<<endl;
+        cout<<"------------------------------------";
+		return cout;
+    }
+
+};
 #endif

@@ -139,21 +139,31 @@ public:
     void AddsentTrans(Request *req)
     {
         sentTrans.push_back(req);
+		cout<<req->reqID<<"has been added to sentTranc"<<endl;
     }
     
     void AckHist(Request *req)
     {
+		DisplaysentTrans();
         for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
         {
             if ((*it) == req)
             {
                 sentTrans.erase(it);
                 procTrans.push_back(req);
+				return;
             }
             
         }
+		cout<<"do not find request "<<req->reqID<<endl;
     }
-    
+   
+    void DisplaysentTrans()
+	{
+		for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
+			cout<<(*it)->reqID<<endl;
+	}
+
     void ProcReq(Request *req, Reply *reply)
     {
         float cur_bal = Checkbal(req->account_num);
@@ -254,6 +264,7 @@ public:
 		cout<<"life time: "<<s->life_time<<endl;
         if (!(s->isTail()))
             cout<<"next is: "<<s->next->GetserverName().first<<":"<<s->next->GetserverName().second<<endl;
+		cout<<"-------------------------------------"<<endl;
 		return cout;
 	}
 };

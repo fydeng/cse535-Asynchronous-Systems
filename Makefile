@@ -1,6 +1,6 @@
 CC = g++
 
-LIBS = -lresolv -lpthread\
+LIBS = -lresolv -lnsl -lpthread\
 		../unpv13e/libunp.a\
 		
 FLAGS = -g -w -O2 

@@ -25,7 +25,7 @@
 (deposit, 1.1.2, 100, 100)
 (deposit, 1.2.2, 200, 200)
 (withdraw, 1.1.3, 100, 100)
-(withdraw, 1.1.3, 200, 300)
+(withdraw, 1.2.3, 200, 300)
 (getBalance, 1.1.4, 100)
 (getBalance, 1.2.4, 200)
 

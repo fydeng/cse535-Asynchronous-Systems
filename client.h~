@@ -13,6 +13,7 @@ void parse_config(string input_str)
 	vector<string> vStr;
 	tokenizer(input_str,vStr);
 	int index = 0;
+	cout<<"----------------Clients Configuration---------------------"<<endl;
 	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
 	{
 		input = const_cast<char *>((*it).c_str());
@@ -92,15 +93,19 @@ public:
 		Setsockopt(sockfd_udp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         	Bind(sockfd_udp, (SA*) & cliaddr, sizeof(cliaddr));
 	}
-	void Packetize(Request *req, string &send_str)
+	void Packetize(Request *req, char *buf)
 	{
-		string str;
+        string str;
+		string str1;
 		stringstream sstream;
-		send_str = req->req_str;
+		str = (req->req_str);
+        sstream << "|";
 		sstream << ip_addr;
+		sstream << "|";
 		sstream << port_num;
-		sstream >> str;
-		send_str.append(str);
+        sstream >> str1;
+        str.append(str1);
+        strcpy(buf, str.c_str());
 	}
 	int GetbankName()
 	{
@@ -110,6 +115,10 @@ public:
 	{
 		return sockfd_udp;
 	}
+    int GetAccountno()
+    {
+        return account_no;
+    }
     pair<string,int> GetclientName()
     {
         return cName;

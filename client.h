@@ -13,6 +13,7 @@ void parse_config(string input_str)
 	vector<string> vStr;
 	tokenizer(input_str,vStr);
 	int index = 0;
+	cout<<"----------------Clients Configuration---------------------"<<endl;
 	for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)	
 	{
 		input = const_cast<char *>((*it).c_str());
@@ -33,7 +34,7 @@ void parse_config(string input_str)
 				break;
 			case 2:
 				retrans_time = atoi(input);
-				cout<<"retransmission time is: "<<retrans_time<<endl;
+				cout<<"retransmission time is: "<<retrans_time<<endl<<endl;
 				break;
 			default:
 				break;

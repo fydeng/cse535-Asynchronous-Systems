@@ -86,8 +86,9 @@ int main()
             req_list.push_back(req);
 		}
 	}
-	cout<<ms;
+//	cout<<ms;
     displaychain();
+	cout<<endl<<"-------------Now start sending requests-------------"<<endl;
 	for(vector<Request*>::iterator it = req_list.begin();it!=req_list.end();++it)
 	{
         cout<<(*it)<<endl;
@@ -184,6 +185,7 @@ void Addclient(Client *c)
 void displaychain()
 {
     int chainnum = 1;
+	cout<<"----------------Display Server Chain---------------------"<<endl;
     for(map<int, list<Server*> >::iterator it1 = sChain.begin(); it1 != sChain.end(); ++it1, ++chainnum)
     {
         cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
@@ -202,6 +204,7 @@ void displaychain()
         }
     }
     chainnum = 1;
+	cout<<"----------------Display Client Chain---------------------"<<endl;
     for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1, ++chainnum)
     {
         cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;

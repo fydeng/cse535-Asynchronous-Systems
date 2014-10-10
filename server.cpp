@@ -86,6 +86,7 @@ int main(int argc, char **argv)
             break;
         }
 	}
+	cout<<"----------------Configuration information of current server---------------"<<endl;
 	cout<<s;
 	//cout<<ms;
     s->Setsocket();
@@ -112,12 +113,13 @@ int main(int argc, char **argv)
 				continue;
 			}
 			else 
-            {   pthread_t tid;
+            {   
+                cout<<"Request from client: "<<Sock_ntop((SA*)&cliaddr,len)<<endl;
+				pthread_t tid;
                 Request *req = new Request(buf);
                 class Reply *reply = new class Reply(req);
-                s->ProcReq(req, reply);
+				s->ProcReq(req, reply);
                 s->AddsentTrans(req);
-                cout<<"Receive from client: "<<Sock_ntop((SA*)&cliaddr,len)<<endl;
                 cout<<req<<endl;
                 cout<<reply<<endl;
                 ARGS args(s, buf, req, reply, -1);
@@ -178,8 +180,14 @@ static void *Sync(void *arg)
         cout<<"Read error"<<endl;
     else
     {
-        cout<<recvbuf<<endl;
-        s->AckHist(args->req);
+        ACK *ack = new ACK(recvbuf);
+		cout<<ack<<endl;
+		s->AckHist(args->req); 
+		if (args->connfd > 0)
+    	{
+        	Write(args->connfd, recvbuf, MAXLINE);
+        	close(args->connfd);
+    	}
     }
 	close(sockfd);
 }
@@ -195,13 +203,17 @@ static void *Reply(void *arg)
     char sendbuf[MAXLINE];
     (args->reply)->Packetize(sendbuf);
     Sendto(s->Getsockfd_udp(), sendbuf, MAXLINE, 0, (SA*)&cliaddr, len);
-    char ack[4] = "ack";
-    if (args->connfd > 0)
+	s->AckHist(args->req);
+	if (args->connfd > 0)
     {
-        Write(args->connfd, ack, 4);
+		ACK *ack = new ACK(args->req);
+		char buf[MAXLINE];
+		ack->Packetize(buf);
+        Write(args->connfd, buf, MAXLINE);
         close(args->connfd);
     }
-    s->AckHist(args->req);
+	cout<<"Processed"<<endl;
+	cout<<"--------------------------------------------"<<endl;
 }
 
 static void ParseIpaddr(string input_str, struct sockaddr_in &cliaddr)
