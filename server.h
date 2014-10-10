@@ -128,9 +128,10 @@ public:
     
     bool CheckHist(Request *req)
     {
-        for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
+//		DisplayprocTrans();
+        for(list<Request *>::iterator it = procTrans.begin(); it != procTrans.end(); ++it)
         {
-            if ((*it) == req)
+            if (((*it)->reqID == (req->reqID)) && ((*it)->reqtype == (req->reqtype)))
                 return true;
         }
         return false;
@@ -139,18 +140,19 @@ public:
     void AddsentTrans(Request *req)
     {
         sentTrans.push_back(req);
-		cout<<req->reqID<<"has been added to sentTranc"<<endl;
+		cout<<req->reqID<<" has been added to sentTranc"<<endl;
     }
     
     void AckHist(Request *req)
     {
-		DisplaysentTrans();
         for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
         {
-            if ((*it) == req)
+            if (((*it)->reqID == (req->reqID)) && ((*it)->reqtype == (req->reqtype)))
             {
                 sentTrans.erase(it);
                 procTrans.push_back(req);
+				cout<<"Request "<<req->reqID<<" has been added to processed transaction"<<endl;
+				cout<<"--------------------------------------------"<<endl;
 				return;
             }
             
@@ -160,15 +162,31 @@ public:
    
     void DisplaysentTrans()
 	{
+		cout<<"----------------------"<<endl;
 		for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
 			cout<<(*it)->reqID<<endl;
+		cout<<"----------------------"<<endl;
 	}
 
-    void ProcReq(Request *req, Reply *reply)
+	void DisplayprocTrans()
+	{
+		cout<<"----------------------"<<endl;
+		for(list<Request *>::iterator it = procTrans.begin(); it != procTrans.end(); ++it)
+			cout<<(*it)<<endl;
+		cout<<"----------------------"<<endl;
+	}
+    
+	void ProcReq(Request *req, Reply *reply)
     {
         float cur_bal = Checkbal(req->account_num);
         float new_bal = 0;
-        if (req->reqtype == Query)
+        if (CheckHist(req))
+		{
+			reply->outcome = InconsistentWithHistory;
+			reply->balance = cur_bal;
+			return;
+		}
+		if (req->reqtype == Query)
         {
             reply->balance = cur_bal;
             reply->outcome = Processed;

@@ -119,7 +119,6 @@ int main(int argc, char **argv)
                 Request *req = new Request(buf);
                 class Reply *reply = new class Reply(req);
 				s->ProcReq(req, reply);
-                s->AddsentTrans(req);
                 cout<<req<<endl;
                 cout<<reply<<endl;
                 ARGS args(s, buf, req, reply, -1);
@@ -149,7 +148,6 @@ int main(int argc, char **argv)
                     Request *req = new Request(buf);
                     class Reply *reply = new class Reply(req);
                     s->ProcReq(req, reply);
-                    s->AddsentTrans(req);
                     cout<<req<<endl;
                     cout<<reply<<endl;
                     ARGS args(s, buf, req, reply, connfd);
@@ -176,7 +174,8 @@ static void *Sync(void *arg)
     Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
 	Connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
 	Write(sockfd, args->buf, MAXLINE);
-    if (read(sockfd, recvbuf, MAXLINE) < 0)
+	s->AddsentTrans(args->req);
+    if (readline(sockfd, recvbuf, MAXLINE) < 0)
         cout<<"Read error"<<endl;
     else
     {
@@ -203,6 +202,7 @@ static void *Reply(void *arg)
     char sendbuf[MAXLINE];
     (args->reply)->Packetize(sendbuf);
     Sendto(s->Getsockfd_udp(), sendbuf, MAXLINE, 0, (SA*)&cliaddr, len);
+	s->AddsentTrans(args->req);
 	s->AckHist(args->req);
 	if (args->connfd > 0)
     {
@@ -212,8 +212,6 @@ static void *Reply(void *arg)
         Write(args->connfd, buf, MAXLINE);
         close(args->connfd);
     }
-	cout<<"Processed"<<endl;
-	cout<<"--------------------------------------------"<<endl;
 }
 
 static void ParseIpaddr(string input_str, struct sockaddr_in &cliaddr)
