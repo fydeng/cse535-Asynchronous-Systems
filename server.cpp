@@ -7,11 +7,11 @@ extern "C"
 
 struct ARGS
 {
-	Server *srv;
-	char *buf;
+    Server *srv;
+    char *buf;
     Request *req;
     class Reply *reply;
-	int connfd;
+    int connfd;
     
     ARGS(Server *s, char *buffer, Request *request, Reply *rep, int conn_fd)
     {
@@ -29,6 +29,10 @@ static void *Reply(void *);
 
 int main(int argc, char **argv)
 {
+    //FLAGS_logtostderr = 1;
+    FLAGS_logtostderr = 0;
+    FLAGS_log_dir = "./";
+    google::InitGoogleLogging(argv[0]);
     struct sockaddr_in srvaddr, cliaddr;
     int sockfd_tcp, sockfd_udp, connfd, maxfd;
 	ifstream fin;
@@ -44,6 +48,7 @@ int main(int argc, char **argv)
     fd_set allset, rset;
     socklen_t len = sizeof(struct sockaddr_in);
     char buf[MAXLINE];
+    int msg_count = 0;
 	while(fin.good())
 	{
 		getline(fin, input_str);
@@ -113,9 +118,17 @@ int main(int argc, char **argv)
 				continue;
 			}
 			else 
-            {   
+            {
+                msg_count++;
+                cout<<"No. "<<msg_count<<" message comes"<<endl;
+                if (msg_count == s->Getlifetime())
+                {
+                    cout<<"Number of messages equals the life time, server exits"<<endl;
+                    exit(1);
+                }
                 cout<<"Request from client: "<<Sock_ntop((SA*)&cliaddr,len)<<endl;
 				pthread_t tid;
+                void *status;
                 Request *req = new Request(buf);
                 class Reply *reply = new class Reply(req);
 				s->ProcReq(req, reply);
@@ -124,6 +137,7 @@ int main(int argc, char **argv)
                     Pthread_create(&tid,NULL,&Reply,(void *)&args);
                 else
                     Pthread_create(&tid,NULL,&Sync,(void *)&args);
+                //Pthread_join(tid, &status);
 			}
         }
 		if (FD_ISSET(sockfd_tcp, &rset))
@@ -134,6 +148,13 @@ int main(int argc, char **argv)
         	}
         	else
         	{
+                msg_count++;
+                cout<<"No. "<<msg_count<<" message comes"<<endl;
+                if (msg_count == s->Getlifetime())
+                {
+                    cout<<"Number of messages equals the life time, server exits"<<endl;
+                    exit(1);
+                }
                 cout<<"Syncronization connection from previous server: "<<Sock_ntop((SA*)&srvaddr,len)<<endl;
                 i = read(connfd, buf, MAXLINE);
                 if(i < 0)
@@ -143,6 +164,7 @@ int main(int argc, char **argv)
                 else
             	{
                     pthread_t tid;
+                    void *status;
                     Request *req = new Request(buf);
                     class Reply *reply = new class Reply(req);
                     s->ProcReq(req, reply);
@@ -151,6 +173,7 @@ int main(int argc, char **argv)
                         Pthread_create(&tid,NULL,&Reply,(void *)&args);
                     else
                         Pthread_create(&tid,NULL,&Sync,(void *)&args);
+                    //Pthread_join(tid, &status);
             	}
         	}
 		}
@@ -179,12 +202,12 @@ static void *Sync(void *arg)
     {
         ACK *ack = new ACK(recvbuf);
 		cout<<ack<<endl;
-		s->AckHist(args->req); 
 		if (args->connfd > 0)
     	{
         	Write(args->connfd, recvbuf, MAXLINE);
         	close(args->connfd);
     	}
+        s->AckHist(args->req);
     }
 	close(sockfd);
 }

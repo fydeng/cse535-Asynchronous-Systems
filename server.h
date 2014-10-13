@@ -16,7 +16,7 @@ private:
     Server *next;
     std::map<int, float> Account_Info;
 	std::list<Request *> sentTrans;
-	std::list<Request *> procTrans;
+	std::map<string, Request *> procTrans;
 	int startup_delay;
 	int life_time;
 
@@ -88,6 +88,10 @@ public:
     {
         return sockfd_udp;
     }
+    int Getlifetime()
+    {
+        return life_time;
+    }
 	bool isTail()
 	{
 		if (next == NULL)
@@ -126,15 +130,20 @@ public:
 		}
 	}
     
-    bool CheckHist(Request *req)
+    int CheckHist(Request *req)
     {
 //		DisplayprocTrans();
-        for(list<Request *>::iterator it = procTrans.begin(); it != procTrans.end(); ++it)
+        std::map<string, Request *>::iterator it;
+        it=procTrans.find(req->reqID);
+        if(it!=procTrans.end())
         {
-            if (((*it)->reqID == (req->reqID)) && ((*it)->reqtype == (req->reqtype)))
-                return true;
+            if ((req->reqtype) == (it->second->reqtype))
+                return 2;
+            else
+                return 1;
         }
-        return false;
+        else
+            return 0;
     }
     
     void AddsentTrans(Request *req)
@@ -145,73 +154,84 @@ public:
     
     void AckHist(Request *req)
     {
+        int result = CheckHist(req);
         for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
         {
             if (((*it)->reqID == (req->reqID)) && ((*it)->reqtype == (req->reqtype)))
             {
                 sentTrans.erase(it);
-                procTrans.push_back(req);
-				cout<<"Request "<<req->reqID<<" has been added to processed transaction"<<endl;
-				cout<<"--------------------------------------------"<<endl;
-				return;
+                if (!result)
+                {
+                    procTrans.insert(make_pair(req->reqID, req));
+                    cout<<"Request "<<req->reqID<<" has been added to processed transaction"<<endl<<seperator<<endl;
+                }
+                else if(result == 1)
+                    cout<<"Request "<<req->reqID<<" is inconsistent with history, do not add to processed transaction"<<endl;
+                else
+                    cout<<"Request "<<req->reqID<<" is a duplicate request, do not add to processed transaction"<<endl;
             }
-            
         }
-		cout<<"do not find request "<<req->reqID<<endl;
     }
    
     void DisplaysentTrans()
 	{
-		cout<<"----------------------"<<endl;
+		cout<<seperator<<endl;
 		for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
-			cout<<(*it)->reqID<<endl;
-		cout<<"----------------------"<<endl;
+			cout<<(*it)->reqID<<" ";
+		cout<<seperator<<endl;
 	}
 
 	void DisplayprocTrans()
 	{
-		cout<<"----------------------"<<endl;
-		for(list<Request *>::iterator it = procTrans.begin(); it != procTrans.end(); ++it)
-			cout<<(*it)<<endl;
-		cout<<"----------------------"<<endl;
+		cout<<seperator<<endl;
+		for(map<string, Request *>::iterator it = procTrans.begin(); it != procTrans.end(); ++it)
+			cout<<it->second<<endl;
+		cout<<seperator<<endl;
 	}
     
 	void ProcReq(Request *req, Reply *reply)
     {
+        int result = CheckHist(req);
         float cur_bal = Checkbal(req->account_num);
         float new_bal = 0;
-        if (CheckHist(req))
+        if (result)
 		{
-			reply->outcome = InconsistentWithHistory;
 			reply->balance = cur_bal;
+            if (result > 1)
+                reply->outcome = Processed;
+            else
+                reply->outcome = InconsistentWithHistory;
 			return;
 		}
-		if (req->reqtype == Query)
+        else
         {
-            reply->balance = cur_bal;
-            reply->outcome = Processed;
-        }
-        else if (req->reqtype == Deposit)
-        {
-            new_bal = cur_bal + req->amount;
-            Account_Info[req->account_num] = new_bal;
-            reply->balance = new_bal;
-            reply->outcome = Processed;
-        }
-        else if (req->reqtype == Withdraw)
-        {
-            new_bal = cur_bal - (req->amount);
-            if (new_bal < 0)
+            if (req->reqtype == Query)
             {
-                reply->outcome = InsufficientFunds;
-                new_bal = cur_bal;
-            }
-            else
-            {
+                reply->balance = cur_bal;
                 reply->outcome = Processed;
-                Account_Info[req->account_num] = new_bal;
             }
-            reply->balance = new_bal;
+            else if (req->reqtype == Deposit)
+            {
+                new_bal = cur_bal + req->amount;
+                Account_Info[req->account_num] = new_bal;
+                reply->balance = new_bal;
+                reply->outcome = Processed;
+            }
+            else if (req->reqtype == Withdraw)
+            {
+                new_bal = cur_bal - (req->amount);
+                if (new_bal < 0)
+                {
+                    reply->outcome = InsufficientFunds;
+                    new_bal = cur_bal;
+                }
+                else
+                {
+                    reply->outcome = Processed;
+                    Account_Info[req->account_num] = new_bal;
+                }
+                reply->balance = new_bal;
+            }
         }
     }
     
@@ -230,7 +250,6 @@ public:
         }
     }
     /*void packetize (string &str)
->>>>>>> 7a861062dbe98953733f136174114e508710465a
     {
         str.append(prev.first);
         str.append(":");
@@ -282,7 +301,7 @@ public:
 		cout<<"life time: "<<s->life_time<<endl;
         if (!(s->isTail()))
             cout<<"next is: "<<s->next->GetserverName().first<<":"<<s->next->GetserverName().second<<endl;
-		cout<<"-------------------------------------"<<endl;
+		cout<<seperator<<endl;
 		return cout;
 	}
 };

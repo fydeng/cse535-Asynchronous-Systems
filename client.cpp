@@ -8,21 +8,44 @@ extern "C"
 
 std::map<int, std::vector<Client*> >cChain;
 std::map<int, std::list<Server*> > sChain;
+static sigjmp_buf jmpbuf;
 
 void Addserver(Server *s);
 void Addclient(Client *c);
+void Addrequest(Request *req);
 static Client * SearchClient(Request *);
 static Server * SearchServer(Request *);
+static void *SendReq(void *);
 void displaychain();
-
-int main()
+void GenerateRanReq();
+static void sig_alrm(int signo)
 {
+    siglongjmp(jmpbuf, 1);
+}
+
+struct ARGS
+{
+    Client *client;
+    
+    ARGS(Client *cli)
+    {
+        client = cli;
+    }
+};
+
+int main(int argc, char **argv)
+{
+    FLAGS_logtostderr = 1;
+    /*FLAGS_logtostderr = 0;
+     FLAGS_log_dir = ./adfafsf/asdfasdff.txt*/
+    google::InitGoogleLogging(argv[0]);
 	ifstream fin;
 	fin.open("config.txt");
 	string input_str;
 	char *input;
 	Master *ms = new Master();
 	int flag_master = 0, flag_client = 0, flag_config = 0, flag_request = 0, flag_server = 0;
+    int client_num = 0;
 	while(fin.good())
 	{
 		getline(fin, input_str);
@@ -79,53 +102,95 @@ int main()
 			Client *c = new Client();
 			c->InitCli(input_str);
             Addclient(c);
+            client_num++;
 		}
 		else if (flag_request)
 		{
-            Request *req = new Request(input_str);
-            req_list.push_back(req);
+            if (random_req)
+            {
+                parse_randomized_req(input_str);
+                break;
+            }
+            else
+            {
+                Request *req = new Request(input_str);
+                Addrequest(req);
+            }
 		}
 	}
 //	cout<<ms;
     displaychain();
+    if (random_req)
+        GenerateRanReq();
+    cout<<"number of client is "<<client_num<<endl;
 	cout<<endl<<"-------------Now start sending requests-------------"<<endl;
-	for(vector<Request*>::iterator it = req_list.begin();it!=req_list.end();++it)
-	{
-        cout<<(*it)<<endl;
-        Client *c = SearchClient((*it));
-        if (c == NULL)
+    pthread_t tid[client_num];
+    int index = 0;
+    for(std::map<int, vector<Client*> >::iterator it = cChain.begin(); it!=cChain.end(); ++it)
+    {
+        for(std::vector<Client*>::iterator it1 = it->second.begin(); it1!=it->second.end(); ++it1, ++index)
         {
-            cout<<"Do not find the client"<<endl;
-            continue;
+            sleep(3);
+            ARGS args((*it1));
+            Pthread_create(&tid[index], NULL, &SendReq, (void *)&args);
+            //Pthread_join(tid[index], NULL);
         }
-        c->Setsocket();
-        int sockfd = c->Getsocket();
-        struct sockaddr_in srvaddr = SearchServer((*it))->Getsockaddr();
-        socklen_t len = sizeof(srvaddr);
+    }
+    for (index = 0; index < client_num; index++)
+    {
+        Pthread_join(tid[index], NULL);
+    }
+}
+
+static void *SendReq(void *arg)
+{
+    Client *c = ((struct ARGS *)arg)->client;
+    cout<<c<<endl;
+    c->Setsocket();
+    int sockfd = c->Getsocket();
+    socklen_t len = sizeof(struct sockaddr_in);
+    int count_retrans = 0;
+    for (list<Request*>::iterator it = c->GetReqList().begin(); it != c->GetReqList().end(); it++)
+    {
+        sleep(3);
+    loop:        cout<<(*it)<<endl;
         char buf[MAXLINE];
+        struct sockaddr_in srvaddr = SearchServer((*it))->Getsockaddr();
         c->Packetize((*it), buf);
+        Signal(SIGALRM, sig_alrm);
         Sendto(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, len);
-        int i;
-        if ((i = recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
+        alarm(retrans_inteval);
+        if (sigsetjmp(jmpbuf, 1)!=0)
+        {
+            count_retrans++;
+            if (count_retrans == retrans_time)
+            {
+                cout<<"Retransmit time equals the limit, stop retransmit"<<endl;
+                continue;
+            }
+            else
+            {
+                cout<<"Message timeout, start retransmit"<<endl;
+                goto loop;
+            }
+        }
+        if ((recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
             cout<<"error recvfrom"<<endl;
         else
         {
+            alarm(0);
             Reply *reply = new Reply();
             reply->Depacketize(buf);
             cout<<reply<<endl;
         }
-        close(sockfd);
-	}
+    }
+    close(sockfd);
 }
 
 static Client * SearchClient(Request *req)
 {
-    stringstream sstream;
-    sstream << req->reqID[0];
-    int bankname;
-    sstream >> bankname;
     std::map<int,std::vector<Client*> >::iterator it;
-    it = cChain.find(bankname);
+    it = cChain.find(req->bankname);
     for (vector<Client*>::iterator it1 = it->second.begin(); it1 != it->second.end(); it1++)
     {
         if (((*it1)->GetAccountno()) == (req->account_num))
@@ -136,12 +201,8 @@ static Client * SearchClient(Request *req)
 
 static Server * SearchServer(Request *req)
 {
-    stringstream sstream;
-    sstream << req->reqID[0];
-    int bankname;
-    sstream >> bankname;
     std::map<int,std::list<Server*> >::iterator it;
-    it = sChain.find(bankname);
+    it = sChain.find(req->bankname);
     if (req->reqtype == Query)
         return it->second.back();
     else
@@ -179,6 +240,38 @@ void Addclient(Client *c)
         std::vector<Client*> clientchain;
         clientchain.push_back(c);
         cChain.insert(std::pair<int,std::vector<Client*> >(bankname,clientchain));
+    }
+}
+
+void Addrequest(Request *req)
+{
+    std::map<int, std::vector<Client*> >::iterator it;
+    it=cChain.find(req->bankname);
+    if(it!=cChain.end())
+    {
+        for(vector<Client *>::iterator it1 = it->second.begin(); it1 != it->second.end(); ++it1)
+        {
+            if (((*it1)->GetAccountno()) == (req->account_num))
+            {
+                (*it1)->Addrequest(req);
+                return;
+            }
+        }
+    }
+    else
+        return;
+}
+
+void GenerateRanReq()
+{
+    int index;
+    for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1)
+    {
+        index = 1;
+        for(vector<Client *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2, ++index)
+        {
+            (*it2)->GenerateRandomReq(index);
+        }
     }
 }
 

@@ -5,16 +5,18 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <setjmp.h>
 #include "unp.h"
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
+#include <glog/logging.h>
 
 using namespace std;
 #ifndef _INC_H__
 #define _INC_H__
 
-const char *delim = ": ;,()";
-const char *seperator = ",";
+const char *delim = ": ; , ( )";
+const char *seperator = "-----------------------------------------------------------------";
 
 
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
@@ -32,10 +34,32 @@ public:
     string req_str;
 	string reqID;
 	ReqType reqtype;
+    int bankname;
 	int account_num;
-	int amount;
+	float amount;
     
     Request(){}
+    Request (ReqType req_type, int bank_name, int client_no, int sequence, int account_no, float amt)
+    {
+        bankname = bank_name;
+        amount = amt;
+        reqtype = req_type;
+        account_num = account_no;
+        reqID = std::to_string(bankname);
+        reqID.append(".");
+        reqID.append(std::to_string(client_no));
+        reqID.append(".");
+        reqID.append(std::to_string(sequence));
+        req_str = std::to_string(reqtype);
+        req_str.append(",");
+        req_str.append(reqID);
+        req_str.append(",");
+        req_str.append(std::to_string(account_num));
+        req_str.append(",");
+        req_str.append(std::to_string(amount));
+        cout<<req_str<<endl;
+    }
+    
     Request(string input_str)
     {
 		amount = 0;
@@ -49,6 +73,7 @@ public:
         vector<string> vStr;
         tokenizer(input_str,vStr);
         int index = 0;
+        stringstream sstream;
         for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
         {
             input = const_cast<char *>((*it).c_str());
@@ -60,10 +85,10 @@ public:
             switch(index)
             {
                 case 0:
-                    if (!strncmp(input,"getBalance",10))
-                    {
+                    if (((*input) >= '0') && ((*input) < '4'))
+                        reqtype = (enum ReqType)(atoi(input));
+                    else if (!strncmp(input,"getBalance",10))
                         reqtype = Query;
-                    }
                     else if (!strcmp(input, "deposit"))
                         reqtype = Deposit;
                     else if (!strcmp(input, "withdraw"))
@@ -73,12 +98,14 @@ public:
                     break;
                 case 1:
                     reqID = input;
+                    sstream << reqID[0];
+                    sstream >> bankname;
                     break;
                 case 2:
                     account_num = atoi(input);
                     break;
                 case 3:
-                    amount = atoi(input);
+                    amount = atof(input);
                     break;
                 default:
                     break;
@@ -198,8 +225,7 @@ public:
 
     friend ostream & operator << (ostream & cout, ACK *ack)
     {
-        cout<<"ACK for reqID: "<<ack->reqID<<" has been received"<<endl;
-        cout<<"------------------------------------";
+        cout<<"ACK for reqID: "<<ack->reqID<<" has been received"<<endl<<seperator;
 		return cout;
     }
 
