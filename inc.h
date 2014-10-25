@@ -23,12 +23,12 @@ enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
 enum Source  {server, client};
 
-void tokenizer(string input, vector<string>& vStr)
+void tokenizer(string input, vector<string>& vStr) //tokenizer to split the attributes in configuration file
 {
     boost::split(vStr, input, boost::is_any_of(delim), boost::token_compress_on);
 }
 
-class Request
+class Request  //class of request, consisting variables defined in project description and some functions
 {
 public:
     string req_str;
@@ -57,7 +57,6 @@ public:
         req_str.append(std::to_string(account_num));
         req_str.append(",");
         req_str.append(std::to_string(amount));
-        cout<<req_str<<endl;
     }
     
     Request(string input_str)
@@ -66,7 +65,7 @@ public:
         Parsereq(input_str);
     }
 
-    void Parsereq(string input_str)
+    void Parsereq(string input_str) //parse the request and construct the request object
     {
         req_str = input_str;
         char *input;
@@ -113,7 +112,7 @@ public:
         }
     }
     
-    bool operator == (Request *req) 
+    bool operator == (Request *req) //some overiding operators
     {
         if ((!(reqID.compare(req->reqID))) &&  (reqtype == req->reqtype))
             return true;
@@ -123,7 +122,19 @@ public:
     
     friend ostream & operator << (ostream & cout, Request *req)
     {
-        cout<<"Request type: ";
+        printf("Request type: ");
+        if(req->reqtype == Query)
+            printf("getBalance ");
+        else if(req->reqtype == Deposit)
+            printf("Deposit ");
+        else if(req->reqtype == Withdraw)
+            printf("Withdraw ");
+        else if(req->reqtype == Transfer)
+            printf("Transfer ");
+        //cout<<"Req Id: "<<req->reqID<<" Account number: "<<req->account_num<<" Amount: "<<req->amount<<endl;
+        printf("Req ID: %s Account number: %d Amount: %f\n", req->reqID.c_str(),req->account_num,req->amount);
+        return cout;
+        /*cout<<"Request type: ";
         if(req->reqtype == Query)
             cout<<"getBalance ";
         else if(req->reqtype == Deposit)
@@ -133,11 +144,12 @@ public:
         else if(req->reqtype == Transfer)
             cout<<"Transfer "<<endl;
         cout<<"Req Id: "<<req->reqID<<" Account number: "<<req->account_num<<" Amount: "<<req->amount<<endl;
-        return cout;
+        return cout;*/
+
     }
 };
 
-class Reply
+class Reply //class of reply, consisting variables defined in project description and some functions
 {
 public:
 	string reqID;
@@ -148,7 +160,7 @@ public:
     {
         reqID = req->reqID;
     }
-    void Packetize(char *buf)
+    void Packetize(char *buf) //packetize the reply message
     {
         string str;
         string str1;
@@ -162,7 +174,7 @@ public:
         str.append(str1);
         strcpy(buf, str.c_str());
     }
-    void Depacketize(char *buf)
+    void Depacketize(char *buf) //depacketize the reply message
     {
         string input_str = buf;
         char *input;
@@ -189,9 +201,18 @@ public:
         }
     }
     
-    friend ostream & operator << (ostream & cout, Reply *reply)
+    friend ostream & operator << (ostream & cout, Reply *reply) //operator overide
     {
-        cout<<"Result: ";
+        printf("Result: ");
+        if(reply->outcome == Processed)
+            printf("Processed ");
+        else if(reply->outcome == InsufficientFunds)
+            printf("InsufficientFunds ");
+        else if(reply->outcome == InconsistentWithHistory)
+            printf("InconsistentWithHistory ");
+        printf("Req ID: %s Balance: %f\n", reply->reqID.c_str(), reply->balance);
+        return cout;
+        /*cout<<"Result: ";
         if(reply->outcome == Processed)
             cout<<"Processed ";
         else if(reply->outcome == InsufficientFunds)
@@ -199,11 +220,12 @@ public:
         else if(reply->outcome == InconsistentWithHistory)
             cout<<"InconsistentWithHistory ";
         cout<<"Req Id: "<<reply->reqID<<" Balance: "<<reply->balance<<endl;
-        return cout;
+        return cout;*/
+
     }
 };
 
-class ACK
+class ACK //class of ACK
 {
 public:
 	string reqID;
@@ -225,7 +247,7 @@ public:
 
     friend ostream & operator << (ostream & cout, ACK *ack)
     {
-        cout<<"ACK for reqID: "<<ack->reqID<<" has been received"<<endl<<seperator;
+        printf("ACK for reqID: %s has been received\n", ack->reqID.c_str());
 		return cout;
     }
 

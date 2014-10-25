@@ -3,22 +3,22 @@
 #ifndef _SERVER_H__
 #define _SERVER_H__
 
-class Server
+class Server //class of server
 {
 private:
-	int sockfd_tcp;
+	int sockfd_tcp; //each server has two sockets: tcp socket and udp socket
     int sockfd_udp;
 	int bankName;
-	struct sockaddr_in srvaddr;
+	struct sockaddr_in srvaddr; //server's address struct
 	string ip_addr;
 	int port_num;	
 	std::pair<string,int> sName;
     Server *next;
-    std::map<int, float> Account_Info;
-	std::list<Request *> sentTrans;
-	std::map<string, Request *> procTrans;
-	int startup_delay;
-	int life_time;
+    std::map<int, float> Account_Info; //server's account info stores the information of clients' account information
+	std::list<Request *> sentTrans; //server's sent transaction list
+	std::map<string, Request *> procTrans; //server's processed transaction list
+	int startup_delay; //start-up delay of server
+	int life_time; //life time of server
 
 public:
 	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),next(NULL),life_time(0){}
@@ -50,6 +50,11 @@ public:
         Setsockopt(sockfd_udp, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
         Setsockopt(sockfd_udp,SOL_SOCKET,SO_DONTROUTE,&on,sizeof(on));
         Bind(sockfd_udp, (SA*) & srvaddr, sizeof(srvaddr));
+    }
+    void Closesockets()
+    {
+        close(sockfd_tcp);
+        close(sockfd_udp);
     }
 	void Setdelay(char *s)
 	{
@@ -99,7 +104,7 @@ public:
 		else 
 			return false;
 	}
-	void InitServ(string input_str)
+	void InitServ(string input_str) //init for server
 	{
 		char *input;
 		int index = 0;
@@ -130,7 +135,7 @@ public:
 		}
 	}
     
-    int CheckHist(Request *req)
+    int CheckHist(Request *req) //check server's processed transaction
     {
 //		DisplayprocTrans();
         std::map<string, Request *>::iterator it;
@@ -146,14 +151,24 @@ public:
             return 0;
     }
     
-    void AddsentTrans(Request *req)
+    void AddsentTrans(Request *req) //add request to server's sent transaction
     {
+        if (req->reqtype == Query)
+        {
+            printf("Query do not add to sent transaction\n%s\n", seperator);
+            return;
+        }
         sentTrans.push_back(req);
-		cout<<"Request "<<req->reqID<<" has been added to sentTranc"<<endl;
+        printf("Request %s has been added to sent transaction\n%s\n", req->reqID.c_str(), seperator);
     }
     
-    void AckHist(Request *req)
+    void AckHist(Request *req) //add request to server's processed transaction
     {
+        if (req->reqtype == Query)
+        {
+            printf("Query do not add to processed transaction\n%s\n", seperator);
+            return;
+        }
         int result = CheckHist(req);
         for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
         {
@@ -163,12 +178,12 @@ public:
                 if (!result)
                 {
                     procTrans.insert(make_pair(req->reqID, req));
-                    cout<<"Request "<<req->reqID<<" has been added to processed transaction"<<endl<<seperator<<endl;
+                    printf("Request %s has been added to processed transaction\n%s\n", req->reqID.c_str(), seperator);
                 }
                 else if(result == 1)
-                    cout<<"Request "<<req->reqID<<" is inconsistent with history, do not add to processed transaction"<<endl;
+                    printf("Request %s is inconsistent with history, do not add to processed transaction\n%s\n", req->reqID.c_str(), seperator);
                 else
-                    cout<<"Request "<<req->reqID<<" is a duplicate request, do not add to processed transaction"<<endl;
+                    printf("Request %s is a duplicate request, do not add to processed transaction\n%s\n", req->reqID.c_str(), seperator);
             }
         }
     }
@@ -189,7 +204,7 @@ public:
 		cout<<seperator<<endl;
 	}
     
-	void ProcReq(Request *req, Reply *reply)
+	void ProcReq(Request *req, Reply *reply) //process transaction for client's request
     {
         int result = CheckHist(req);
         float cur_bal = Checkbal(req->account_num);
@@ -235,7 +250,7 @@ public:
         }
     }
     
-    float Checkbal(int account_num)
+    float Checkbal(int account_num) //check balance
     {
         std::map<int, float>::iterator it;
         it=Account_Info.find(account_num);
@@ -249,49 +264,6 @@ public:
             return 0;
         }
     }
-    /*void packetize (string &str)
-    {
-        str.append(prev.first);
-        str.append(":");
-        str.append(std::to_string(prev.second));
-        str.append(seperator);
-        str.append(next.first);
-        str.append(":");
-        str.append(std::to_string(next.second));
-    }
-    
-    void depacketize(string str)
-    {
-        string ip_addr;
-        int port_num;
-        int index = 0;
-        vector<string> vStr;
-        tokenizer(str, vStr);
-        char *input;
-        for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
-        {
-            input = const_cast<char*>((*it).c_str());
-            switch(index)
-            {
-                case 0:
-                    ip_addr = input;
-                    break;
-                case 1:
-                    port_num = atoi(input);
-                    prev = make_pair(ip_addr,port_num);
-                    break;
-                case 2:
-                    ip_addr = input;
-                    break;
-                case 3:
-                    port_num = atoi(input);
-                    next = make_pair(ip_addr, port_num);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }*/
     
 	friend ostream & operator << (ostream & cout, Server *s)
 	{

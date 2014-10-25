@@ -1,0 +1,492 @@
+----------------Clients Configuration---------------------
+retransmission enabled
+retransmission interval is: 5
+retransmission time is: 3
+randomized request
+----------------Randomized Request Configuration---------------------
+Seed of random request is: 1
+number of request for each client is: 10
+probability of get balance is: 0.4
+probability of deposit is: 0.3
+probability of withdraw is: 0.3
+probability of transfer is: 0
+----------------Display Server Chain---------------------
+-----------------Chain 1---------------------
+Head
+bank name: 1
+server name: 127.0.0.1:10001
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10002
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+Tail
+bank name: 1
+server name: 127.0.0.1:10003
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+-----------------Chain 2---------------------
+Head
+bank name: 2
+server name: 127.0.0.1:10004
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+bank name: 2
+server name: 127.0.0.1:10005
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+Tail
+bank name: 2
+server name: 127.0.0.1:10006
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+-----------------Chain 3---------------------
+Head
+bank name: 3
+server name: 127.0.0.1:10007
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+bank name: 3
+server name: 127.0.0.1:10008
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+Tail
+bank name: 3
+server name: 127.0.0.1:10009
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+
+----------------Display Client Chain---------------------
+-----------------Chain 1---------------------
+bank name: 1
+account no.: 100
+client name: 127.0.0.1:20001
+
+bank name: 1
+account no.: 200
+client name: 127.0.0.1:20002
+
+-----------------Chain 2---------------------
+bank name: 2
+account no.: 100
+client name: 127.0.0.1:20003
+
+bank name: 2
+account no.: 200
+client name: 127.0.0.1:20004
+
+-----------------Chain 3---------------------
+bank name: 3
+account no.: 100
+client name: 127.0.0.1:20005
+
+bank name: 3
+account no.: 200
+client name: 127.0.0.1:20006
+
+Request type: getBalance Req ID: 1.1.1 Account number: 100 Amount: 0.000000
+
+Request type: Deposit Req ID: 1.1.2 Account number: 100 Amount: 490.000000
+
+Request type: Withdraw Req ID: 1.1.3 Account number: 100 Amount: 730.000000
+
+Request type: Deposit Req ID: 1.1.4 Account number: 100 Amount: 580.000000
+
+Request type: getBalance Req ID: 1.1.5 Account number: 100 Amount: 0.000000
+
+Request type: Withdraw Req ID: 1.1.6 Account number: 100 Amount: 720.000000
+
+Request type: Deposit Req ID: 1.1.7 Account number: 100 Amount: 440.000000
+
+Request type: Withdraw Req ID: 1.1.8 Account number: 100 Amount: 780.000000
+
+Request type: getBalance Req ID: 1.1.9 Account number: 100 Amount: 0.000000
+
+Request type: getBalance Req ID: 1.1.10 Account number: 100 Amount: 0.000000
+
+Request type: getBalance Req ID: 1.2.1 Account number: 200 Amount: 0.000000
+
+Request type: Deposit Req ID: 1.2.2 Account number: 200 Amount: 490.000000
+
+Request type: Withdraw Req ID: 1.2.3 Account number: 200 Amount: 730.000000
+
+Request type: Deposit Req ID: 1.2.4 Account number: 200 Amount: 580.000000
+
+Request type: getBalance Req ID: 1.2.5 Account number: 200 Amount: 0.000000
+
+Request type: Withdraw Req ID: 1.2.6 Account number: 200 Amount: 720.000000
+
+Request type: Deposit Req ID: 1.2.7 Account number: 200 Amount: 440.000000
+
+Request type: Withdraw Req ID: 1.2.8 Account number: 200 Amount: 780.000000
+
+Request type: getBalance Req ID: 1.2.9 Account number: 200 Amount: 0.000000
+
+Request type: getBalance Req ID: 1.2.10 Account number: 200 Amount: 0.000000
+
+Request type: getBalance Req ID: 2.1.1 Account number: 100 Amount: 0.000000
+
+Request type: Deposit Req ID: 2.1.2 Account number: 100 Amount: 490.000000
+
+Request type: Withdraw Req ID: 2.1.3 Account number: 100 Amount: 730.000000
+
+Request type: Deposit Req ID: 2.1.4 Account number: 100 Amount: 580.000000
+
+Request type: getBalance Req ID: 2.1.5 Account number: 100 Amount: 0.000000
+
+Request type: Withdraw Req ID: 2.1.6 Account number: 100 Amount: 720.000000
+
+Request type: Deposit Req ID: 2.1.7 Account number: 100 Amount: 440.000000
+
+Request type: Withdraw Req ID: 2.1.8 Account number: 100 Amount: 780.000000
+
+Request type: getBalance Req ID: 2.1.9 Account number: 100 Amount: 0.000000
+
+Request type: getBalance Req ID: 2.1.10 Account number: 100 Amount: 0.000000
+
+Request type: getBalance Req ID: 2.2.1 Account number: 200 Amount: 0.000000
+
+Request type: Deposit Req ID: 2.2.2 Account number: 200 Amount: 490.000000
+
+Request type: Withdraw Req ID: 2.2.3 Account number: 200 Amount: 730.000000
+
+Request type: Deposit Req ID: 2.2.4 Account number: 200 Amount: 580.000000
+
+Request type: getBalance Req ID: 2.2.5 Account number: 200 Amount: 0.000000
+
+Request type: Withdraw Req ID: 2.2.6 Account number: 200 Amount: 720.000000
+
+Request type: Deposit Req ID: 2.2.7 Account number: 200 Amount: 440.000000
+
+Request type: Withdraw Req ID: 2.2.8 Account number: 200 Amount: 780.000000
+
+Request type: getBalance Req ID: 2.2.9 Account number: 200 Amount: 0.000000
+
+Request type: getBalance Req ID: 2.2.10 Account number: 200 Amount: 0.000000
+
+Request type: getBalance Req ID: 3.1.1 Account number: 100 Amount: 0.000000
+
+Request type: Deposit Req ID: 3.1.2 Account number: 100 Amount: 490.000000
+
+Request type: Withdraw Req ID: 3.1.3 Account number: 100 Amount: 730.000000
+
+Request type: Deposit Req ID: 3.1.4 Account number: 100 Amount: 580.000000
+
+Request type: getBalance Req ID: 3.1.5 Account number: 100 Amount: 0.000000
+
+Request type: Withdraw Req ID: 3.1.6 Account number: 100 Amount: 720.000000
+
+Request type: Deposit Req ID: 3.1.7 Account number: 100 Amount: 440.000000
+
+Request type: Withdraw Req ID: 3.1.8 Account number: 100 Amount: 780.000000
+
+Request type: getBalance Req ID: 3.1.9 Account number: 100 Amount: 0.000000
+
+Request type: getBalance Req ID: 3.1.10 Account number: 100 Amount: 0.000000
+
+Request type: getBalance Req ID: 3.2.1 Account number: 200 Amount: 0.000000
+
+Request type: Deposit Req ID: 3.2.2 Account number: 200 Amount: 490.000000
+
+Request type: Withdraw Req ID: 3.2.3 Account number: 200 Amount: 730.000000
+
+Request type: Deposit Req ID: 3.2.4 Account number: 200 Amount: 580.000000
+
+Request type: getBalance Req ID: 3.2.5 Account number: 200 Amount: 0.000000
+
+Request type: Withdraw Req ID: 3.2.6 Account number: 200 Amount: 720.000000
+
+Request type: Deposit Req ID: 3.2.7 Account number: 200 Amount: 440.000000
+
+Request type: Withdraw Req ID: 3.2.8 Account number: 200 Amount: 780.000000
+
+Request type: getBalance Req ID: 3.2.9 Account number: 200 Amount: 0.000000
+
+Request type: getBalance Req ID: 3.2.10 Account number: 200 Amount: 0.000000
+
+Number of client is 6
+
+-------------Now start sending requests-------------
+bank name: 1
+account no.: 100
+client name: 127.0.0.1:20001
+
+Request type: getBalance Req ID: 1.1.1 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 1.1.1 Balance: 0.000000
+
+Request type: Deposit Req ID: 1.1.2 Account number: 100 Amount: 490.000000
+
+Result: Processed Req ID: 1.1.2 Balance: 490.000000
+
+Request type: Withdraw Req ID: 1.1.3 Account number: 100 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 1.1.3 Balance: 490.000000
+
+Request type: Deposit Req ID: 1.1.4 Account number: 100 Amount: 580.000000
+
+Result: Processed Req ID: 1.1.4 Balance: 1070.000000
+
+Request type: getBalance Req ID: 1.1.5 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 1.1.5 Balance: 1070.000000
+
+Request type: Withdraw Req ID: 1.1.6 Account number: 100 Amount: 720.000000
+
+Result: Processed Req ID: 1.1.6 Balance: 350.000000
+
+Request type: Deposit Req ID: 1.1.7 Account number: 100 Amount: 440.000000
+
+Result: Processed Req ID: 1.1.7 Balance: 790.000000
+
+Request type: Withdraw Req ID: 1.1.8 Account number: 100 Amount: 780.000000
+
+Result: Processed Req ID: 1.1.8 Balance: 10.000000
+
+Request type: getBalance Req ID: 1.1.9 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 1.1.9 Balance: 10.000000
+
+Request type: getBalance Req ID: 1.1.10 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 1.1.10 Balance: 10.000000
+
+bank name: 1
+account no.: 200
+client name: 127.0.0.1:20002
+
+Request type: getBalance Req ID: 1.2.1 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 1.2.1 Balance: 0.000000
+
+Request type: Deposit Req ID: 1.2.2 Account number: 200 Amount: 490.000000
+
+Result: Processed Req ID: 1.2.2 Balance: 490.000000
+
+Request type: Withdraw Req ID: 1.2.3 Account number: 200 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 1.2.3 Balance: 490.000000
+
+Request type: Deposit Req ID: 1.2.4 Account number: 200 Amount: 580.000000
+
+Result: Processed Req ID: 1.2.4 Balance: 1070.000000
+
+Request type: getBalance Req ID: 1.2.5 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 1.2.5 Balance: 1070.000000
+
+Request type: Withdraw Req ID: 1.2.6 Account number: 200 Amount: 720.000000
+
+Result: Processed Req ID: 1.2.6 Balance: 350.000000
+
+Request type: Deposit Req ID: 1.2.7 Account number: 200 Amount: 440.000000
+
+Result: Processed Req ID: 1.2.7 Balance: 790.000000
+
+Request type: Withdraw Req ID: 1.2.8 Account number: 200 Amount: 780.000000
+
+Result: Processed Req ID: 1.2.8 Balance: 10.000000
+
+Request type: getBalance Req ID: 1.2.9 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 1.2.9 Balance: 10.000000
+
+Request type: getBalance Req ID: 1.2.10 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 1.2.10 Balance: 10.000000
+
+bank name: 2
+account no.: 100
+client name: 127.0.0.1:20003
+
+Request type: getBalance Req ID: 2.1.1 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.1 Balance: 0.000000
+
+Request type: Deposit Req ID: 2.1.2 Account number: 100 Amount: 490.000000
+
+Result: Processed Req ID: 2.1.2 Balance: 490.000000
+
+Request type: Withdraw Req ID: 2.1.3 Account number: 100 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 2.1.3 Balance: 490.000000
+
+Request type: Deposit Req ID: 2.1.4 Account number: 100 Amount: 580.000000
+
+Result: Processed Req ID: 2.1.4 Balance: 1070.000000
+
+Request type: getBalance Req ID: 2.1.5 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.5 Balance: 1070.000000
+
+Request type: Withdraw Req ID: 2.1.6 Account number: 100 Amount: 720.000000
+
+Result: Processed Req ID: 2.1.6 Balance: 350.000000
+
+Request type: Deposit Req ID: 2.1.7 Account number: 100 Amount: 440.000000
+
+Result: Processed Req ID: 2.1.7 Balance: 790.000000
+
+Request type: Withdraw Req ID: 2.1.8 Account number: 100 Amount: 780.000000
+
+Result: Processed Req ID: 2.1.8 Balance: 10.000000
+
+Request type: getBalance Req ID: 2.1.9 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.9 Balance: 10.000000
+
+Request type: getBalance Req ID: 2.1.10 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.10 Balance: 10.000000
+
+bank name: 2
+account no.: 200
+client name: 127.0.0.1:20004
+
+Request type: getBalance Req ID: 2.2.1 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.1 Balance: 0.000000
+
+Request type: Deposit Req ID: 2.2.2 Account number: 200 Amount: 490.000000
+
+Result: Processed Req ID: 2.2.2 Balance: 490.000000
+
+Request type: Withdraw Req ID: 2.2.3 Account number: 200 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 2.2.3 Balance: 490.000000
+
+Request type: Deposit Req ID: 2.2.4 Account number: 200 Amount: 580.000000
+
+Result: Processed Req ID: 2.2.4 Balance: 1070.000000
+
+Request type: getBalance Req ID: 2.2.5 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.5 Balance: 1070.000000
+
+Request type: Withdraw Req ID: 2.2.6 Account number: 200 Amount: 720.000000
+
+Result: Processed Req ID: 2.2.6 Balance: 350.000000
+
+Request type: Deposit Req ID: 2.2.7 Account number: 200 Amount: 440.000000
+
+Result: Processed Req ID: 2.2.7 Balance: 790.000000
+
+Request type: Withdraw Req ID: 2.2.8 Account number: 200 Amount: 780.000000
+
+Result: Processed Req ID: 2.2.8 Balance: 10.000000
+
+Request type: getBalance Req ID: 2.2.9 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.9 Balance: 10.000000
+
+Request type: getBalance Req ID: 2.2.10 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.10 Balance: 10.000000
+
+bank name: 3
+account no.: 100
+client name: 127.0.0.1:20005
+
+Request type: getBalance Req ID: 3.1.1 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 3.1.1 Balance: 0.000000
+
+Request type: Deposit Req ID: 3.1.2 Account number: 100 Amount: 490.000000
+
+Result: Processed Req ID: 3.1.2 Balance: 490.000000
+
+Request type: Withdraw Req ID: 3.1.3 Account number: 100 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 3.1.3 Balance: 490.000000
+
+Request type: Deposit Req ID: 3.1.4 Account number: 100 Amount: 580.000000
+
+Result: Processed Req ID: 3.1.4 Balance: 1070.000000
+
+Request type: getBalance Req ID: 3.1.5 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 3.1.5 Balance: 1070.000000
+
+Request type: Withdraw Req ID: 3.1.6 Account number: 100 Amount: 720.000000
+
+Result: Processed Req ID: 3.1.6 Balance: 350.000000
+
+Request type: Deposit Req ID: 3.1.7 Account number: 100 Amount: 440.000000
+
+Result: Processed Req ID: 3.1.7 Balance: 790.000000
+
+Request type: Withdraw Req ID: 3.1.8 Account number: 100 Amount: 780.000000
+
+Result: Processed Req ID: 3.1.8 Balance: 10.000000
+
+Request type: getBalance Req ID: 3.1.9 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 3.1.9 Balance: 10.000000
+
+Request type: getBalance Req ID: 3.1.10 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 3.1.10 Balance: 10.000000
+
+bank name: 3
+account no.: 200
+client name: 127.0.0.1:20006
+
+Request type: getBalance Req ID: 3.2.1 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 3.2.1 Balance: 0.000000
+
+Request type: Deposit Req ID: 3.2.2 Account number: 200 Amount: 490.000000
+
+Result: Processed Req ID: 3.2.2 Balance: 490.000000
+
+Request type: Withdraw Req ID: 3.2.3 Account number: 200 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 3.2.3 Balance: 490.000000
+
+Request type: Deposit Req ID: 3.2.4 Account number: 200 Amount: 580.000000
+
+Result: Processed Req ID: 3.2.4 Balance: 1070.000000
+
+Request type: getBalance Req ID: 3.2.5 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 3.2.5 Balance: 1070.000000
+
+Request type: Withdraw Req ID: 3.2.6 Account number: 200 Amount: 720.000000
+
+Result: Processed Req ID: 3.2.6 Balance: 350.000000
+
+Request type: Deposit Req ID: 3.2.7 Account number: 200 Amount: 440.000000
+
+Result: Processed Req ID: 3.2.7 Balance: 790.000000
+
+Request type: Withdraw Req ID: 3.2.8 Account number: 200 Amount: 780.000000
+
+Result: Processed Req ID: 3.2.8 Balance: 10.000000
+
+Request type: getBalance Req ID: 3.2.9 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 3.2.9 Balance: 10.000000
+
+Request type: getBalance Req ID: 3.2.10 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 3.2.10 Balance: 10.000000
+
+All clients' requests have been sent, clients exit

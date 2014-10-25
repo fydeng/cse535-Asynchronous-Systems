@@ -6,8 +6,8 @@ extern "C"
 #include "master.h"
 #include "server.h"
 
-std::map<int, std::vector<Client*> >cChain;
-std::map<int, std::list<Server*> > sChain;
+std::map<int, std::vector<Client*> >cChain; //client map
+std::map<int, std::list<Server*> > sChain; //server map
 static sigjmp_buf jmpbuf;
 
 void Addserver(Server *s);
@@ -18,12 +18,12 @@ static Server * SearchServer(Request *);
 static void *SendReq(void *);
 void displaychain();
 void GenerateRanReq();
-static void sig_alrm(int signo)
+static void sig_alrm(int signo) //sigalrm handler function, long jmp to sigsetjmp
 {
     siglongjmp(jmpbuf, 1);
 }
 
-struct ARGS
+struct ARGS //struct of args, used to pass arguments the new thread
 {
     Client *client;
     
@@ -40,7 +40,7 @@ int main(int argc, char **argv)
      FLAGS_log_dir = ./adfafsf/asdfasdff.txt*/
     google::InitGoogleLogging(argv[0]);
 	ifstream fin;
-	fin.open("config.txt");
+	fin.open(argv[1]);
 	string input_str;
 	char *input;
 	Master *ms = new Master();
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
 		{
             if (random_req)
             {
-                parse_randomized_req(input_str);
+                parse_randomized_req(input_str); //parse randomized request
                 break;
             }
             else
@@ -122,7 +122,7 @@ int main(int argc, char **argv)
     displaychain();
     if (random_req)
         GenerateRanReq();
-    cout<<"number of client is "<<client_num<<endl;
+    cout<<"Number of client is "<<client_num<<endl;
 	cout<<endl<<"-------------Now start sending requests-------------"<<endl;
     pthread_t tid[client_num];
     int index = 0;
@@ -130,29 +130,32 @@ int main(int argc, char **argv)
     {
         for(std::vector<Client*>::iterator it1 = it->second.begin(); it1!=it->second.end(); ++it1, ++index)
         {
-            sleep(3);
+            sleep(1);
             ARGS args((*it1));
             Pthread_create(&tid[index], NULL, &SendReq, (void *)&args);
-            //Pthread_join(tid[index], NULL);
+            Pthread_join(tid[index], NULL);
         }
     }
-    for (index = 0; index < client_num; index++)
+    /*for (index = 0; index < client_num; index++)
     {
         Pthread_join(tid[index], NULL);
-    }
+    }*/
+    cout<<"All clients' requests have been sent, clients exit"<<endl;
+    return 1;
 }
 
-static void *SendReq(void *arg)
+static void *SendReq(void *arg) //each client launches this send request function
 {
     Client *c = ((struct ARGS *)arg)->client;
     cout<<c<<endl;
     c->Setsocket();
     int sockfd = c->Getsocket();
     socklen_t len = sizeof(struct sockaddr_in);
-    int count_retrans = 0;
+    int count_retrans;
     for (list<Request*>::iterator it = c->GetReqList().begin(); it != c->GetReqList().end(); it++)
     {
-        sleep(3);
+        count_retrans = 0;
+        sleep(1);
     loop:        cout<<(*it)<<endl;
         char buf[MAXLINE];
         struct sockaddr_in srvaddr = SearchServer((*it))->Getsockaddr();
@@ -162,7 +165,6 @@ static void *SendReq(void *arg)
         alarm(retrans_inteval);
         if (sigsetjmp(jmpbuf, 1)!=0)
         {
-            count_retrans++;
             if (count_retrans == retrans_time)
             {
                 cout<<"Retransmit time equals the limit, stop retransmit"<<endl;
@@ -171,6 +173,7 @@ static void *SendReq(void *arg)
             else
             {
                 cout<<"Message timeout, start retransmit"<<endl;
+                count_retrans++;
                 goto loop;
             }
         }
@@ -185,9 +188,10 @@ static void *SendReq(void *arg)
         }
     }
     close(sockfd);
+    return NULL;
 }
 
-static Client * SearchClient(Request *req)
+static Client * SearchClient(Request *req) //search client according to specific request
 {
     std::map<int,std::vector<Client*> >::iterator it;
     it = cChain.find(req->bankname);
@@ -199,7 +203,7 @@ static Client * SearchClient(Request *req)
     return NULL;
 }
 
-static Server * SearchServer(Request *req)
+static Server * SearchServer(Request *req) //search server according to specific request
 {
     std::map<int,std::list<Server*> >::iterator it;
     it = sChain.find(req->bankname);
@@ -209,7 +213,7 @@ static Server * SearchServer(Request *req)
         return it->second.front();
 }
 
-void Addserver(Server *s)
+void Addserver(Server *s) //add server to server map
 {
     int bankname = s->GetbankName();
     std::map<int, std::list<Server*> >::iterator it;
@@ -226,7 +230,7 @@ void Addserver(Server *s)
     }
 }
 
-void Addclient(Client *c)
+void Addclient(Client *c) //add client to client map
 {
     int bankname = c->GetbankName();
     std::map<int, std::vector<Client*> >::iterator it;
@@ -243,7 +247,7 @@ void Addclient(Client *c)
     }
 }
 
-void Addrequest(Request *req)
+void Addrequest(Request *req) //add request to client's request list
 {
     std::map<int, std::vector<Client*> >::iterator it;
     it=cChain.find(req->bankname);
@@ -262,7 +266,7 @@ void Addrequest(Request *req)
         return;
 }
 
-void GenerateRanReq()
+void GenerateRanReq() //generate request for clients
 {
     int index;
     for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1)
@@ -275,7 +279,7 @@ void GenerateRanReq()
     }
 }
 
-void displaychain()
+void displaychain() //display server map and client map
 {
     int chainnum = 1;
 	cout<<"----------------Display Server Chain---------------------"<<endl;

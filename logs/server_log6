@@ -1,0 +1,207 @@
+----------------Configuration information of current server---------------
+bank name: 2
+server name: 127.0.0.1:10006
+start up delay: 0
+life time: 99999
+-----------------------------------------------------------------
+No. 1 message comes
+Request from client: 127.0.0.1:20003
+Request type: getBalance Req ID: 2.1.1 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.1 Balance: 0.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 2 message comes
+Synchronization connection from previous server: 127.0.0.1:52413
+Request type: Deposit Req ID: 2.1.2 Account number: 100 Amount: 490.000000
+
+Result: Processed Req ID: 2.1.2 Balance: 490.000000
+
+Request 2.1.2 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.1.2 has been added to processed transaction
+-----------------------------------------------------------------
+No. 3 message comes
+Synchronization connection from previous server: 127.0.0.1:52415
+Request type: Withdraw Req ID: 2.1.3 Account number: 100 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 2.1.3 Balance: 490.000000
+
+Request 2.1.3 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.1.3 has been added to processed transaction
+-----------------------------------------------------------------
+No. 4 message comes
+Synchronization connection from previous server: 127.0.0.1:52417
+Request type: Deposit Req ID: 2.1.4 Account number: 100 Amount: 580.000000
+
+Result: Processed Req ID: 2.1.4 Balance: 1070.000000
+
+Request 2.1.4 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.1.4 has been added to processed transaction
+-----------------------------------------------------------------
+No. 5 message comes
+Request from client: 127.0.0.1:20003
+Request type: getBalance Req ID: 2.1.5 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.5 Balance: 1070.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 6 message comes
+Synchronization connection from previous server: 127.0.0.1:52419
+Request type: Withdraw Req ID: 2.1.6 Account number: 100 Amount: 720.000000
+
+Result: Processed Req ID: 2.1.6 Balance: 350.000000
+
+Request 2.1.6 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.1.6 has been added to processed transaction
+-----------------------------------------------------------------
+No. 7 message comes
+Synchronization connection from previous server: 127.0.0.1:52421
+Request type: Deposit Req ID: 2.1.7 Account number: 100 Amount: 440.000000
+
+Result: Processed Req ID: 2.1.7 Balance: 790.000000
+
+Request 2.1.7 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.1.7 has been added to processed transaction
+-----------------------------------------------------------------
+No. 8 message comes
+Synchronization connection from previous server: 127.0.0.1:52423
+Request type: Withdraw Req ID: 2.1.8 Account number: 100 Amount: 780.000000
+
+Result: Processed Req ID: 2.1.8 Balance: 10.000000
+
+Request 2.1.8 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.1.8 has been added to processed transaction
+-----------------------------------------------------------------
+No. 9 message comes
+Request from client: 127.0.0.1:20003
+Request type: getBalance Req ID: 2.1.9 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.9 Balance: 10.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 10 message comes
+Request from client: 127.0.0.1:20003
+Request type: getBalance Req ID: 2.1.10 Account number: 100 Amount: 0.000000
+
+Result: Processed Req ID: 2.1.10 Balance: 10.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 11 message comes
+Request from client: 127.0.0.1:20004
+Request type: getBalance Req ID: 2.2.1 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.1 Balance: 0.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 12 message comes
+Synchronization connection from previous server: 127.0.0.1:52425
+Request type: Deposit Req ID: 2.2.2 Account number: 200 Amount: 490.000000
+
+Result: Processed Req ID: 2.2.2 Balance: 490.000000
+
+Request 2.2.2 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.2.2 has been added to processed transaction
+-----------------------------------------------------------------
+No. 13 message comes
+Synchronization connection from previous server: 127.0.0.1:52427
+Request type: Withdraw Req ID: 2.2.3 Account number: 200 Amount: 730.000000
+
+Result: InsufficientFunds Req ID: 2.2.3 Balance: 490.000000
+
+Request 2.2.3 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.2.3 has been added to processed transaction
+-----------------------------------------------------------------
+No. 14 message comes
+Synchronization connection from previous server: 127.0.0.1:52429
+Request type: Deposit Req ID: 2.2.4 Account number: 200 Amount: 580.000000
+
+Result: Processed Req ID: 2.2.4 Balance: 1070.000000
+
+Request 2.2.4 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.2.4 has been added to processed transaction
+-----------------------------------------------------------------
+No. 15 message comes
+Request from client: 127.0.0.1:20004
+Request type: getBalance Req ID: 2.2.5 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.5 Balance: 1070.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 16 message comes
+Synchronization connection from previous server: 127.0.0.1:52431
+Request type: Withdraw Req ID: 2.2.6 Account number: 200 Amount: 720.000000
+
+Result: Processed Req ID: 2.2.6 Balance: 350.000000
+
+Request 2.2.6 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.2.6 has been added to processed transaction
+-----------------------------------------------------------------
+No. 17 message comes
+Synchronization connection from previous server: 127.0.0.1:52433
+Request type: Deposit Req ID: 2.2.7 Account number: 200 Amount: 440.000000
+
+Result: Processed Req ID: 2.2.7 Balance: 790.000000
+
+Request 2.2.7 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.2.7 has been added to processed transaction
+-----------------------------------------------------------------
+No. 18 message comes
+Synchronization connection from previous server: 127.0.0.1:52435
+Request type: Withdraw Req ID: 2.2.8 Account number: 200 Amount: 780.000000
+
+Result: Processed Req ID: 2.2.8 Balance: 10.000000
+
+Request 2.2.8 has been added to sent transaction
+-----------------------------------------------------------------
+Request 2.2.8 has been added to processed transaction
+-----------------------------------------------------------------
+No. 19 message comes
+Request from client: 127.0.0.1:20004
+Request type: getBalance Req ID: 2.2.9 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.9 Balance: 10.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+No. 20 message comes
+Request from client: 127.0.0.1:20004
+Request type: getBalance Req ID: 2.2.10 Account number: 200 Amount: 0.000000
+
+Result: Processed Req ID: 2.2.10 Balance: 10.000000
+
+Query do not add to sent transaction
+-----------------------------------------------------------------
+Query do not add to processed transaction
+-----------------------------------------------------------------
+Server exits, all sockets are closed

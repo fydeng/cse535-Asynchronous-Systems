@@ -14,7 +14,7 @@ float prob_deposit;
 float prob_withdraw;
 float prob_transfer;
 
-void parse_config(string input_str)
+void parse_config(string input_str) //parse configuration file to get configuration of clients
 {
 	char *input;
 	vector<string> vStr;
@@ -61,7 +61,7 @@ void parse_config(string input_str)
 	}
 }
 
-void parse_randomized_req(string input_str)
+void parse_randomized_req(string input_str) //if request is randomized, parse the configuration
 {
     char *input;
     vector<string> vStr;
@@ -109,20 +109,20 @@ void parse_randomized_req(string input_str)
 }
 
 vector <Request *> req_list;
-class Client
+class Client  //class of client
 {
-private:	
-	struct sockaddr_in cliaddr;
-	int sockfd_udp;
-	int bankName;
-	int account_no;
-	string ip_addr;
-	int port_num;
-	std::pair<string, int> cName;
-    std::list<Request*> rlist;
+private:	//private members of client
+	struct sockaddr_in cliaddr; //the struct of client socket address
+	int sockfd_udp; //the socket of client, which is an udp socket
+	int bankName; //the bankname of client
+	int account_no; //the account of client
+	string ip_addr; //the ip address of client
+	int port_num; //the port number of client
+	std::pair<string, int> cName; //client name, which is a tuple containing ip address and port number
+    std::list<Request*> rlist; //client's request list
 
 public:
-    Client():bankName(0),account_no(0),ip_addr(""),port_num(0),cName(make_pair("",-1)){}
+    Client():bankName(0),account_no(0),ip_addr(""),port_num(0),cName(make_pair("",-1)){} //constructor
     Client(int bankname, string ipaddr, int portnum)
     {
         bankName = bankname;
@@ -143,7 +143,7 @@ public:
 	{
 		ip_addr = p;
 	}
-	void Setportnum(char *p)
+	void Setportnum(char *p) //set port number
 	{
 		port_num = atoi(p);
 		cName = make_pair(ip_addr, port_num);
@@ -152,7 +152,7 @@ public:
 		Inet_pton(AF_INET, cName.first.c_str(), &cliaddr.sin_addr);
 		cliaddr.sin_port = htons(cName.second);
 	}
-	void Setsocket()
+	void Setsocket() //set and bind the socket
 	{
 		const int on = 1;
 		sockfd_udp = Socket(AF_INET, SOCK_DGRAM, 0);
@@ -164,7 +164,7 @@ public:
     {
         rlist.push_back(req);
     }
-	void Packetize(Request *req, char *buf)
+	void Packetize(Request *req, char *buf) //packetize the request to send to server
 	{
         string str;
 		string str1;
@@ -198,7 +198,7 @@ public:
     {
         return cName;
     }
-	void InitCli(string input_str)
+	void InitCli(string input_str) //initialize the client
 	{
 		char *input;
 		vector<string> vStr;
@@ -226,27 +226,28 @@ public:
 			}
 		}
 	}
-    void GenerateRandomReq(int client_index)
+    void GenerateRandomReq(int client_index) //generate random request for each client
     {
-        int ran_num;
+        float ran_num;
         enum ReqType reqtype;
         srand(seed);
         float amount = 0;
         for(int i = 0; i < num_req; i++)
         {
-            ran_num = rand() % 100 + 1;
-            if(ran_num >= 0 && ran_num < prob_getbalance)
+            ran_num = (float)((float)(rand() % 100) / 100);
+            //cout<<"random number is "<<ran_num<<endl;
+            if(ran_num < prob_getbalance)
                 reqtype = Query;
-            else if (ran_num >= prob_getbalance && ran_num < (prob_deposit + prob_getbalance))
+            else if (ran_num < (prob_deposit + prob_getbalance))
                 reqtype = Deposit;
-            else if (ran_num >= (prob_deposit + prob_getbalance) && ran_num < (prob_deposit + prob_getbalance + prob_withdraw))
+            else if (ran_num < (prob_deposit + prob_getbalance + prob_withdraw))
                 reqtype = Withdraw;
             else
                 reqtype = Transfer;
             if (reqtype == Query)
                 amount = 0;
             else
-                amount = (ran_num) * 10;
+                amount = (ran_num) * 1000;
             Request *req = new Request(reqtype, bankName, client_index, i+1, account_no, amount);
             cout<<req<<endl;
             rlist.push_back(req);
@@ -255,9 +256,9 @@ public:
     
 	friend ostream & operator << (ostream & cout, Client *c)
 	{
-		cout<<"bank name: "<<c->bankName<<endl;
-		cout<<"account no.:"<<c->account_no<<endl;
-		cout<<"client name: "<<c->cName.first<<":"<<c->cName.second<<endl;
+        printf("bank name: %d\naccount no.: %d\nclient name: %s:%d\n", c->bankName, c->account_no, c->cName.first.c_str(), c->cName.second);
+        //printf("account no.: %d\n", c->account_no);
+        //printf("client name: %s:%d\n", c->cName.first.c_str(), c->cName.second);
 		return cout;
 	}
 };

@@ -1,10 +1,13 @@
 #!/bin/sh
 SERVER='./server'
 CLIENT='./client'
+LOGS='./logs'
 
-./CLIENT
-
+killall SERVER
+killall CLIENT
 for ((i = 1; i < 10; i++));
 do
-	./SERVER $i 
+	./SERVER $i $1 > LOGS/server_log$i &
 done
+./client $1 > LOGS/client_log
+killall SERVER

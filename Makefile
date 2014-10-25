@@ -28,4 +28,4 @@ readline.o: ../unpv13e/threads/readline.c
 	gcc ${CFLAGS} -c ../unpv13e/threads/readline.c
 
 clean:
-	rm client.o server.o server client readline.o
+	rm client.o server.o server client readline.o *~
