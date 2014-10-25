@@ -35,10 +35,6 @@ struct ARGS //struct of args, used to pass arguments the new thread
 
 int main(int argc, char **argv)
 {
-    FLAGS_logtostderr = 1;
-    /*FLAGS_logtostderr = 0;
-     FLAGS_log_dir = ./adfafsf/asdfasdff.txt*/
-    google::InitGoogleLogging(argv[0]);
 	ifstream fin;
 	fin.open(argv[1]);
 	string input_str;

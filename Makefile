@@ -2,11 +2,10 @@ CC = g++
 
 LIBS = -lresolv -lpthread\
 		../unpv13e/libunp.a\
-		$(shell pkg-config --libs libglog)
 
 FLAGS = -g -w -O2 
 
-CFLAGS = ${FLAGS} -I../unpv13e/lib $(shell pkg-config --cflags libglog)
+CFLAGS = ${FLAGS} -I../unpv13e/lib 
 
 all: client server 
 

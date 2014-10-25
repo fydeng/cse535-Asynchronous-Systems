@@ -38,10 +38,6 @@ static void sig_term_handle(int signo) //handle the signal of SIGTERM
 
 int main(int argc, char **argv)
 {
-    //FLAGS_logtostderr = 1;
-    //FLAGS_logtostderr = 0;
-    //FLAGS_log_dir = "./logs";
-    //google::InitGoogleLogging(argv[1]);
     struct sockaddr_in srvaddr, cliaddr;
     int sockfd_tcp, sockfd_udp, connfd, maxfd;
 	ifstream fin;

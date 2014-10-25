@@ -9,7 +9,6 @@
 #include "unp.h"
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
-#include <glog/logging.h>
 
 using namespace std;
 #ifndef _INC_H__
