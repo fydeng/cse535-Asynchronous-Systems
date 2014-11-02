@@ -1,7 +1,7 @@
 async-system
 ============
 
-Implemented chain replication of asynchronous system in Python
+Implemented chain replication of asynchronous system in DistAlgo(extension of Python)
 
 ============ INSTRUCTIONS ============
 
