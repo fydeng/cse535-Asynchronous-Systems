@@ -130,17 +130,17 @@ class Master(process):
 		#time.sleep(10)
 		print("SERVER DICTIONARY STORED IN MASTER",self.srvDict)
 		print("CLIENT DICTIONARY STORED IN MASTER",self.cliDict)
-		print(self.srvDict[1])
-		for i, item in enumerate(self.srvDict[1]):
-			self.srvDict[1].remove(item)
-			flush_srvDict(1)
-			print("After removal", self.srvDict[1])
+		#print(self.srvDict[1])
+		#for i, item in enumerate(self.srvDict[1]):
+		#	self.srvDict[1].remove(item)
+		#	flush_srvDict(1)
+		#	print("After removal", self.srvDict[1])
 
-		#while(True):
-		#	if(await(False)):
-		#		pass
-		#	elif(timeout(5)):
-		#		checkSrv(self.timesheet)
+		while(True):
+			if(await(False)):
+				pass
+			elif(timeout(5)):
+				checkSrv(self.timesheet)
 	
 
 class Server(process):
