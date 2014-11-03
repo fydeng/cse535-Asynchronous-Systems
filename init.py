@@ -36,8 +36,9 @@ class Reply(object):
 
 class Ping(object):
 
-    def __init__(self, serverIP):
+    def __init__(self, serverIP, bankName):
         self.serverIP = serverIP
+        self.bankName = bankName
 
     def __str__(self):
         return ('Ping from %s' % self.serverIP)

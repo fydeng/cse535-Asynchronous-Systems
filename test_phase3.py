@@ -1,13 +1,12 @@
 import re
 import time
 import sys
+import collections
 from init import *
 import random
 
-head_srvs = {}
-tail_srvs = {}
-srvDic = {}
-cliDic = defaultdict(list)
+srvDic = collections.defaultdict(list)
+cliDic = collections.defaultdict(list)
 
 
 def parse_config(input_str):
@@ -87,34 +86,55 @@ class Master(process):
 	def receive(msg=("PING",ping), from_=src_id):
 		time_recv = logical_clock()
 		print("Received PING from: ",ping.serverIP)
-		self.timesheet.update({ping.serverIP:time_recv})
+		self.timesheet.update({(ping.serverIP,ping.bankName):time_recv})
+
+
+	def infoCli(bankName, type, failedSrv):
+		for cli in cliDic[bankName]:
+			if type == "head":
+				send(("newHead",failedSrv),to=cli)
+			elif type == "tail":
+				send(("newTail",failedSrv),to=cli)
+			else:
+				pass
+
+	def updateSrvInfo(failedSrv):
+		port = failedSrv[0]
+		bankName = failedSrv[1]
+
+		for bank in srvDic.keys():
+			if bank == bankName:
+				for i,item in enumerate(srvDic[bank]):	#each server element in srvDic according to bankName
+					if port == item[3]:		#find the failed server in srvDic
+						if item[1] == None:
+							print("helloworld")
+							nextItem = srvDic[bank][i+1]
+							infoCli(bankName,"head",item[3])
+							srvDic[bank].remove(item)
+							nextItem[1] = None	#set the new head 
+							print("SETTING NEW HEAD........\n")
+							print("Server ",port,"has failed.Setting new head of next server ",nextItem[3])
+							print("The prev of the next server is: ",nextItem[1])
+						elif item[2] == None:
+							prevItem = srvDic[bank][i-1]
+							infoCli(bankName,"tail",item[3])
+							srvDic[bank].remove(item)
+							prevItem[2] = None # set new tail
+						else:		#deal with internal server failures
+							pass
 
 
 	def checkSrv(timesheet):
 		time_chec = logical_clock()
 		failedSrv =[]
-		for port in timesheet.keys():
-			if time_chec - timesheet.get(port)>5:
-				print("Server ",port," has failed!")
-				failedSrv.append(port)
+		for key in timesheet.keys():
+			if time_chec - timesheet.get(key)>5:
+				print("Server ",key[0]," has failed!")
+				failedSrv.append(key)
 		for srv in failedSrv:
-			del timesheet[srv]		
-		return failedSrv
+			del timesheet[srv]
+			updateSrvInfo(srv)
 
-	#This function is used to send new heads and tails to clients
-	def updateToCli(srvs):
-		for srv in srvs:
-			srvInfo = srvDic[srv]
-			bankName = srvInfo[0]
-			prev = srvInfo[2]
-			next = srvIndo[3]
-			if prev == None:
-				newHead = next
-				send((),to=)
-			elif next ==None:
-				newTail = prev
-			else:
-				pass
 		
 	def main():
 		output('Master  '+ str(self.id) +'  has started.')
@@ -122,10 +142,8 @@ class Master(process):
 			if(await(False)):
 				pass
 			elif(timeout(5)):
-				failedSrv = checkSrv(self.timesheet)
-				updateToCli(failedSrv)
-				updateSrvDic(failedSrv)
-
+				checkSrv(self.timesheet)
+	
 
 class Server(process):
 	def setup(bankName, serverIP, startup_delay, life_time, prev, next, master):
@@ -224,7 +242,7 @@ class Server(process):
 
 	def main():
 		output('Server: Bank Name is: '+ str(self.bankName) + '  Server IP is: '+ str(self.serverIP) + '  Life time is: ' + str(self.life_time) + '  Previous server is: ' + str(self.prev) + '  Next server is: ' + str(self.next))
-		ping = Ping(self.serverIP)
+		ping = Ping(self.serverIP,self.bankName)
 		while(True):
 			if(await(False)):
 				pass
@@ -298,9 +316,17 @@ class Client(process):
 		for i in range(num_req):
 			req = reqList[i]
 			if req[1].reqtype == ReqType.Query:
-				dst = tail_srvs.get(self.bankName)
+				for srv in srvDic.get(self.bankName):
+					if srv[2] == None:		#if next is None, then the server is tail
+						dst = srv[0]
+					else:
+						pass
 			else:
-				dst = head_srvs.get(self.bankName)
+				for srv in srvDic.get(self.bankName):
+					if srv[1] == None:		#if prev is None, then the server is head
+						dst = srv[0]
+					else:
+						pass
 			output('Request ' + str(req[1].reqID) + ' has been sent out,' + 'sequence No. is: '+ str(req[0]))
 			time.sleep(1)
 			clk = logical_clock()
@@ -387,12 +413,10 @@ def main():
 			next = None
 		else:
 			next = servers[i+1]
-		if prev == None:
-			head_srvs.update({bankName_srv[i]:servers[i]})
-		elif next == None:
-			tail_srvs.update({bankName_srv[i]:servers[i]})
 		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master))
-		srvDic.update({serverIP[i]:[bankName_srv[i], servers[i], prev, next]})
+		srvDic[bankName_srv[i]].append([servers[i],prev,next,serverIP[i]])
+	print(srvDic)
+
 	start(servers)
 	#######################################################################
 
@@ -420,6 +444,7 @@ def main():
 	for i in range(num_cli):
 		setup(clients[i],(bankName_cli[i],account_no[i],clientIP[i],input_req,ifRetrans,timeout,nRetrans,ifRandom,master))
 		cliDic[bankName_cli[i]].append(clients[i])
+	print(cliDic)
 
 	start(clients)
 	#######################################################################
