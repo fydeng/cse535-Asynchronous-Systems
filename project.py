@@ -17,8 +17,6 @@ import sys
 import collections
 from init import *
 import random
-srvDic = collections.defaultdict(list)
-cliDic = collections.defaultdict(list)
 
 def parse_config(input_str):
     input_str = input_str.replace(' ', '')
@@ -43,7 +41,7 @@ def parse_server(input_str):
     input_str = input_str.strip()
     input_str = input_str.replace(' ', '')
     str = input_str.split(',')
-    bankName = str[0]
+    bankName = int(str[0])
     serverIP = str[1]
     startup_delay = str[2]
     life_time = str[3]
@@ -96,35 +94,25 @@ class Master(da.DistProcess):
         super().__init__(parent, initq, channel, props)
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_MasterReceivedEvent_0', PatternExpr_0, sources=[PatternExpr_1], destinations=None, timestamps=None, record_history=None, handlers=[self._Master_handler_0])])
 
-    def setup(self):
+    def setup(self, srvDic, cliDic):
+        self.srvDic = srvDic
+        self.cliDic = cliDic
         self.timesheet = {}
+        self.srvDict = self.srvDic
+        self.cliDict = self.cliDic
 
     def main(self):
         self.output((('Master  ' + str(self.id)) + '  has started.'))
-        time.sleep(10)
-        print('BBBBBBBBBBBBBBBBBBBB', srvDic)
-        while True:
-            _st_label_125 = 0
-            self._timer_start()
-            while (_st_label_125 == 0):
-                _st_label_125 += 1
-                if False:
-                    pass
-                    _st_label_125 += 1
-                elif self._timer_expired:
-                    self.checkSrv(self.timesheet)
-                    _st_label_125 += 1
-                else:
-                    super()._label('_st_label_125', block=True, timeout=5)
-                    _st_label_125 -= 1
-            else:
-                if (_st_label_125 != 2):
-                    continue
-            if (_st_label_125 != 2):
-                break
+        print('SERVER DICTIONARY STORED IN MASTER', self.srvDict)
+        print('CLIENT DICTIONARY STORED IN MASTER', self.cliDict)
+        print(self.srvDict[1])
+        for (i, item) in enumerate(self.srvDict[1]):
+            self.srvDict[1].remove(item)
+            self.flush_srvDict(1)
+            print('After removal', self.srvDict[1])
 
     def infoCli(self, bankName, type, failedSrv):
-        for cli in cliDic[bankName]:
+        for cli in self.cliDic[bankName]:
             if (type == 'head'):
                 self._send(('newHead', failedSrv), cli)
             elif (type == 'tail'):
@@ -132,32 +120,22 @@ class Master(da.DistProcess):
             else:
                 pass
 
-    def updateSrvInfo(self, failedSrv):
-        port = failedSrv[0]
-        bankName = failedSrv[1]
-        print('HHHHHHHHHHHHHHHH', bankName, srvDic.get(1))
-        for bank in srvDic.keys():
-            if (bank == bankName):
-                print('find the failed bankName')
-                for (i, item) in enumerate(srvDic[bank]):
-                    if (port == item[3]):
-                        print('find the failed server in srvDic')
-                        if (item[1] == None):
-                            print('the failed server is head')
-                            nextItem = srvDic[bank][(i + 1)]
-                            self.infoCli(bankName, 'head', item[3])
-                            srvDic[bank].remove(item)
-                            nextItem[1] = None
-                            print('SETTING NEW HEAD........\n')
-                            print('Server ', port, 'has failed.Setting new head of next server ', nextItem[3])
-                            print('The prev of the next server is: ', nextItem[1])
-                        elif (item[2] == None):
-                            prevItem = srvDic[bank][(i - 1)]
-                            self.infoCli(bankName, 'tail', item[3])
-                            srvDic[bank].remove(item)
-                            prevItem[2] = None
-                        else:
-                            pass
+    def flush_srvDict(self, bankname):
+        for (i, item) in enumerate(self.srvDict[bankname]):
+            if (len(self.srvDict[bankname]) == 1):
+                item[1] = None
+                item[2] = None
+                return
+            if (i == 0):
+                item[1] = None
+                item[2] = self.srvDict[bankname][(i + 1)][0]
+                continue
+            elif (i == (len(self.srvDict[bankname]) - 1)):
+                item[2] = None
+                item[1] = self.srvDict[bankname][(i - 1)][0]
+            else:
+                item[1] = self.srvDict[bankname][(i - 1)][0]
+                item[2] = self.srvDict[bankname][(i + 1)][0]
 
     def checkSrv(self, timesheet):
         time_chec = self.logical_clock()
@@ -168,7 +146,6 @@ class Master(da.DistProcess):
                 failedSrv.append(key)
         for srv in failedSrv:
             del timesheet[srv]
-            self.updateSrvInfo(srv)
 
     def _Master_handler_0(self, ping, src_id):
         time_recv = self.logical_clock()
@@ -184,12 +161,12 @@ class Server(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2])])
 
     def setup(self, bankName, serverIP, startup_delay, life_time, prev, next, master):
-        self.master = master
-        self.serverIP = serverIP
-        self.bankName = bankName
         self.prev = prev
-        self.next = next
+        self.master = master
         self.startup_delay = startup_delay
+        self.bankName = bankName
+        self.serverIP = serverIP
+        self.next = next
         self.life_time = life_time
         self.bankName = self.bankName
         self.serverIP = self.serverIP
@@ -206,23 +183,23 @@ class Server(da.DistProcess):
         self.output(((((((((('Server: Bank Name is: ' + str(self.bankName)) + '  Server IP is: ') + str(self.serverIP)) + '  Life time is: ') + str(self.life_time)) + '  Previous server is: ') + str(self.prev)) + '  Next server is: ') + str(self.next)))
         ping = Ping(self.serverIP, self.bankName)
         while True:
-            _st_label_210 = 0
+            _st_label_200 = 0
             self._timer_start()
-            while (_st_label_210 == 0):
-                _st_label_210 += 1
+            while (_st_label_200 == 0):
+                _st_label_200 += 1
                 if False:
                     pass
-                    _st_label_210 += 1
+                    _st_label_200 += 1
                 elif self._timer_expired:
                     self._send(('PING', ping), self.master)
-                    _st_label_210 += 1
+                    _st_label_200 += 1
                 else:
-                    super()._label('_st_label_210', block=True, timeout=1)
-                    _st_label_210 -= 1
+                    super()._label('_st_label_200', block=True, timeout=1)
+                    _st_label_200 -= 1
             else:
-                if (_st_label_210 != 2):
+                if (_st_label_200 != 2):
                     continue
-            if (_st_label_210 != 2):
+            if (_st_label_200 != 2):
                 break
 
     def proc_balance(self, req):
@@ -298,7 +275,7 @@ class Server(da.DistProcess):
     _Server_handler_1._labels = None
     _Server_handler_1._notlabels = None
 
-    def _Server_handler_2(self, ack, prev):
+    def _Server_handler_2(self, prev, ack):
         self.output((str(ack) + ' has been received!'))
         self.update_procTrans(ack.reqID)
     _Server_handler_2._labels = None
@@ -311,16 +288,17 @@ class Client(da.DistProcess):
         self._ClientReceivedEvent_1 = []
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_3]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=[PatternExpr_10], record_history=True, handlers=[])])
 
-    def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, master):
-        self.nRetrans = nRetrans
-        self.master = master
-        self.bankName = bankName
-        self.clientIP = clientIP
-        self.input_req = input_req
+    def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, master, srvDic):
         self.ifRandom = ifRandom
-        self.ifRetrans = ifRetrans
-        self.timeout = timeout
         self.account_no = account_no
+        self.ifRetrans = ifRetrans
+        self.master = master
+        self.timeout = timeout
+        self.nRetrans = nRetrans
+        self.input_req = input_req
+        self.bankName = bankName
+        self.srvDic = srvDic
+        self.clientIP = clientIP
         self.bankName = self.bankName
         self.account_no = self.account_no
         self.clientIP = self.clientIP
@@ -330,60 +308,61 @@ class Client(da.DistProcess):
         self.nRetrans = self.nRetrans
         self.ifRandom = self.ifRandom
         self.master = self.master
+        self.srvDict = self.srvDic
 
     def main(self):
-        print('AAAAAAAAAAAAAAA', srvDic)
+        print('SERVER DICTIONARY STORED IN CLIENTS', self.srvDict)
         self.output(((('Client: Bank Name is: ' + str(self.bankName)) + '  Account number is: ') + str(self.account_no)))
         reqList = self.init_req()
         num_req = len(reqList)
         for i in range(num_req):
             req = reqList[i]
             if (req[1].reqtype == ReqType.Query):
-                for srv in srvDic.get(self.bankName):
+                for srv in self.srvDic.get(self.bankName):
                     if (srv[2] == None):
                         dst = srv[0]
-                        print('TTTTTTTTTTTTTTTTTTTTTTTT the dst is', dst)
+                        print('DESTINATION the dst is', dst)
                     else:
                         pass
             else:
-                for srv in srvDic.get(self.bankName):
+                for srv in self.srvDic.get(self.bankName):
                     if (srv[1] == None):
                         dst = srv[0]
-                        print('TTTTTTTTTTTTTTTTTTTTTTTT the dst is', dst)
+                        print('DESTINATION the dst is', dst)
                     else:
                         pass
             self.output((((('Request ' + str(req[1].reqID)) + ' has been sent out,') + 'sequence No. is: ') + str(req[0])))
             time.sleep(1)
             clk = self.logical_clock()
             self._send(('REQ', req), dst)
-            reply = rclk = dst = None
+            dst = rclk = reply = None
 
             def ExistentialOpExpr_0():
-                nonlocal reply, rclk, dst
+                nonlocal dst, rclk, reply
                 for (_, (rclk, _, dst), (_ConstantPattern28_, reply)) in self._ClientReceivedEvent_1:
                     if (_ConstantPattern28_ == 'REPLY'):
                         if (rclk > clk):
                             return True
                 return False
-            _st_label_287 = 0
+            _st_label_278 = 0
             self._timer_start()
-            while (_st_label_287 == 0):
-                _st_label_287 += 1
+            while (_st_label_278 == 0):
+                _st_label_278 += 1
                 if ExistentialOpExpr_0():
                     continue
-                    _st_label_287 += 1
+                    _st_label_278 += 1
                 elif self._timer_expired:
                     self.output('waiting for reply TIMEDOUT!')
                     self.output(('Resending the request:' + str(req[1].reqID)))
                     i = (i - 1)
-                    _st_label_287 += 1
+                    _st_label_278 += 1
                 else:
-                    super()._label('_st_label_287', block=True, timeout=self.timeout)
-                    _st_label_287 -= 1
+                    super()._label('_st_label_278', block=True, timeout=self.timeout)
+                    _st_label_278 -= 1
             else:
-                if (_st_label_287 != 2):
+                if (_st_label_278 != 2):
                     continue
-            if (_st_label_287 != 2):
+            if (_st_label_278 != 2):
                 break
 
     def init_req(self):
@@ -429,12 +408,14 @@ class Client(da.DistProcess):
                     pass
         return reqList
 
-    def _Client_handler_3(self, src_id, reply):
+    def _Client_handler_3(self, reply, src_id):
         self.output(('Reply received from server: ' + str(reply)))
     _Client_handler_3._labels = None
     _Client_handler_3._notlabels = None
 
 def main():
+    srvDic = collections.defaultdict(list)
+    cliDic = collections.defaultdict(list)
     da.api.config(channel='fifo', handling='all', clock='Lamport')
     flag_srv = False
     flag_cli = False
@@ -473,7 +454,6 @@ def main():
             input_req.append(line)
         else:
             pass
-    master = da.api.new(Master)
     srvList = []
     for string in input_srv:
         srv = parse_server(string)
@@ -499,11 +479,6 @@ def main():
         else:
             next = servers[(i + 1)]
         srvDic[bankName_srv[i]].append([servers[i], prev, next, serverIP[i]])
-        da.api.setup(servers[i], (bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master))
-    print(srvDic)
-    da.api.start(servers)
-    da.api.setup(master, ())
-    da.api.start(master)
     cliList = []
     for string in input_cli:
         cli = parse_client(string)
@@ -522,7 +497,20 @@ def main():
         account_no.append(cliList[i][1])
         clientIP.append(cliList[i][2])
     for i in range(num_cli):
-        da.api.setup(clients[i], (bankName_cli[i], account_no[i], clientIP[i], input_req, ifRetrans, timeout, nRetrans, ifRandom, master))
         cliDic[bankName_cli[i]].append(clients[i])
     print(cliDic)
-    da.api.start(clients)
+    master = da.api.new(Master)
+    da.api.setup(master, (srvDic, cliDic))
+    da.api.start(master)
+    for i in range(num_srv):
+        if ((i == 0) or (not (bankName_srv[i] == bankName_srv[(i - 1)]))):
+            prev = None
+        else:
+            prev = servers[(i - 1)]
+        if ((i == (num_srv - 1)) or (not (bankName_srv[i] == bankName_srv[(i + 1)]))):
+            next = None
+        else:
+            next = servers[(i + 1)]
+        da.api.setup(servers[i], (bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master))
+    for i in range(num_cli):
+        da.api.setup(clients[i], (bankName_cli[i], account_no[i], clientIP[i], input_req, ifRetrans, timeout, nRetrans, ifRandom, master, srvDic))
