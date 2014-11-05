@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <list>
+#include <ctime>
 #include <setjmp.h>
 #include "unp.h"
 #include <boost/algorithm/string/classification.hpp>
@@ -21,6 +22,7 @@ const char *seperator = "-------------------------------------------------------
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
 enum Source  {server, client};
+enum Noti_Type {Fail, Extension, New_Next};
 
 void tokenizer(string input, vector<string>& vStr) //tokenizer to split the attributes in configuration file
 {
@@ -36,6 +38,7 @@ public:
     int bankname;
 	int account_num;
 	float amount;
+    bool no_reply;
     
     Request(){}
     Request (ReqType req_type, int bank_name, int client_no, int sequence, int account_no, float amt)
@@ -64,6 +67,28 @@ public:
         Parsereq(input_str);
     }
 
+    bool is_sync()
+    {
+        return no_reply;
+    }
+    
+    void Packetize(char *buf, bool sync)
+    {
+        string str = std::to_string(reqtype);
+        if (sync)
+        {
+            str.append(",");
+            str.append(reqID);
+            str.append(",");
+            str.append(std::to_string(account_num));
+            str.append(",");
+            str.append(std::to_string(amount));
+            str.append(",");
+            str.append("1");
+        }
+        strcpy(buf, str.c_str());
+    }
+    
     void Parsereq(string input_str) //parse the request and construct the request object
     {
         req_str = input_str;
@@ -105,6 +130,8 @@ public:
                 case 3:
                     amount = atof(input);
                     break;
+                case 4:
+                    no_reply = atoi(input);
                 default:
                     break;
             }
@@ -130,21 +157,8 @@ public:
             printf("Withdraw ");
         else if(req->reqtype == Transfer)
             printf("Transfer ");
-        //cout<<"Req Id: "<<req->reqID<<" Account number: "<<req->account_num<<" Amount: "<<req->amount<<endl;
         printf("Req ID: %s Account number: %d Amount: %f\n", req->reqID.c_str(),req->account_num,req->amount);
         return cout;
-        /*cout<<"Request type: ";
-        if(req->reqtype == Query)
-            cout<<"getBalance ";
-        else if(req->reqtype == Deposit)
-            cout<<"Deposit ";
-        else if(req->reqtype == Withdraw)
-            cout<<"Withdraw ";
-        else if(req->reqtype == Transfer)
-            cout<<"Transfer "<<endl;
-        cout<<"Req Id: "<<req->reqID<<" Account number: "<<req->account_num<<" Amount: "<<req->amount<<endl;
-        return cout;*/
-
     }
 };
 
@@ -250,5 +264,59 @@ public:
 		return cout;
     }
 
+};
+
+class Push_Notification
+{
+public:
+    Noti_Type noti_type;
+    int bankname;
+    int port_num;
+    
+    Push_Notification(char *buf)
+    {
+        Depacketize(buf);
+    }
+    
+    void Depacketize(char *buf) //depacketize the push notification message
+    {
+        string input_str = buf;
+        char *input;
+        vector<string> vStr;
+        tokenizer(input_str,vStr);
+        int index = 0;
+        for(vector<string>::iterator it = vStr.begin(); it != vStr.end(); ++it, ++index)
+        {
+            input = const_cast<char *>((*it).c_str());
+            switch(index)
+            {
+                case 0:
+                    noti_type = (enum Noti_Type)(atoi(input));
+                    break;
+                case 1:
+                    bankname = atoi(input);
+                    break;
+                case 2:
+                    port_num = atoi(input);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    
+    friend ostream & operator << (ostream & cout, Push_Notification *push)
+    {
+        if (push->noti_type == Fail)
+            printf("Failed server 127.0.0.1:%d removed\n%s\n", push->port_num, seperator);
+        else if(push->noti_type == Extension)
+            printf("Chain extension, new server(tail) 127.0.0.1:%d added\n%s\n", push->port_num, seperator);
+        else
+            if (push->port_num == -1)
+                printf("Tail server failed now I'm the new Tail\n");
+            else
+                printf("Failed next server removed, new next server 127.0.0.1:%d updated, sent Transaction updated to the next server\n%s\n", push->port_num, seperator);
+        return cout;
+    }
 };
 #endif

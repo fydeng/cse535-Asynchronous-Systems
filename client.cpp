@@ -8,7 +8,6 @@ extern "C"
 
 std::map<int, std::vector<Client*> >cChain; //client map
 std::map<int, std::list<Server*> > sChain; //server map
-static sigjmp_buf jmpbuf;
 
 void Addserver(Server *s);
 void Addclient(Client *c);
@@ -16,20 +15,23 @@ void Addrequest(Request *req);
 static Client * SearchClient(Request *);
 static Server * SearchServer(Request *);
 static void *SendReq(void *);
-void displaychain();
+int readable_timeo(int, int);
+void displaychain(bool, bool);
 void GenerateRanReq();
-static void sig_alrm(int signo) //sigalrm handler function, long jmp to sigsetjmp
-{
-    siglongjmp(jmpbuf, 1);
-}
+bool proc_push_notification(char *buf);
+void remove_server(Push_Notification *n);
+void chain_extension(Push_Notification *n);
+void cal_next(int);
 
 struct ARGS //struct of args, used to pass arguments the new thread
 {
     Client *client;
+    Master *master;
     
-    ARGS(Client *cli)
+    ARGS(Client *cli, Master *ms)
     {
         client = cli;
+        master = ms;
     }
 };
 
@@ -86,7 +88,8 @@ int main(int argc, char **argv)
         {
             Server *s = new Server();
             s->InitServ(input_str);
-            Addserver(s);
+            if (!s->Getdelay())
+                Addserver(s);
         }
 		else if (flag_config)
 		{
@@ -115,7 +118,7 @@ int main(int argc, char **argv)
 		}
 	}
 //	cout<<ms;
-    displaychain();
+    displaychain(true, true);
     if (random_req)
         GenerateRanReq();
     cout<<"Number of client is "<<client_num<<endl;
@@ -127,7 +130,7 @@ int main(int argc, char **argv)
         for(std::vector<Client*>::iterator it1 = it->second.begin(); it1!=it->second.end(); ++it1, ++index)
         {
             sleep(1);
-            ARGS args((*it1));
+            ARGS args((*it1),ms);
             Pthread_create(&tid[index], NULL, &SendReq, (void *)&args);
             Pthread_join(tid[index], NULL);
         }
@@ -143,6 +146,7 @@ int main(int argc, char **argv)
 static void *SendReq(void *arg) //each client launches this send request function
 {
     Client *c = ((struct ARGS *)arg)->client;
+    Master *ms = ((struct ARGS *)arg)->master;
     cout<<c<<endl;
     c->Setsocket();
     int sockfd = c->Getsocket();
@@ -154,12 +158,16 @@ static void *SendReq(void *arg) //each client launches this send request functio
         sleep(1);
     loop:        cout<<(*it)<<endl;
         char buf[MAXLINE];
-        struct sockaddr_in srvaddr = SearchServer((*it))->Getsockaddr();
+        Server *s = SearchServer((*it));
+        if (s == NULL)
+        {
+            printf("There is no server in the chain, client exit\n");
+            break;
+        }
+        struct sockaddr_in srvaddr = s->Getsockaddr();
         c->Packetize((*it), buf);
-        Signal(SIGALRM, sig_alrm);
         Sendto(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, len);
-        alarm(retrans_inteval);
-        if (sigsetjmp(jmpbuf, 1)!=0)
+    receiving:        if (readable_timeo(sockfd, retrans_inteval)==0)
         {
             if (count_retrans == retrans_time)
             {
@@ -173,14 +181,39 @@ static void *SendReq(void *arg) //each client launches this send request functio
                 goto loop;
             }
         }
-        if ((recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
-            cout<<"error recvfrom"<<endl;
         else
         {
-            alarm(0);
-            Reply *reply = new Reply();
-            reply->Depacketize(buf);
-            cout<<reply<<endl;
+            if ((recvfrom(sockfd, buf, MAXLINE, 0, (SA*)&srvaddr, &len) < 0))
+                cout<<"error recvfrom"<<endl;
+            else
+            {
+                int port = ntohs(srvaddr.sin_port);
+                if (port == ms->GetmsName().second)
+                {
+                    printf("%s\npush notification received from master\n", seperator);
+                    bool result;
+                    result = proc_push_notification(buf);
+                    displaychain(true, false);
+                    if (result) //there is server removed
+                    {
+                        sleep(2);
+                        count_retrans = 0;
+                        goto loop;
+                    }
+                    else
+                    {
+                        sleep(10);
+                        goto receiving;
+                    }
+                }
+                else
+                {
+                    Reply *reply = new Reply();
+                    reply->Depacketize(buf);
+                    cout<<reply<<endl;
+                }
+        
+            }
         }
     }
     close(sockfd);
@@ -201,6 +234,8 @@ static Client * SearchClient(Request *req) //search client according to specific
 
 static Server * SearchServer(Request *req) //search server according to specific request
 {
+    if (sChain.empty())
+        return NULL;
     std::map<int,std::list<Server*> >::iterator it;
     it = sChain.find(req->bankname);
     if (req->reqtype == Query)
@@ -275,36 +310,115 @@ void GenerateRanReq() //generate request for clients
     }
 }
 
-void displaychain() //display server map and client map
+bool proc_push_notification(char *buf)
+{
+    Push_Notification *noti = new Push_Notification(buf);
+    cout<<noti<<endl;
+    if (noti->noti_type == Fail)
+    {
+        remove_server(noti);
+        return true;
+    }
+    else
+    {
+        chain_extension(noti);
+        return false;
+    }
+}
+
+void chain_extension(Push_Notification *n)
+{
+    pair<int,int> srv = make_pair(n->bankname, n->port_num);
+    Server *s = new Server(srv);
+    Addserver(s);
+    cal_next(n->bankname);
+}
+
+void remove_server(Push_Notification *n)
+{
+    int bankname = n->bankname;
+    std::map<int, std::list<Server*> >::iterator it;
+    it=sChain.find(bankname);
+    for(list<Server *>::iterator it1 = (it->second).begin(); it1 != (it->second).end(); ++it1)
+    {
+        if (((*it1)->GetserverName().second == n->port_num))
+        {
+            it1 = it->second.erase(it1);
+            return;
+        }
+    }
+}
+
+void cal_next(int bankname)
+{
+    map<int, list<Server*> >::iterator it1 = sChain.find(bankname);
+    int count = 0;
+    for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
+    {
+        list<Server *>::iterator cur = it2;
+        if(count == it1->second.size() - 1)
+        {
+            (*cur)->Setnext(NULL);
+            continue;
+        }
+        else
+        {
+            (*cur)->Setnext(*(++it2));
+            
+        }
+        it2 = cur;
+    }
+}
+
+void displaychain(bool display_server, bool display_client) //display server map and client map
 {
     int chainnum = 1;
-	cout<<"----------------Display Server Chain---------------------"<<endl;
-    for(map<int, list<Server*> >::iterator it1 = sChain.begin(); it1 != sChain.end(); ++it1, ++chainnum)
+    if (display_server)
     {
-        cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
-        int count = 0;
-        for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
+        cout<<"----------------Display Server Chain---------------------"<<endl;
+        for(map<int, list<Server*> >::iterator it1 = sChain.begin(); it1 != sChain.end(); ++it1, ++chainnum)
         {
-            if(it2 == it1->second.begin())
+            cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
+            int count = 0;
+            for(list<Server *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
             {
-                cout<<"Head"<<endl;
+                if(it2 == it1->second.begin())
+                {
+                    cout<<"Head"<<endl;
+                }
+                if(count == it1->second.size() - 1)
+                {
+                    cout<<"Tail"<<endl;
+                }
+                cout<<(*it2)<<endl;
             }
-            else if(count == it1->second.size() - 1)
-            {
-                cout<<"Tail"<<endl;
-            }
-            cout<<(*it2)<<endl;
         }
     }
-    chainnum = 1;
-	cout<<"----------------Display Client Chain---------------------"<<endl;
-    for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1, ++chainnum)
+    
+    if (display_client)
     {
-        cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
-        int count = 0;
-        for(vector<Client *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
+        chainnum = 1;
+        cout<<"----------------Display Client Chain---------------------"<<endl;
+        for(map<int, vector<Client*> >::iterator it1 = cChain.begin(); it1 != cChain.end(); ++it1, ++chainnum)
         {
-            cout<<(*it2)<<endl;
+            cout<<"-----------------Chain "<<chainnum<<"---------------------"<<endl;
+            int count = 0;
+            for(vector<Client *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2,++count)
+            {
+                cout<<(*it2)<<endl;
+            }
         }
     }
+}
+
+int readable_timeo(int fd, int sec)
+{
+    fd_set rset;
+    struct timeval tv;
+    FD_ZERO(&rset);
+    FD_SET(fd, &rset);
+    tv.tv_sec = sec;
+    tv.tv_usec = 0;
+    
+    return(select(fd + 1, &rset, NULL, NULL, &tv));
 }

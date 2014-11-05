@@ -7,7 +7,13 @@ FLAGS = -g -w -O2
 
 CFLAGS = ${FLAGS} -I../unpv13e/lib 
 
-all: client server 
+all: client server master
+
+master: master.o readline.o
+	${CC} ${FLAGS} -o master master.o readline.o ${LIBS}
+
+master.o: master.cpp
+	${CC} ${CFLAGS} -c master.cpp
 
 server: server.o readline.o
 	${CC} ${FLAGS} -o server server.o readline.o ${LIBS}
@@ -27,4 +33,4 @@ readline.o: ../unpv13e/threads/readline.c
 	gcc ${CFLAGS} -c ../unpv13e/threads/readline.c
 
 clean:
-	rm client.o server.o server client readline.o *~
+	rm client.o server.o master.o master server client readline.o *~

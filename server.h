@@ -22,7 +22,20 @@ private:
 
 public:
 	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),next(NULL),life_time(0){}
-	void SetbankName(char *s)
+    Server(pair<int, int> srv)
+    {
+        bankName = srv.first;
+        ip_addr = "127.0.0.1";
+        Setportnum(srv.second);
+        next = NULL;
+        startup_delay = 0;
+        life_time = 0;
+    }
+	void SetbankName(int bn)
+    {
+        bankName = bn;
+    }
+    void SetbankName(char *s)
 	{
 		bankName = atoi(s);
 	}
@@ -30,10 +43,10 @@ public:
 	{
 		ip_addr = s;
 	}
-	void Setportnum(char *s)
-	{
-		port_num = atoi(s);
-		sName = make_pair (ip_addr, port_num);
+    void Setportnum(int port)
+    {
+        port_num = port;
+        sName = make_pair (ip_addr, port_num);
         bzero(&srvaddr, sizeof(srvaddr));
         srvaddr.sin_family = AF_INET;
         Inet_pton(AF_INET, sName.first.c_str(), &srvaddr.sin_addr);
@@ -64,11 +77,29 @@ public:
 	{
 		life_time = atoi(s);
 	}
-	void Setnext(string input_str)
-	{
-        next = new Server();
-        next->InitServ(input_str);
-	}
+    void Updatenext(int port_num)
+    {
+        if (port_num == -1)
+        {
+            next = NULL;
+            return;
+        }
+        if (next)
+        {
+            next->Setportnum(port_num);
+        }
+        else
+        {
+            next = new Server();
+            next->SetbankName(bankName);
+            next->Setipaddr("127.0.0.1");
+            next->Setportnum(port_num);
+        }
+    }
+    void Setnext(Server *s)
+    {
+        next = s;
+    }
     Server * Getnext()
     {
         return next;
@@ -97,6 +128,14 @@ public:
     {
         return life_time;
     }
+    int Getdelay()
+    {
+        return startup_delay;
+    }
+    map <string, Request *> & GetprocTrans()
+    {
+        return procTrans;
+    }
 	bool isTail()
 	{
 		if (next == NULL)
@@ -122,7 +161,7 @@ public:
 					Setipaddr(input);
 					break;
 				case 2:
-					Setportnum(input);
+					Setportnum(atoi(input));
 					break;
 				case 3:
 					Setdelay(input);
@@ -158,6 +197,7 @@ public:
             printf("Query do not add to sent transaction\n%s\n", seperator);
             return;
         }
+        
         sentTrans.push_back(req);
         printf("Request %s has been added to sent transaction\n%s\n", req->reqID.c_str(), seperator);
     }
@@ -169,12 +209,16 @@ public:
             printf("Query do not add to processed transaction\n%s\n", seperator);
             return;
         }
-        int result = CheckHist(req);
+        int count_clear = 0;
         for(list<Request *>::iterator it = sentTrans.begin(); it != sentTrans.end(); ++it)
         {
             if (((*it)->reqID == (req->reqID)) && ((*it)->reqtype == (req->reqtype)))
             {
                 sentTrans.erase(it);
+                if (count_clear != 0)
+                    printf("Using ACK to clear old Request %s\n", (*it)->reqID.c_str());
+                count_clear++;
+                int result = CheckHist(req);
                 if (!result)
                 {
                     procTrans.insert(make_pair(req->reqID, req));
@@ -248,6 +292,15 @@ public:
                 reply->balance = new_bal;
             }
         }
+    }
+    
+    void packetize(char *msg)
+    {
+        string str = "";
+        str = std::to_string(bankName);
+        str.append(":");
+        str.append(std::to_string(sName.second));
+        strcpy(msg, str.c_str());
     }
     
     float Checkbal(int account_num) //check balance

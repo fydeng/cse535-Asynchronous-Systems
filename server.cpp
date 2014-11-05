@@ -11,22 +11,36 @@ struct ARGS //struct of arguments, used for passing arguments to thread
     Server *srv;
     char *buf;
     Request *req;
-    class Reply *reply;
     int connfd;
     
-    ARGS(Server *s, char *buffer, Request *request, Reply *rep, int conn_fd)
+    ARGS(Server *s, char *buffer, Request *request, int conn_fd)
     {
         srv = s;
         buf = buffer;
         req = request;
-        reply = rep;
         connfd = conn_fd;
     }
 };
 
+struct ARGS_PING
+{
+    Server *s;
+    Master *ms;
+    
+    ARGS_PING(Server *srv, Master *master)
+    {
+        s = srv;
+        ms = master;
+    }
+};
+
+static void *Sync_Hist(void *);
 static void *Sync(void *);
 static void ParseIpaddr(string input_str, struct sockaddr_in &cliaddr);
 static void *Reply(void *);
+static void *Ping(void *);
+static void *Proc_master_notification(void *);
+static void Sync_procTrans(Server *s);
 static void sig_int_handle(int signo) //handle the signal of SIGINT
 {
     siglongjmp(jmpbuf, 1);
@@ -92,13 +106,18 @@ int main(int argc, char **argv)
             str<<input_str[0];
             str>>next_bankname;
             if (next_bankname == s->GetbankName())
-                s->Setnext(input_str);
+            {
+                Server *next_srv = new Server();
+                next_srv->InitServ(input_str);
+                if (!next_srv->Getdelay())
+                    s->Setnext(next_srv);
+            }
             break;
         }
 	}
-	cout<<"----------------Configuration information of current server---------------"<<endl;
+    sleep(s->Getdelay());
+	cout<<"----------------Server starting---------------"<<endl;
 	cout<<s;
-	//cout<<ms;
     s->Setsocket();
     sockfd_tcp = s->Getsockfd_tcp();
     sockfd_udp = s->Getsockfd_udp();
@@ -107,6 +126,9 @@ int main(int argc, char **argv)
     FD_ZERO(&allset);
     FD_SET(sockfd_tcp, &allset);
     FD_SET(sockfd_udp, &allset);
+    pthread_t tid_ping;
+    ARGS_PING args_ping(s, ms);
+    Pthread_create(&tid_ping,NULL,&Ping,(void *)&args_ping);
     while(1)
     {
         Signal(SIGINT, sig_int_handle);
@@ -132,6 +154,15 @@ int main(int argc, char **argv)
 			}
 			else 
             {
+                pthread_t tid;
+                int port = ntohs(cliaddr.sin_port);
+                if (port == ms->GetmsName().second)
+                {
+                    printf("%s\npush notification received from master\n", seperator);
+                    ARGS args(s, buf, NULL, -1);
+                    Pthread_create(&tid,NULL,&Proc_master_notification,(void *)&args);
+                    continue;
+                }
                 msg_count++;
                 printf("No. %d message comes\n", msg_count);
                 if (msg_count > (s->Getlifetime()))
@@ -141,17 +172,12 @@ int main(int argc, char **argv)
                     exit(1);
                 }
                 printf("Request from client: %s\n",Sock_ntop((SA*)&cliaddr,len));
-				pthread_t tid;
-                void *status;
                 Request *req = new Request(buf);
-                class Reply *reply = new class Reply(req);
-				s->ProcReq(req, reply);
-                ARGS args(s, buf, req, reply, -1);
+                ARGS args(s, buf, req, -1);
                 if (s->isTail())
                     Pthread_create(&tid,NULL,&Reply,(void *)&args);
                 else
                     Pthread_create(&tid,NULL,&Sync,(void *)&args);
-                //Pthread_join(tid, &status);
 			}
         }
 		if (FD_ISSET(sockfd_tcp, &rset))
@@ -162,14 +188,6 @@ int main(int argc, char **argv)
         	}
         	else
         	{
-                msg_count++;
-                printf("No. %d message comes\n", msg_count);
-                if (msg_count > (s->Getlifetime()))
-                {
-                    printf("Life time expires, server exits\n");
-                    s->Closesockets();
-                    exit(1);
-                }
                 printf("Synchronization connection from previous server: %s\n",Sock_ntop((SA*)&srvaddr,len));
                 i = read(connfd, buf, MAXLINE);
                 if(i < 0)
@@ -179,21 +197,87 @@ int main(int argc, char **argv)
                 else
             	{
                     pthread_t tid;
-                    void *status;
                     Request *req = new Request(buf);
-                    class Reply *reply = new class Reply(req);
-                    s->ProcReq(req, reply);
-                    ARGS args(s, buf, req, reply, connfd);
+                    if (req->is_sync())
+                    {
+                        ARGS args(s, buf, req, -1);
+                        Pthread_create(&tid, NULL, &Sync_Hist, (void *)&args);
+                        continue;
+                    }
+                    msg_count++;
+                    printf("No. %d message comes\n", msg_count);
+                    if (msg_count > (s->Getlifetime()))
+                    {
+                        printf("Life time expires, server exits\n");
+                        s->Closesockets();
+                        exit(1);
+                    }
+                    ARGS args(s, buf, req, connfd);
                     if (s->isTail())
                         Pthread_create(&tid,NULL,&Reply,(void *)&args);
                     else
                         Pthread_create(&tid,NULL,&Sync,(void *)&args);
-                    //Pthread_join(tid, &status);
             	}
         	}
 		}
     }
     return -1;
+}
+
+static void *Proc_master_notification(void *arg)
+{
+    Pthread_detach(pthread_self());
+    struct ARGS *args = (struct ARGS *) arg;
+    Server *s = args->srv;
+    Push_Notification *noti = new Push_Notification(args->buf);
+    s->Updatenext(noti->port_num);
+    cout<<noti<<endl;
+    if (noti->noti_type == Extension)
+    {
+        Sync_procTrans(s);
+    }
+}
+
+static void *Sync_Hist(void *arg)
+{
+    Pthread_detach(pthread_self());
+    struct ARGS *args = (struct ARGS *) arg;
+    Server *s = args->srv;
+    class Reply *reply = new class Reply(args->req);
+    s->ProcReq(args->req, reply);
+    printf("%s\nSentTrans and ProcTrans synchronization received\n", seperator);
+    cout<<args->req<<endl;
+    cout<<reply<<endl;
+    printf("%s\nSentTrans and ProcTrans synchronization finished\n", seperator);
+    s->AddsentTrans(args->req);
+    s->AckHist(args->req);
+}
+
+static void Sync_procTrans(Server *s)
+{
+    const int on = 1;
+    int i;
+    std::map <string, Request *>::iterator it;
+    for (it = s->GetprocTrans().begin(); it != s->GetprocTrans().end(); ++it)
+    {
+        sleep(1);
+        char sendbuf[MAXLINE];
+        int sockfd = Socket(AF_INET, SOCK_STREAM, 0);
+        Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        i = connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
+        if (i < 0)
+        {
+            printf("synchronous history connect to next error\n");
+            //printf("next is:%d\n", s->Getnext()->GetserverName().second);
+        }
+        (*it).second->Packetize(sendbuf, true);
+        i = write(sockfd, sendbuf, MAXLINE);
+        if (i < 0)
+        {
+            printf("synchronous write to next error\n");
+        }
+    }
+    printf("%s\nNow starting synchronizing sentTrans and procTrans to new Tail\nSentTrans and ProcTrans synchronization to new Tail finished\n%s\n", seperator, seperator);
 }
 
 static void *Sync(void *arg) //process synchronization event, if synchroniation event comes, server uses an another tcp socket to connect the next server and then wait for the ack return
@@ -205,7 +289,6 @@ static void *Sync(void *arg) //process synchronization event, if synchroniation 
 	int sockfd;
 	struct ARGS *args = (struct ARGS *) arg;
 	cout<<args->req<<endl;
-	cout<<args->reply<<endl;
 	Server *s = args->srv;
 	sockfd = Socket(AF_INET, SOCK_STREAM, 0);
     Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
@@ -226,6 +309,8 @@ static void *Sync(void *arg) //process synchronization event, if synchroniation 
         cerr<<"Read error"<<endl;
     else
     {
+        if (!strlen(recvbuf))
+            goto end;
         ACK *ack = new ACK(recvbuf);
 		cout<<ack<<endl;
 		if (args->connfd > 0)
@@ -238,6 +323,9 @@ static void *Sync(void *arg) //process synchronization event, if synchroniation 
             }
             close(args->connfd);
     	}
+        class Reply *reply = new class Reply(args->req);
+        s->ProcReq(args->req, reply);
+        cout<<reply<<endl;
         s->AckHist(args->req);
     }
 end:	close(sockfd);
@@ -249,16 +337,21 @@ static void *Reply(void *arg) //process the situation the server is the tail ser
     int i;
     struct ARGS *args = (struct ARGS *) arg;
 	cout<<args->req<<endl;
-	cout<<args->reply<<endl;
     Server *s = args->srv;
     struct sockaddr_in cliaddr;
     socklen_t len = sizeof(struct sockaddr_in);
     ParseIpaddr(args->buf, cliaddr);
     char sendbuf[MAXLINE];
-    (args->reply)->Packetize(sendbuf);
+    
+    class Reply *reply = new class Reply(args->req);
+    s->ProcReq(args->req, reply);
+    cout<<reply<<endl;
+    reply->Packetize(sendbuf);
+    
     Sendto(s->Getsockfd_udp(), sendbuf, MAXLINE, 0, (SA*)&cliaddr, len);
 	s->AddsentTrans(args->req);
 	s->AckHist(args->req);
+    
 	if (args->connfd > 0)
     {
 		ACK *ack = new ACK(args->req);
@@ -271,6 +364,26 @@ static void *Reply(void *arg) //process the situation the server is the tail ser
             //cout<<"error "<<args->req<<endl;
         }
         close(args->connfd);
+    }
+}
+
+static void *Ping(void *arg)
+{
+    time_t cur_time;
+    Pthread_detach(pthread_self());
+    struct ARGS_PING *args = (struct ARGS_PING *) arg;
+    socklen_t len = sizeof(struct sockaddr_in);
+    Server *s = args->s;
+    Master *ms = args->ms;
+    while(1)
+    {
+        cur_time = time(NULL);
+        //cout<<"current time is "<<cur_time<<endl;
+        sleep(1);
+        //cout<<"difference is "<<time(NULL) - cur_time<<endl;
+        char msg[MAXLINE];
+        s->packetize(msg);
+        Sendto(s->Getsockfd_udp(), msg, MAXLINE, 0, (SA*)&(ms->Getsockaddr()), len);
     }
 }
 

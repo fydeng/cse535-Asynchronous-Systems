@@ -190,6 +190,10 @@ public:
     {
         return account_no;
     }
+    struct sockaddr_in & Getsockaddr()
+    {
+        return cliaddr;
+    }
     list<Request*> & GetReqList()
     {
         return rlist;
