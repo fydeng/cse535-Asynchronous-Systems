@@ -147,8 +147,6 @@ class Master(process):
 	def updateSrvInfo(srv):
 		port = srv[0]
 		bankName = srv[1]
-		prevInfo =[]		#store the prev and next server of the previous of the failed server
-		nextInfo =[]
 		for item in self.srvDict[bankName]:
 			if port == item[3]:		#find the failed server in srvDict
 				prev = item[1]
@@ -211,8 +209,8 @@ class Server(process):
 			cur_balance = 0
 		else:
 			cur_balance = AccountInfo[req.account_num]
-		if procTrans.get(req.reqID) != None:
-			if procTrans[req.reqID].reqtype != req.reqtype:
+		if self.procTrans.get(req.reqID) != None:
+			if self.procTrans[req.reqID].reqtype != req.reqtype:
 				#print("inconsistent")
 				outcome = Outcome.InconsistentWithHistory
 			else:
@@ -232,18 +230,18 @@ class Server(process):
 				else:
 					new_balance = cur_balance - req.amount;
 		if req.reqtype != ReqType.Query:
-			sentTrans.append(req)
+			self.sentTrans.append(req)
 			output("Request %s has been added to sent transaction" % req.reqID)
 		AccountInfo.update({req.account_num:new_balance})		
 		return [new_balance, outcome]
 
 	def update_procTrans(reqID):
 		count_clear = 0
-		len_sentTrans = len(sentTrans)
+		len_sentTrans = len(self.sentTrans)
 		for i in range(len_sentTrans):
-			if (sentTrans[i].reqID == reqID):
-				req = sentTrans[i]
-				sentTrans.pop(i)
+			if (self.sentTrans[i].reqID == reqID):
+				req = self.sentTrans[i]
+				self.sentTrans.pop(i)
 				if count_clear != 0:
 					output('Using ACK to clear old req ', reqID)
 				count_clear += 1
@@ -252,7 +250,8 @@ class Server(process):
 				proc_req = self.procTrans.get(req.reqID)
 				if proc_req == None:
 					self.procTrans.update({req.reqID:req})
-					output("Request %s has been added to processed transaction" % req.reqID)
+					#output("Request %s has been added to processed transaction" % req.reqID)
+					print("Requst ",req.reqID,"has been added to server ",self.serverIP,"processed transaction")
 				elif req.reqtype == proc_req.reqtype:
 					output('Duplicate request, donot add to processed transaction')
 				else:
@@ -274,24 +273,32 @@ class Server(process):
 		reply = Reply(req.reqID,outcome,new_balance)
 		ack = Ack(req.reqID)
 		if (prev == None):
-			send(('REQ', req), to = next)
-		elif (next == None):
+			send(('REQ', req), to = self.next)
+		elif (self.next == None):
 			update_procTrans(req.reqID)
 			send(('REPLY', reply), to = req.client_id)
 			if (req.reqtype != ReqType.Query):
 				send(('ACK', ack), to = prev)
 				output(str(ack) + ' has been sent!')
 		else:
-			send(('REQ', req), to = next)
+			send(('REQ', req), to = self.next)
 		output("Reply for Request %s has been sent" % reply.reqID)
 
 	def receive(msg=("SYNC", req), from_= src_id):
 		output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
 		if req.reqtype != ReqType.Query:
-			sentTrans.append(req)
+			self.sentTrans.append(req)
 		output("Request %s has been added to sent transaction" % req.reqID)
-		if next != None:
-			send(('SYNC', req), to = next)
+		if self.next != None:
+			send(('SYNC', req), to = self.next)
+
+	def receive(msg=("SYNC_PROC",(reqID,req)), from_ = src_id):
+		print('Synchronization of procTrans from the old tail ', reqID)
+		if req.reqtype != ReqType.Query:
+			self.sentTrans.append(req)
+			update_procTrans(reqID)
+		if self.next != None:
+			send(('SYNC_PROC', (reqID,req)), to = self.next)
 
 	def receive(msg=('ACK', ack), from_= next):
 		output(str(ack) + ' has been received!')
@@ -302,16 +309,18 @@ class Server(process):
 		self.prev = prev
 		self.next = next
 		print("Setting my prev to: ",self.prev," and my next to: ",self.next)
-		for i in range(len(sentTrans)):
-			req = sentTrans[i]
-			print("Starting synchronize %s int sentTrans to next server" % req.reqID)
-			send(('SYNC', req), to = next)
+		for i in range(len(self.sentTrans)):
+			req = self.sentTrans[i]
+			print("Starting synchronize %s sentTrans to next server" % req.reqID)
+			send(('SYNC', req), to = self.next)
 
 	def receive(msg=("extendChain",newSrv), from_ = master):
 		print("Received extendChain from master,setting my next to ",newSrv)
 		self.next = newSrv
-		
-
+		print('HHHHHHHHHHHHHHHH',self.procTrans)
+		for reqID,req in self.procTrans.items():
+			print("Starting synchronize procTrans to the new tail ",reqID)
+			send(("SYNC_PROC",(reqID,req)),to = self.next)
 
 	def main():
 		time.sleep(self.startup_delay)
@@ -427,6 +436,11 @@ class Client(process):
 				continue	
 			elif timeout(self.timeout):
 				output('waiting for reply TIMEDOUT!')
+				if req.reqtype == ReqType.Query:
+					dst = self.tail_srvs.get(self.bankName)
+				else:
+					dst = self.head_srvs.get(self.bankName)
+				print("KKKKKKKKKKKKKKKKKKKKKKKK",dst)	
 				resend(req, dst)
 
 def main():
