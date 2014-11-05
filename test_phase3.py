@@ -1,7 +1,6 @@
 import re
 import time
 import sys
-import thread
 import collections
 from init import *
 import random
@@ -334,21 +333,15 @@ class Client(process):
 		output('Reply received from server: '+ str(reply))
 
 	def receive(msg=("newHead",newSrv),from_= master):
-		print("CLIENT ",self.id, "CHANGING NEW HEAD: ",newSrv)
+		print("SETTING NEW HEAD: ",newSrv)
 		self.head_srvs.update({self.bankName:newSrv})
 
 	def receive(msg=("newTail",newSrv),from_= master):
 		print("SETTING NEW TAIL: ",newSrv)
 		self.tail_srvs.update({self.bankName:newSrv})
 
-	def run:
-		pass
-
 	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
-		print('HHHHHHHHHHHHHHHHHHHHHH, the head_srvs are',self.head_srvs)
-		print('PPPPPPPPPPPPPPPPPPPPPP, the tail_srvs are',self.tail_srvs)
-		thread_id = thread.start_new_thread(run,(,))
 		reqList = init_req()
 		num_req = len(reqList)
 		for i in range(num_req):
@@ -363,8 +356,9 @@ class Client(process):
 			time.sleep(1)
 			clk = logical_clock()
 			send(('REQ', req), to = dst)
-			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
-				continue
+			#some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))
+			if await(False):
+				pass
 			elif timeout(self.timeout):
 				output('waiting for reply TIMEDOUT!')
 				output('Resending the request:'+ str(req[1].reqID))
