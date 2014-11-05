@@ -1,6 +1,7 @@
 import re
 import time
 import sys
+import thread
 import collections
 from init import *
 import random
@@ -340,10 +341,14 @@ class Client(process):
 		print("SETTING NEW TAIL: ",newSrv)
 		self.tail_srvs.update({self.bankName:newSrv})
 
+	def run:
+		pass
+
 	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
 		print('HHHHHHHHHHHHHHHHHHHHHH, the head_srvs are',self.head_srvs)
 		print('PPPPPPPPPPPPPPPPPPPPPP, the tail_srvs are',self.tail_srvs)
+		thread_id = thread.start_new_thread(run,(,))
 		reqList = init_req()
 		num_req = len(reqList)
 		for i in range(num_req):

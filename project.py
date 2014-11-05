@@ -101,8 +101,8 @@ class Master(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_MasterReceivedEvent_0', PatternExpr_0, sources=[PatternExpr_1], destinations=None, timestamps=None, record_history=None, handlers=[self._Master_handler_0])])
 
     def setup(self, srvDic, cliDic):
-        self.cliDic = cliDic
         self.srvDic = srvDic
+        self.cliDic = cliDic
         self.timesheet = {}
         self.srvDict = self.srvDic
         self.cliDict = self.cliDic
@@ -206,13 +206,13 @@ class Server(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_2', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_3])])
 
     def setup(self, bankName, serverIP, startup_delay, life_time, prev, next, master):
+        self.startup_delay = startup_delay
         self.next = next
+        self.bankName = bankName
         self.prev = prev
         self.serverIP = serverIP
         self.master = master
         self.life_time = life_time
-        self.startup_delay = startup_delay
-        self.bankName = bankName
         self.bankName = self.bankName
         self.serverIP = self.serverIP
         self.startup_delay = self.startup_delay
@@ -342,17 +342,17 @@ class Client(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_4]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_10, sources=[PatternExpr_11], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_5]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_12, sources=[PatternExpr_13], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_6]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_3', PatternExpr_14, sources=[PatternExpr_15], destinations=None, timestamps=[PatternExpr_16], record_history=True, handlers=[])])
 
     def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, master, head_srvs, tail_srvs):
+        self.nRetrans = nRetrans
+        self.head_srvs = head_srvs
+        self.bankName = bankName
+        self.account_no = account_no
+        self.timeout = timeout
+        self.tail_srvs = tail_srvs
         self.input_req = input_req
         self.ifRetrans = ifRetrans
-        self.account_no = account_no
-        self.head_srvs = head_srvs
-        self.nRetrans = nRetrans
-        self.master = master
-        self.tail_srvs = tail_srvs
-        self.bankName = bankName
-        self.timeout = timeout
-        self.ifRandom = ifRandom
         self.clientIP = clientIP
+        self.ifRandom = ifRandom
+        self.master = master
         self.bankName = int(self.bankName)
         self.account_no = self.account_no
         self.clientIP = self.clientIP
