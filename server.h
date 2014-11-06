@@ -132,6 +132,11 @@ public:
     {
         return startup_delay;
     }
+    list <Request *> & GetsentTrans()
+    {
+        return sentTrans;
+    }
+    
     map <string, Request *> & GetprocTrans()
     {
         return procTrans;

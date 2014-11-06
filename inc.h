@@ -23,6 +23,7 @@ enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
 enum Source  {server, client};
 enum Noti_Type {Fail, Extension, New_Next};
+enum Sync_Type {Normal, SyncSent, SyncProc};
 
 void tokenizer(string input, vector<string>& vStr) //tokenizer to split the attributes in configuration file
 {
@@ -38,7 +39,7 @@ public:
     int bankname;
 	int account_num;
 	float amount;
-    bool no_reply;
+    Sync_Type sync_type;
     
     Request(){}
     Request (ReqType req_type, int bank_name, int client_no, int sequence, int account_no, float amt)
@@ -67,12 +68,12 @@ public:
         Parsereq(input_str);
     }
 
-    bool is_sync()
+    Sync_Type Getsynctype()
     {
-        return no_reply;
+        return sync_type;
     }
     
-    void Packetize(char *buf, bool sync)
+    void Packetize(char *buf, Sync_Type type)
     {
         string str = std::to_string(reqtype);
         if (sync)
@@ -84,7 +85,7 @@ public:
             str.append(",");
             str.append(std::to_string(amount));
             str.append(",");
-            str.append("1");
+            str.append(std::to_string(type));
         }
         strcpy(buf, str.c_str());
     }
@@ -131,7 +132,8 @@ public:
                     amount = atof(input);
                     break;
                 case 4:
-                    no_reply = atoi(input);
+                    sync_type = (enum Sync_Type)(atoi(input));
+                    break;
                 default:
                     break;
             }
@@ -315,7 +317,7 @@ public:
             if (push->port_num == -1)
                 printf("Tail server failed now I'm the new Tail\n");
             else
-                printf("Failed next server removed, new next server 127.0.0.1:%d updated, sent Transaction updated to the next server\n%s\n", push->port_num, seperator);
+                printf("Failed next server removed, new next server 127.0.0.1:%d updated\n%s\n", push->port_num, seperator);
         return cout;
     }
 };

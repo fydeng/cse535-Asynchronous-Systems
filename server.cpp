@@ -35,12 +35,14 @@ struct ARGS_PING
 };
 
 static void *Sync_Hist(void *);
+static void *Sync_Sent(void *);
 static void *Sync(void *);
 static void ParseIpaddr(string input_str, struct sockaddr_in &cliaddr);
 static void *Reply(void *);
 static void *Ping(void *);
 static void *Proc_master_notification(void *);
-static void Sync_procTrans(Server *s);
+static void Sync_procTrans(Server *);
+static void Sync_sentTrans(Server *);
 static void sig_int_handle(int signo) //handle the signal of SIGINT
 {
     siglongjmp(jmpbuf, 1);
@@ -161,6 +163,7 @@ int main(int argc, char **argv)
                     printf("%s\npush notification received from master\n", seperator);
                     ARGS args(s, buf, NULL, -1);
                     Pthread_create(&tid,NULL,&Proc_master_notification,(void *)&args);
+                    Pthread_join(tid, NULL);
                     continue;
                 }
                 msg_count++;
@@ -198,10 +201,18 @@ int main(int argc, char **argv)
             	{
                     pthread_t tid;
                     Request *req = new Request(buf);
-                    if (req->is_sync())
+                    if (req->Getsynctype() == SyncSent)
+                    {
+                        ARGS args(s, buf, req, -1);
+                        Pthread_create(&tid, NULL, &Sync_Sent, (void *)&args);
+                        Pthread_join(tid, NULL);
+                        continue;
+                    }
+                    else if (req->Getsynctype() == SyncProc)
                     {
                         ARGS args(s, buf, req, -1);
                         Pthread_create(&tid, NULL, &Sync_Hist, (void *)&args);
+                        Pthread_join(tid, NULL);
                         continue;
                     }
                     msg_count++;
@@ -226,31 +237,49 @@ int main(int argc, char **argv)
 
 static void *Proc_master_notification(void *arg)
 {
-    Pthread_detach(pthread_self());
+    //Pthread_detach(pthread_self());
     struct ARGS *args = (struct ARGS *) arg;
     Server *s = args->srv;
     Push_Notification *noti = new Push_Notification(args->buf);
     s->Updatenext(noti->port_num);
     cout<<noti<<endl;
-    if (noti->noti_type == Extension)
+    if (noti->noti_type == New_Next)
+    {
+        Sync_sentTrans(s);
+    }
+    else if (noti->noti_type == Extension)
     {
         Sync_procTrans(s);
     }
 }
 
-static void *Sync_Hist(void *arg)
+static void Sync_sentTrans(Server *s)
 {
-    Pthread_detach(pthread_self());
-    struct ARGS *args = (struct ARGS *) arg;
-    Server *s = args->srv;
-    class Reply *reply = new class Reply(args->req);
-    s->ProcReq(args->req, reply);
-    printf("%s\nSentTrans and ProcTrans synchronization received\n", seperator);
-    cout<<args->req<<endl;
-    cout<<reply<<endl;
-    printf("%s\nSentTrans and ProcTrans synchronization finished\n", seperator);
-    s->AddsentTrans(args->req);
-    s->AckHist(args->req);
+    const int on = 1;
+    int i;
+    std::list <Request *>::iterator it;
+    printf("%s\nNow starting synchronizing sentTrans to new next server\n", seperator);
+    for (it = s->GetsentTrans().begin(); it != s->GetsentTrans().end(); ++it)
+    {
+        //sleep(1);
+        cout<<(*it)<<endl;
+        char sendbuf[MAXLINE];
+        int sockfd = Socket(AF_INET, SOCK_STREAM, 0);
+        Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        i = connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
+        if (i < 0)
+        {
+            printf("synchronous sentTrans connect to next error\n");
+            //printf("next is:%d\n", s->Getnext()->GetserverName().second);
+        }
+        (*it)->Packetize(sendbuf, SyncSent);
+        i = write(sockfd, sendbuf, MAXLINE);
+        if (i < 0)
+        {
+            printf("synchronous write to next error\n");
+        }
+    }
+    printf("SentTrans synchronization to new next server finished\n%s\n", seperator);
 }
 
 static void Sync_procTrans(Server *s)
@@ -258,26 +287,72 @@ static void Sync_procTrans(Server *s)
     const int on = 1;
     int i;
     std::map <string, Request *>::iterator it;
+    printf("%s\nNow starting synchronizing procTrans to new Tail\n", seperator);
     for (it = s->GetprocTrans().begin(); it != s->GetprocTrans().end(); ++it)
     {
-        sleep(1);
+        cout<<(*it).second<<endl;
+        //sleep(1);
         char sendbuf[MAXLINE];
         int sockfd = Socket(AF_INET, SOCK_STREAM, 0);
         Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
         i = connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
         if (i < 0)
         {
-            printf("synchronous history connect to next error\n");
+            printf("synchronous procTrans connect to next error\n");
             //printf("next is:%d\n", s->Getnext()->GetserverName().second);
         }
-        (*it).second->Packetize(sendbuf, true);
+        (*it).second->Packetize(sendbuf, SyncProc);
         i = write(sockfd, sendbuf, MAXLINE);
         if (i < 0)
         {
             printf("synchronous write to next error\n");
         }
     }
-    printf("%s\nNow starting synchronizing sentTrans and procTrans to new Tail\nSentTrans and ProcTrans synchronization to new Tail finished\n%s\n", seperator, seperator);
+    printf("ProcTrans synchronization to new Tail finished\n%s\n", seperator);
+}
+
+static void *Sync_Sent(void *arg)
+{
+    const int on = 1;
+    struct ARGS *args = (struct ARGS *) arg;
+    Server *s = args->srv;
+    class Reply *reply = new class Reply(args->req);
+    printf("%s\nSentTrans synchronization received\n", seperator);
+    cout<<args->req<<endl;
+    printf("%s\nSentTrans synchronization finished\n", seperator);
+    s->AddsentTrans(args->req);
+    if (!s->isTail())
+    {
+        int i;
+        int sockfd = Socket(AF_INET, SOCK_STREAM, 0);
+        Setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on));
+        i = connect(sockfd, (SA*) & (s->Getnext()->Getsockaddr()), sizeof(s->Getnext()->Getsockaddr()));
+        if (i < 0)
+        {
+            printf("synchronous sentTrans connect to next error\n");
+            //printf("next is:%d\n", s->Getnext()->GetserverName().second);
+        }
+        i = write(sockfd, args->buf, MAXLINE);
+        if (i < 0)
+        {
+            printf("synchronous write to next error\n");
+        }
+    }
+}
+
+static void *Sync_Hist(void *arg)
+{
+    //Pthread_detach(pthread_self());
+    struct ARGS *args = (struct ARGS *) arg;
+    Server *s = args->srv;
+    class Reply *reply = new class Reply(args->req);
+    s->ProcReq(args->req, reply);
+    printf("%s\nProcTrans synchronization received\n", seperator);
+    cout<<args->req<<endl;
+    cout<<reply<<endl;
+    printf("%s\nProcTrans synchronization finished\n", seperator);
+    s->AddsentTrans(args->req);
+    s->AckHist(args->req);
 }
 
 static void *Sync(void *arg) //process synchronization event, if synchroniation event comes, server uses an another tcp socket to connect the next server and then wait for the ack return
