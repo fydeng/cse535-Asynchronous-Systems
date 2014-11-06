@@ -319,7 +319,7 @@ static void *Sync_Sent(void *arg)
     class Reply *reply = new class Reply(args->req);
     printf("%s\nSentTrans synchronization received\n", seperator);
     cout<<args->req<<endl;
-    printf("%s\nSentTrans synchronization finished\n", seperator);
+    printf("SentTrans synchronization finished\n%s\n", seperator);
     s->AddsentTrans(args->req);
     if (!s->isTail())
     {
@@ -350,7 +350,7 @@ static void *Sync_Hist(void *arg)
     printf("%s\nProcTrans synchronization received\n", seperator);
     cout<<args->req<<endl;
     cout<<reply<<endl;
-    printf("%s\nProcTrans synchronization finished\n", seperator);
+    printf("ProcTrans synchronization finished\n%s\n", seperator);
     s->AddsentTrans(args->req);
     s->AckHist(args->req);
 }
