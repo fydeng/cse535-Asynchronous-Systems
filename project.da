@@ -2,6 +2,7 @@ import re
 import time
 import sys
 import collections
+import logging
 from init import *
 import random
 
@@ -82,6 +83,7 @@ class Master(process):
 		self.cliDict = cliDic
 		self.filename = filename
 		self.waitList = waitList
+		setup_logfile(self.filename)
 
 	def setup_logfile(filename):
 		rootlog = logging.getLogger('')
@@ -184,6 +186,7 @@ class Master(process):
 		
 	def main():
 		output('Master  '+ str(self.id) +'  has started.')
+		output('Logging output to %s' % self.filename)
 		print("SERVER DICTIONARY STORED IN MASTER",self.srvDict)
 		print("CLIENT DICTIONARY STORED IN MASTER",self.cliDict)
 		print("SERVER WAITLIST STORED IN MASTER",self.waitList)
@@ -561,7 +564,7 @@ def main():
 	print(cliDic)
 
 	#######################Initiate Master#################################
-	filename_master = '/Users/fydeng/Desktop/Distalgo/master_log.txt'
+	filename_master = './master_log'
 	master = new(Master)
 	setup(master,(srvDic, cliDic, filename_master, waitList))
 	start(master)
