@@ -6,7 +6,7 @@
 1, 127.0.0.1:10003, 0, 001
 1, 127.0.0.1:10004, 0, 200
 1, 127.0.0.1:10005, 0, 200
-1, 127.0.0.1:10006, 8, 200
+1, 127.0.0.1:10006, 20, 200
 //Client Configuration: Retransmission or not, Retransmission interval, Retransmission time
 1, 5, 3, 0
 //Client: bank name, account number, ip address:port number
