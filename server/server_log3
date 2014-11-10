@@ -1,0 +1,530 @@
+[2014-11-07 19:46:28,285]Server[('Yaos-MacBook-Pro.local', 38684)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10004  Life time is: 200  Previous server is: ('Yaos-MacBook-Pro.local', 18816)  Next server is: ('Yaos-MacBook-Pro.local', 32676)
+[2014-11-07 19:46:32,316]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.2 from client received! 
+[2014-11-07 19:46:32,317]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 199
+[2014-11-07 19:46:32,317]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.2 has been added to sent transaction
+[2014-11-07 19:46:32,320]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.2.2 has been sent
+[2014-11-07 19:46:32,324]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.2.2 has been received!
+[2014-11-07 19:46:38,303]Server[('Yaos-MacBook-Pro.local', 38684)]: Synchronization of sentTrans from previous server received! ReqID is  1.2.2
+[2014-11-07 19:46:38,304]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.2 has been added to sent transaction
+[2014-11-07 19:46:38,306]Server[('Yaos-MacBook-Pro.local', 38684)]: Synchronization of sentTrans from previous server received! ReqID is  1.1.2
+[2014-11-07 19:46:38,306]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.2 has been added to sent transaction
+[2014-11-07 19:46:38,309]Server[('Yaos-MacBook-Pro.local', 38684)]: Synchronization of sentTrans from previous server received! ReqID is  1.2.3
+[2014-11-07 19:46:38,310]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.3 has been added to sent transaction
+[2014-11-07 19:46:38,315]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.2 from client received! 
+[2014-11-07 19:46:38,315]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 198
+[2014-11-07 19:46:38,315]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.2 has been added to sent transaction
+[2014-11-07 19:46:38,316]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.1.2 has been sent
+[2014-11-07 19:46:38,319]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.1.2 has been received!
+[2014-11-07 19:46:44,308]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.3 from client received! 
+[2014-11-07 19:46:44,308]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 197
+[2014-11-07 19:46:44,309]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.3 has been added to sent transaction
+[2014-11-07 19:46:44,310]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.2.3 has been sent
+[2014-11-07 19:46:44,319]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.2.3 has been received!
+[2014-11-07 19:46:44,330]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.1.2 has been received!
+[2014-11-07 19:46:44,331]Server[('Yaos-MacBook-Pro.local', 38684)]: Duplicate request, donot add to processed transaction
+[2014-11-07 19:46:46,333]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.4 from client received! 
+[2014-11-07 19:46:46,334]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 196
+[2014-11-07 19:46:46,334]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.4 has been added to sent transaction
+[2014-11-07 19:46:46,336]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.2.4 has been sent
+[2014-11-07 19:46:46,337]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.3 from client received! 
+[2014-11-07 19:46:46,337]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 195
+[2014-11-07 19:46:46,338]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.3 has been added to sent transaction
+[2014-11-07 19:46:46,339]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.1.3 has been sent
+[2014-11-07 19:46:46,340]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.2.4 has been received!
+[2014-11-07 19:46:46,343]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.1.3 has been received!
+[2014-11-07 19:46:48,337]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.4 from client received! 
+[2014-11-07 19:46:48,338]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 194
+[2014-11-07 19:46:48,338]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.4 has been added to sent transaction
+[2014-11-07 19:46:48,340]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.1.4 has been sent
+[2014-11-07 19:46:48,344]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.1.4 has been received!
+[2014-11-07 19:46:48,348]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.5 from client received! 
+[2014-11-07 19:46:48,348]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 193
+[2014-11-07 19:46:48,349]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.5 has been added to sent transaction
+[2014-11-07 19:46:48,350]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.2.5 has been sent
+[2014-11-07 19:46:48,355]Server[('Yaos-MacBook-Pro.local', 38684)]: Ack for request 1.2.5 has been received!
+[2014-11-07 19:46:50,342]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.5 from client received! 
+[2014-11-07 19:46:50,342]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 192
+[2014-11-07 19:46:50,342]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.5 has been added to sent transaction
+[2014-11-07 19:46:50,343]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.1.5 has been sent
+[2014-11-07 19:46:50,364]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.6 from client received! 
+[2014-11-07 19:46:50,365]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 191
+[2014-11-07 19:46:50,365]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.2.6 has been added to sent transaction
+[2014-11-07 19:46:50,366]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.2.6 has been sent
+[2014-11-07 19:46:52,347]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.6 from client received! 
+[2014-11-07 19:46:52,347]Server[('Yaos-MacBook-Pro.local', 38684)]: the current life_time is: 190
+[2014-11-07 19:46:52,347]Server[('Yaos-MacBook-Pro.local', 38684)]: Request 1.1.6 has been added to sent transaction
+[2014-11-07 19:46:52,354]Server[('Yaos-MacBook-Pro.local', 38684)]: Reply for Request 1.1.6 has been sent
+[2014-11-07 19:51:04,056]Server[('Yaos-MacBook-Pro.local', 16466)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 36941)  Next server is: ('Yaos-MacBook-Pro.local', 12774)
+[2014-11-07 19:51:08,092]Server[('Yaos-MacBook-Pro.local', 16466)]: Request 1.1.2 from client received! 
+[2014-11-07 19:51:08,092]Server[('Yaos-MacBook-Pro.local', 16466)]: the current life_time is: 0
+[2014-11-07 19:51:08,093]Server[('Yaos-MacBook-Pro.local', 16466)]: Request 1.1.2 has been added to sent transaction
+[2014-11-07 19:51:08,095]Server[('Yaos-MacBook-Pro.local', 16466)]: Reply for Request 1.1.2 has been sent
+[2014-11-07 19:51:08,096]Server[('Yaos-MacBook-Pro.local', 16466)]: Request 1.2.2 from client received! 
+[2014-11-07 19:51:08,097]Server[('Yaos-MacBook-Pro.local', 16466)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 10:41:47,035]Server[('Yaos-MacBook-Pro.local', 15309)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 27337)  Next server is: ('Yaos-MacBook-Pro.local', 18777)
+[2014-11-08 10:41:51,067]Server[('Yaos-MacBook-Pro.local', 15309)]: Request 1.1.2 from client received! 
+[2014-11-08 10:41:51,067]Server[('Yaos-MacBook-Pro.local', 15309)]: the current life_time is: 0
+[2014-11-08 10:41:51,068]Server[('Yaos-MacBook-Pro.local', 15309)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 10:41:51,070]Server[('Yaos-MacBook-Pro.local', 15309)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 10:41:51,071]Server[('Yaos-MacBook-Pro.local', 15309)]: Request 1.2.2 from client received! 
+[2014-11-08 10:41:51,071]Server[('Yaos-MacBook-Pro.local', 15309)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 19:28:39,947]Server[('Yaos-MacBook-Pro.local', 17904)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 21368)  Next server is: ('Yaos-MacBook-Pro.local', 17417)
+[2014-11-08 19:28:43,975]Server[('Yaos-MacBook-Pro.local', 17904)]: Request 1.1.2 from client received! 
+[2014-11-08 19:28:43,976]Server[('Yaos-MacBook-Pro.local', 17904)]: the current life_time is: 0
+[2014-11-08 19:28:43,976]Server[('Yaos-MacBook-Pro.local', 17904)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 19:28:43,979]Server[('Yaos-MacBook-Pro.local', 17904)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 19:28:43,980]Server[('Yaos-MacBook-Pro.local', 17904)]: Request 1.2.2 from client received! 
+[2014-11-08 19:28:43,981]Server[('Yaos-MacBook-Pro.local', 17904)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 19:39:01,997]Server[('Yaos-MacBook-Pro.local', 20044)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 23830)  Next server is: ('Yaos-MacBook-Pro.local', 18821)
+[2014-11-08 19:39:06,025]Server[('Yaos-MacBook-Pro.local', 20044)]: Request 1.1.2 from client received! 
+[2014-11-08 19:39:06,025]Server[('Yaos-MacBook-Pro.local', 20044)]: the current life_time is: 0
+[2014-11-08 19:39:06,026]Server[('Yaos-MacBook-Pro.local', 20044)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 19:39:06,028]Server[('Yaos-MacBook-Pro.local', 20044)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 19:39:06,030]Server[('Yaos-MacBook-Pro.local', 20044)]: Request 1.2.2 from client received! 
+[2014-11-08 19:39:06,030]Server[('Yaos-MacBook-Pro.local', 20044)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 20:25:21,978]Server[('Yaos-MacBook-Pro.local', 34141)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 31457)  Next server is: ('Yaos-MacBook-Pro.local', 20995)
+[2014-11-08 20:25:26,009]Server[('Yaos-MacBook-Pro.local', 34141)]: Request 1.1.2 from client received! 
+[2014-11-08 20:25:26,009]Server[('Yaos-MacBook-Pro.local', 34141)]: the current life_time is: 0
+[2014-11-08 20:25:26,010]Server[('Yaos-MacBook-Pro.local', 34141)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 20:25:26,012]Server[('Yaos-MacBook-Pro.local', 34141)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 20:25:26,013]Server[('Yaos-MacBook-Pro.local', 34141)]: Request 1.2.2 from client received! 
+[2014-11-08 20:25:26,014]Server[('Yaos-MacBook-Pro.local', 34141)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 20:32:03,974]Server[('Yaos-MacBook-Pro.local', 37408)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 32919)  Next server is: ('Yaos-MacBook-Pro.local', 17388)
+[2014-11-08 20:32:08,003]Server[('Yaos-MacBook-Pro.local', 37408)]: Request 1.2.2 from client received! 
+[2014-11-08 20:32:08,004]Server[('Yaos-MacBook-Pro.local', 37408)]: the current life_time is: 0
+[2014-11-08 20:32:08,004]Server[('Yaos-MacBook-Pro.local', 37408)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 20:32:08,007]Server[('Yaos-MacBook-Pro.local', 37408)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 20:32:08,009]Server[('Yaos-MacBook-Pro.local', 37408)]: Request 1.1.2 from client received! 
+[2014-11-08 20:32:08,009]Server[('Yaos-MacBook-Pro.local', 37408)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 20:37:34,416]Server[('Yaos-MacBook-Pro.local', 23656)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 37628)  Next server is: ('Yaos-MacBook-Pro.local', 34871)
+[2014-11-08 20:37:38,444]Server[('Yaos-MacBook-Pro.local', 23656)]: Request 1.1.2 from client received! 
+[2014-11-08 20:37:38,445]Server[('Yaos-MacBook-Pro.local', 23656)]: the current life_time is: 0
+[2014-11-08 20:37:38,445]Server[('Yaos-MacBook-Pro.local', 23656)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 20:37:38,447]Server[('Yaos-MacBook-Pro.local', 23656)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 20:37:38,448]Server[('Yaos-MacBook-Pro.local', 23656)]: Request 1.2.2 from client received! 
+[2014-11-08 20:37:38,448]Server[('Yaos-MacBook-Pro.local', 23656)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 20:52:07,066]Server[('Yaos-MacBook-Pro.local', 34612)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 27604)  Next server is: ('Yaos-MacBook-Pro.local', 21274)
+[2014-11-08 20:52:11,095]Server[('Yaos-MacBook-Pro.local', 34612)]: Request 1.1.2 from client received! 
+[2014-11-08 20:52:11,096]Server[('Yaos-MacBook-Pro.local', 34612)]: the current life_time is: 0
+[2014-11-08 20:52:11,096]Server[('Yaos-MacBook-Pro.local', 34612)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 20:52:11,099]Server[('Yaos-MacBook-Pro.local', 34612)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 20:52:11,099]Server[('Yaos-MacBook-Pro.local', 34612)]: Request 1.2.2 from client received! 
+[2014-11-08 20:52:11,100]Server[('Yaos-MacBook-Pro.local', 34612)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 20:54:10,685]Server[('Yaos-MacBook-Pro.local', 37646)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 21069)  Next server is: ('Yaos-MacBook-Pro.local', 30865)
+[2014-11-08 20:54:14,715]Server[('Yaos-MacBook-Pro.local', 37646)]: Request 1.2.2 from client received! 
+[2014-11-08 20:54:14,715]Server[('Yaos-MacBook-Pro.local', 37646)]: the current life_time is: 0
+[2014-11-08 20:54:14,716]Server[('Yaos-MacBook-Pro.local', 37646)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 20:54:14,718]Server[('Yaos-MacBook-Pro.local', 37646)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 20:54:14,719]Server[('Yaos-MacBook-Pro.local', 37646)]: Request 1.1.2 from client received! 
+[2014-11-08 20:54:14,719]Server[('Yaos-MacBook-Pro.local', 37646)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 21:04:16,966]Server[('Yaos-MacBook-Pro.local', 23892)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 11245)  Next server is: ('Yaos-MacBook-Pro.local', 36964)
+[2014-11-08 21:04:20,994]Server[('Yaos-MacBook-Pro.local', 23892)]: Request 1.1.2 from client received! 
+[2014-11-08 21:04:20,994]Server[('Yaos-MacBook-Pro.local', 23892)]: the current life_time is: 0
+[2014-11-08 21:04:20,995]Server[('Yaos-MacBook-Pro.local', 23892)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:04:20,997]Server[('Yaos-MacBook-Pro.local', 23892)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:04:20,999]Server[('Yaos-MacBook-Pro.local', 23892)]: Request 1.2.2 from client received! 
+[2014-11-08 21:04:20,999]Server[('Yaos-MacBook-Pro.local', 23892)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 21:07:55,494]Server[('Yaos-MacBook-Pro.local', 31646)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 1  Previous server is: ('Yaos-MacBook-Pro.local', 20383)  Next server is: ('Yaos-MacBook-Pro.local', 34824)
+[2014-11-08 21:07:59,524]Server[('Yaos-MacBook-Pro.local', 31646)]: Request 1.1.2 from client received! 
+[2014-11-08 21:07:59,524]Server[('Yaos-MacBook-Pro.local', 31646)]: the current life_time is: 0
+[2014-11-08 21:07:59,525]Server[('Yaos-MacBook-Pro.local', 31646)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:07:59,527]Server[('Yaos-MacBook-Pro.local', 31646)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:07:59,528]Server[('Yaos-MacBook-Pro.local', 31646)]: Request 1.2.2 from client received! 
+[2014-11-08 21:07:59,529]Server[('Yaos-MacBook-Pro.local', 31646)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 21:20:04,305]Server[('Yaos-MacBook-Pro.local', 24344)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 200  Previous server is: ('Yaos-MacBook-Pro.local', 30567)  Next server is: ('Yaos-MacBook-Pro.local', 15747)
+[2014-11-08 21:20:08,338]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.2 from client received! 
+[2014-11-08 21:20:08,338]Server[('Yaos-MacBook-Pro.local', 24344)]: the current life_time is: 199
+[2014-11-08 21:20:08,339]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:20:08,341]Server[('Yaos-MacBook-Pro.local', 24344)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:20:08,343]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.2 from client received! 
+[2014-11-08 21:20:08,343]Server[('Yaos-MacBook-Pro.local', 24344)]: the current life_time is: 198
+[2014-11-08 21:20:08,344]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 21:20:08,345]Server[('Yaos-MacBook-Pro.local', 24344)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 21:20:10,356]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.3 from client received! 
+[2014-11-08 21:20:10,356]Server[('Yaos-MacBook-Pro.local', 24344)]: the current life_time is: 197
+[2014-11-08 21:20:10,357]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.3 has been added to sent transaction
+[2014-11-08 21:20:10,358]Server[('Yaos-MacBook-Pro.local', 24344)]: Reply for Request 1.1.3 has been sent
+[2014-11-08 21:20:10,405]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.3 from client received! 
+[2014-11-08 21:20:10,405]Server[('Yaos-MacBook-Pro.local', 24344)]: the current life_time is: 196
+[2014-11-08 21:20:10,406]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.3 has been added to sent transaction
+[2014-11-08 21:20:10,408]Server[('Yaos-MacBook-Pro.local', 24344)]: Reply for Request 1.2.3 has been sent
+[2014-11-08 21:20:12,413]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.4 from client received! 
+[2014-11-08 21:20:12,413]Server[('Yaos-MacBook-Pro.local', 24344)]: the current life_time is: 195
+[2014-11-08 21:20:12,413]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.4 has been added to sent transaction
+[2014-11-08 21:20:12,414]Server[('Yaos-MacBook-Pro.local', 24344)]: Reply for Request 1.1.4 has been sent
+[2014-11-08 21:20:12,423]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.4 from client received! 
+[2014-11-08 21:20:12,424]Server[('Yaos-MacBook-Pro.local', 24344)]: the current life_time is: 194
+[2014-11-08 21:20:12,424]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.4 has been added to sent transaction
+[2014-11-08 21:20:12,425]Server[('Yaos-MacBook-Pro.local', 24344)]: Reply for Request 1.2.4 has been sent
+[2014-11-08 21:20:14,325]Server[('Yaos-MacBook-Pro.local', 24344)]: Synchronization of sentTrans from previous server received! ReqID is  1.1.2
+[2014-11-08 21:20:14,326]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:20:14,330]Server[('Yaos-MacBook-Pro.local', 24344)]: Synchronization of sentTrans from previous server received! ReqID is  1.2.2
+[2014-11-08 21:20:14,330]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 21:20:14,334]Server[('Yaos-MacBook-Pro.local', 24344)]: Synchronization of sentTrans from previous server received! ReqID is  1.1.3
+[2014-11-08 21:20:14,335]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.3 has been added to sent transaction
+[2014-11-08 21:20:14,338]Server[('Yaos-MacBook-Pro.local', 24344)]: Synchronization of sentTrans from previous server received! ReqID is  1.2.3
+[2014-11-08 21:20:14,338]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.3 has been added to sent transaction
+[2014-11-08 21:20:14,341]Server[('Yaos-MacBook-Pro.local', 24344)]: Synchronization of sentTrans from previous server received! ReqID is  1.1.4
+[2014-11-08 21:20:14,341]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.1.4 has been added to sent transaction
+[2014-11-08 21:20:14,343]Server[('Yaos-MacBook-Pro.local', 24344)]: Synchronization of sentTrans from previous server received! ReqID is  1.2.4
+[2014-11-08 21:20:14,344]Server[('Yaos-MacBook-Pro.local', 24344)]: Request 1.2.4 has been added to sent transaction
+[2014-11-08 21:22:29,418]Server[('Yaos-MacBook-Pro.local', 28486)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 200  Previous server is: ('Yaos-MacBook-Pro.local', 35367)  Next server is: ('Yaos-MacBook-Pro.local', 38405)
+[2014-11-08 21:22:33,448]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.2 from client received! 
+[2014-11-08 21:22:33,448]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 199
+[2014-11-08 21:22:33,448]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:22:33,451]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:22:33,452]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.2 from client received! 
+[2014-11-08 21:22:33,452]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 198
+[2014-11-08 21:22:33,453]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 21:22:33,454]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 21:22:35,465]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.3 from client received! 
+[2014-11-08 21:22:35,465]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 197
+[2014-11-08 21:22:35,466]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.3 has been added to sent transaction
+[2014-11-08 21:22:35,467]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.1.3 has been sent
+[2014-11-08 21:22:35,472]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.3 from client received! 
+[2014-11-08 21:22:35,472]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 196
+[2014-11-08 21:22:35,473]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.3 has been added to sent transaction
+[2014-11-08 21:22:35,474]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.2.3 has been sent
+[2014-11-08 21:22:37,481]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.4 from client received! 
+[2014-11-08 21:22:37,488]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 195
+[2014-11-08 21:22:37,489]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.4 has been added to sent transaction
+[2014-11-08 21:22:37,490]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.1.4 has been sent
+[2014-11-08 21:22:37,508]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.4 from client received! 
+[2014-11-08 21:22:37,509]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 194
+[2014-11-08 21:22:37,509]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.4 has been added to sent transaction
+[2014-11-08 21:22:37,511]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.2.4 has been sent
+[2014-11-08 21:22:39,513]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.5 from client received! 
+[2014-11-08 21:22:39,514]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 193
+[2014-11-08 21:22:39,514]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.5 has been added to sent transaction
+[2014-11-08 21:22:39,516]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.1.5 has been sent
+[2014-11-08 21:22:39,523]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.5 from client received! 
+[2014-11-08 21:22:39,524]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 192
+[2014-11-08 21:22:39,524]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.5 has been added to sent transaction
+[2014-11-08 21:22:39,525]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.2.5 has been sent
+[2014-11-08 21:22:41,528]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.6 from client received! 
+[2014-11-08 21:22:41,529]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 191
+[2014-11-08 21:22:41,529]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.1.6 has been added to sent transaction
+[2014-11-08 21:22:41,530]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.1.6 has been sent
+[2014-11-08 21:22:41,538]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.6 from client received! 
+[2014-11-08 21:22:41,539]Server[('Yaos-MacBook-Pro.local', 28486)]: the current life_time is: 190
+[2014-11-08 21:22:41,539]Server[('Yaos-MacBook-Pro.local', 28486)]: Request 1.2.6 has been added to sent transaction
+[2014-11-08 21:22:41,541]Server[('Yaos-MacBook-Pro.local', 28486)]: Reply for Request 1.2.6 has been sent
+[2014-11-08 21:24:28,244]Server[('Yaos-MacBook-Pro.local', 31855)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 10298)  Next server is: ('Yaos-MacBook-Pro.local', 39926)
+[2014-11-08 21:24:32,274]Server[('Yaos-MacBook-Pro.local', 31855)]: Request 1.1.2 from client received! 
+[2014-11-08 21:24:32,274]Server[('Yaos-MacBook-Pro.local', 31855)]: the current life_time is: 1
+[2014-11-08 21:24:32,275]Server[('Yaos-MacBook-Pro.local', 31855)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:24:32,277]Server[('Yaos-MacBook-Pro.local', 31855)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:24:32,278]Server[('Yaos-MacBook-Pro.local', 31855)]: Request 1.2.2 from client received! 
+[2014-11-08 21:24:32,278]Server[('Yaos-MacBook-Pro.local', 31855)]: the current life_time is: 0
+[2014-11-08 21:24:32,279]Server[('Yaos-MacBook-Pro.local', 31855)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 21:24:32,280]Server[('Yaos-MacBook-Pro.local', 31855)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 21:24:34,292]Server[('Yaos-MacBook-Pro.local', 31855)]: Request 1.1.3 from client received! 
+[2014-11-08 21:24:34,293]Server[('Yaos-MacBook-Pro.local', 31855)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 21:38:54,432]Server[('Yaos-MacBook-Pro.local', 26328)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 22285)  Next server is: ('Yaos-MacBook-Pro.local', 35566)
+[2014-11-08 21:38:58,460]Server[('Yaos-MacBook-Pro.local', 26328)]: Request 1.1.2 from client received! 
+[2014-11-08 21:38:58,461]Server[('Yaos-MacBook-Pro.local', 26328)]: the current life_time is: 1
+[2014-11-08 21:38:58,461]Server[('Yaos-MacBook-Pro.local', 26328)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:38:58,463]Server[('Yaos-MacBook-Pro.local', 26328)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:38:58,464]Server[('Yaos-MacBook-Pro.local', 26328)]: Request 1.2.2 from client received! 
+[2014-11-08 21:38:58,465]Server[('Yaos-MacBook-Pro.local', 26328)]: the current life_time is: 0
+[2014-11-08 21:38:58,465]Server[('Yaos-MacBook-Pro.local', 26328)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 21:38:58,466]Server[('Yaos-MacBook-Pro.local', 26328)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 21:39:00,478]Server[('Yaos-MacBook-Pro.local', 26328)]: Request 1.1.3 from client received! 
+[2014-11-08 21:39:00,479]Server[('Yaos-MacBook-Pro.local', 26328)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 21:43:35,184]Server[('Yaos-MacBook-Pro.local', 25567)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 37683)  Next server is: ('Yaos-MacBook-Pro.local', 25065)
+[2014-11-08 21:43:39,214]Server[('Yaos-MacBook-Pro.local', 25567)]: Request 1.2.2 from client received! 
+[2014-11-08 21:43:39,215]Server[('Yaos-MacBook-Pro.local', 25567)]: the current life_time is: 1
+[2014-11-08 21:43:39,215]Server[('Yaos-MacBook-Pro.local', 25567)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 21:43:39,217]Server[('Yaos-MacBook-Pro.local', 25567)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 21:43:39,219]Server[('Yaos-MacBook-Pro.local', 25567)]: Request 1.1.2 from client received! 
+[2014-11-08 21:43:39,219]Server[('Yaos-MacBook-Pro.local', 25567)]: the current life_time is: 0
+[2014-11-08 21:43:39,220]Server[('Yaos-MacBook-Pro.local', 25567)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 21:43:39,221]Server[('Yaos-MacBook-Pro.local', 25567)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 21:43:41,233]Server[('Yaos-MacBook-Pro.local', 25567)]: Request 1.2.3 from client received! 
+[2014-11-08 21:43:41,234]Server[('Yaos-MacBook-Pro.local', 25567)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:32:10,942]Server[('Yaos-MacBook-Pro.local', 30891)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 37826)  Next server is: ('Yaos-MacBook-Pro.local', 17696)
+[2014-11-08 22:32:14,992]Server[('Yaos-MacBook-Pro.local', 30891)]: Request 1.1.2 from client received! 
+[2014-11-08 22:32:14,993]Server[('Yaos-MacBook-Pro.local', 30891)]: the current life_time is: 1
+[2014-11-08 22:32:14,993]Server[('Yaos-MacBook-Pro.local', 30891)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:32:15,016]Server[('Yaos-MacBook-Pro.local', 30891)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:32:15,017]Server[('Yaos-MacBook-Pro.local', 30891)]: Request 1.2.2 from client received! 
+[2014-11-08 22:32:15,017]Server[('Yaos-MacBook-Pro.local', 30891)]: the current life_time is: 0
+[2014-11-08 22:32:15,018]Server[('Yaos-MacBook-Pro.local', 30891)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:32:15,022]Server[('Yaos-MacBook-Pro.local', 30891)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:32:17,064]Server[('Yaos-MacBook-Pro.local', 30891)]: Request 1.1.3 from client received! 
+[2014-11-08 22:32:17,064]Server[('Yaos-MacBook-Pro.local', 30891)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:34:53,102]Server[('Yaos-MacBook-Pro.local', 18675)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 25643)  Next server is: ('Yaos-MacBook-Pro.local', 17013)
+[2014-11-08 22:34:57,134]Server[('Yaos-MacBook-Pro.local', 18675)]: Request 1.2.2 from client received! 
+[2014-11-08 22:34:57,135]Server[('Yaos-MacBook-Pro.local', 18675)]: the current life_time is: 1
+[2014-11-08 22:34:57,135]Server[('Yaos-MacBook-Pro.local', 18675)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:34:57,138]Server[('Yaos-MacBook-Pro.local', 18675)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:34:57,141]Server[('Yaos-MacBook-Pro.local', 18675)]: Request 1.1.2 from client received! 
+[2014-11-08 22:34:57,144]Server[('Yaos-MacBook-Pro.local', 18675)]: the current life_time is: 0
+[2014-11-08 22:34:57,147]Server[('Yaos-MacBook-Pro.local', 18675)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:34:57,155]Server[('Yaos-MacBook-Pro.local', 18675)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:34:59,161]Server[('Yaos-MacBook-Pro.local', 18675)]: Request 1.2.3 from client received! 
+[2014-11-08 22:34:59,199]Server[('Yaos-MacBook-Pro.local', 18675)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:36:13,697]Server[('Yaos-MacBook-Pro.local', 39053)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 18119)  Next server is: ('Yaos-MacBook-Pro.local', 21606)
+[2014-11-08 22:36:17,728]Server[('Yaos-MacBook-Pro.local', 39053)]: Request 1.1.2 from client received! 
+[2014-11-08 22:36:17,728]Server[('Yaos-MacBook-Pro.local', 39053)]: the current life_time is: 1
+[2014-11-08 22:36:17,729]Server[('Yaos-MacBook-Pro.local', 39053)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:36:17,731]Server[('Yaos-MacBook-Pro.local', 39053)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:36:17,732]Server[('Yaos-MacBook-Pro.local', 39053)]: Request 1.2.2 from client received! 
+[2014-11-08 22:36:17,733]Server[('Yaos-MacBook-Pro.local', 39053)]: the current life_time is: 0
+[2014-11-08 22:36:17,733]Server[('Yaos-MacBook-Pro.local', 39053)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:36:17,735]Server[('Yaos-MacBook-Pro.local', 39053)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:36:19,767]Server[('Yaos-MacBook-Pro.local', 39053)]: Request 1.1.3 from client received! 
+[2014-11-08 22:36:19,768]Server[('Yaos-MacBook-Pro.local', 39053)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:38:06,547]Server[('Yaos-MacBook-Pro.local', 33784)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 39095)  Next server is: ('Yaos-MacBook-Pro.local', 39687)
+[2014-11-08 22:38:10,575]Server[('Yaos-MacBook-Pro.local', 33784)]: Request 1.1.2 from client received! 
+[2014-11-08 22:38:10,575]Server[('Yaos-MacBook-Pro.local', 33784)]: the current life_time is: 1
+[2014-11-08 22:38:10,576]Server[('Yaos-MacBook-Pro.local', 33784)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:38:10,578]Server[('Yaos-MacBook-Pro.local', 33784)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:38:10,579]Server[('Yaos-MacBook-Pro.local', 33784)]: Request 1.2.2 from client received! 
+[2014-11-08 22:38:10,580]Server[('Yaos-MacBook-Pro.local', 33784)]: the current life_time is: 0
+[2014-11-08 22:38:10,580]Server[('Yaos-MacBook-Pro.local', 33784)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:38:10,582]Server[('Yaos-MacBook-Pro.local', 33784)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:38:12,606]Server[('Yaos-MacBook-Pro.local', 33784)]: Request 1.1.3 from client received! 
+[2014-11-08 22:38:12,607]Server[('Yaos-MacBook-Pro.local', 33784)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:45:47,334]Server[('Yaos-MacBook-Pro.local', 18318)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 30600)  Next server is: ('Yaos-MacBook-Pro.local', 39031)
+[2014-11-08 22:45:51,361]Server[('Yaos-MacBook-Pro.local', 18318)]: Request 1.1.2 from client received! 
+[2014-11-08 22:45:51,362]Server[('Yaos-MacBook-Pro.local', 18318)]: the current life_time is: 1
+[2014-11-08 22:45:51,362]Server[('Yaos-MacBook-Pro.local', 18318)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:45:51,364]Server[('Yaos-MacBook-Pro.local', 18318)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:45:51,365]Server[('Yaos-MacBook-Pro.local', 18318)]: Request 1.2.2 from client received! 
+[2014-11-08 22:45:51,366]Server[('Yaos-MacBook-Pro.local', 18318)]: the current life_time is: 0
+[2014-11-08 22:45:51,366]Server[('Yaos-MacBook-Pro.local', 18318)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:45:51,368]Server[('Yaos-MacBook-Pro.local', 18318)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:45:53,386]Server[('Yaos-MacBook-Pro.local', 18318)]: Request 1.1.3 from client received! 
+[2014-11-08 22:45:53,387]Server[('Yaos-MacBook-Pro.local', 18318)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:49:42,666]Server[('Yaos-MacBook-Pro.local', 39810)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 29462)  Next server is: ('Yaos-MacBook-Pro.local', 28459)
+[2014-11-08 22:49:46,699]Server[('Yaos-MacBook-Pro.local', 39810)]: Request 1.1.2 from client received! 
+[2014-11-08 22:49:46,700]Server[('Yaos-MacBook-Pro.local', 39810)]: the current life_time is: 1
+[2014-11-08 22:49:46,701]Server[('Yaos-MacBook-Pro.local', 39810)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:49:46,705]Server[('Yaos-MacBook-Pro.local', 39810)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:49:46,706]Server[('Yaos-MacBook-Pro.local', 39810)]: Request 1.2.2 from client received! 
+[2014-11-08 22:49:46,707]Server[('Yaos-MacBook-Pro.local', 39810)]: the current life_time is: 0
+[2014-11-08 22:49:46,708]Server[('Yaos-MacBook-Pro.local', 39810)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:49:46,710]Server[('Yaos-MacBook-Pro.local', 39810)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:49:48,721]Server[('Yaos-MacBook-Pro.local', 39810)]: Request 1.1.3 from client received! 
+[2014-11-08 22:49:48,721]Server[('Yaos-MacBook-Pro.local', 39810)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:53:30,646]Server[('Yaos-MacBook-Pro.local', 20617)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 34639)  Next server is: ('Yaos-MacBook-Pro.local', 33009)
+[2014-11-08 22:53:34,678]Server[('Yaos-MacBook-Pro.local', 20617)]: Request 1.2.2 from client received! 
+[2014-11-08 22:53:34,678]Server[('Yaos-MacBook-Pro.local', 20617)]: the current life_time is: 1
+[2014-11-08 22:53:34,679]Server[('Yaos-MacBook-Pro.local', 20617)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:53:34,681]Server[('Yaos-MacBook-Pro.local', 20617)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:53:34,682]Server[('Yaos-MacBook-Pro.local', 20617)]: Request 1.1.2 from client received! 
+[2014-11-08 22:53:34,683]Server[('Yaos-MacBook-Pro.local', 20617)]: the current life_time is: 0
+[2014-11-08 22:53:34,683]Server[('Yaos-MacBook-Pro.local', 20617)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:53:34,684]Server[('Yaos-MacBook-Pro.local', 20617)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:53:36,697]Server[('Yaos-MacBook-Pro.local', 20617)]: Request 1.2.3 from client received! 
+[2014-11-08 22:53:36,697]Server[('Yaos-MacBook-Pro.local', 20617)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 22:59:32,217]Server[('Yaos-MacBook-Pro.local', 37451)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 32842)  Next server is: ('Yaos-MacBook-Pro.local', 36291)
+[2014-11-08 22:59:36,249]Server[('Yaos-MacBook-Pro.local', 37451)]: Request 1.1.2 from client received! 
+[2014-11-08 22:59:36,249]Server[('Yaos-MacBook-Pro.local', 37451)]: the current life_time is: 1
+[2014-11-08 22:59:36,250]Server[('Yaos-MacBook-Pro.local', 37451)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 22:59:36,253]Server[('Yaos-MacBook-Pro.local', 37451)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 22:59:36,255]Server[('Yaos-MacBook-Pro.local', 37451)]: Request 1.2.2 from client received! 
+[2014-11-08 22:59:36,255]Server[('Yaos-MacBook-Pro.local', 37451)]: the current life_time is: 0
+[2014-11-08 22:59:36,255]Server[('Yaos-MacBook-Pro.local', 37451)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 22:59:36,257]Server[('Yaos-MacBook-Pro.local', 37451)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 22:59:38,271]Server[('Yaos-MacBook-Pro.local', 37451)]: Request 1.1.3 from client received! 
+[2014-11-08 22:59:38,272]Server[('Yaos-MacBook-Pro.local', 37451)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:00:56,211]Server[('Yaos-MacBook-Pro.local', 16069)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 26364)  Next server is: ('Yaos-MacBook-Pro.local', 22866)
+[2014-11-08 23:01:00,258]Server[('Yaos-MacBook-Pro.local', 16069)]: Request 1.2.2 from client received! 
+[2014-11-08 23:01:00,258]Server[('Yaos-MacBook-Pro.local', 16069)]: the current life_time is: 1
+[2014-11-08 23:01:00,259]Server[('Yaos-MacBook-Pro.local', 16069)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:01:00,262]Server[('Yaos-MacBook-Pro.local', 16069)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:01:00,263]Server[('Yaos-MacBook-Pro.local', 16069)]: Request 1.1.2 from client received! 
+[2014-11-08 23:01:00,279]Server[('Yaos-MacBook-Pro.local', 16069)]: the current life_time is: 0
+[2014-11-08 23:01:00,280]Server[('Yaos-MacBook-Pro.local', 16069)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:01:00,281]Server[('Yaos-MacBook-Pro.local', 16069)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:01:02,294]Server[('Yaos-MacBook-Pro.local', 16069)]: Request 1.2.3 from client received! 
+[2014-11-08 23:01:02,294]Server[('Yaos-MacBook-Pro.local', 16069)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:06:42,201]Server[('Yaos-MacBook-Pro.local', 12394)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 21322)  Next server is: ('Yaos-MacBook-Pro.local', 11431)
+[2014-11-08 23:06:46,232]Server[('Yaos-MacBook-Pro.local', 12394)]: Request 1.1.2 from client received! 
+[2014-11-08 23:06:46,232]Server[('Yaos-MacBook-Pro.local', 12394)]: the current life_time is: 1
+[2014-11-08 23:06:46,233]Server[('Yaos-MacBook-Pro.local', 12394)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:06:46,237]Server[('Yaos-MacBook-Pro.local', 12394)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:06:46,238]Server[('Yaos-MacBook-Pro.local', 12394)]: Request 1.2.2 from client received! 
+[2014-11-08 23:06:46,239]Server[('Yaos-MacBook-Pro.local', 12394)]: the current life_time is: 0
+[2014-11-08 23:06:46,239]Server[('Yaos-MacBook-Pro.local', 12394)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:06:46,241]Server[('Yaos-MacBook-Pro.local', 12394)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:06:48,252]Server[('Yaos-MacBook-Pro.local', 12394)]: Request 1.1.3 from client received! 
+[2014-11-08 23:06:48,253]Server[('Yaos-MacBook-Pro.local', 12394)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:09:36,195]Server[('Yaos-MacBook-Pro.local', 22679)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 14910)  Next server is: ('Yaos-MacBook-Pro.local', 28821)
+[2014-11-08 23:09:40,225]Server[('Yaos-MacBook-Pro.local', 22679)]: Request 1.2.2 from client received! 
+[2014-11-08 23:09:40,225]Server[('Yaos-MacBook-Pro.local', 22679)]: the current life_time is: 1
+[2014-11-08 23:09:40,226]Server[('Yaos-MacBook-Pro.local', 22679)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:09:40,228]Server[('Yaos-MacBook-Pro.local', 22679)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:09:40,229]Server[('Yaos-MacBook-Pro.local', 22679)]: Request 1.1.2 from client received! 
+[2014-11-08 23:09:40,230]Server[('Yaos-MacBook-Pro.local', 22679)]: the current life_time is: 0
+[2014-11-08 23:09:40,230]Server[('Yaos-MacBook-Pro.local', 22679)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:09:40,231]Server[('Yaos-MacBook-Pro.local', 22679)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:09:42,301]Server[('Yaos-MacBook-Pro.local', 22679)]: Request 1.2.3 from client received! 
+[2014-11-08 23:09:42,308]Server[('Yaos-MacBook-Pro.local', 22679)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:12:02,680]Server[('Yaos-MacBook-Pro.local', 19157)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 10657)  Next server is: ('Yaos-MacBook-Pro.local', 33649)
+[2014-11-08 23:12:06,709]Server[('Yaos-MacBook-Pro.local', 19157)]: Request 1.1.2 from client received! 
+[2014-11-08 23:12:06,709]Server[('Yaos-MacBook-Pro.local', 19157)]: the current life_time is: 1
+[2014-11-08 23:12:06,710]Server[('Yaos-MacBook-Pro.local', 19157)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:12:06,712]Server[('Yaos-MacBook-Pro.local', 19157)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:12:06,736]Server[('Yaos-MacBook-Pro.local', 19157)]: Request 1.2.2 from client received! 
+[2014-11-08 23:12:06,778]Server[('Yaos-MacBook-Pro.local', 19157)]: the current life_time is: 0
+[2014-11-08 23:12:06,778]Server[('Yaos-MacBook-Pro.local', 19157)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:12:06,780]Server[('Yaos-MacBook-Pro.local', 19157)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:12:08,726]Server[('Yaos-MacBook-Pro.local', 19157)]: Request 1.1.3 from client received! 
+[2014-11-08 23:12:08,727]Server[('Yaos-MacBook-Pro.local', 19157)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:17:04,399]Server[('Yaos-MacBook-Pro.local', 15542)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 18109)  Next server is: ('Yaos-MacBook-Pro.local', 18364)
+[2014-11-08 23:17:08,433]Server[('Yaos-MacBook-Pro.local', 15542)]: Request 1.1.2 from client received! 
+[2014-11-08 23:17:08,434]Server[('Yaos-MacBook-Pro.local', 15542)]: the current life_time is: 1
+[2014-11-08 23:17:08,434]Server[('Yaos-MacBook-Pro.local', 15542)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:17:08,438]Server[('Yaos-MacBook-Pro.local', 15542)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:17:08,439]Server[('Yaos-MacBook-Pro.local', 15542)]: Request 1.2.2 from client received! 
+[2014-11-08 23:17:08,439]Server[('Yaos-MacBook-Pro.local', 15542)]: the current life_time is: 0
+[2014-11-08 23:17:08,440]Server[('Yaos-MacBook-Pro.local', 15542)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:17:08,441]Server[('Yaos-MacBook-Pro.local', 15542)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:17:10,454]Server[('Yaos-MacBook-Pro.local', 15542)]: Request 1.1.3 from client received! 
+[2014-11-08 23:17:10,455]Server[('Yaos-MacBook-Pro.local', 15542)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:20:36,967]Server[('Yaos-MacBook-Pro.local', 13005)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 34340)  Next server is: ('Yaos-MacBook-Pro.local', 37794)
+[2014-11-08 23:20:40,997]Server[('Yaos-MacBook-Pro.local', 13005)]: Request 1.1.2 from client received! 
+[2014-11-08 23:20:40,998]Server[('Yaos-MacBook-Pro.local', 13005)]: the current life_time is: 1
+[2014-11-08 23:20:40,998]Server[('Yaos-MacBook-Pro.local', 13005)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:20:41,001]Server[('Yaos-MacBook-Pro.local', 13005)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:20:41,003]Server[('Yaos-MacBook-Pro.local', 13005)]: Request 1.2.2 from client received! 
+[2014-11-08 23:20:41,003]Server[('Yaos-MacBook-Pro.local', 13005)]: the current life_time is: 0
+[2014-11-08 23:20:41,004]Server[('Yaos-MacBook-Pro.local', 13005)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:20:41,006]Server[('Yaos-MacBook-Pro.local', 13005)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:20:43,019]Server[('Yaos-MacBook-Pro.local', 13005)]: Request 1.1.3 from client received! 
+[2014-11-08 23:20:43,019]Server[('Yaos-MacBook-Pro.local', 13005)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:22:35,413]Server[('Yaos-MacBook-Pro.local', 38832)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 28243)  Next server is: ('Yaos-MacBook-Pro.local', 31499)
+[2014-11-08 23:22:39,443]Server[('Yaos-MacBook-Pro.local', 38832)]: Request 1.1.2 from client received! 
+[2014-11-08 23:22:39,443]Server[('Yaos-MacBook-Pro.local', 38832)]: the current life_time is: 1
+[2014-11-08 23:22:39,444]Server[('Yaos-MacBook-Pro.local', 38832)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:22:39,446]Server[('Yaos-MacBook-Pro.local', 38832)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:22:39,447]Server[('Yaos-MacBook-Pro.local', 38832)]: Request 1.2.2 from client received! 
+[2014-11-08 23:22:39,448]Server[('Yaos-MacBook-Pro.local', 38832)]: the current life_time is: 0
+[2014-11-08 23:22:39,448]Server[('Yaos-MacBook-Pro.local', 38832)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:22:39,449]Server[('Yaos-MacBook-Pro.local', 38832)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:22:41,461]Server[('Yaos-MacBook-Pro.local', 38832)]: Request 1.1.3 from client received! 
+[2014-11-08 23:22:41,461]Server[('Yaos-MacBook-Pro.local', 38832)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:36:47,527]Server[('Yaos-MacBook-Pro.local', 12378)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 11303)  Next server is: ('Yaos-MacBook-Pro.local', 20974)
+[2014-11-08 23:36:51,561]Server[('Yaos-MacBook-Pro.local', 12378)]: Request 1.1.2 from client received! 
+[2014-11-08 23:36:51,562]Server[('Yaos-MacBook-Pro.local', 12378)]: the current life_time is: 1
+[2014-11-08 23:36:51,563]Server[('Yaos-MacBook-Pro.local', 12378)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:36:51,566]Server[('Yaos-MacBook-Pro.local', 12378)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:36:51,567]Server[('Yaos-MacBook-Pro.local', 12378)]: Request 1.2.2 from client received! 
+[2014-11-08 23:36:51,567]Server[('Yaos-MacBook-Pro.local', 12378)]: the current life_time is: 0
+[2014-11-08 23:36:51,568]Server[('Yaos-MacBook-Pro.local', 12378)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:36:51,570]Server[('Yaos-MacBook-Pro.local', 12378)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:36:53,624]Server[('Yaos-MacBook-Pro.local', 12378)]: Request 1.1.3 from client received! 
+[2014-11-08 23:36:53,625]Server[('Yaos-MacBook-Pro.local', 12378)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-08 23:37:42,652]Server[('Yaos-MacBook-Pro.local', 21219)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 10516)  Next server is: ('Yaos-MacBook-Pro.local', 39404)
+[2014-11-08 23:37:46,682]Server[('Yaos-MacBook-Pro.local', 21219)]: Request 1.1.2 from client received! 
+[2014-11-08 23:37:46,683]Server[('Yaos-MacBook-Pro.local', 21219)]: the current life_time is: 1
+[2014-11-08 23:37:46,683]Server[('Yaos-MacBook-Pro.local', 21219)]: Request 1.1.2 has been added to sent transaction
+[2014-11-08 23:37:46,686]Server[('Yaos-MacBook-Pro.local', 21219)]: Reply for Request 1.1.2 has been sent
+[2014-11-08 23:37:46,687]Server[('Yaos-MacBook-Pro.local', 21219)]: Request 1.2.2 from client received! 
+[2014-11-08 23:37:46,688]Server[('Yaos-MacBook-Pro.local', 21219)]: the current life_time is: 0
+[2014-11-08 23:37:46,689]Server[('Yaos-MacBook-Pro.local', 21219)]: Request 1.2.2 has been added to sent transaction
+[2014-11-08 23:37:46,690]Server[('Yaos-MacBook-Pro.local', 21219)]: Reply for Request 1.2.2 has been sent
+[2014-11-08 23:37:48,726]Server[('Yaos-MacBook-Pro.local', 21219)]: Request 1.1.3 from client received! 
+[2014-11-08 23:37:48,727]Server[('Yaos-MacBook-Pro.local', 21219)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 14:43:25,038]Server[('Yaos-MacBook-Pro.local', 11427)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 37123)  Next server is: ('Yaos-MacBook-Pro.local', 12197)
+[2014-11-09 14:43:29,067]Server[('Yaos-MacBook-Pro.local', 11427)]: Request 1.1.2 from client received! 
+[2014-11-09 14:43:29,068]Server[('Yaos-MacBook-Pro.local', 11427)]: the current life_time is: 1
+[2014-11-09 14:43:29,068]Server[('Yaos-MacBook-Pro.local', 11427)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 14:43:29,071]Server[('Yaos-MacBook-Pro.local', 11427)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 14:43:29,072]Server[('Yaos-MacBook-Pro.local', 11427)]: Request 1.2.2 from client received! 
+[2014-11-09 14:43:29,072]Server[('Yaos-MacBook-Pro.local', 11427)]: the current life_time is: 0
+[2014-11-09 14:43:29,073]Server[('Yaos-MacBook-Pro.local', 11427)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 14:43:29,074]Server[('Yaos-MacBook-Pro.local', 11427)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 14:43:31,088]Server[('Yaos-MacBook-Pro.local', 11427)]: Request 1.1.3 from client received! 
+[2014-11-09 14:43:31,089]Server[('Yaos-MacBook-Pro.local', 11427)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 14:57:55,607]Server[('Yaos-MacBook-Pro.local', 11712)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 13982)  Next server is: ('Yaos-MacBook-Pro.local', 34183)
+[2014-11-09 14:57:59,637]Server[('Yaos-MacBook-Pro.local', 11712)]: Request 1.1.2 from client received! 
+[2014-11-09 14:57:59,638]Server[('Yaos-MacBook-Pro.local', 11712)]: the current life_time is: 1
+[2014-11-09 14:57:59,638]Server[('Yaos-MacBook-Pro.local', 11712)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 14:57:59,641]Server[('Yaos-MacBook-Pro.local', 11712)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 14:57:59,642]Server[('Yaos-MacBook-Pro.local', 11712)]: Request 1.2.2 from client received! 
+[2014-11-09 14:57:59,642]Server[('Yaos-MacBook-Pro.local', 11712)]: the current life_time is: 0
+[2014-11-09 14:57:59,643]Server[('Yaos-MacBook-Pro.local', 11712)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 14:57:59,644]Server[('Yaos-MacBook-Pro.local', 11712)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 14:58:01,658]Server[('Yaos-MacBook-Pro.local', 11712)]: Request 1.1.3 from client received! 
+[2014-11-09 14:58:01,658]Server[('Yaos-MacBook-Pro.local', 11712)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:00:33,278]Server[('Yaos-MacBook-Pro.local', 25958)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 24645)  Next server is: ('Yaos-MacBook-Pro.local', 36889)
+[2014-11-09 15:00:37,308]Server[('Yaos-MacBook-Pro.local', 25958)]: Request 1.1.2 from client received! 
+[2014-11-09 15:00:37,308]Server[('Yaos-MacBook-Pro.local', 25958)]: the current life_time is: 1
+[2014-11-09 15:00:37,309]Server[('Yaos-MacBook-Pro.local', 25958)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:00:37,311]Server[('Yaos-MacBook-Pro.local', 25958)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:00:37,312]Server[('Yaos-MacBook-Pro.local', 25958)]: Request 1.2.2 from client received! 
+[2014-11-09 15:00:37,313]Server[('Yaos-MacBook-Pro.local', 25958)]: the current life_time is: 0
+[2014-11-09 15:00:37,313]Server[('Yaos-MacBook-Pro.local', 25958)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:00:37,315]Server[('Yaos-MacBook-Pro.local', 25958)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:00:39,328]Server[('Yaos-MacBook-Pro.local', 25958)]: Request 1.1.3 from client received! 
+[2014-11-09 15:00:39,328]Server[('Yaos-MacBook-Pro.local', 25958)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:08:59,834]Server[('Yaos-MacBook-Pro.local', 24836)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 14718)  Next server is: ('Yaos-MacBook-Pro.local', 38706)
+[2014-11-09 15:09:03,865]Server[('Yaos-MacBook-Pro.local', 24836)]: Request 1.2.2 from client received! 
+[2014-11-09 15:09:03,865]Server[('Yaos-MacBook-Pro.local', 24836)]: the current life_time is: 1
+[2014-11-09 15:09:03,866]Server[('Yaos-MacBook-Pro.local', 24836)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:09:03,868]Server[('Yaos-MacBook-Pro.local', 24836)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:09:03,869]Server[('Yaos-MacBook-Pro.local', 24836)]: Request 1.1.2 from client received! 
+[2014-11-09 15:09:03,870]Server[('Yaos-MacBook-Pro.local', 24836)]: the current life_time is: 0
+[2014-11-09 15:09:03,870]Server[('Yaos-MacBook-Pro.local', 24836)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:09:03,872]Server[('Yaos-MacBook-Pro.local', 24836)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:09:05,886]Server[('Yaos-MacBook-Pro.local', 24836)]: Request 1.2.3 from client received! 
+[2014-11-09 15:09:05,887]Server[('Yaos-MacBook-Pro.local', 24836)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:12:35,287]Server[('Yaos-MacBook-Pro.local', 10281)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 15167)  Next server is: ('Yaos-MacBook-Pro.local', 13411)
+[2014-11-09 15:12:39,316]Server[('Yaos-MacBook-Pro.local', 10281)]: Request 1.1.2 from client received! 
+[2014-11-09 15:12:39,316]Server[('Yaos-MacBook-Pro.local', 10281)]: the current life_time is: 1
+[2014-11-09 15:12:39,316]Server[('Yaos-MacBook-Pro.local', 10281)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:12:39,319]Server[('Yaos-MacBook-Pro.local', 10281)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:12:39,320]Server[('Yaos-MacBook-Pro.local', 10281)]: Request 1.2.2 from client received! 
+[2014-11-09 15:12:39,320]Server[('Yaos-MacBook-Pro.local', 10281)]: the current life_time is: 0
+[2014-11-09 15:12:39,320]Server[('Yaos-MacBook-Pro.local', 10281)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:12:39,322]Server[('Yaos-MacBook-Pro.local', 10281)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:12:41,336]Server[('Yaos-MacBook-Pro.local', 10281)]: Request 1.1.3 from client received! 
+[2014-11-09 15:12:41,337]Server[('Yaos-MacBook-Pro.local', 10281)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:14:23,958]Server[('Yaos-MacBook-Pro.local', 14528)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 34956)  Next server is: ('Yaos-MacBook-Pro.local', 23922)
+[2014-11-09 15:14:27,987]Server[('Yaos-MacBook-Pro.local', 14528)]: Request 1.1.2 from client received! 
+[2014-11-09 15:14:27,987]Server[('Yaos-MacBook-Pro.local', 14528)]: the current life_time is: 1
+[2014-11-09 15:14:27,988]Server[('Yaos-MacBook-Pro.local', 14528)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:14:27,990]Server[('Yaos-MacBook-Pro.local', 14528)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:14:27,991]Server[('Yaos-MacBook-Pro.local', 14528)]: Request 1.2.2 from client received! 
+[2014-11-09 15:14:27,991]Server[('Yaos-MacBook-Pro.local', 14528)]: the current life_time is: 0
+[2014-11-09 15:14:27,992]Server[('Yaos-MacBook-Pro.local', 14528)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:14:27,993]Server[('Yaos-MacBook-Pro.local', 14528)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:14:30,007]Server[('Yaos-MacBook-Pro.local', 14528)]: Request 1.1.3 from client received! 
+[2014-11-09 15:14:30,007]Server[('Yaos-MacBook-Pro.local', 14528)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:17:41,224]Server[('Yaos-MacBook-Pro.local', 19202)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 20156)  Next server is: ('Yaos-MacBook-Pro.local', 21485)
+[2014-11-09 15:17:45,255]Server[('Yaos-MacBook-Pro.local', 19202)]: Request 1.2.2 from client received! 
+[2014-11-09 15:17:45,255]Server[('Yaos-MacBook-Pro.local', 19202)]: the current life_time is: 1
+[2014-11-09 15:17:45,256]Server[('Yaos-MacBook-Pro.local', 19202)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:17:45,258]Server[('Yaos-MacBook-Pro.local', 19202)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:17:45,259]Server[('Yaos-MacBook-Pro.local', 19202)]: Request 1.1.2 from client received! 
+[2014-11-09 15:17:45,260]Server[('Yaos-MacBook-Pro.local', 19202)]: the current life_time is: 0
+[2014-11-09 15:17:45,260]Server[('Yaos-MacBook-Pro.local', 19202)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:17:45,262]Server[('Yaos-MacBook-Pro.local', 19202)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:17:47,275]Server[('Yaos-MacBook-Pro.local', 19202)]: Request 1.2.3 from client received! 
+[2014-11-09 15:17:47,320]Server[('Yaos-MacBook-Pro.local', 19202)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:22:15,152]Server[('Yaos-MacBook-Pro.local', 15953)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 29159)  Next server is: ('Yaos-MacBook-Pro.local', 15194)
+[2014-11-09 15:22:19,184]Server[('Yaos-MacBook-Pro.local', 15953)]: Request 1.1.2 from client received! 
+[2014-11-09 15:22:19,185]Server[('Yaos-MacBook-Pro.local', 15953)]: the current life_time is: 1
+[2014-11-09 15:22:19,185]Server[('Yaos-MacBook-Pro.local', 15953)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:22:19,188]Server[('Yaos-MacBook-Pro.local', 15953)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:22:19,189]Server[('Yaos-MacBook-Pro.local', 15953)]: Request 1.2.2 from client received! 
+[2014-11-09 15:22:19,189]Server[('Yaos-MacBook-Pro.local', 15953)]: the current life_time is: 0
+[2014-11-09 15:22:19,190]Server[('Yaos-MacBook-Pro.local', 15953)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:22:19,191]Server[('Yaos-MacBook-Pro.local', 15953)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:22:21,206]Server[('Yaos-MacBook-Pro.local', 15953)]: Request 1.1.3 from client received! 
+[2014-11-09 15:22:21,249]Server[('Yaos-MacBook-Pro.local', 15953)]: Server: 127.0.0.1:10003 has expired!
+[2014-11-09 15:27:46,090]Server[('Yaos-MacBook-Pro.local', 26063)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('Yaos-MacBook-Pro.local', 16112)  Next server is: ('Yaos-MacBook-Pro.local', 37121)
+[2014-11-09 15:27:50,119]Server[('Yaos-MacBook-Pro.local', 26063)]: Request 1.1.2 from client received! 
+[2014-11-09 15:27:50,119]Server[('Yaos-MacBook-Pro.local', 26063)]: the current life_time is: 1
+[2014-11-09 15:27:50,120]Server[('Yaos-MacBook-Pro.local', 26063)]: Request 1.1.2 has been added to sent transaction
+[2014-11-09 15:27:50,122]Server[('Yaos-MacBook-Pro.local', 26063)]: Reply for Request 1.1.2 has been sent
+[2014-11-09 15:27:50,123]Server[('Yaos-MacBook-Pro.local', 26063)]: Request 1.2.2 from client received! 
+[2014-11-09 15:27:50,124]Server[('Yaos-MacBook-Pro.local', 26063)]: the current life_time is: 0
+[2014-11-09 15:27:50,124]Server[('Yaos-MacBook-Pro.local', 26063)]: Request 1.2.2 has been added to sent transaction
+[2014-11-09 15:27:50,126]Server[('Yaos-MacBook-Pro.local', 26063)]: Reply for Request 1.2.2 has been sent
+[2014-11-09 15:27:52,139]Server[('Yaos-MacBook-Pro.local', 26063)]: Request 1.1.3 from client received! 
+[2014-11-09 15:27:52,140]Server[('Yaos-MacBook-Pro.local', 26063)]: Server: 127.0.0.1:10003 has expired!

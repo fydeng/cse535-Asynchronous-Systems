@@ -1,2 +1,4 @@
 [2014-11-07 13:08:28,267]Master[('Fangyus-MacBook-Pro.local', 22043)]: Master  ('Fangyus-MacBook-Pro.local', 22043)  has started.
 [2014-11-07 13:08:28,268]Master[('Fangyus-MacBook-Pro.local', 22043)]: Logging output to ./master_log
+[2014-11-09 19:26:32,255]Master[('uhsb-wireless-vlan1948-172-31-67-178.uhmc.sunysb.edu', 16872)]: Master  ('uhsb-wireless-vlan1948-172-31-67-178.uhmc.sunysb.edu', 16872)  has started.
+[2014-11-09 19:26:32,256]Master[('uhsb-wireless-vlan1948-172-31-67-178.uhmc.sunysb.edu', 16872)]: Logging output to ./master_log

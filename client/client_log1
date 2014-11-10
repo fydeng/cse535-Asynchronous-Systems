@@ -1,0 +1,758 @@
+[2014-11-07 19:46:28,287]Client[('Yaos-MacBook-Pro.local', 35740)]: Client: Bank Name is: 1  Account number is: 200
+[2014-11-07 19:46:28,292]Client[('Yaos-MacBook-Pro.local', 35740)]: Request 1.2.1 has been sent out
+[2014-11-07 19:46:30,300]Client[('Yaos-MacBook-Pro.local', 35740)]: Reply received from server: RequestID is 1.2.1, Outcome.Processed, Balance is 0.000000
+[2014-11-07 19:46:30,301]Client[('Yaos-MacBook-Pro.local', 35740)]: Request 1.2.2 has been sent out
+[2014-11-07 19:46:32,322]Client[('Yaos-MacBook-Pro.local', 35740)]: Reply received from server: RequestID is 1.2.2, Outcome.Processed, Balance is 400.000000
+[2014-11-07 19:46:32,323]Client[('Yaos-MacBook-Pro.local', 35740)]: Request 1.2.3 has been sent out
+[2014-11-07 19:46:43,300]Client[('Yaos-MacBook-Pro.local', 35740)]: waiting for reply TIMEDOUT!
+[2014-11-07 19:46:43,300]Client[('Yaos-MacBook-Pro.local', 35740)]: Start retransmitting Request  1.2.3
+[2014-11-07 19:46:44,316]Client[('Yaos-MacBook-Pro.local', 35740)]: Reply received from server: RequestID is 1.2.3, Outcome.Processed, Balance is 300.000000
+[2014-11-07 19:46:44,325]Client[('Yaos-MacBook-Pro.local', 35740)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.2.3
+[2014-11-07 19:46:44,325]Client[('Yaos-MacBook-Pro.local', 35740)]: Request 1.2.4 has been sent out
+[2014-11-07 19:46:46,339]Client[('Yaos-MacBook-Pro.local', 35740)]: Reply received from server: RequestID is 1.2.4, Outcome.Processed, Balance is 400.000000
+[2014-11-07 19:46:46,339]Client[('Yaos-MacBook-Pro.local', 35740)]: Request 1.2.5 has been sent out
+[2014-11-07 19:46:48,354]Client[('Yaos-MacBook-Pro.local', 35740)]: Reply received from server: RequestID is 1.2.5, Outcome.Processed, Balance is 500.000000
+[2014-11-07 19:46:48,354]Client[('Yaos-MacBook-Pro.local', 35740)]: Request 1.2.6 has been sent out
+[2014-11-07 19:46:50,372]Client[('Yaos-MacBook-Pro.local', 35740)]: Reply received from server: RequestID is 1.2.6, Outcome.Processed, Balance is 100.000000
+[2014-11-07 19:51:04,068]Client[('Yaos-MacBook-Pro.local', 35896)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-07 19:51:04,071]Client[('Yaos-MacBook-Pro.local', 35896)]: Request 1.1.1 has been sent out
+[2014-11-07 19:51:06,079]Client[('Yaos-MacBook-Pro.local', 35896)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-07 19:51:06,080]Client[('Yaos-MacBook-Pro.local', 35896)]: Request 1.1.2 has been sent out
+[2014-11-07 19:51:08,104]Client[('Yaos-MacBook-Pro.local', 35896)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-07 19:51:08,105]Client[('Yaos-MacBook-Pro.local', 35896)]: Request 1.1.3 has been sent out
+[2014-11-07 19:51:19,062]Client[('Yaos-MacBook-Pro.local', 35896)]: waiting for reply TIMEDOUT!
+[2014-11-07 19:51:19,062]Client[('Yaos-MacBook-Pro.local', 35896)]: Start retransmitting Request  1.1.3
+[2014-11-07 19:51:20,073]Client[('Yaos-MacBook-Pro.local', 35896)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-07 19:51:20,074]Client[('Yaos-MacBook-Pro.local', 35896)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-07 19:51:20,075]Client[('Yaos-MacBook-Pro.local', 35896)]: Request 1.1.4 has been sent out
+[2014-11-07 19:51:22,085]Client[('Yaos-MacBook-Pro.local', 35896)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-07 19:51:22,086]Client[('Yaos-MacBook-Pro.local', 35896)]: Request 1.1.5 has been sent out
+[2014-11-07 19:51:24,101]Client[('Yaos-MacBook-Pro.local', 35896)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-07 19:51:24,114]Client[('Yaos-MacBook-Pro.local', 35896)]: Request 1.1.6 has been sent out
+[2014-11-07 19:51:26,147]Client[('Yaos-MacBook-Pro.local', 35896)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 10:41:47,038]Client[('Yaos-MacBook-Pro.local', 15933)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 10:41:47,041]Client[('Yaos-MacBook-Pro.local', 15933)]: Request 1.1.1 has been sent out
+[2014-11-08 10:41:49,053]Client[('Yaos-MacBook-Pro.local', 15933)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 10:41:49,054]Client[('Yaos-MacBook-Pro.local', 15933)]: Request 1.1.2 has been sent out
+[2014-11-08 10:41:51,077]Client[('Yaos-MacBook-Pro.local', 15933)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 10:41:51,077]Client[('Yaos-MacBook-Pro.local', 15933)]: Request 1.1.3 has been sent out
+[2014-11-08 10:42:02,049]Client[('Yaos-MacBook-Pro.local', 15933)]: waiting for reply TIMEDOUT!
+[2014-11-08 10:42:02,049]Client[('Yaos-MacBook-Pro.local', 15933)]: Start retransmitting Request  1.1.3
+[2014-11-08 10:42:03,060]Client[('Yaos-MacBook-Pro.local', 15933)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 10:42:03,061]Client[('Yaos-MacBook-Pro.local', 15933)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 10:42:03,062]Client[('Yaos-MacBook-Pro.local', 15933)]: Request 1.1.4 has been sent out
+[2014-11-08 10:42:05,074]Client[('Yaos-MacBook-Pro.local', 15933)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 10:42:05,075]Client[('Yaos-MacBook-Pro.local', 15933)]: Request 1.1.5 has been sent out
+[2014-11-08 10:42:07,105]Client[('Yaos-MacBook-Pro.local', 15933)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 10:42:07,106]Client[('Yaos-MacBook-Pro.local', 15933)]: Request 1.1.6 has been sent out
+[2014-11-08 10:42:09,123]Client[('Yaos-MacBook-Pro.local', 15933)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 19:28:39,950]Client[('Yaos-MacBook-Pro.local', 35892)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 19:28:39,953]Client[('Yaos-MacBook-Pro.local', 35892)]: Request 1.1.1 has been sent out
+[2014-11-08 19:28:41,963]Client[('Yaos-MacBook-Pro.local', 35892)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 19:28:41,964]Client[('Yaos-MacBook-Pro.local', 35892)]: Request 1.1.2 has been sent out
+[2014-11-08 19:28:43,986]Client[('Yaos-MacBook-Pro.local', 35892)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 19:28:43,987]Client[('Yaos-MacBook-Pro.local', 35892)]: Request 1.1.3 has been sent out
+[2014-11-08 19:28:54,958]Client[('Yaos-MacBook-Pro.local', 35892)]: waiting for reply TIMEDOUT!
+[2014-11-08 19:28:54,958]Client[('Yaos-MacBook-Pro.local', 35892)]: Start retransmitting Request  1.1.3
+[2014-11-08 19:28:55,970]Client[('Yaos-MacBook-Pro.local', 35892)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 19:28:55,971]Client[('Yaos-MacBook-Pro.local', 35892)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 19:28:55,971]Client[('Yaos-MacBook-Pro.local', 35892)]: Request 1.1.4 has been sent out
+[2014-11-08 19:28:57,988]Client[('Yaos-MacBook-Pro.local', 35892)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 19:28:57,989]Client[('Yaos-MacBook-Pro.local', 35892)]: Request 1.1.5 has been sent out
+[2014-11-08 19:29:00,021]Client[('Yaos-MacBook-Pro.local', 35892)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 19:29:00,022]Client[('Yaos-MacBook-Pro.local', 35892)]: Request 1.1.6 has been sent out
+[2014-11-08 19:29:02,039]Client[('Yaos-MacBook-Pro.local', 35892)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 19:39:01,999]Client[('Yaos-MacBook-Pro.local', 13388)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 19:39:02,003]Client[('Yaos-MacBook-Pro.local', 13388)]: Request 1.1.1 has been sent out
+[2014-11-08 19:39:04,012]Client[('Yaos-MacBook-Pro.local', 13388)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 19:39:04,013]Client[('Yaos-MacBook-Pro.local', 13388)]: Request 1.1.2 has been sent out
+[2014-11-08 19:39:06,035]Client[('Yaos-MacBook-Pro.local', 13388)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 19:39:06,036]Client[('Yaos-MacBook-Pro.local', 13388)]: Request 1.1.3 has been sent out
+[2014-11-08 19:39:17,010]Client[('Yaos-MacBook-Pro.local', 13388)]: waiting for reply TIMEDOUT!
+[2014-11-08 19:39:17,011]Client[('Yaos-MacBook-Pro.local', 13388)]: Start retransmitting Request  1.1.3
+[2014-11-08 19:39:18,024]Client[('Yaos-MacBook-Pro.local', 13388)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 19:39:18,024]Client[('Yaos-MacBook-Pro.local', 13388)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 19:39:18,025]Client[('Yaos-MacBook-Pro.local', 13388)]: Request 1.1.4 has been sent out
+[2014-11-08 19:39:20,041]Client[('Yaos-MacBook-Pro.local', 13388)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 19:39:20,042]Client[('Yaos-MacBook-Pro.local', 13388)]: Request 1.1.5 has been sent out
+[2014-11-08 19:39:22,124]Client[('Yaos-MacBook-Pro.local', 13388)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 19:39:22,124]Client[('Yaos-MacBook-Pro.local', 13388)]: Request 1.1.6 has been sent out
+[2014-11-08 19:39:24,175]Client[('Yaos-MacBook-Pro.local', 13388)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 20:25:21,981]Client[('Yaos-MacBook-Pro.local', 33016)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 20:25:21,984]Client[('Yaos-MacBook-Pro.local', 33016)]: Request 1.1.1 has been sent out
+[2014-11-08 20:25:23,996]Client[('Yaos-MacBook-Pro.local', 33016)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 20:25:23,996]Client[('Yaos-MacBook-Pro.local', 33016)]: Request 1.1.2 has been sent out
+[2014-11-08 20:25:26,019]Client[('Yaos-MacBook-Pro.local', 33016)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:25:26,019]Client[('Yaos-MacBook-Pro.local', 33016)]: Request 1.1.3 has been sent out
+[2014-11-08 20:25:36,983]Client[('Yaos-MacBook-Pro.local', 33016)]: waiting for reply TIMEDOUT!
+[2014-11-08 20:25:36,984]Client[('Yaos-MacBook-Pro.local', 33016)]: Start retransmitting Request  1.1.3
+[2014-11-08 20:25:37,997]Client[('Yaos-MacBook-Pro.local', 33016)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 20:25:37,998]Client[('Yaos-MacBook-Pro.local', 33016)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 20:25:37,999]Client[('Yaos-MacBook-Pro.local', 33016)]: Request 1.1.4 has been sent out
+[2014-11-08 20:25:40,012]Client[('Yaos-MacBook-Pro.local', 33016)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:25:40,013]Client[('Yaos-MacBook-Pro.local', 33016)]: Request 1.1.5 has been sent out
+[2014-11-08 20:25:42,039]Client[('Yaos-MacBook-Pro.local', 33016)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 20:25:42,040]Client[('Yaos-MacBook-Pro.local', 33016)]: Request 1.1.6 has been sent out
+[2014-11-08 20:25:44,058]Client[('Yaos-MacBook-Pro.local', 33016)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 20:32:03,976]Client[('Yaos-MacBook-Pro.local', 27390)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 20:32:03,978]Client[('Yaos-MacBook-Pro.local', 27390)]: Request 1.1.1 has been sent out
+[2014-11-08 20:32:05,993]Client[('Yaos-MacBook-Pro.local', 27390)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 20:32:05,994]Client[('Yaos-MacBook-Pro.local', 27390)]: Request 1.1.2 has been sent out
+[2014-11-08 20:32:12,998]Client[('Yaos-MacBook-Pro.local', 27390)]: waiting for reply TIMEDOUT!
+[2014-11-08 20:32:12,999]Client[('Yaos-MacBook-Pro.local', 27390)]: Start retransmitting Request  1.1.2
+[2014-11-08 20:37:34,420]Client[('Yaos-MacBook-Pro.local', 23910)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 20:37:34,424]Client[('Yaos-MacBook-Pro.local', 23910)]: Request 1.1.1 has been sent out
+[2014-11-08 20:37:36,433]Client[('Yaos-MacBook-Pro.local', 23910)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 20:37:36,433]Client[('Yaos-MacBook-Pro.local', 23910)]: Request 1.1.2 has been sent out
+[2014-11-08 20:37:38,454]Client[('Yaos-MacBook-Pro.local', 23910)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:37:38,454]Client[('Yaos-MacBook-Pro.local', 23910)]: Request 1.1.3 has been sent out
+[2014-11-08 20:37:49,420]Client[('Yaos-MacBook-Pro.local', 23910)]: waiting for reply TIMEDOUT!
+[2014-11-08 20:37:49,421]Client[('Yaos-MacBook-Pro.local', 23910)]: Start retransmitting Request  1.1.3
+[2014-11-08 20:37:50,433]Client[('Yaos-MacBook-Pro.local', 23910)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 20:37:50,434]Client[('Yaos-MacBook-Pro.local', 23910)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 20:37:50,434]Client[('Yaos-MacBook-Pro.local', 23910)]: Request 1.1.4 has been sent out
+[2014-11-08 20:37:52,446]Client[('Yaos-MacBook-Pro.local', 23910)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:37:52,447]Client[('Yaos-MacBook-Pro.local', 23910)]: Request 1.1.5 has been sent out
+[2014-11-08 20:37:54,503]Client[('Yaos-MacBook-Pro.local', 23910)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 20:37:54,504]Client[('Yaos-MacBook-Pro.local', 23910)]: Request 1.1.6 has been sent out
+[2014-11-08 20:37:56,539]Client[('Yaos-MacBook-Pro.local', 23910)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 20:52:07,069]Client[('Yaos-MacBook-Pro.local', 31215)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 20:52:07,072]Client[('Yaos-MacBook-Pro.local', 31215)]: Request 1.1.1 has been sent out
+[2014-11-08 20:52:09,083]Client[('Yaos-MacBook-Pro.local', 31215)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 20:52:09,083]Client[('Yaos-MacBook-Pro.local', 31215)]: Request 1.1.2 has been sent out
+[2014-11-08 20:52:11,105]Client[('Yaos-MacBook-Pro.local', 31215)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:52:11,106]Client[('Yaos-MacBook-Pro.local', 31215)]: Request 1.1.3 has been sent out
+[2014-11-08 20:52:22,081]Client[('Yaos-MacBook-Pro.local', 31215)]: waiting for reply TIMEDOUT!
+[2014-11-08 20:52:22,082]Client[('Yaos-MacBook-Pro.local', 31215)]: Start retransmitting Request  1.1.3
+[2014-11-08 20:52:23,095]Client[('Yaos-MacBook-Pro.local', 31215)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 20:52:23,095]Client[('Yaos-MacBook-Pro.local', 31215)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 20:52:23,096]Client[('Yaos-MacBook-Pro.local', 31215)]: Request 1.1.4 has been sent out
+[2014-11-08 20:52:25,111]Client[('Yaos-MacBook-Pro.local', 31215)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:52:25,112]Client[('Yaos-MacBook-Pro.local', 31215)]: Request 1.1.5 has been sent out
+[2014-11-08 20:52:27,141]Client[('Yaos-MacBook-Pro.local', 31215)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 20:52:27,142]Client[('Yaos-MacBook-Pro.local', 31215)]: Request 1.1.6 has been sent out
+[2014-11-08 20:52:29,155]Client[('Yaos-MacBook-Pro.local', 31215)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 20:54:10,688]Client[('Yaos-MacBook-Pro.local', 39043)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 20:54:10,692]Client[('Yaos-MacBook-Pro.local', 39043)]: Request 1.1.1 has been sent out
+[2014-11-08 20:54:12,707]Client[('Yaos-MacBook-Pro.local', 39043)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 20:54:12,707]Client[('Yaos-MacBook-Pro.local', 39043)]: Request 1.1.2 has been sent out
+[2014-11-08 20:54:19,712]Client[('Yaos-MacBook-Pro.local', 39043)]: waiting for reply TIMEDOUT!
+[2014-11-08 20:54:19,713]Client[('Yaos-MacBook-Pro.local', 39043)]: Start retransmitting Request  1.1.2
+[2014-11-08 20:54:32,716]Client[('Yaos-MacBook-Pro.local', 39043)]: waiting for reply TIMEDOUT!
+[2014-11-08 20:54:32,717]Client[('Yaos-MacBook-Pro.local', 39043)]: Start retransmitting Request  1.1.2
+[2014-11-08 20:54:33,719]Client[('Yaos-MacBook-Pro.local', 39043)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 20:54:33,720]Client[('Yaos-MacBook-Pro.local', 39043)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.2
+[2014-11-08 20:54:33,720]Client[('Yaos-MacBook-Pro.local', 39043)]: Request 1.1.3 has been sent out
+[2014-11-08 20:54:35,725]Client[('Yaos-MacBook-Pro.local', 39043)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 0.000000
+[2014-11-08 20:54:35,725]Client[('Yaos-MacBook-Pro.local', 39043)]: Request 1.1.4 has been sent out
+[2014-11-08 20:54:37,729]Client[('Yaos-MacBook-Pro.local', 39043)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 20:54:37,730]Client[('Yaos-MacBook-Pro.local', 39043)]: Request 1.1.5 has been sent out
+[2014-11-08 20:54:39,733]Client[('Yaos-MacBook-Pro.local', 39043)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 20:54:39,734]Client[('Yaos-MacBook-Pro.local', 39043)]: Request 1.1.6 has been sent out
+[2014-11-08 20:54:41,738]Client[('Yaos-MacBook-Pro.local', 39043)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 21:04:16,968]Client[('Yaos-MacBook-Pro.local', 24622)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:04:16,971]Client[('Yaos-MacBook-Pro.local', 24622)]: Request 1.1.1 has been sent out
+[2014-11-08 21:04:18,980]Client[('Yaos-MacBook-Pro.local', 24622)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:04:18,980]Client[('Yaos-MacBook-Pro.local', 24622)]: Request 1.1.2 has been sent out
+[2014-11-08 21:04:21,004]Client[('Yaos-MacBook-Pro.local', 24622)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:04:21,004]Client[('Yaos-MacBook-Pro.local', 24622)]: Request 1.1.3 has been sent out
+[2014-11-08 21:07:55,499]Client[('Yaos-MacBook-Pro.local', 24899)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:07:55,501]Client[('Yaos-MacBook-Pro.local', 24899)]: Request 1.1.1 has been sent out
+[2014-11-08 21:07:57,511]Client[('Yaos-MacBook-Pro.local', 24899)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:07:57,512]Client[('Yaos-MacBook-Pro.local', 24899)]: Request 1.1.2 has been sent out
+[2014-11-08 21:07:59,534]Client[('Yaos-MacBook-Pro.local', 24899)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:07:59,535]Client[('Yaos-MacBook-Pro.local', 24899)]: Request 1.1.3 has been sent out
+[2014-11-08 21:08:17,498]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:08:17,499]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.3
+[2014-11-08 21:08:18,515]Client[('Yaos-MacBook-Pro.local', 24899)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 21:08:18,515]Client[('Yaos-MacBook-Pro.local', 24899)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 21:08:18,516]Client[('Yaos-MacBook-Pro.local', 24899)]: Request 1.1.4 has been sent out
+[2014-11-08 21:08:32,519]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:08:32,520]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.4
+[2014-11-08 21:08:33,523]Client[('Yaos-MacBook-Pro.local', 24899)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 21:08:33,524]Client[('Yaos-MacBook-Pro.local', 24899)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.4
+[2014-11-08 21:08:33,524]Client[('Yaos-MacBook-Pro.local', 24899)]: Request 1.1.5 has been sent out
+[2014-11-08 21:08:47,526]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:08:47,527]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.5
+[2014-11-08 21:08:53,529]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:08:53,529]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.5
+[2014-11-08 21:08:59,532]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:08:59,533]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.5
+[2014-11-08 21:09:05,538]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:09:05,538]Client[('Yaos-MacBook-Pro.local', 24899)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.5
+[2014-11-08 21:09:05,539]Client[('Yaos-MacBook-Pro.local', 24899)]: Request 1.1.6 has been sent out
+[2014-11-08 21:09:12,543]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:09:12,544]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.6
+[2014-11-08 21:09:18,548]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:09:18,549]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.6
+[2014-11-08 21:09:24,554]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:09:24,555]Client[('Yaos-MacBook-Pro.local', 24899)]: Start retransmitting Request  1.1.6
+[2014-11-08 21:09:30,560]Client[('Yaos-MacBook-Pro.local', 24899)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:09:30,561]Client[('Yaos-MacBook-Pro.local', 24899)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.6
+[2014-11-08 21:20:04,310]Client[('Yaos-MacBook-Pro.local', 18379)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:20:04,314]Client[('Yaos-MacBook-Pro.local', 18379)]: Request 1.1.1 has been sent out
+[2014-11-08 21:20:06,325]Client[('Yaos-MacBook-Pro.local', 18379)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:20:06,326]Client[('Yaos-MacBook-Pro.local', 18379)]: Request 1.1.2 has been sent out
+[2014-11-08 21:20:08,348]Client[('Yaos-MacBook-Pro.local', 18379)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:20:08,349]Client[('Yaos-MacBook-Pro.local', 18379)]: Request 1.1.3 has been sent out
+[2014-11-08 21:20:10,406]Client[('Yaos-MacBook-Pro.local', 18379)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 21:20:10,407]Client[('Yaos-MacBook-Pro.local', 18379)]: Request 1.1.4 has been sent out
+[2014-11-08 21:20:12,420]Client[('Yaos-MacBook-Pro.local', 18379)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:20:12,421]Client[('Yaos-MacBook-Pro.local', 18379)]: Request 1.1.5 has been sent out
+[2014-11-08 21:20:26,426]Client[('Yaos-MacBook-Pro.local', 18379)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:20:26,427]Client[('Yaos-MacBook-Pro.local', 18379)]: Start retransmitting Request  1.1.5
+[2014-11-08 21:20:27,431]Client[('Yaos-MacBook-Pro.local', 18379)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 21:20:27,432]Client[('Yaos-MacBook-Pro.local', 18379)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.5
+[2014-11-08 21:20:27,432]Client[('Yaos-MacBook-Pro.local', 18379)]: Request 1.1.6 has been sent out
+[2014-11-08 21:20:34,436]Client[('Yaos-MacBook-Pro.local', 18379)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:20:34,437]Client[('Yaos-MacBook-Pro.local', 18379)]: Start retransmitting Request  1.1.6
+[2014-11-08 21:20:35,448]Client[('Yaos-MacBook-Pro.local', 18379)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 100.000000
+[2014-11-08 21:20:35,448]Client[('Yaos-MacBook-Pro.local', 18379)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.6
+[2014-11-08 21:22:29,422]Client[('Yaos-MacBook-Pro.local', 35931)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:22:29,424]Client[('Yaos-MacBook-Pro.local', 35931)]: Request 1.1.1 has been sent out
+[2014-11-08 21:22:31,435]Client[('Yaos-MacBook-Pro.local', 35931)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:22:31,435]Client[('Yaos-MacBook-Pro.local', 35931)]: Request 1.1.2 has been sent out
+[2014-11-08 21:22:33,457]Client[('Yaos-MacBook-Pro.local', 35931)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:22:33,458]Client[('Yaos-MacBook-Pro.local', 35931)]: Request 1.1.3 has been sent out
+[2014-11-08 21:22:35,474]Client[('Yaos-MacBook-Pro.local', 35931)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-08 21:22:35,474]Client[('Yaos-MacBook-Pro.local', 35931)]: Request 1.1.4 has been sent out
+[2014-11-08 21:22:37,504]Client[('Yaos-MacBook-Pro.local', 35931)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:22:37,504]Client[('Yaos-MacBook-Pro.local', 35931)]: Request 1.1.5 has been sent out
+[2014-11-08 21:22:39,521]Client[('Yaos-MacBook-Pro.local', 35931)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-08 21:22:39,522]Client[('Yaos-MacBook-Pro.local', 35931)]: Request 1.1.6 has been sent out
+[2014-11-08 21:22:41,536]Client[('Yaos-MacBook-Pro.local', 35931)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 600.000000
+[2014-11-08 21:24:28,247]Client[('Yaos-MacBook-Pro.local', 21918)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:24:28,251]Client[('Yaos-MacBook-Pro.local', 21918)]: Request 1.1.1 has been sent out
+[2014-11-08 21:24:30,261]Client[('Yaos-MacBook-Pro.local', 21918)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:24:30,261]Client[('Yaos-MacBook-Pro.local', 21918)]: Request 1.1.2 has been sent out
+[2014-11-08 21:24:32,284]Client[('Yaos-MacBook-Pro.local', 21918)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:24:32,284]Client[('Yaos-MacBook-Pro.local', 21918)]: Request 1.1.3 has been sent out
+[2014-11-08 21:24:50,256]Client[('Yaos-MacBook-Pro.local', 21918)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:24:50,256]Client[('Yaos-MacBook-Pro.local', 21918)]: Start retransmitting Request  1.1.3
+[2014-11-08 21:24:51,275]Client[('Yaos-MacBook-Pro.local', 21918)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 21:24:51,276]Client[('Yaos-MacBook-Pro.local', 21918)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 21:24:51,276]Client[('Yaos-MacBook-Pro.local', 21918)]: Request 1.1.4 has been sent out
+[2014-11-08 21:24:53,293]Client[('Yaos-MacBook-Pro.local', 21918)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 21:24:53,294]Client[('Yaos-MacBook-Pro.local', 21918)]: Request 1.1.5 has been sent out
+[2014-11-08 21:24:55,355]Client[('Yaos-MacBook-Pro.local', 21918)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 21:24:55,356]Client[('Yaos-MacBook-Pro.local', 21918)]: Request 1.1.6 has been sent out
+[2014-11-08 21:24:57,369]Client[('Yaos-MacBook-Pro.local', 21918)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 21:38:54,437]Client[('Yaos-MacBook-Pro.local', 26744)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:38:54,441]Client[('Yaos-MacBook-Pro.local', 26744)]: Request 1.1.1 has been sent out
+[2014-11-08 21:38:56,449]Client[('Yaos-MacBook-Pro.local', 26744)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:38:56,449]Client[('Yaos-MacBook-Pro.local', 26744)]: Request 1.1.2 has been sent out
+[2014-11-08 21:38:58,470]Client[('Yaos-MacBook-Pro.local', 26744)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:38:58,471]Client[('Yaos-MacBook-Pro.local', 26744)]: Request 1.1.3 has been sent out
+[2014-11-08 21:39:16,442]Client[('Yaos-MacBook-Pro.local', 26744)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:39:16,443]Client[('Yaos-MacBook-Pro.local', 26744)]: Start retransmitting Request  1.1.3
+[2014-11-08 21:39:17,462]Client[('Yaos-MacBook-Pro.local', 26744)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 21:39:17,462]Client[('Yaos-MacBook-Pro.local', 26744)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 21:39:17,463]Client[('Yaos-MacBook-Pro.local', 26744)]: Request 1.1.4 has been sent out
+[2014-11-08 21:39:19,477]Client[('Yaos-MacBook-Pro.local', 26744)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 21:39:19,478]Client[('Yaos-MacBook-Pro.local', 26744)]: Request 1.1.5 has been sent out
+[2014-11-08 21:39:21,496]Client[('Yaos-MacBook-Pro.local', 26744)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 21:39:21,496]Client[('Yaos-MacBook-Pro.local', 26744)]: Request 1.1.6 has been sent out
+[2014-11-08 21:39:23,542]Client[('Yaos-MacBook-Pro.local', 26744)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 21:43:35,188]Client[('Yaos-MacBook-Pro.local', 38689)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 21:43:35,191]Client[('Yaos-MacBook-Pro.local', 38689)]: Request 1.1.1 has been sent out
+[2014-11-08 21:43:37,206]Client[('Yaos-MacBook-Pro.local', 38689)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 21:43:37,206]Client[('Yaos-MacBook-Pro.local', 38689)]: Request 1.1.2 has been sent out
+[2014-11-08 21:43:39,229]Client[('Yaos-MacBook-Pro.local', 38689)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 21:43:39,230]Client[('Yaos-MacBook-Pro.local', 38689)]: Request 1.1.3 has been sent out
+[2014-11-08 21:43:57,189]Client[('Yaos-MacBook-Pro.local', 38689)]: waiting for reply TIMEDOUT!
+[2014-11-08 21:43:57,190]Client[('Yaos-MacBook-Pro.local', 38689)]: Start retransmitting Request  1.1.3
+[2014-11-08 21:43:58,208]Client[('Yaos-MacBook-Pro.local', 38689)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 21:43:58,208]Client[('Yaos-MacBook-Pro.local', 38689)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 21:43:58,209]Client[('Yaos-MacBook-Pro.local', 38689)]: Request 1.1.4 has been sent out
+[2014-11-08 21:44:00,224]Client[('Yaos-MacBook-Pro.local', 38689)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 21:44:00,224]Client[('Yaos-MacBook-Pro.local', 38689)]: Request 1.1.5 has been sent out
+[2014-11-08 21:44:02,265]Client[('Yaos-MacBook-Pro.local', 38689)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 21:44:02,265]Client[('Yaos-MacBook-Pro.local', 38689)]: Request 1.1.6 has been sent out
+[2014-11-08 21:44:04,279]Client[('Yaos-MacBook-Pro.local', 38689)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 22:32:10,945]Client[('Yaos-MacBook-Pro.local', 24318)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:32:10,948]Client[('Yaos-MacBook-Pro.local', 24318)]: Request 1.1.1 has been sent out
+[2014-11-08 22:32:12,956]Client[('Yaos-MacBook-Pro.local', 24318)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:32:12,957]Client[('Yaos-MacBook-Pro.local', 24318)]: Request 1.1.2 has been sent out
+[2014-11-08 22:32:15,055]Client[('Yaos-MacBook-Pro.local', 24318)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:32:15,056]Client[('Yaos-MacBook-Pro.local', 24318)]: Request 1.1.3 has been sent out
+[2014-11-08 22:32:32,955]Client[('Yaos-MacBook-Pro.local', 24318)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:32:32,955]Client[('Yaos-MacBook-Pro.local', 24318)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:32:34,094]Client[('Yaos-MacBook-Pro.local', 24318)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 22:32:34,110]Client[('Yaos-MacBook-Pro.local', 24318)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:32:34,111]Client[('Yaos-MacBook-Pro.local', 24318)]: Request 1.1.4 has been sent out
+[2014-11-08 22:32:36,130]Client[('Yaos-MacBook-Pro.local', 24318)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 22:32:36,160]Client[('Yaos-MacBook-Pro.local', 24318)]: Request 1.1.5 has been sent out
+[2014-11-08 22:32:38,178]Client[('Yaos-MacBook-Pro.local', 24318)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 22:32:38,179]Client[('Yaos-MacBook-Pro.local', 24318)]: Request 1.1.6 has been sent out
+[2014-11-08 22:32:40,193]Client[('Yaos-MacBook-Pro.local', 24318)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 22:34:53,105]Client[('Yaos-MacBook-Pro.local', 24330)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:34:53,107]Client[('Yaos-MacBook-Pro.local', 24330)]: Request 1.1.1 has been sent out
+[2014-11-08 22:34:55,130]Client[('Yaos-MacBook-Pro.local', 24330)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:34:55,131]Client[('Yaos-MacBook-Pro.local', 24330)]: Request 1.1.2 has been sent out
+[2014-11-08 22:34:57,196]Client[('Yaos-MacBook-Pro.local', 24330)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:34:57,197]Client[('Yaos-MacBook-Pro.local', 24330)]: Request 1.1.3 has been sent out
+[2014-11-08 22:35:15,118]Client[('Yaos-MacBook-Pro.local', 24330)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:35:15,119]Client[('Yaos-MacBook-Pro.local', 24330)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:35:16,136]Client[('Yaos-MacBook-Pro.local', 24330)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 22:35:16,137]Client[('Yaos-MacBook-Pro.local', 24330)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:35:16,137]Client[('Yaos-MacBook-Pro.local', 24330)]: Request 1.1.4 has been sent out
+[2014-11-08 22:35:18,165]Client[('Yaos-MacBook-Pro.local', 24330)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 22:35:18,165]Client[('Yaos-MacBook-Pro.local', 24330)]: Request 1.1.5 has been sent out
+[2014-11-08 22:35:20,209]Client[('Yaos-MacBook-Pro.local', 24330)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 22:35:20,209]Client[('Yaos-MacBook-Pro.local', 24330)]: Request 1.1.6 has been sent out
+[2014-11-08 22:35:22,229]Client[('Yaos-MacBook-Pro.local', 24330)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 22:36:13,701]Client[('Yaos-MacBook-Pro.local', 22398)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:36:13,703]Client[('Yaos-MacBook-Pro.local', 22398)]: Request 1.1.1 has been sent out
+[2014-11-08 22:36:15,714]Client[('Yaos-MacBook-Pro.local', 22398)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:36:15,715]Client[('Yaos-MacBook-Pro.local', 22398)]: Request 1.1.2 has been sent out
+[2014-11-08 22:36:17,738]Client[('Yaos-MacBook-Pro.local', 22398)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:36:17,739]Client[('Yaos-MacBook-Pro.local', 22398)]: Request 1.1.3 has been sent out
+[2014-11-08 22:36:35,701]Client[('Yaos-MacBook-Pro.local', 22398)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:36:35,702]Client[('Yaos-MacBook-Pro.local', 22398)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:36:36,722]Client[('Yaos-MacBook-Pro.local', 22398)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 22:36:36,723]Client[('Yaos-MacBook-Pro.local', 22398)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:36:36,723]Client[('Yaos-MacBook-Pro.local', 22398)]: Request 1.1.4 has been sent out
+[2014-11-08 22:36:38,753]Client[('Yaos-MacBook-Pro.local', 22398)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 22:36:38,754]Client[('Yaos-MacBook-Pro.local', 22398)]: Request 1.1.5 has been sent out
+[2014-11-08 22:36:40,787]Client[('Yaos-MacBook-Pro.local', 22398)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 22:36:40,787]Client[('Yaos-MacBook-Pro.local', 22398)]: Request 1.1.6 has been sent out
+[2014-11-08 22:36:42,801]Client[('Yaos-MacBook-Pro.local', 22398)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 22:38:06,550]Client[('Yaos-MacBook-Pro.local', 17783)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:38:06,553]Client[('Yaos-MacBook-Pro.local', 17783)]: Request 1.1.1 has been sent out
+[2014-11-08 22:38:08,561]Client[('Yaos-MacBook-Pro.local', 17783)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:38:08,562]Client[('Yaos-MacBook-Pro.local', 17783)]: Request 1.1.2 has been sent out
+[2014-11-08 22:38:10,585]Client[('Yaos-MacBook-Pro.local', 17783)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:38:10,586]Client[('Yaos-MacBook-Pro.local', 17783)]: Request 1.1.3 has been sent out
+[2014-11-08 22:38:28,561]Client[('Yaos-MacBook-Pro.local', 17783)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:38:28,562]Client[('Yaos-MacBook-Pro.local', 17783)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:38:29,581]Client[('Yaos-MacBook-Pro.local', 17783)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 22:38:29,581]Client[('Yaos-MacBook-Pro.local', 17783)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:38:29,582]Client[('Yaos-MacBook-Pro.local', 17783)]: Request 1.1.4 has been sent out
+[2014-11-08 22:38:31,599]Client[('Yaos-MacBook-Pro.local', 17783)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 22:38:31,599]Client[('Yaos-MacBook-Pro.local', 17783)]: Request 1.1.5 has been sent out
+[2014-11-08 22:38:33,656]Client[('Yaos-MacBook-Pro.local', 17783)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 22:38:33,656]Client[('Yaos-MacBook-Pro.local', 17783)]: Request 1.1.6 has been sent out
+[2014-11-08 22:38:35,675]Client[('Yaos-MacBook-Pro.local', 17783)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 22:45:47,337]Client[('Yaos-MacBook-Pro.local', 38204)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:45:47,340]Client[('Yaos-MacBook-Pro.local', 38204)]: Request 1.1.1 has been sent out
+[2014-11-08 22:45:49,348]Client[('Yaos-MacBook-Pro.local', 38204)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:45:49,349]Client[('Yaos-MacBook-Pro.local', 38204)]: Request 1.1.2 has been sent out
+[2014-11-08 22:45:51,372]Client[('Yaos-MacBook-Pro.local', 38204)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:45:51,372]Client[('Yaos-MacBook-Pro.local', 38204)]: Request 1.1.3 has been sent out
+[2014-11-08 22:46:09,347]Client[('Yaos-MacBook-Pro.local', 38204)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:46:09,348]Client[('Yaos-MacBook-Pro.local', 38204)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:46:15,351]Client[('Yaos-MacBook-Pro.local', 38204)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:46:15,352]Client[('Yaos-MacBook-Pro.local', 38204)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:46:21,354]Client[('Yaos-MacBook-Pro.local', 38204)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:46:21,355]Client[('Yaos-MacBook-Pro.local', 38204)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:46:34,360]Client[('Yaos-MacBook-Pro.local', 38204)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:46:34,361]Client[('Yaos-MacBook-Pro.local', 38204)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:46:34,361]Client[('Yaos-MacBook-Pro.local', 38204)]: Request 1.1.4 has been sent out
+[2014-11-08 22:46:41,366]Client[('Yaos-MacBook-Pro.local', 38204)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:46:41,366]Client[('Yaos-MacBook-Pro.local', 38204)]: Start retransmitting Request  1.1.4
+[2014-11-08 22:49:42,670]Client[('Yaos-MacBook-Pro.local', 30561)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:49:42,673]Client[('Yaos-MacBook-Pro.local', 30561)]: Request 1.1.1 has been sent out
+[2014-11-08 22:49:44,682]Client[('Yaos-MacBook-Pro.local', 30561)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:49:44,683]Client[('Yaos-MacBook-Pro.local', 30561)]: Request 1.1.2 has been sent out
+[2014-11-08 22:49:46,714]Client[('Yaos-MacBook-Pro.local', 30561)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:49:46,715]Client[('Yaos-MacBook-Pro.local', 30561)]: Request 1.1.3 has been sent out
+[2014-11-08 22:50:04,670]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:04,671]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:50:10,675]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:10,675]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:50:16,678]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:16,679]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:50:29,684]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:29,685]Client[('Yaos-MacBook-Pro.local', 30561)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:50:29,686]Client[('Yaos-MacBook-Pro.local', 30561)]: Request 1.1.4 has been sent out
+[2014-11-08 22:50:36,690]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:36,691]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.4
+[2014-11-08 22:50:42,696]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:42,696]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.4
+[2014-11-08 22:50:48,703]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:48,703]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.4
+[2014-11-08 22:50:54,707]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:50:54,707]Client[('Yaos-MacBook-Pro.local', 30561)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.4
+[2014-11-08 22:50:54,707]Client[('Yaos-MacBook-Pro.local', 30561)]: Request 1.1.5 has been sent out
+[2014-11-08 22:51:01,711]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:01,712]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.5
+[2014-11-08 22:51:07,717]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:07,717]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.5
+[2014-11-08 22:51:13,723]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:13,724]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.5
+[2014-11-08 22:51:19,727]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:19,727]Client[('Yaos-MacBook-Pro.local', 30561)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.5
+[2014-11-08 22:51:19,728]Client[('Yaos-MacBook-Pro.local', 30561)]: Request 1.1.6 has been sent out
+[2014-11-08 22:51:26,733]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:26,733]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.6
+[2014-11-08 22:51:32,738]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:32,739]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.6
+[2014-11-08 22:51:38,743]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:38,744]Client[('Yaos-MacBook-Pro.local', 30561)]: Start retransmitting Request  1.1.6
+[2014-11-08 22:51:44,748]Client[('Yaos-MacBook-Pro.local', 30561)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:51:44,749]Client[('Yaos-MacBook-Pro.local', 30561)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.6
+[2014-11-08 22:53:30,650]Client[('Yaos-MacBook-Pro.local', 29071)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:53:30,654]Client[('Yaos-MacBook-Pro.local', 29071)]: Request 1.1.1 has been sent out
+[2014-11-08 22:53:32,670]Client[('Yaos-MacBook-Pro.local', 29071)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:53:32,670]Client[('Yaos-MacBook-Pro.local', 29071)]: Request 1.1.2 has been sent out
+[2014-11-08 22:53:34,693]Client[('Yaos-MacBook-Pro.local', 29071)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:53:34,694]Client[('Yaos-MacBook-Pro.local', 29071)]: Request 1.1.3 has been sent out
+[2014-11-08 22:53:52,661]Client[('Yaos-MacBook-Pro.local', 29071)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:53:52,662]Client[('Yaos-MacBook-Pro.local', 29071)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:53:53,680]Client[('Yaos-MacBook-Pro.local', 29071)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 22:53:53,681]Client[('Yaos-MacBook-Pro.local', 29071)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:53:53,681]Client[('Yaos-MacBook-Pro.local', 29071)]: Request 1.1.4 has been sent out
+[2014-11-08 22:53:55,700]Client[('Yaos-MacBook-Pro.local', 29071)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 22:53:55,701]Client[('Yaos-MacBook-Pro.local', 29071)]: Request 1.1.5 has been sent out
+[2014-11-08 22:53:57,763]Client[('Yaos-MacBook-Pro.local', 29071)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 22:53:57,764]Client[('Yaos-MacBook-Pro.local', 29071)]: Request 1.1.6 has been sent out
+[2014-11-08 22:53:59,779]Client[('Yaos-MacBook-Pro.local', 29071)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 22:59:32,221]Client[('Yaos-MacBook-Pro.local', 17021)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 22:59:32,226]Client[('Yaos-MacBook-Pro.local', 17021)]: Request 1.1.1 has been sent out
+[2014-11-08 22:59:34,237]Client[('Yaos-MacBook-Pro.local', 17021)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 22:59:34,237]Client[('Yaos-MacBook-Pro.local', 17021)]: Request 1.1.2 has been sent out
+[2014-11-08 22:59:36,261]Client[('Yaos-MacBook-Pro.local', 17021)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 22:59:36,262]Client[('Yaos-MacBook-Pro.local', 17021)]: Request 1.1.3 has been sent out
+[2014-11-08 22:59:54,233]Client[('Yaos-MacBook-Pro.local', 17021)]: waiting for reply TIMEDOUT!
+[2014-11-08 22:59:54,233]Client[('Yaos-MacBook-Pro.local', 17021)]: Start retransmitting Request  1.1.3
+[2014-11-08 22:59:55,250]Client[('Yaos-MacBook-Pro.local', 17021)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 22:59:55,250]Client[('Yaos-MacBook-Pro.local', 17021)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 22:59:55,251]Client[('Yaos-MacBook-Pro.local', 17021)]: Request 1.1.4 has been sent out
+[2014-11-08 22:59:57,269]Client[('Yaos-MacBook-Pro.local', 17021)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 22:59:57,269]Client[('Yaos-MacBook-Pro.local', 17021)]: Request 1.1.5 has been sent out
+[2014-11-08 22:59:59,300]Client[('Yaos-MacBook-Pro.local', 17021)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 22:59:59,301]Client[('Yaos-MacBook-Pro.local', 17021)]: Request 1.1.6 has been sent out
+[2014-11-08 23:00:01,314]Client[('Yaos-MacBook-Pro.local', 17021)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:00:56,222]Client[('Yaos-MacBook-Pro.local', 21155)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:00:56,226]Client[('Yaos-MacBook-Pro.local', 21155)]: Request 1.1.1 has been sent out
+[2014-11-08 23:00:58,250]Client[('Yaos-MacBook-Pro.local', 21155)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:00:58,251]Client[('Yaos-MacBook-Pro.local', 21155)]: Request 1.1.2 has been sent out
+[2014-11-08 23:01:00,290]Client[('Yaos-MacBook-Pro.local', 21155)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:01:00,291]Client[('Yaos-MacBook-Pro.local', 21155)]: Request 1.1.3 has been sent out
+[2014-11-08 23:01:18,214]Client[('Yaos-MacBook-Pro.local', 21155)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:01:18,215]Client[('Yaos-MacBook-Pro.local', 21155)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:01:19,231]Client[('Yaos-MacBook-Pro.local', 21155)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:01:19,231]Client[('Yaos-MacBook-Pro.local', 21155)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:01:19,232]Client[('Yaos-MacBook-Pro.local', 21155)]: Request 1.1.4 has been sent out
+[2014-11-08 23:01:21,248]Client[('Yaos-MacBook-Pro.local', 21155)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:01:21,249]Client[('Yaos-MacBook-Pro.local', 21155)]: Request 1.1.5 has been sent out
+[2014-11-08 23:01:23,264]Client[('Yaos-MacBook-Pro.local', 21155)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:01:23,265]Client[('Yaos-MacBook-Pro.local', 21155)]: Request 1.1.6 has been sent out
+[2014-11-08 23:01:25,282]Client[('Yaos-MacBook-Pro.local', 21155)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:06:42,203]Client[('Yaos-MacBook-Pro.local', 21195)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:06:42,206]Client[('Yaos-MacBook-Pro.local', 21195)]: Request 1.1.1 has been sent out
+[2014-11-08 23:06:44,215]Client[('Yaos-MacBook-Pro.local', 21195)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:06:44,216]Client[('Yaos-MacBook-Pro.local', 21195)]: Request 1.1.2 has been sent out
+[2014-11-08 23:06:46,244]Client[('Yaos-MacBook-Pro.local', 21195)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:06:46,245]Client[('Yaos-MacBook-Pro.local', 21195)]: Request 1.1.3 has been sent out
+[2014-11-08 23:07:04,212]Client[('Yaos-MacBook-Pro.local', 21195)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:07:04,213]Client[('Yaos-MacBook-Pro.local', 21195)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:07:05,238]Client[('Yaos-MacBook-Pro.local', 21195)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:07:05,239]Client[('Yaos-MacBook-Pro.local', 21195)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:07:05,239]Client[('Yaos-MacBook-Pro.local', 21195)]: Request 1.1.4 has been sent out
+[2014-11-08 23:07:07,264]Client[('Yaos-MacBook-Pro.local', 21195)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:07:07,265]Client[('Yaos-MacBook-Pro.local', 21195)]: Request 1.1.5 has been sent out
+[2014-11-08 23:07:09,321]Client[('Yaos-MacBook-Pro.local', 21195)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:07:09,322]Client[('Yaos-MacBook-Pro.local', 21195)]: Request 1.1.6 has been sent out
+[2014-11-08 23:07:11,338]Client[('Yaos-MacBook-Pro.local', 21195)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:09:36,197]Client[('Yaos-MacBook-Pro.local', 21119)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:09:36,203]Client[('Yaos-MacBook-Pro.local', 21119)]: Request 1.1.1 has been sent out
+[2014-11-08 23:09:38,216]Client[('Yaos-MacBook-Pro.local', 21119)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:09:38,216]Client[('Yaos-MacBook-Pro.local', 21119)]: Request 1.1.2 has been sent out
+[2014-11-08 23:09:40,321]Client[('Yaos-MacBook-Pro.local', 21119)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:09:40,321]Client[('Yaos-MacBook-Pro.local', 21119)]: Request 1.1.3 has been sent out
+[2014-11-08 23:09:58,209]Client[('Yaos-MacBook-Pro.local', 21119)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:09:58,210]Client[('Yaos-MacBook-Pro.local', 21119)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:09:59,227]Client[('Yaos-MacBook-Pro.local', 21119)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:09:59,227]Client[('Yaos-MacBook-Pro.local', 21119)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:09:59,228]Client[('Yaos-MacBook-Pro.local', 21119)]: Request 1.1.4 has been sent out
+[2014-11-08 23:10:01,245]Client[('Yaos-MacBook-Pro.local', 21119)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:10:01,246]Client[('Yaos-MacBook-Pro.local', 21119)]: Request 1.1.5 has been sent out
+[2014-11-08 23:10:03,304]Client[('Yaos-MacBook-Pro.local', 21119)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:10:03,305]Client[('Yaos-MacBook-Pro.local', 21119)]: Request 1.1.6 has been sent out
+[2014-11-08 23:10:05,321]Client[('Yaos-MacBook-Pro.local', 21119)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:12:02,684]Client[('Yaos-MacBook-Pro.local', 24760)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:12:02,687]Client[('Yaos-MacBook-Pro.local', 24760)]: Request 1.1.1 has been sent out
+[2014-11-08 23:12:04,697]Client[('Yaos-MacBook-Pro.local', 24760)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:12:04,697]Client[('Yaos-MacBook-Pro.local', 24760)]: Request 1.1.2 has been sent out
+[2014-11-08 23:12:06,718]Client[('Yaos-MacBook-Pro.local', 24760)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:12:06,719]Client[('Yaos-MacBook-Pro.local', 24760)]: Request 1.1.3 has been sent out
+[2014-11-08 23:12:24,693]Client[('Yaos-MacBook-Pro.local', 24760)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:12:24,694]Client[('Yaos-MacBook-Pro.local', 24760)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:12:25,711]Client[('Yaos-MacBook-Pro.local', 24760)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:12:25,711]Client[('Yaos-MacBook-Pro.local', 24760)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:12:25,712]Client[('Yaos-MacBook-Pro.local', 24760)]: Request 1.1.4 has been sent out
+[2014-11-08 23:12:27,756]Client[('Yaos-MacBook-Pro.local', 24760)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:12:27,756]Client[('Yaos-MacBook-Pro.local', 24760)]: Request 1.1.5 has been sent out
+[2014-11-08 23:12:29,799]Client[('Yaos-MacBook-Pro.local', 24760)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:12:29,800]Client[('Yaos-MacBook-Pro.local', 24760)]: Request 1.1.6 has been sent out
+[2014-11-08 23:12:31,814]Client[('Yaos-MacBook-Pro.local', 24760)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:17:04,403]Client[('Yaos-MacBook-Pro.local', 17984)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:17:04,405]Client[('Yaos-MacBook-Pro.local', 17984)]: Request 1.1.1 has been sent out
+[2014-11-08 23:17:06,416]Client[('Yaos-MacBook-Pro.local', 17984)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:17:06,417]Client[('Yaos-MacBook-Pro.local', 17984)]: Request 1.1.2 has been sent out
+[2014-11-08 23:17:08,445]Client[('Yaos-MacBook-Pro.local', 17984)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:17:08,445]Client[('Yaos-MacBook-Pro.local', 17984)]: Request 1.1.3 has been sent out
+[2014-11-08 23:17:26,404]Client[('Yaos-MacBook-Pro.local', 17984)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:17:26,405]Client[('Yaos-MacBook-Pro.local', 17984)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:17:27,428]Client[('Yaos-MacBook-Pro.local', 17984)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:17:27,429]Client[('Yaos-MacBook-Pro.local', 17984)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:17:27,430]Client[('Yaos-MacBook-Pro.local', 17984)]: Request 1.1.4 has been sent out
+[2014-11-08 23:17:29,446]Client[('Yaos-MacBook-Pro.local', 17984)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:17:29,447]Client[('Yaos-MacBook-Pro.local', 17984)]: Request 1.1.5 has been sent out
+[2014-11-08 23:17:31,463]Client[('Yaos-MacBook-Pro.local', 17984)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:17:31,463]Client[('Yaos-MacBook-Pro.local', 17984)]: Request 1.1.6 has been sent out
+[2014-11-08 23:17:33,518]Client[('Yaos-MacBook-Pro.local', 17984)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:20:36,970]Client[('Yaos-MacBook-Pro.local', 37192)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:20:36,972]Client[('Yaos-MacBook-Pro.local', 37192)]: Request 1.1.1 has been sent out
+[2014-11-08 23:20:38,983]Client[('Yaos-MacBook-Pro.local', 37192)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:20:38,984]Client[('Yaos-MacBook-Pro.local', 37192)]: Request 1.1.2 has been sent out
+[2014-11-08 23:20:41,010]Client[('Yaos-MacBook-Pro.local', 37192)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:20:41,011]Client[('Yaos-MacBook-Pro.local', 37192)]: Request 1.1.3 has been sent out
+[2014-11-08 23:20:58,971]Client[('Yaos-MacBook-Pro.local', 37192)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:20:58,972]Client[('Yaos-MacBook-Pro.local', 37192)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:20:59,990]Client[('Yaos-MacBook-Pro.local', 37192)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:20:59,990]Client[('Yaos-MacBook-Pro.local', 37192)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:20:59,991]Client[('Yaos-MacBook-Pro.local', 37192)]: Request 1.1.4 has been sent out
+[2014-11-08 23:21:02,007]Client[('Yaos-MacBook-Pro.local', 37192)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:21:02,007]Client[('Yaos-MacBook-Pro.local', 37192)]: Request 1.1.5 has been sent out
+[2014-11-08 23:21:04,035]Client[('Yaos-MacBook-Pro.local', 37192)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:21:04,040]Client[('Yaos-MacBook-Pro.local', 37192)]: Request 1.1.6 has been sent out
+[2014-11-08 23:21:06,058]Client[('Yaos-MacBook-Pro.local', 37192)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:22:35,419]Client[('Yaos-MacBook-Pro.local', 12181)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:22:35,421]Client[('Yaos-MacBook-Pro.local', 12181)]: Request 1.1.1 has been sent out
+[2014-11-08 23:22:37,430]Client[('Yaos-MacBook-Pro.local', 12181)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:22:37,431]Client[('Yaos-MacBook-Pro.local', 12181)]: Request 1.1.2 has been sent out
+[2014-11-08 23:22:39,453]Client[('Yaos-MacBook-Pro.local', 12181)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:22:39,454]Client[('Yaos-MacBook-Pro.local', 12181)]: Request 1.1.3 has been sent out
+[2014-11-08 23:22:57,430]Client[('Yaos-MacBook-Pro.local', 12181)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:22:57,431]Client[('Yaos-MacBook-Pro.local', 12181)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:22:58,447]Client[('Yaos-MacBook-Pro.local', 12181)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:22:58,447]Client[('Yaos-MacBook-Pro.local', 12181)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:22:58,448]Client[('Yaos-MacBook-Pro.local', 12181)]: Request 1.1.4 has been sent out
+[2014-11-08 23:23:00,462]Client[('Yaos-MacBook-Pro.local', 12181)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:23:00,463]Client[('Yaos-MacBook-Pro.local', 12181)]: Request 1.1.5 has been sent out
+[2014-11-08 23:23:02,496]Client[('Yaos-MacBook-Pro.local', 12181)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:23:02,497]Client[('Yaos-MacBook-Pro.local', 12181)]: Request 1.1.6 has been sent out
+[2014-11-08 23:23:04,513]Client[('Yaos-MacBook-Pro.local', 12181)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:36:47,533]Client[('Yaos-MacBook-Pro.local', 39640)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:36:47,537]Client[('Yaos-MacBook-Pro.local', 39640)]: Request 1.1.1 has been sent out
+[2014-11-08 23:36:49,547]Client[('Yaos-MacBook-Pro.local', 39640)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:36:49,548]Client[('Yaos-MacBook-Pro.local', 39640)]: Request 1.1.2 has been sent out
+[2014-11-08 23:36:51,577]Client[('Yaos-MacBook-Pro.local', 39640)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:36:51,577]Client[('Yaos-MacBook-Pro.local', 39640)]: Request 1.1.3 has been sent out
+[2014-11-08 23:37:09,530]Client[('Yaos-MacBook-Pro.local', 39640)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:37:09,531]Client[('Yaos-MacBook-Pro.local', 39640)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:37:10,549]Client[('Yaos-MacBook-Pro.local', 39640)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:37:10,549]Client[('Yaos-MacBook-Pro.local', 39640)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:37:10,549]Client[('Yaos-MacBook-Pro.local', 39640)]: Request 1.1.4 has been sent out
+[2014-11-08 23:37:12,567]Client[('Yaos-MacBook-Pro.local', 39640)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:37:12,568]Client[('Yaos-MacBook-Pro.local', 39640)]: Request 1.1.5 has been sent out
+[2014-11-08 23:37:14,604]Client[('Yaos-MacBook-Pro.local', 39640)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:37:14,605]Client[('Yaos-MacBook-Pro.local', 39640)]: Request 1.1.6 has been sent out
+[2014-11-08 23:37:16,625]Client[('Yaos-MacBook-Pro.local', 39640)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-08 23:37:42,655]Client[('Yaos-MacBook-Pro.local', 15815)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-08 23:37:42,657]Client[('Yaos-MacBook-Pro.local', 15815)]: Request 1.1.1 has been sent out
+[2014-11-08 23:37:44,665]Client[('Yaos-MacBook-Pro.local', 15815)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-08 23:37:44,666]Client[('Yaos-MacBook-Pro.local', 15815)]: Request 1.1.2 has been sent out
+[2014-11-08 23:37:46,697]Client[('Yaos-MacBook-Pro.local', 15815)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-08 23:37:46,698]Client[('Yaos-MacBook-Pro.local', 15815)]: Request 1.1.3 has been sent out
+[2014-11-08 23:38:04,664]Client[('Yaos-MacBook-Pro.local', 15815)]: waiting for reply TIMEDOUT!
+[2014-11-08 23:38:04,665]Client[('Yaos-MacBook-Pro.local', 15815)]: Start retransmitting Request  1.1.3
+[2014-11-08 23:38:05,684]Client[('Yaos-MacBook-Pro.local', 15815)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-08 23:38:05,684]Client[('Yaos-MacBook-Pro.local', 15815)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-08 23:38:05,685]Client[('Yaos-MacBook-Pro.local', 15815)]: Request 1.1.4 has been sent out
+[2014-11-08 23:38:07,701]Client[('Yaos-MacBook-Pro.local', 15815)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-08 23:38:07,701]Client[('Yaos-MacBook-Pro.local', 15815)]: Request 1.1.5 has been sent out
+[2014-11-08 23:38:09,737]Client[('Yaos-MacBook-Pro.local', 15815)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-08 23:38:09,737]Client[('Yaos-MacBook-Pro.local', 15815)]: Request 1.1.6 has been sent out
+[2014-11-08 23:38:11,756]Client[('Yaos-MacBook-Pro.local', 15815)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-09 14:43:25,041]Client[('Yaos-MacBook-Pro.local', 16122)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 14:43:25,043]Client[('Yaos-MacBook-Pro.local', 16122)]: Request 1.1.1 has been sent out
+[2014-11-09 14:43:27,054]Client[('Yaos-MacBook-Pro.local', 16122)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 14:43:27,055]Client[('Yaos-MacBook-Pro.local', 16122)]: Request 1.1.2 has been sent out
+[2014-11-09 14:43:29,078]Client[('Yaos-MacBook-Pro.local', 16122)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 14:43:29,078]Client[('Yaos-MacBook-Pro.local', 16122)]: Request 1.1.3 has been sent out
+[2014-11-09 14:43:47,050]Client[('Yaos-MacBook-Pro.local', 16122)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:43:47,050]Client[('Yaos-MacBook-Pro.local', 16122)]: Start retransmitting Request  1.1.3
+[2014-11-09 14:43:48,066]Client[('Yaos-MacBook-Pro.local', 16122)]: Reply received from server: RequestID is 1.1.3, Outcome.InsufficientFunds, Balance is 0.000000
+[2014-11-09 14:43:48,067]Client[('Yaos-MacBook-Pro.local', 16122)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 14:43:48,067]Client[('Yaos-MacBook-Pro.local', 16122)]: Request 1.1.4 has been sent out
+[2014-11-09 14:43:50,084]Client[('Yaos-MacBook-Pro.local', 16122)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-09 14:43:50,085]Client[('Yaos-MacBook-Pro.local', 16122)]: Request 1.1.5 has been sent out
+[2014-11-09 14:43:52,102]Client[('Yaos-MacBook-Pro.local', 16122)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 200.000000
+[2014-11-09 14:43:52,103]Client[('Yaos-MacBook-Pro.local', 16122)]: Request 1.1.6 has been sent out
+[2014-11-09 14:43:54,118]Client[('Yaos-MacBook-Pro.local', 16122)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 300.000000
+[2014-11-09 14:57:55,611]Client[('Yaos-MacBook-Pro.local', 27592)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 14:57:55,613]Client[('Yaos-MacBook-Pro.local', 27592)]: Request 1.1.1 has been sent out
+[2014-11-09 14:57:57,623]Client[('Yaos-MacBook-Pro.local', 27592)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 14:57:57,624]Client[('Yaos-MacBook-Pro.local', 27592)]: Request 1.1.2 has been sent out
+[2014-11-09 14:57:59,648]Client[('Yaos-MacBook-Pro.local', 27592)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 14:57:59,648]Client[('Yaos-MacBook-Pro.local', 27592)]: Request 1.1.3 has been sent out
+[2014-11-09 14:58:07,621]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:07,622]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.3
+[2014-11-09 14:58:13,625]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:13,626]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.3
+[2014-11-09 14:58:19,630]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:19,630]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.3
+[2014-11-09 14:58:25,636]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:25,637]Client[('Yaos-MacBook-Pro.local', 27592)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 14:58:25,638]Client[('Yaos-MacBook-Pro.local', 27592)]: Request 1.1.4 has been sent out
+[2014-11-09 14:58:27,648]Client[('Yaos-MacBook-Pro.local', 27592)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-09 14:58:27,649]Client[('Yaos-MacBook-Pro.local', 27592)]: Request 1.1.5 has been sent out
+[2014-11-09 14:58:34,653]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:34,654]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.5
+[2014-11-09 14:58:40,658]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:40,659]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.5
+[2014-11-09 14:58:46,665]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:46,666]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.5
+[2014-11-09 14:58:52,671]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:52,672]Client[('Yaos-MacBook-Pro.local', 27592)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.5
+[2014-11-09 14:58:52,673]Client[('Yaos-MacBook-Pro.local', 27592)]: Request 1.1.6 has been sent out
+[2014-11-09 14:58:59,678]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:58:59,678]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.6
+[2014-11-09 14:59:05,684]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:59:05,684]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.6
+[2014-11-09 14:59:11,690]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:59:11,690]Client[('Yaos-MacBook-Pro.local', 27592)]: Start retransmitting Request  1.1.6
+[2014-11-09 14:59:17,696]Client[('Yaos-MacBook-Pro.local', 27592)]: waiting for reply TIMEDOUT!
+[2014-11-09 14:59:17,696]Client[('Yaos-MacBook-Pro.local', 27592)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.6
+[2014-11-09 15:00:33,281]Client[('Yaos-MacBook-Pro.local', 28266)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:00:33,283]Client[('Yaos-MacBook-Pro.local', 28266)]: Request 1.1.1 has been sent out
+[2014-11-09 15:00:35,293]Client[('Yaos-MacBook-Pro.local', 28266)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:00:35,293]Client[('Yaos-MacBook-Pro.local', 28266)]: Request 1.1.2 has been sent out
+[2014-11-09 15:00:37,318]Client[('Yaos-MacBook-Pro.local', 28266)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:00:37,319]Client[('Yaos-MacBook-Pro.local', 28266)]: Request 1.1.3 has been sent out
+[2014-11-09 15:00:45,292]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:00:45,293]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:00:51,297]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:00:51,298]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:00:57,302]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:00:57,303]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:01:03,309]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:03,309]Client[('Yaos-MacBook-Pro.local', 28266)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 15:01:03,310]Client[('Yaos-MacBook-Pro.local', 28266)]: Request 1.1.4 has been sent out
+[2014-11-09 15:01:05,327]Client[('Yaos-MacBook-Pro.local', 28266)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 100.000000
+[2014-11-09 15:01:05,327]Client[('Yaos-MacBook-Pro.local', 28266)]: Request 1.1.5 has been sent out
+[2014-11-09 15:01:12,330]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:12,330]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.5
+[2014-11-09 15:01:18,334]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:18,335]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.5
+[2014-11-09 15:01:24,337]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:24,338]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.5
+[2014-11-09 15:01:30,341]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:30,342]Client[('Yaos-MacBook-Pro.local', 28266)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.5
+[2014-11-09 15:01:30,343]Client[('Yaos-MacBook-Pro.local', 28266)]: Request 1.1.6 has been sent out
+[2014-11-09 15:01:37,348]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:37,350]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.6
+[2014-11-09 15:01:43,354]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:43,355]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.6
+[2014-11-09 15:01:49,360]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:49,361]Client[('Yaos-MacBook-Pro.local', 28266)]: Start retransmitting Request  1.1.6
+[2014-11-09 15:01:55,366]Client[('Yaos-MacBook-Pro.local', 28266)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:01:55,367]Client[('Yaos-MacBook-Pro.local', 28266)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.6
+[2014-11-09 15:08:59,838]Client[('Yaos-MacBook-Pro.local', 13820)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:08:59,841]Client[('Yaos-MacBook-Pro.local', 13820)]: Request 1.1.1 has been sent out
+[2014-11-09 15:09:01,856]Client[('Yaos-MacBook-Pro.local', 13820)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:09:01,856]Client[('Yaos-MacBook-Pro.local', 13820)]: Request 1.1.2 has been sent out
+[2014-11-09 15:09:03,880]Client[('Yaos-MacBook-Pro.local', 13820)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:09:03,881]Client[('Yaos-MacBook-Pro.local', 13820)]: Request 1.1.3 has been sent out
+[2014-11-09 15:09:11,839]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:11,839]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:09:14,844]Client[('Yaos-MacBook-Pro.local', 13820)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:09:14,845]Client[('Yaos-MacBook-Pro.local', 13820)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 15:09:14,845]Client[('Yaos-MacBook-Pro.local', 13820)]: Request 1.1.4 has been sent out
+[2014-11-09 15:09:16,858]Client[('Yaos-MacBook-Pro.local', 13820)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 500.000000
+[2014-11-09 15:09:16,858]Client[('Yaos-MacBook-Pro.local', 13820)]: Request 1.1.5 has been sent out
+[2014-11-09 15:09:23,862]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:23,863]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.5
+[2014-11-09 15:09:29,865]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:29,865]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.5
+[2014-11-09 15:09:35,869]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:35,870]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.5
+[2014-11-09 15:09:41,875]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:41,875]Client[('Yaos-MacBook-Pro.local', 13820)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.5
+[2014-11-09 15:09:41,876]Client[('Yaos-MacBook-Pro.local', 13820)]: Request 1.1.6 has been sent out
+[2014-11-09 15:09:48,879]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:48,879]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.6
+[2014-11-09 15:09:54,884]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:09:54,885]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.6
+[2014-11-09 15:10:00,890]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:10:00,890]Client[('Yaos-MacBook-Pro.local', 13820)]: Start retransmitting Request  1.1.6
+[2014-11-09 15:10:06,896]Client[('Yaos-MacBook-Pro.local', 13820)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:10:06,896]Client[('Yaos-MacBook-Pro.local', 13820)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.6
+[2014-11-09 15:12:35,290]Client[('Yaos-MacBook-Pro.local', 14065)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:12:35,294]Client[('Yaos-MacBook-Pro.local', 14065)]: Request 1.1.1 has been sent out
+[2014-11-09 15:12:37,304]Client[('Yaos-MacBook-Pro.local', 14065)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:12:37,304]Client[('Yaos-MacBook-Pro.local', 14065)]: Request 1.1.2 has been sent out
+[2014-11-09 15:12:39,326]Client[('Yaos-MacBook-Pro.local', 14065)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:12:39,326]Client[('Yaos-MacBook-Pro.local', 14065)]: Request 1.1.3 has been sent out
+[2014-11-09 15:12:47,301]Client[('Yaos-MacBook-Pro.local', 14065)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:12:47,302]Client[('Yaos-MacBook-Pro.local', 14065)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:12:53,307]Client[('Yaos-MacBook-Pro.local', 14065)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:12:53,308]Client[('Yaos-MacBook-Pro.local', 14065)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:12:59,311]Client[('Yaos-MacBook-Pro.local', 14065)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:12:59,312]Client[('Yaos-MacBook-Pro.local', 14065)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:14:23,961]Client[('Yaos-MacBook-Pro.local', 18328)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:14:23,964]Client[('Yaos-MacBook-Pro.local', 18328)]: Request 1.1.1 has been sent out
+[2014-11-09 15:14:25,973]Client[('Yaos-MacBook-Pro.local', 18328)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:14:25,974]Client[('Yaos-MacBook-Pro.local', 18328)]: Request 1.1.2 has been sent out
+[2014-11-09 15:14:27,997]Client[('Yaos-MacBook-Pro.local', 18328)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:14:27,998]Client[('Yaos-MacBook-Pro.local', 18328)]: Request 1.1.3 has been sent out
+[2014-11-09 15:14:35,972]Client[('Yaos-MacBook-Pro.local', 18328)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:14:35,973]Client[('Yaos-MacBook-Pro.local', 18328)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:14:41,976]Client[('Yaos-MacBook-Pro.local', 18328)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:14:41,977]Client[('Yaos-MacBook-Pro.local', 18328)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:14:47,981]Client[('Yaos-MacBook-Pro.local', 18328)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:14:47,981]Client[('Yaos-MacBook-Pro.local', 18328)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:14:53,986]Client[('Yaos-MacBook-Pro.local', 18328)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:14:53,986]Client[('Yaos-MacBook-Pro.local', 18328)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 15:14:53,987]Client[('Yaos-MacBook-Pro.local', 18328)]: Request 1.1.4 has been sent out
+[2014-11-09 15:17:41,226]Client[('Yaos-MacBook-Pro.local', 26692)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:17:41,230]Client[('Yaos-MacBook-Pro.local', 26692)]: Request 1.1.1 has been sent out
+[2014-11-09 15:17:43,244]Client[('Yaos-MacBook-Pro.local', 26692)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:17:43,245]Client[('Yaos-MacBook-Pro.local', 26692)]: Request 1.1.2 has been sent out
+[2014-11-09 15:17:45,270]Client[('Yaos-MacBook-Pro.local', 26692)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:17:45,271]Client[('Yaos-MacBook-Pro.local', 26692)]: Request 1.1.3 has been sent out
+[2014-11-09 15:17:53,239]Client[('Yaos-MacBook-Pro.local', 26692)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:17:53,240]Client[('Yaos-MacBook-Pro.local', 26692)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:17:54,318]Client[('Yaos-MacBook-Pro.local', 26692)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:17:54,319]Client[('Yaos-MacBook-Pro.local', 26692)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 15:17:54,320]Client[('Yaos-MacBook-Pro.local', 26692)]: Request 1.1.4 has been sent out
+[2014-11-09 15:17:56,356]Client[('Yaos-MacBook-Pro.local', 26692)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 500.000000
+[2014-11-09 15:17:56,357]Client[('Yaos-MacBook-Pro.local', 26692)]: Request 1.1.5 has been sent out
+[2014-11-09 15:17:58,369]Client[('Yaos-MacBook-Pro.local', 26692)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 600.000000
+[2014-11-09 15:17:58,369]Client[('Yaos-MacBook-Pro.local', 26692)]: Request 1.1.6 has been sent out
+[2014-11-09 15:18:00,384]Client[('Yaos-MacBook-Pro.local', 26692)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 700.000000
+[2014-11-09 15:22:15,155]Client[('Yaos-MacBook-Pro.local', 22119)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:22:15,157]Client[('Yaos-MacBook-Pro.local', 22119)]: Request 1.1.1 has been sent out
+[2014-11-09 15:22:17,169]Client[('Yaos-MacBook-Pro.local', 22119)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:22:17,170]Client[('Yaos-MacBook-Pro.local', 22119)]: Request 1.1.2 has been sent out
+[2014-11-09 15:22:19,195]Client[('Yaos-MacBook-Pro.local', 22119)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:22:19,196]Client[('Yaos-MacBook-Pro.local', 22119)]: Request 1.1.3 has been sent out
+[2014-11-09 15:22:27,166]Client[('Yaos-MacBook-Pro.local', 22119)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:22:27,166]Client[('Yaos-MacBook-Pro.local', 22119)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:22:28,180]Client[('Yaos-MacBook-Pro.local', 22119)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:22:28,180]Client[('Yaos-MacBook-Pro.local', 22119)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 15:22:28,181]Client[('Yaos-MacBook-Pro.local', 22119)]: Request 1.1.4 has been sent out
+[2014-11-09 15:22:30,200]Client[('Yaos-MacBook-Pro.local', 22119)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 500.000000
+[2014-11-09 15:22:30,201]Client[('Yaos-MacBook-Pro.local', 22119)]: Request 1.1.5 has been sent out
+[2014-11-09 15:22:32,216]Client[('Yaos-MacBook-Pro.local', 22119)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 600.000000
+[2014-11-09 15:22:32,217]Client[('Yaos-MacBook-Pro.local', 22119)]: Request 1.1.6 has been sent out
+[2014-11-09 15:22:34,269]Client[('Yaos-MacBook-Pro.local', 22119)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 700.000000
+[2014-11-09 15:27:46,093]Client[('Yaos-MacBook-Pro.local', 15812)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-09 15:27:46,095]Client[('Yaos-MacBook-Pro.local', 15812)]: Request 1.1.1 has been sent out
+[2014-11-09 15:27:48,107]Client[('Yaos-MacBook-Pro.local', 15812)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-09 15:27:48,107]Client[('Yaos-MacBook-Pro.local', 15812)]: Request 1.1.2 has been sent out
+[2014-11-09 15:27:50,130]Client[('Yaos-MacBook-Pro.local', 15812)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:27:50,130]Client[('Yaos-MacBook-Pro.local', 15812)]: Request 1.1.3 has been sent out
+[2014-11-09 15:27:58,104]Client[('Yaos-MacBook-Pro.local', 15812)]: waiting for reply TIMEDOUT!
+[2014-11-09 15:27:58,105]Client[('Yaos-MacBook-Pro.local', 15812)]: Start retransmitting Request  1.1.3
+[2014-11-09 15:27:59,121]Client[('Yaos-MacBook-Pro.local', 15812)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-09 15:27:59,122]Client[('Yaos-MacBook-Pro.local', 15812)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.1.3
+[2014-11-09 15:27:59,122]Client[('Yaos-MacBook-Pro.local', 15812)]: Request 1.1.4 has been sent out
+[2014-11-09 15:28:01,138]Client[('Yaos-MacBook-Pro.local', 15812)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-09 15:28:01,139]Client[('Yaos-MacBook-Pro.local', 15812)]: Request 1.1.5 has been sent out
+[2014-11-09 15:28:03,153]Client[('Yaos-MacBook-Pro.local', 15812)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-09 15:28:03,154]Client[('Yaos-MacBook-Pro.local', 15812)]: Request 1.1.6 has been sent out
+[2014-11-09 15:28:05,262]Client[('Yaos-MacBook-Pro.local', 15812)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 600.000000
