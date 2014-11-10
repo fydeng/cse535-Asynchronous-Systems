@@ -45,8 +45,12 @@ class Ping(object):
 
 class Ack(object):
 
-    def __init__(self, reqID):
+    def __init__(self, reqID, reqtype, account_num, amount):
         self.reqID = reqID
+        self.reqID = reqID
+        self.reqtype = reqtype
+        self.account_num = int(account_num)
+        self.amount = float(amount)
 
     def __str__(self):
         return ('Ack for request %s' % self.reqID)

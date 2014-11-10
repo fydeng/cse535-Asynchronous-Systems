@@ -1,4 +1,204 @@
-[2014-11-07 13:08:28,267]Master[('Fangyus-MacBook-Pro.local', 22043)]: Master  ('Fangyus-MacBook-Pro.local', 22043)  has started.
-[2014-11-07 13:08:28,268]Master[('Fangyus-MacBook-Pro.local', 22043)]: Logging output to ./master_log
-[2014-11-09 19:26:32,255]Master[('uhsb-wireless-vlan1948-172-31-67-178.uhmc.sunysb.edu', 16872)]: Master  ('uhsb-wireless-vlan1948-172-31-67-178.uhmc.sunysb.edu', 16872)  has started.
-[2014-11-09 19:26:32,256]Master[('uhsb-wireless-vlan1948-172-31-67-178.uhmc.sunysb.edu', 16872)]: Logging output to ./master_log
+[2014-11-10 13:41:06,561]Master[('Yaos-MacBook-Pro.local', 39991)]: Master  ('Yaos-MacBook-Pro.local', 39991)  has started.
+[2014-11-10 13:41:06,562]Master[('Yaos-MacBook-Pro.local', 39991)]: Server Dictory Stored in Master: defaultdict(<class 'list'>, {1: [[<Server('Yaos-MacBook-Pro.local', 23428)>, None, <Server('Yaos-MacBook-Pro.local', 36080)>, '127.0.0.1:10001'], [<Server('Yaos-MacBook-Pro.local', 36080)>, <Server('Yaos-MacBook-Pro.local', 23428)>, <Server('Yaos-MacBook-Pro.local', 10425)>, '127.0.0.1:10002'], [<Server('Yaos-MacBook-Pro.local', 10425)>, <Server('Yaos-MacBook-Pro.local', 36080)>, <Server('Yaos-MacBook-Pro.local', 34456)>, '127.0.0.1:10003'], [<Server('Yaos-MacBook-Pro.local', 34456)>, <Server('Yaos-MacBook-Pro.local', 10425)>, <Server('Yaos-MacBook-Pro.local', 24095)>, '127.0.0.1:10004'], [<Server('Yaos-MacBook-Pro.local', 24095)>, <Server('Yaos-MacBook-Pro.local', 34456)>, None, '127.0.0.1:10005']]})
+[2014-11-10 13:41:06,569]Master[('Yaos-MacBook-Pro.local', 39991)]: Client Dictory Stored in Master: defaultdict(<class 'list'>, {'3': [<Client('Yaos-MacBook-Pro.local', 38522)>, <Client('Yaos-MacBook-Pro.local', 36438)>], '1': [<Client('Yaos-MacBook-Pro.local', 27709)>, <Client('Yaos-MacBook-Pro.local', 23260)>], '2': [<Client('Yaos-MacBook-Pro.local', 27438)>, <Client('Yaos-MacBook-Pro.local', 33851)>]})
+[2014-11-10 13:41:06,570]Master[('Yaos-MacBook-Pro.local', 39991)]: Server Waitinglist Stored in Master: [[1, <Server('Yaos-MacBook-Pro.local', 25748)>, <Server('Yaos-MacBook-Pro.local', 24095)>, None, '127.0.0.1:10006']]
+[2014-11-10 13:41:07,566]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10003
+[2014-11-10 13:41:07,568]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:07,573]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:07,574]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:07,575]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:08,570]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:08,571]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10003
+[2014-11-10 13:41:08,575]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:08,577]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:08,578]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:09,572]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:09,573]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10003
+[2014-11-10 13:41:09,578]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:09,579]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:09,580]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:10,574]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:10,575]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10003
+[2014-11-10 13:41:10,580]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:10,581]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:10,582]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:11,573]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644870.582714, ('127.0.0.1:10005', 1): 1415644870.574362, ('127.0.0.1:10003', 1): 1415644870.575252, ('127.0.0.1:10004', 1): 1415644870.581517, ('127.0.0.1:10001', 1): 1415644870.580266}
+[2014-11-10 13:41:11,576]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:11,577]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10003
+[2014-11-10 13:41:11,582]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:11,583]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:11,584]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:12,569]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:12,570]Master[('Yaos-MacBook-Pro.local', 39991)]: Server requested extending chain, adding new server 127.0.0.1:10006 to srvDic
+[2014-11-10 13:41:12,570]Master[('Yaos-MacBook-Pro.local', 39991)]: The current srvDic after chain extension is: defaultdict(<class 'list'>, {1: [[<Server('Yaos-MacBook-Pro.local', 23428)>, None, <Server('Yaos-MacBook-Pro.local', 36080)>, '127.0.0.1:10001'], [<Server('Yaos-MacBook-Pro.local', 36080)>, <Server('Yaos-MacBook-Pro.local', 23428)>, <Server('Yaos-MacBook-Pro.local', 10425)>, '127.0.0.1:10002'], [<Server('Yaos-MacBook-Pro.local', 10425)>, <Server('Yaos-MacBook-Pro.local', 36080)>, <Server('Yaos-MacBook-Pro.local', 34456)>, '127.0.0.1:10003'], [<Server('Yaos-MacBook-Pro.local', 34456)>, <Server('Yaos-MacBook-Pro.local', 10425)>, <Server('Yaos-MacBook-Pro.local', 24095)>, '127.0.0.1:10004'], [<Server('Yaos-MacBook-Pro.local', 24095)>, <Server('Yaos-MacBook-Pro.local', 34456)>, <Server('Yaos-MacBook-Pro.local', 25748)>, '127.0.0.1:10005'], [<Server('Yaos-MacBook-Pro.local', 25748)>, <Server('Yaos-MacBook-Pro.local', 24095)>, None, '127.0.0.1:10006']]})
+[2014-11-10 13:41:12,574]Master[('Yaos-MacBook-Pro.local', 39991)]: Client notification has been sent
+[2014-11-10 13:41:12,578]Master[('Yaos-MacBook-Pro.local', 39991)]: Server notification has been sent
+[2014-11-10 13:41:12,579]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10003
+[2014-11-10 13:41:12,582]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:12,583]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:12,584]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:12,585]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:13,573]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:13,583]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:13,584]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:13,585]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:13,586]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:14,574]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:14,585]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:14,586]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:14,587]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:14,588]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:15,577]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:15,587]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:15,588]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:15,589]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:15,590]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:16,575]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644875.590075, ('127.0.0.1:10005', 1): 1415644875.587374, ('127.0.0.1:10006', 1): 1415644875.577016, ('127.0.0.1:10003', 1): 1415644872.579313, ('127.0.0.1:10004', 1): 1415644875.589209, ('127.0.0.1:10001', 1): 1415644875.588365}
+[2014-11-10 13:41:16,579]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:16,589]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:16,590]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:16,591]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:16,592]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:17,581]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:17,592]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:17,593]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:17,594]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:17,595]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:18,583]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:18,595]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:18,596]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:18,597]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:18,597]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:19,585]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:19,597]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:19,598]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:19,599]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:19,600]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:20,586]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:20,599]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:20,600]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:20,601]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:20,601]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:21,577]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644880.601097, ('127.0.0.1:10005', 1): 1415644880.599354, ('127.0.0.1:10006', 1): 1415644880.586939, ('127.0.0.1:10003', 1): 1415644872.579313, ('127.0.0.1:10004', 1): 1415644880.601931, ('127.0.0.1:10001', 1): 1415644880.600312}
+[2014-11-10 13:41:21,578]Master[('Yaos-MacBook-Pro.local', 39991)]: Master has detected that Server 127.0.0.1:10003 has failed!
+[2014-11-10 13:41:21,580]Master[('Yaos-MacBook-Pro.local', 39991)]: Client notification has been sent
+[2014-11-10 13:41:21,584]Master[('Yaos-MacBook-Pro.local', 39991)]: Server notification has been sent
+[2014-11-10 13:41:21,588]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:21,600]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:21,601]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:21,601]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:21,602]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:22,590]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:22,601]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:22,602]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:22,603]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:22,604]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:23,592]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:23,603]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:23,604]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:23,605]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:23,606]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:24,594]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:24,606]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:24,607]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:24,608]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:24,608]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:25,596]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:25,608]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:25,609]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:25,610]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:25,611]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:26,586]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644885.610441, ('127.0.0.1:10005', 1): 1415644885.608455, ('127.0.0.1:10006', 1): 1415644885.596201, ('127.0.0.1:10004', 1): 1415644885.611182, ('127.0.0.1:10001', 1): 1415644885.60948}
+[2014-11-10 13:41:26,598]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:26,610]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:26,611]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:26,612]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:26,613]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:27,602]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:27,611]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:27,612]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:27,612]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:27,613]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:28,603]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:28,613]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:28,614]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:28,615]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:28,615]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:29,605]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:29,614]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:29,615]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:29,616]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:29,617]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:30,607]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:30,616]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:30,617]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:30,618]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:30,618]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:31,588]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644890.617296, ('127.0.0.1:10005', 1): 1415644890.618912, ('127.0.0.1:10006', 1): 1415644890.607235, ('127.0.0.1:10004', 1): 1415644890.618025, ('127.0.0.1:10001', 1): 1415644890.616466}
+[2014-11-10 13:41:31,609]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:31,617]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:31,618]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:31,620]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:31,621]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:32,611]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:32,619]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:32,620]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:32,621]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:32,622]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:33,613]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:33,621]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:33,623]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:33,624]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:33,624]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:34,615]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:34,624]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:34,625]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:34,626]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:34,627]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:35,617]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:35,627]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:35,628]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:35,629]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:35,629]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:36,590]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644895.629223, ('127.0.0.1:10005', 1): 1415644895.627227, ('127.0.0.1:10006', 1): 1415644895.617916, ('127.0.0.1:10004', 1): 1415644895.629938, ('127.0.0.1:10001', 1): 1415644895.62837}
+[2014-11-10 13:41:36,620]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:36,629]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:36,630]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:36,631]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:36,631]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:37,622]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:37,631]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:37,632]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:37,633]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:37,634]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:38,623]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:38,634]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:38,635]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:38,636]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:38,636]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:39,625]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:39,636]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:39,637]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:39,638]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:39,639]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:40,628]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:40,638]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:40,639]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:40,640]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:40,641]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:41,592]Master[('Yaos-MacBook-Pro.local', 39991)]: {('127.0.0.1:10002', 1): 1415644900.640815, ('127.0.0.1:10005', 1): 1415644900.638831, ('127.0.0.1:10006', 1): 1415644900.628006, ('127.0.0.1:10004', 1): 1415644900.641557, ('127.0.0.1:10001', 1): 1415644900.639905}
+[2014-11-10 13:41:41,630]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:41,641]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:41,641]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:41,642]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:41,642]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:42,632]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:42,642]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:42,643]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:42,644]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004
+[2014-11-10 13:41:42,644]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:43,635]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10006
+[2014-11-10 13:41:43,645]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10005
+[2014-11-10 13:41:43,646]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10001
+[2014-11-10 13:41:43,647]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10002
+[2014-11-10 13:41:43,647]Master[('Yaos-MacBook-Pro.local', 39991)]: Received PING from: 127.0.0.1:10004

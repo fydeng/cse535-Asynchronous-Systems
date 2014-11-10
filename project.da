@@ -2,6 +2,7 @@ import re
 import time
 import sys
 import collections
+import logging
 from init import *
 import random
 
@@ -82,6 +83,8 @@ class Master(process):
 		self.cliDict = cliDic
 		self.filename = filename
 		self.waitList = waitList
+		self.filename = filename
+		setup_logfile(self.filename)
 
 	def setup_logfile(filename):
 		rootlog = logging.getLogger('')
@@ -94,15 +97,16 @@ class Master(process):
 		rootlog.addHandler(fh)	
 
 	def receive(msg=("PING",ping), from_=src_id):
-		time_recv = logical_clock()
+		cur_ticks = time.time()
+		#time_recv = logical_clock()
 		flag = False
-		output("Received PING from: "+ str(ping.serverIP))
+		output("Received PING from: "+ str(ping.serverIP))#+"time is: "+str(cur_ticks))
 		bankname = ping.bankName
 		new_tail = None
 		for item in  self.srvDict[bankname]:
 			if ping.serverIP == item[3]:
 				flag = True
-				self.timesheet.update({(ping.serverIP,ping.bankName):time_recv})
+				self.timesheet.update({(ping.serverIP,ping.bankName):cur_ticks})
 			else:
 				pass
 		if flag == False:
@@ -122,6 +126,7 @@ class Master(process):
 					send(("extendChain",item[2]),to = item[0])
 				if item[0] == new_tail[1]:
 					send(("new_server_join", item[1]), to = item[0])
+			output("Server notification has been sent")
 
 	def flush_srvDict(bankname):
 		for i, item in enumerate(self.srvDict[bankname]):
@@ -148,6 +153,7 @@ class Master(process):
 				send(("newTail",newSrv),to = cli)
 			elif type == "srvFail":
 				send(("srvFail",newSrv),to = cli)
+		output("Client notification has been sent")
 
 	def updateSrvInfo(srv):
 		port = srv[0]
@@ -170,16 +176,20 @@ class Master(process):
 			else:
 				pass
 
-	def checkSrv(timesheet):
-		time_chec = logical_clock()
+	def checkSrv():
+		cur_ticks = time.time()
+		#time_chec = logical_clock()
+		#output('Current time is ' +  str(cur_ticks))
+		output(self.timesheet)
 		failedSrv =[]
 		for key in timesheet.keys():
-			if time_chec - timesheet.get(key)>5:
-				output("Master has detected that Server "+ str(key[0])+"has failed!")
+			if cur_ticks - timesheet.get(key) > 5:
+				output("Master has detected that Server "+ str(key[0])+" has failed!")
 				failedSrv.append(key)
 		for srv in failedSrv:
 			del timesheet[srv]
 			updateSrvInfo(srv)
+			output("Server notification has been sent")
 		
 	def main():
 		output('Master  '+ str(self.id) +'  has started.')
@@ -191,11 +201,11 @@ class Master(process):
 			if(await(False)):
 				pass
 			elif(timeout(5)):
-				checkSrv(self.timesheet)
+				checkSrv()
 	
 
 class Server(process):
-	def setup(bankName, serverIP, startup_delay, life_time, prev, next, master):
+	def setup(bankName, serverIP, startup_delay, life_time, prev, next, master, filename):
 		self.bankName = bankName
 		self.serverIP = serverIP
 		self.startup_delay =startup_delay
@@ -206,35 +216,43 @@ class Server(process):
 		self.sentTrans = []
 		self.procTrans = {}
 		self.AccountInfo = {}
+		self.filename = filename
+		setup_logfile(self.filename)
 
+	def setup_logfile(filename):
+		rootlog = logging.getLogger('')
+		filelvl = logging.INFO
+		fh = logging.FileHandler(filename)
+		formatter = logging.Formatter('[%(asctime)s]%(name)s: %(message)s')
+		fh.setFormatter(formatter)
+		fh.setLevel(filelvl)
+		rootlog._filelvl = filelvl
+		rootlog.addHandler(fh)	
 
-	def proc_balance(req):
+	def proc_balance(ack):
 		outcome = Outcome.Processed
-		if self.AccountInfo.get(req.account_num) == None:
+		if self.AccountInfo.get(ack.account_num) == None:
 			cur_balance = 0
 		else:
-			cur_balance = AccountInfo[req.account_num]
-		if self.procTrans.get(req.reqID) != None:
-			if self.procTrans[req.reqID].reqtype != req.reqtype:
+			cur_balance = self.AccountInfo[ack.account_num]
+		if self.procTrans.get(ack.reqID) != None:
+			if self.procTrans[ack.reqID].reqtype != ack.reqtype:
 				outcome = Outcome.InconsistentWithHistory
 			else:
 				pass
 			new_balance = cur_balance
 		else:
-			if (req.reqtype == ReqType.Query):
+			if (ack.reqtype == ReqType.Query):
 				new_balance = cur_balance
-			elif (req.reqtype == ReqType.Deposit):
-				new_balance = cur_balance + req.amount
-			elif (req.reqtype == ReqType.Withdraw):
-				if (cur_balance - req.amount < 0):
+			elif (ack.reqtype == ReqType.Deposit):
+				new_balance = cur_balance + ack.amount
+			elif (ack.reqtype == ReqType.Withdraw):
+				if (cur_balance - ack.amount < 0):
 					new_balance = cur_balance
 					outcome = Outcome.InsufficientFunds
 				else:
-					new_balance = cur_balance - req.amount;
-		if req.reqtype != ReqType.Query:
-			self.sentTrans.append(req)
-			output("Request %s has been added to sent transaction" % req.reqID)
-		AccountInfo.update({req.account_num:new_balance})		
+					new_balance = cur_balance - ack.amount;
+		AccountInfo.update({ack.account_num:new_balance})		
 		return [new_balance, outcome]
 
 	def update_procTrans(reqID):
@@ -252,7 +270,7 @@ class Server(process):
 				proc_req = self.procTrans.get(req.reqID)
 				if proc_req == None:
 					self.procTrans.update({req.reqID:req})
-					output("Requst "+str(req.reqID)+" has been added to server "+str(self.serverIP)+" processed transaction")
+					output("Requst "+str(req.reqID)+" has been added to processed transaction")
 				elif req.reqtype == proc_req.reqtype:
 					output("Duplicate request, don't add to processed transaction")
 				else:
@@ -263,27 +281,29 @@ class Server(process):
 		output('Request ' + str(req.reqID) + ' from client received! ')
 		if(self.life_time > 0):
 			self.life_time = self.life_time-1
-			output('the current life_time is: '+ str(self.life_time))
+			output('The current life_time is: '+ str(self.life_time))
 		elif(self.life_time==0):
 			output('Server: '+ str(self.serverIP) + ' has expired!')
 			sys.exit()		#which causes the server not sending reply back to the client
 		
-		result = proc_balance(req)
-		new_balance = result[0]
-		outcome = result[1]
-		reply = Reply(req.reqID,outcome,new_balance)
-		ack = Ack(req.reqID)
-		if (prev == None):
-			send(('REQ', req), to = self.next)
-		elif (self.next == None):
+		if req.reqtype != ReqType.Query:
+			self.sentTrans.append(req)
+			output("Request %s has been added to sent transaction" % req.reqID)
+
+		if (self.next == None):
+			ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
+			result = proc_balance(ack)
+			new_balance = result[0]
+			outcome = result[1]
+			reply = Reply(req.reqID,outcome,new_balance)
 			update_procTrans(req.reqID)
 			send(('REPLY', reply), to = req.client_id)
+			output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
 			if (req.reqtype != ReqType.Query):
 				send(('ACK', ack), to = prev)
 				output(str(ack) + ' has been sent!')
 		else:
 			send(('REQ', req), to = self.next)
-		output("Reply for Request %s has been sent" % reply.reqID)
 
 	def receive(msg=("SYNC", req), from_= src_id):
 		output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
@@ -296,14 +316,24 @@ class Server(process):
 	def receive(msg=("SYNC_PROC",(reqID,req)), from_ = src_id):
 		output('Synchronization of procTrans from the old tail '+str(reqID))
 		if req.reqtype != ReqType.Query:
+			ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
+			output(str(ack.reqtype) + ' ' + str(ack.account_num) + ' ' + str(ack.amount))
 			self.sentTrans.append(req)
+			result = proc_balance(ack)
 			update_procTrans(reqID)
+			output('Account: ' + str(ack.account_num) + ' Newbalance is: ' + str(result[0]))
+			output(self.AccountInfo)
+
 		if self.next != None:
 			send(('SYNC_PROC', (reqID,req)), to = self.next)
 
 	def receive(msg=('ACK', ack), from_= next):
 		output(str(ack) + ' has been received!')
+		result = proc_balance(ack)
+		output('Account: ' + str(ack.account_num) + ' Newbalance is: ' + str(result[0]))
 		update_procTrans(ack.reqID)
+		if prev != None:
+			send(('ACK', ack), to = prev)
 
 	def receive(msg=("srvFail",(prev,next)), from_ = master):
 		self.prev = prev
@@ -314,7 +344,7 @@ class Server(process):
 			output("Starting synchronize %s sentTrans to next server" % req.reqID)
 			send(('SYNC', req), to = self.next)
 
-	def receive(msg=("extendChain",newSrv), from_ = master):
+	def receive(msg=("extendChain",newSrv),from_ = master):
 		output(str(self.serverIP)+" Received extendChain from master,setting my next to "+str(newSrv))
 		self.next = newSrv
 		for reqID,req in self.procTrans.items():
@@ -322,24 +352,25 @@ class Server(process):
 			send(("SYNC_PROC",(reqID,req)),to = self.next)
 
 	def receive(msg=("new_server_join", newprev), from_ = master):
-		output(str(self.serverIP)+" I'm the new joined server,setting my prev to "+str(newprev))
+		output(" I'm the new joined server,setting my prev to "+str(newprev))
 		self.prev = newprev
 		self.next = None
 
 	def main():
 		time.sleep(self.startup_delay)
-		output('Server: Bank Name is: '+ str(self.bankName) + '  Server IP is: '+ str(self.serverIP) + '  Life time is: ' + str(self.life_time) + '  Previous server is: ' + str(self.prev) + '  Next server is: ' + str(self.next)+'\n')
+		output('Server: Bank Name is: '+ str(self.bankName) + '  Server IP is: '+ str(self.serverIP) + '  Life time is: ' + str(self.life_time) + '  Previous server is: ' + str(self.prev) + '  Next server is: ' + str(self.next))
 		ping = Ping(self.serverIP,self.bankName)
 		while(True):
-			if(await(False)):
+			if await(False):
 				pass
 			elif(timeout(1)):
 				send(('PING', ping), to = self.master)
+			
 
 
 
 class Client(process):
-	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,master,head_srvs,tail_srvs):
+	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,master,head_srvs,tail_srvs, filename):
 		self.bankName = int(bankName)
 		self.account_no = account_no
 		self.clientIP = clientIP
@@ -351,6 +382,18 @@ class Client(process):
 		self.master = master
 		self.head_srvs = head_srvs
 		self.tail_srvs = tail_srvs
+		self.filename = filename
+		setup_logfile(self.filename)
+
+	def setup_logfile(filename):
+		rootlog = logging.getLogger('')
+		filelvl = logging.INFO
+		fh = logging.FileHandler(filename)
+		formatter = logging.Formatter('[%(asctime)s]%(name)s: %(message)s')
+		fh.setFormatter(formatter)
+		fh.setLevel(filelvl)
+		rootlog._filelvl = filelvl
+		rootlog.addHandler(fh)	
 
 	def init_req():
 		reqList =[]
@@ -396,11 +439,11 @@ class Client(process):
 		output('Reply received from server: '+ str(reply))
 
 	def receive(msg=("newHead",newSrv),from_= master):
-		output("Client "+str(self.clientIP)+" setting new head: "+ str(newSrv))
+		output("Client setting new head: "+ str(newSrv))
 		self.head_srvs.update({self.bankName:newSrv})
 
 	def receive(msg=("newTail",newSrv),from_= master):
-		output("Client "+str(self.clientIP)+" setting new tail: "+ str(newSrv))
+		output("Client setting new tail: "+ str(newSrv))
 		self.tail_srvs.update({self.bankName:newSrv})
 
 	def receive(msg=("srvFail",newSrv),from_= master):
@@ -442,6 +485,7 @@ class Client(process):
 				else:
 					dst = self.head_srvs.get(self.bankName)
 				resend(req, dst)
+		output("All request has been sentout, client exits")
 
 def main():
 	srvDic = collections.defaultdict(list)
@@ -549,7 +593,9 @@ def main():
 		cliDic[bankName_cli[i]].append(clients[i])
 
 	#######################Initiate Master#################################
-	filename_master = '/Users/fydeng/Desktop/Distalgo/master_log.txt'
+	filename_master = './master_log'
+	filename_server = './server/server_log'
+	filename_client = './client/client_log'
 	master = new(Master)
 	setup(master,(srvDic, cliDic, filename_master, waitList))
 	start(master)
@@ -557,6 +603,7 @@ def main():
 
 	#######################Initiate Servers################################
 	for i in range(num_srv):
+		server_name = filename_server + str(i + 1)
 		if i == 0 or bankName_srv[i]!= bankName_srv[i-1]:
 			prev = None
 		else:
@@ -565,13 +612,14 @@ def main():
 			next = None
 		else:
 			next = servers[i+1]
-		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master))
+		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master, server_name))
 	
 	start(servers)
 
 	#######################Initiate Clients################################
 	for i in range(num_cli):
-		setup(clients[i], (bankName_cli[i], account_no[i], clientIP[i], input_req, ifRetrans, timeout, nRetrans, ifRandom, master,head_srvs,tail_srvs))
+		client_name = filename_client + str(i + 1)
+		setup(clients[i], (bankName_cli[i], account_no[i], clientIP[i], input_req, ifRetrans, timeout, nRetrans, ifRandom, master,head_srvs,tail_srvs, client_name))
 
 	start(clients)
 	#######################################################################
