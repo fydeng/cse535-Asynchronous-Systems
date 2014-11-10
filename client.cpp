@@ -344,9 +344,11 @@ void remove_server(Push_Notification *n)
         if (((*it1)->GetserverName().second == n->port_num))
         {
             it1 = it->second.erase(it1);
-            return;
+            //return;
+            break;
         }
     }
+    cal_next(bankname);
 }
 
 void cal_next(int bankname)
