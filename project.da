@@ -100,7 +100,7 @@ class Master(process):
 		cur_ticks = time.time()
 		#time_recv = logical_clock()
 		flag = False
-		output("Received PING from: "+ str(ping.serverIP))#+"time is: "+str(cur_ticks))
+		output("Received PING from: "+ str(ping.serverIP))
 		bankname = ping.bankName
 		new_tail = None
 		for item in  self.srvDict[bankname]:
@@ -117,6 +117,7 @@ class Master(process):
 					self.srvDict[item[0]].append([item[1],item[2],item[3],item[4]])
 					self.waitList.remove(item)
 					flush_srvDict(bankname)
+					self.timesheet.update({(ping.serverIP,ping.bankName):cur_ticks})
 					output("The current srvDic after chain extension is: "+ str(self.srvDict))
 		
 		if new_tail != None:
@@ -153,7 +154,7 @@ class Master(process):
 				send(("newTail",newSrv),to = cli)
 			elif type == "srvFail":
 				send(("srvFail",newSrv),to = cli)
-		output("Client notification has been sent")
+		#output("Client notification has been sent")
 
 	def updateSrvInfo(srv):
 		port = srv[0]
@@ -168,11 +169,14 @@ class Master(process):
 					infoCli(bankName,"head",next)
 				if next == None:	#the failed item is tail
 					infoCli(bankName,"tail",prev)
+					output("Sending new tail notification to client!")
 				elif prev != None and next != None:
 					infoCli(bankName,"srvFail",None)
+					output("Sending server fail notification to client!")
 		for item in self.srvDict[bankName]:
 			if item[0] == prev or item[0] == next:
 				send(("srvFail",(item[1],item[2])),to = item[0])
+				output("Sending server fail notification to server!")
 			else:
 				pass
 
@@ -189,7 +193,7 @@ class Master(process):
 		for srv in failedSrv:
 			del timesheet[srv]
 			updateSrvInfo(srv)
-			output("Server notification has been sent")
+			#output("Server notification has been sent")
 		
 	def main():
 		output('Master  '+ str(self.id) +'  has started.')
@@ -258,24 +262,39 @@ class Server(process):
 	def update_procTrans(reqID):
 		count_clear = 0
 		len_sentTrans = len(self.sentTrans)
+		del_list = []
 		for i in range(len_sentTrans):
 			if (self.sentTrans[i].reqID == reqID):
 				req = self.sentTrans[i]
-				self.sentTrans.pop(i)
+				del_list.append(req)
 				if count_clear != 0:
 					output('Using ACK to clear old req ', reqID)
+					#count_clear += 1
+					#continue
 				count_clear += 1
 				if req.reqtype == ReqType.Query:
 					break
 				proc_req = self.procTrans.get(req.reqID)
 				if proc_req == None:
 					self.procTrans.update({req.reqID:req})
-					output("Requst "+str(req.reqID)+" has been added to processed transaction")
+					output("Request "+str(req.reqID)+" has been added to processed transaction")
 				elif req.reqtype == proc_req.reqtype:
 					output("Duplicate request, don't add to processed transaction")
 				else:
 					output("Inconsistent With Histroy request, don't add to processed transaction")
-				break
+		
+		for i in range(len(del_list)):
+			for j in range(len(self.sentTrans)):
+				if del_list[i].reqID == self.sentTrans[j].reqID:
+					self.sentTrans.pop(j)
+					break
+
+	def search_procTrans(reqID):
+		proc_req = self.procTrans.get(reqID)
+		if proc_req == None:
+			return False
+		else:
+			return True
 
 	def receive(msg=("REQ", req), from_= src_id):
 		output('Request ' + str(req.reqID) + ' from client received! ')
@@ -296,12 +315,15 @@ class Server(process):
 			new_balance = result[0]
 			outcome = result[1]
 			reply = Reply(req.reqID,outcome,new_balance)
+
+			search_result = search_procTrans(req.reqID)
 			update_procTrans(req.reqID)
-			send(('REPLY', reply), to = req.client_id)
-			output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
-			if (req.reqtype != ReqType.Query):
-				send(('ACK', ack), to = prev)
-				output(str(ack) + ' has been sent!')
+			if search_result == False or (search_result == True and outcome != Outcome.Processed):
+				send(('REPLY', reply), to = req.client_id)
+				output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
+				if (req.reqtype != ReqType.Query):
+					send(('ACK', ack), to = prev)
+					output(str(ack) + ' has been sent!')
 		else:
 			send(('REQ', req), to = self.next)
 
@@ -321,7 +343,7 @@ class Server(process):
 			self.sentTrans.append(req)
 			result = proc_balance(ack)
 			update_procTrans(reqID)
-			output('Account: ' + str(ack.account_num) + ' Newbalance is: ' + str(result[0]))
+			output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
 			output(self.AccountInfo)
 
 		if self.next != None:
@@ -330,7 +352,7 @@ class Server(process):
 	def receive(msg=('ACK', ack), from_= next):
 		output(str(ack) + ' has been received!')
 		result = proc_balance(ack)
-		output('Account: ' + str(ack.account_num) + ' Newbalance is: ' + str(result[0]))
+		output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
 		update_procTrans(ack.reqID)
 		if prev != None:
 			send(('ACK', ack), to = prev)
@@ -338,11 +360,14 @@ class Server(process):
 	def receive(msg=("srvFail",(prev,next)), from_ = master):
 		self.prev = prev
 		self.next = next
-		output(str(self.serverIP)+" Received SrvFail from Master, Setting my prev to: "+str(self.prev)+" and my next to: "+str(self.next))
-		for i in range(len(self.sentTrans)):
-			req = self.sentTrans[i]
-			output("Starting synchronize %s sentTrans to next server" % req.reqID)
-			send(('SYNC', req), to = self.next)
+		output(" Received SrvFail from Master, Setting my prev to: "+str(self.prev)+" and my next to: "+str(self.next))
+		if (self.next != None):
+			for i in range(len(self.sentTrans)):
+				req = self.sentTrans[i]
+				output("Starting synchronize %s sentTrans to next server" % req.reqID)
+				send(('SYNC', req), to = self.next)
+		else:
+			output("I'm the new tail!")
 
 	def receive(msg=("extendChain",newSrv),from_ = master):
 		output(str(self.serverIP)+" Received extendChain from master,setting my next to "+str(newSrv))
@@ -366,9 +391,6 @@ class Server(process):
 			elif(timeout(1)):
 				send(('PING', ping), to = self.master)
 			
-
-
-
 class Client(process):
 	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,master,head_srvs,tail_srvs, filename):
 		self.bankName = int(bankName)
@@ -382,6 +404,7 @@ class Client(process):
 		self.master = master
 		self.head_srvs = head_srvs
 		self.tail_srvs = tail_srvs
+		self.replyDic = {}
 		self.filename = filename
 		setup_logfile(self.filename)
 
@@ -450,21 +473,31 @@ class Client(process):
 		output("Client received server fail from Master, starting to sleep.")
 		time.sleep(5)
 
-	def resend(req, dst):
-		for i in range(self.nRetrans):
+	def resend(req):
+		times = 0
+		while times <= self.nRetrans:
 			output("Start retransmitting Request ", req.reqID)
 			time.sleep(1)
 			clk = logical_clock()
+			if req.reqtype == ReqType.Query:
+				dst = self.tail_srvs.get(self.bankName)
+			else:
+				dst = self.head_srvs.get(self.bankName)
 			send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				break
-			elif timeout(self.timeout):
+			elif some(received(('newTail',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
+				times = 0
+				output('Master notification received, do not minus Retrans')
 				continue
+			elif timeout(self.timeout):
+				times += 1
 		output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
 
 	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
 		reqList = init_req()
+		replyNum =0
 		num_req = len(reqList)
 		for i in range(num_req):
 			req = reqList[i]
@@ -477,14 +510,18 @@ class Client(process):
 			clk = logical_clock()
 			send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
-				continue	
+				replyDic.update({reply.reqID:reply})
+				continue
 			elif timeout(self.timeout):
 				output('Client waiting for reply '+str(req.reqID)+' TIMEDOUT!')
-				if req.reqtype == ReqType.Query:
-					dst = self.tail_srvs.get(self.bankName)
-				else:
-					dst = self.head_srvs.get(self.bankName)
-				resend(req, dst)
+				resend(req)
+		while(len(replyDic)<num_req):
+			clk = logical_clock()
+			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
+				replyDic.update({reply.reqID:reply})
+				continue
+			else:
+				pass
 		output("All request has been sentout, client exits")
 
 def main():
