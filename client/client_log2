@@ -1,0 +1,14 @@
+[2014-11-12 15:07:40,735]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Client: Bank Name is: 1  Account number is: 200
+[2014-11-12 15:07:40,736]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Request 1.2.1 has been sent out
+[2014-11-12 15:07:42,746]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Reply received from server: RequestID is 1.2.1, Outcome.Processed, Balance is 0.000000
+[2014-11-12 15:07:42,747]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Request 1.2.2 has been sent out
+[2014-11-12 15:07:46,746]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Client setting new tail: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 26671)
+[2014-11-12 15:07:49,751]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Client waiting for reply 1.2.2 TIMEDOUT!
+[2014-11-12 15:07:49,752]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Start retransmitting Request  1.2.2
+[2014-11-12 15:07:56,755]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Start retransmitting Request  1.2.2
+[2014-11-12 15:08:03,760]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Start retransmitting Request  1.2.2
+[2014-11-12 15:08:10,764]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Start retransmitting Request  1.2.2
+[2014-11-12 15:08:17,769]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Retransmit time equals the RetransLimit, stop retransmitting Request 1.2.2
+[2014-11-12 15:08:17,770]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Request 1.2.3 has been sent out
+[2014-11-12 15:08:24,774]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Client waiting for reply 1.2.3 TIMEDOUT!
+[2014-11-12 15:08:24,774]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 13983)]: Start retransmitting Request  1.2.3

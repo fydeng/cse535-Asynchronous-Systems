@@ -302,7 +302,7 @@ class Server(process):
 
 	def receive(msg=("REQ", req), from_= src_id):
 		self.recTimes += 1
-		if (self.recTimes <= self.message_loss or self.message_loss == 0) and src_id != self.prev:
+		if (self.recTimes <= self.message_loss or self.message_loss == 0):
 			output('Request ' + str(req.reqID) + ' from client received! ')
 		else:
 			self.recTimes = 0
