@@ -23,7 +23,10 @@ def parse_config(input_str):
     	print ("Random request enabled")
     else:
     	ifRandom = False
-    return [retrans, retrans_interval, retrans_time, ifRandom]
+    time_delay = int(strs[4])
+    message_loss = int(strs[5])
+
+    return [retrans, retrans_interval, retrans_time, ifRandom, time_delay, message_loss]
 
 def parse_server(input_str):
 		input_str =input_str.strip()
@@ -209,7 +212,7 @@ class Master(process):
 	
 
 class Server(process):
-	def setup(bankName, serverIP, startup_delay, life_time, prev, next, master, filename):
+	def setup(bankName, serverIP, startup_delay, life_time, prev, next, master, filename, message_loss):
 		self.bankName = bankName
 		self.serverIP = serverIP
 		self.startup_delay =startup_delay
@@ -221,6 +224,8 @@ class Server(process):
 		self.procTrans = {}
 		self.AccountInfo = {}
 		self.filename = filename
+		self.message_loss = message_loss
+		self.recTimes = 0
 		setup_logfile(self.filename)
 
 	def setup_logfile(filename):
@@ -297,7 +302,13 @@ class Server(process):
 			return True
 
 	def receive(msg=("REQ", req), from_= src_id):
-		output('Request ' + str(req.reqID) + ' from client received! ')
+		self.recTimes += 1
+		if self.recTimes <= self.message_loss or self.message_loss == 0:
+			output('Request ' + str(req.reqID) + ' from client received! ')
+		else:
+			self.recTimes = 0
+			return
+
 		if(self.life_time > 0):
 			self.life_time = self.life_time-1
 			output('The current life_time is: '+ str(self.life_time))
@@ -392,7 +403,7 @@ class Server(process):
 				send(('PING', ping), to = self.master)
 			
 class Client(process):
-	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,master,head_srvs,tail_srvs, filename):
+	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,time_delay,master,head_srvs,tail_srvs, filename):
 		self.bankName = int(bankName)
 		self.account_no = account_no
 		self.clientIP = clientIP
@@ -401,6 +412,7 @@ class Client(process):
 		self.timeout = timeout
 		self.nRetrans = nRetrans
 		self.ifRandom = ifRandom
+		self.time_delay = time_delay
 		self.master = master
 		self.head_srvs = head_srvs
 		self.tail_srvs = tail_srvs
@@ -471,13 +483,13 @@ class Client(process):
 
 	def receive(msg=("srvFail",newSrv),from_= master):
 		output("Client received server fail from Master, starting to sleep.")
-		time.sleep(5)
+		time.sleep(self.time_delay)
 
 	def resend(req):
 		times = 0
 		while times <= self.nRetrans:
 			output("Start retransmitting Request ", req.reqID)
-			time.sleep(1)
+			time.sleep(self.time_delay)
 			clk = logical_clock()
 			if req.reqtype == ReqType.Query:
 				dst = self.tail_srvs.get(self.bankName)
@@ -488,7 +500,7 @@ class Client(process):
 				break
 			elif some(received(('newTail',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
 				times = 0
-				output('Master notification received, do not minus Retrans')
+				#output('Master notification received, do not minus Retrans')
 				continue
 			elif timeout(self.timeout):
 				times += 1
@@ -497,7 +509,7 @@ class Client(process):
 	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
 		reqList = init_req()
-		replyNum =0
+		replyNum = 0
 		num_req = len(reqList)
 		for i in range(num_req):
 			req = reqList[i]
@@ -506,7 +518,7 @@ class Client(process):
 			else:
 				dst = self.head_srvs.get(self.bankName)
 			output('Request ' + str(req.reqID) + ' has been sent out')
-			time.sleep(2)
+			time.sleep(self.time_delay)
 			clk = logical_clock()
 			send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
@@ -620,6 +632,8 @@ def main():
 	timeout = list_config[1]
 	nRetrans = list_config[2]
 	ifRandom = list_config[3]
+	time_delay = list_config[4]
+	message_loss = list_config[5]
 
 	for i in range(num_cli):
 		bankName_cli.append(cliList[i][0])
@@ -649,14 +663,14 @@ def main():
 			next = None
 		else:
 			next = servers[i+1]
-		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master, server_name))
+		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master, server_name, message_loss))
 	
 	start(servers)
 
 	#######################Initiate Clients################################
 	for i in range(num_cli):
 		client_name = filename_client + str(i + 1)
-		setup(clients[i], (bankName_cli[i], account_no[i], clientIP[i], input_req, ifRetrans, timeout, nRetrans, ifRandom, master,head_srvs,tail_srvs, client_name))
+		setup(clients[i], (bankName_cli[i], account_no[i], clientIP[i], input_req, ifRetrans, timeout, nRetrans, ifRandom, time_delay, master,head_srvs,tail_srvs, client_name))
 
 	start(clients)
 	#######################################################################
