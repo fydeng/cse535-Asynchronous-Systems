@@ -24,9 +24,7 @@ def parse_config(input_str):
     else:
     	ifRandom = False
     time_delay = int(strs[4])
-    message_loss = int(strs[5])
-
-    return [retrans, retrans_interval, retrans_time, ifRandom, time_delay, message_loss]
+    return [retrans, retrans_interval, retrans_time, ifRandom, time_delay]
 
 def parse_server(input_str):
 		input_str =input_str.strip()
@@ -36,7 +34,8 @@ def parse_server(input_str):
 		serverIP = str[1]
 		startup_delay = int(str[2])
 		life_time = str[3]
-		return [bankName,serverIP, startup_delay,life_time]
+		message_loss = int(str[4])
+		return [bankName,serverIP, startup_delay,life_time,message_loss]
 
 def parse_client(input_str):
 		input_str = input_str.replace(' ','')
@@ -212,11 +211,12 @@ class Master(process):
 	
 
 class Server(process):
-	def setup(bankName, serverIP, startup_delay, life_time, prev, next, master, filename, message_loss):
+	def setup(bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, filename):
 		self.bankName = bankName
 		self.serverIP = serverIP
 		self.startup_delay =startup_delay
 		self.life_time = int(life_time)
+		self.message_loss = message_loss
 		self.prev =prev
 		self.next = next
 		self.master =master
@@ -224,7 +224,6 @@ class Server(process):
 		self.procTrans = {}
 		self.AccountInfo = {}
 		self.filename = filename
-		self.message_loss = message_loss
 		self.recTimes = 0
 		setup_logfile(self.filename)
 
@@ -303,7 +302,7 @@ class Server(process):
 
 	def receive(msg=("REQ", req), from_= src_id):
 		self.recTimes += 1
-		if self.recTimes <= self.message_loss or self.message_loss == 0:
+		if (self.recTimes <= self.message_loss or self.message_loss == 0) and src_id != self.prev:
 			output('Request ' + str(req.reqID) + ' from client received! ')
 		else:
 			self.recTimes = 0
@@ -592,12 +591,14 @@ def main():
 	serverIP = []
 	startup_delay = []
 	life_time = []
+	message_loss = []
 
 	for i in range(num_srv):
 		bankName_srv.append(srvList[i][0])
 		serverIP.append(srvList[i][1])
 		startup_delay.append(srvList[i][2])
 		life_time.append(srvList[i][3])
+		message_loss.append(srvList[i][4])
 
 	for i in range(num_srv):
 		if i == 0 or bankName_srv[i]!= bankName_srv[i-1]:
@@ -633,7 +634,6 @@ def main():
 	nRetrans = list_config[2]
 	ifRandom = list_config[3]
 	time_delay = list_config[4]
-	message_loss = list_config[5]
 
 	for i in range(num_cli):
 		bankName_cli.append(cliList[i][0])
@@ -663,7 +663,7 @@ def main():
 			next = None
 		else:
 			next = servers[i+1]
-		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], prev, next, master, server_name, message_loss))
+		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], message_loss[i], prev, next, master, server_name))
 	
 	start(servers)
 
