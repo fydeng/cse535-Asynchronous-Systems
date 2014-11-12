@@ -334,7 +334,7 @@ class Server(process):
 				send(('REPLY', reply), to = req.client_id)
 				output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
 				if (req.reqtype != ReqType.Query):
-					send(('ACK', ack), to = prev)
+					send(('ACK', ack), to = self.prev)
 					output(str(ack) + ' has been sent!')
 		else:
 			send(('REQ', req), to = self.next)
@@ -343,7 +343,13 @@ class Server(process):
 		output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
 		if req.reqtype != ReqType.Query:
 			self.sentTrans.append(req)
+			search_result = search_procTrans(req.reqID)
+			if (search_result == True):
+				ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
+				send(('ACK', ack), to = self.prev)
+		
 		output("Request %s has been added to sent transaction" % req.reqID)
+		
 		if self.next != None:
 			send(('SYNC', req), to = self.next)
 
@@ -363,10 +369,11 @@ class Server(process):
 
 	def receive(msg=('ACK', ack), from_= next):
 		output(str(ack) + ' has been received!')
+		search_result = search_procTrans(ack.reqID)
 		result = proc_balance(ack)
 		output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
 		update_procTrans(ack.reqID)
-		if prev != None:
+		if prev != None and search_result == False:
 			send(('ACK', ack), to = prev)
 
 	def receive(msg=("srvFail",(prev,next)), from_ = master):
@@ -379,8 +386,8 @@ class Server(process):
 				output("Starting synchronize %s sentTrans to new next server" % req.reqID)
 				send(('SYNC', req), to = self.next)
 			for reqID,req in self.procTrans.items():
-				output("Starting synchronize procTrans to the new next server ",reqID)
-				send(("SYNC_PROC",(reqID,req)),to = self.next)
+				output("Starting synchronize %s procTrans to the new next server " % reqID)
+				send(("SYNC_PROC", (reqID, req)),to = self.next)
 		else:
 			output("I'm the new tail!")
 
@@ -388,7 +395,7 @@ class Server(process):
 		output(str(self.serverIP)+" Received extendChain from master,setting my next to "+str(newSrv))
 		self.next = newSrv
 		for reqID,req in self.procTrans.items():
-			output("Starting synchronize procTrans to the new tail ",reqID)
+			output("Starting synchronize %s procTrans to the new tail " % reqID)
 			send(("SYNC_PROC",(reqID,req)),to = self.next)
 
 	def receive(msg=("new_server_join", newprev), from_ = master):
@@ -484,6 +491,7 @@ class Client(process):
 	def receive(msg=("newTail",newSrv),from_= master):
 		output("Client setting new tail: "+ str(newSrv))
 		self.tail_srvs.update({self.bankName:newSrv})
+		time.sleep(self.time_delay)
 
 	def receive(msg=("srvFail",newSrv),from_= master):
 		output("Client received server fail from Master, starting to sleep.")
@@ -507,6 +515,10 @@ class Client(process):
 				#output('Master notification received, do not minus Retrans')
 				continue
 			elif some(received(('newHead',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
+				times = 0
+				#output('Master notification received, do not minus Retrans')
+				continue
+			elif some(received(('srvFail',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
 				times = 0
 				#output('Master notification received, do not minus Retrans')
 				continue

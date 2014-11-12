@@ -4,7 +4,7 @@
 1, 127.0.0.1:10001, 0, 200, 0
 1, 127.0.0.1:10002, 0, 200, 0
 1, 127.0.0.1:10003, 0, 002, 0
-1, 127.0.0.1:10004, 0, 005, 0
+1, 127.0.0.1:10004, 0, 003, 0
 1, 127.0.0.1:10005, 0, 200, 0
 //Client Configuration: Retransmission or not, Retransmission interval, Retransmission time, Random or not, Time delay
 1, 5, 3, 0, 2
