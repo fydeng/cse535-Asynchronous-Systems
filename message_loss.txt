@@ -1,11 +1,11 @@
 //Master: ip address:port number
 127.0.0.1:10000
 //Server: bank name, ip address:port number, startup delay, life time, message loss
-1, 127.0.0.1:10001, 0, 200, 6
-1, 127.0.0.1:10002, 0, 200, 6
-1, 127.0.0.1:10003, 0, 200, 6
-1, 127.0.0.1:10004, 0, 200, 6
-1, 127.0.0.1:10005, 0, 200, 6
+1, 127.0.0.1:10001, 0, 200, 2
+1, 127.0.0.1:10002, 0, 200, 2
+1, 127.0.0.1:10003, 0, 200, 2
+1, 127.0.0.1:10004, 0, 200, 2
+1, 127.0.0.1:10005, 0, 200, 2
 //Client Configuration: Retransmission or not, Retransmission interval, Retransmission time, Random or not, Time delay
 1, 5, 3, 0, 2
 //Client: bank name, account number, ip address:port number

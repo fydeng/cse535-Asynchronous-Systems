@@ -301,12 +301,14 @@ class Server(process):
 			return True
 
 	def receive(msg=("REQ", req), from_= src_id):
-		self.recTimes += 1
-		if (self.recTimes <= self.message_loss or self.message_loss == 0) and src_id != self.prev:
-			output('Request ' + str(req.reqID) + ' from client received! ')
-		else:
-			self.recTimes = 0
-			return
+		if src_id != self.prev:
+			self.recTimes += 1
+			if self.recTimes <= self.message_loss or self.message_loss == 0:
+				output('Request ' + str(req.reqID) + ' from client received! ')
+			else:
+				output('Packet loss, request ' + str(req.reqID))
+				self.recTimes = 0
+				return
 
 		if(self.life_time > 0):
 			self.life_time = self.life_time-1
@@ -349,12 +351,12 @@ class Server(process):
 		output('Synchronization of procTrans from the old tail '+str(reqID))
 		if req.reqtype != ReqType.Query:
 			ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
-			output(str(ack.reqtype) + ' ' + str(ack.account_num) + ' ' + str(ack.amount))
+			#output(str(ack.reqtype) + ' ' + str(ack.account_num) + ' ' + str(ack.amount))
 			self.sentTrans.append(req)
 			result = proc_balance(ack)
 			update_procTrans(reqID)
 			output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
-			output(self.AccountInfo)
+			#output(self.AccountInfo)
 
 		if self.next != None:
 			send(('SYNC_PROC', (reqID,req)), to = self.next)
@@ -374,8 +376,11 @@ class Server(process):
 		if (self.next != None):
 			for i in range(len(self.sentTrans)):
 				req = self.sentTrans[i]
-				output("Starting synchronize %s sentTrans to next server" % req.reqID)
+				output("Starting synchronize %s sentTrans to new next server" % req.reqID)
 				send(('SYNC', req), to = self.next)
+			for reqID,req in self.procTrans.items():
+				output("Starting synchronize procTrans to the new next server ",reqID)
+				send(("SYNC_PROC",(reqID,req)),to = self.next)
 		else:
 			output("I'm the new tail!")
 
@@ -486,7 +491,7 @@ class Client(process):
 
 	def resend(req):
 		times = 0
-		while times <= self.nRetrans:
+		while True:
 			output("Start retransmitting Request ", req.reqID)
 			time.sleep(self.time_delay)
 			clk = logical_clock()
@@ -501,9 +506,15 @@ class Client(process):
 				times = 0
 				#output('Master notification received, do not minus Retrans')
 				continue
+			elif some(received(('newHead',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
+				times = 0
+				#output('Master notification received, do not minus Retrans')
+				continue
 			elif timeout(self.timeout):
 				times += 1
-		output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
+				if times == self.nRetrans:
+					output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
+					break
 
 	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
