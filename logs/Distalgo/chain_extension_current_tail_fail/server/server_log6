@@ -1,0 +1,68 @@
+[2014-11-12 20:03:53,603]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10006  Life time is: 200  Previous server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)  Next server is: None
+[2014-11-12 20:03:54,616]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]:  I'm the new joined server,setting my prev to ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)
+[2014-11-12 20:03:58,618]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]:  Received SrvFail from Master, Setting my prev to: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657) and my next to: None
+[2014-11-12 20:03:58,618]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: I'm the new tail!
+[2014-11-12 20:03:58,620]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Synchronization of sentTrans from previous server received! ReqID is  1.2.2
+[2014-11-12 20:03:58,620]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.2 has been added to sent transaction
+[2014-11-12 20:03:58,621]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Synchronization of sentTrans from previous server received! ReqID is  1.1.2
+[2014-11-12 20:03:58,622]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.2 has been added to sent transaction
+[2014-11-12 20:03:59,634]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 199
+[2014-11-12 20:03:59,635]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.2 has been added to sent transaction
+[2014-11-12 20:03:59,635]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.2 has been added to processed transaction
+[2014-11-12 20:03:59,635]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Using ACK to clear old req  1.2.2
+[2014-11-12 20:03:59,636]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Duplicate request, don't add to processed transaction
+[2014-11-12 20:03:59,637]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.2.2 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)
+[2014-11-12 20:03:59,639]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.2.2 has been sent!
+[2014-11-12 20:03:59,639]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 198
+[2014-11-12 20:03:59,640]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.2 has been added to sent transaction
+[2014-11-12 20:03:59,640]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.2 has been added to processed transaction
+[2014-11-12 20:03:59,640]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Using ACK to clear old req  1.1.2
+[2014-11-12 20:03:59,641]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Duplicate request, don't add to processed transaction
+[2014-11-12 20:03:59,642]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.1.2 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)
+[2014-11-12 20:03:59,643]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.1.2 has been sent!
+[2014-11-12 20:04:03,641]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 197
+[2014-11-12 20:04:03,642]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.2 has been added to sent transaction
+[2014-11-12 20:04:03,642]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Duplicate request, don't add to processed transaction
+[2014-11-12 20:04:03,643]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 196
+[2014-11-12 20:04:03,643]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.2 has been added to sent transaction
+[2014-11-12 20:04:03,644]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Duplicate request, don't add to processed transaction
+[2014-11-12 20:04:05,645]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 195
+[2014-11-12 20:04:05,646]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.3 has been added to sent transaction
+[2014-11-12 20:04:05,646]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.3 has been added to processed transaction
+[2014-11-12 20:04:05,647]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.1.3 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)
+[2014-11-12 20:04:05,648]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.1.3 has been sent!
+[2014-11-12 20:04:05,649]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 194
+[2014-11-12 20:04:05,649]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.3 has been added to sent transaction
+[2014-11-12 20:04:05,650]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.3 has been added to processed transaction
+[2014-11-12 20:04:05,651]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.2.3 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)
+[2014-11-12 20:04:05,651]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.2.3 has been sent!
+[2014-11-12 20:04:07,658]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 193
+[2014-11-12 20:04:07,659]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.4 has been added to sent transaction
+[2014-11-12 20:04:07,659]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.4 has been added to processed transaction
+[2014-11-12 20:04:07,660]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.1.4 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)
+[2014-11-12 20:04:07,661]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.1.4 has been sent!
+[2014-11-12 20:04:07,662]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 192
+[2014-11-12 20:04:07,662]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.4 has been added to sent transaction
+[2014-11-12 20:04:07,663]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.4 has been added to processed transaction
+[2014-11-12 20:04:07,663]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.2.4 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)
+[2014-11-12 20:04:07,664]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.2.4 has been sent!
+[2014-11-12 20:04:09,673]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 191
+[2014-11-12 20:04:09,674]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.5 has been added to sent transaction
+[2014-11-12 20:04:09,674]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.5 has been added to processed transaction
+[2014-11-12 20:04:09,675]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.1.5 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)
+[2014-11-12 20:04:09,676]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.1.5 has been sent!
+[2014-11-12 20:04:09,699]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 190
+[2014-11-12 20:04:09,700]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.5 has been added to sent transaction
+[2014-11-12 20:04:09,701]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.5 has been added to processed transaction
+[2014-11-12 20:04:09,702]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.2.5 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)
+[2014-11-12 20:04:09,704]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.2.5 has been sent!
+[2014-11-12 20:04:11,713]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 189
+[2014-11-12 20:04:11,713]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.6 has been added to sent transaction
+[2014-11-12 20:04:11,713]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.1.6 has been added to processed transaction
+[2014-11-12 20:04:11,714]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.1.6 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)
+[2014-11-12 20:04:11,716]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.1.6 has been sent!
+[2014-11-12 20:04:11,717]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: The current life_time is: 188
+[2014-11-12 20:04:11,717]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.6 has been added to sent transaction
+[2014-11-12 20:04:11,718]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Request 1.2.6 has been added to processed transaction
+[2014-11-12 20:04:11,718]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Reply for Request 1.2.6 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)
+[2014-11-12 20:04:11,719]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)]: Ack for request 1.2.6 has been sent!

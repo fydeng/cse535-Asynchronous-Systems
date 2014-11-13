@@ -1,0 +1,339 @@
+------------------Master---------------------
+Master name is: 127.0.0.1:10000
+
+------------------Server Chain---------------------
+-----------------Chain 1---------------------
+Head
+bank name: 1
+server name: 127.0.0.1:10001
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10002
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10002
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10003
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10003
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10004
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10004
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10005
+-----------------------------------------------------------------
+
+Tail
+bank name: 1
+server name: 127.0.0.1:10005
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+-----------------------------------------------------------------
+
+------------------Client Chain---------------------
+-----------------Clients in bank 1---------------------
+bank name: 1
+account no.: 100
+client name: 127.0.0.1:20001
+
+bank name: 1
+account no.: 200
+client name: 127.0.0.1:20002
+
+-----------------Clients in bank 2---------------------
+bank name: 2
+account no.: 100
+client name: 127.0.0.1:20003
+
+bank name: 2
+account no.: 200
+client name: 127.0.0.1:20004
+
+-----------------Clients in bank 3---------------------
+bank name: 3
+account no.: 100
+client name: 127.0.0.1:20005
+
+bank name: 3
+account no.: 200
+client name: 127.0.0.1:20006
+
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+start probing
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10006
+New server joined:127.0.0.1:10006, chain extension start
+Push notification of chain extension to all clients sent
+------------------Server Chain---------------------
+-----------------Chain 1---------------------
+Head
+bank name: 1
+server name: 127.0.0.1:10001
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10002
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10002
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10003
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10003
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10004
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10004
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10005
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10005
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10006
+-----------------------------------------------------------------
+
+Tail
+bank name: 1
+server name: 127.0.0.1:10006
+start up delay: 0
+life time: 0
+message loss frequency is: 0
+-----------------------------------------------------------------
+
+New server extended to the tail of chain 1
+-----------------------------------------------------------------
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10006
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10006
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10006
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+start probing
+Ping received: 127.0.0.1:10006
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10006
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+start probing
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10003
+start probing
+-----------------------------------------------------------------
+Server 127.0.0.1:10006 FAILS
+Push notification of server fail to all clients sent
+------------------Server Chain---------------------
+-----------------Chain 1---------------------
+Head
+bank name: 1
+server name: 127.0.0.1:10001
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10002
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10002
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10003
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10003
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10004
+-----------------------------------------------------------------
+
+bank name: 1
+server name: 127.0.0.1:10004
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+next is: 127.0.0.1:10005
+-----------------------------------------------------------------
+
+Tail
+bank name: 1
+server name: 127.0.0.1:10005
+start up delay: 0
+life time: 200
+message loss frequency is: 0
+-----------------------------------------------------------------
+
+Tail server fails, server notification sent out to its precessor: 127.0.0.1:10005
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10004
+start probing
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10003
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10001
+start probing
+Ping received: 127.0.0.1:10005
+Ping received: 127.0.0.1:10004
+Ping received: 127.0.0.1:10002
+Ping received: 127.0.0.1:10001
+Ping received: 127.0.0.1:10001
+Master exits, all sockets are closed

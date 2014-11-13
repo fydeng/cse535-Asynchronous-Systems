@@ -1,0 +1,51 @@
+[2014-11-12 20:11:09,121]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 200  Previous server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25024)  Next server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24243)
+[2014-11-12 20:11:13,146]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 199
+[2014-11-12 20:11:13,146]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.2 has been added to sent transaction
+[2014-11-12 20:11:13,149]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 198
+[2014-11-12 20:11:13,149]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.2 has been added to sent transaction
+[2014-11-12 20:11:13,157]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.2.2 has been received!
+[2014-11-12 20:11:13,158]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 200 New balance is: 400.0
+[2014-11-12 20:11:13,158]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.2 has been added to processed transaction
+[2014-11-12 20:11:13,160]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.1.2 has been received!
+[2014-11-12 20:11:13,161]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 100 New balance is: 400.0
+[2014-11-12 20:11:13,161]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.2 has been added to processed transaction
+[2014-11-12 20:11:15,165]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 197
+[2014-11-12 20:11:15,165]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.3 has been added to sent transaction
+[2014-11-12 20:11:15,173]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.1.3 has been received!
+[2014-11-12 20:11:15,173]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 100 New balance is: 300.0
+[2014-11-12 20:11:15,173]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.3 has been added to processed transaction
+[2014-11-12 20:11:17,178]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 196
+[2014-11-12 20:11:17,179]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.4 has been added to sent transaction
+[2014-11-12 20:11:17,210]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.1.4 has been received!
+[2014-11-12 20:11:17,210]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 100 New balance is: 400.0
+[2014-11-12 20:11:17,211]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.4 has been added to processed transaction
+[2014-11-12 20:11:22,164]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 195
+[2014-11-12 20:11:22,164]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.3 has been added to sent transaction
+[2014-11-12 20:11:22,171]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.2.3 has been received!
+[2014-11-12 20:11:22,171]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 200 New balance is: 300.0
+[2014-11-12 20:11:22,172]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.3 has been added to processed transaction
+[2014-11-12 20:11:24,175]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 194
+[2014-11-12 20:11:24,176]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.4 has been added to sent transaction
+[2014-11-12 20:11:24,213]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.2.4 has been received!
+[2014-11-12 20:11:24,213]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 200 New balance is: 400.0
+[2014-11-12 20:11:24,213]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.4 has been added to processed transaction
+[2014-11-12 20:11:26,216]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 193
+[2014-11-12 20:11:26,216]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.5 has been added to sent transaction
+[2014-11-12 20:11:26,246]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.2.5 has been received!
+[2014-11-12 20:11:26,247]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 200 New balance is: 500.0
+[2014-11-12 20:11:26,247]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.5 has been added to processed transaction
+[2014-11-12 20:11:28,250]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 192
+[2014-11-12 20:11:28,250]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.6 has been added to sent transaction
+[2014-11-12 20:11:28,257]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.2.6 has been received!
+[2014-11-12 20:11:28,257]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 200 New balance is: 600.0
+[2014-11-12 20:11:28,258]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.2.6 has been added to processed transaction
+[2014-11-12 20:11:40,226]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 191
+[2014-11-12 20:11:40,226]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.5 has been added to sent transaction
+[2014-11-12 20:11:40,234]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.1.5 has been received!
+[2014-11-12 20:11:40,234]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 100 New balance is: 500.0
+[2014-11-12 20:11:40,260]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.5 has been added to processed transaction
+[2014-11-12 20:11:42,240]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: The current life_time is: 190
+[2014-11-12 20:11:42,241]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.6 has been added to sent transaction
+[2014-11-12 20:11:42,269]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Ack for request 1.1.6 has been received!
+[2014-11-12 20:11:42,269]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Account: 100 New balance is: 600.0
+[2014-11-12 20:11:42,269]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 25911)]: Request 1.1.6 has been added to processed transaction

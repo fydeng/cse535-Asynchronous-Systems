@@ -1,0 +1,20 @@
+[2014-11-12 19:39:15,589]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Client: Bank Name is: 1  Account number is: 200
+[2014-11-12 19:39:15,591]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Request 1.2.1 has been sent out
+[2014-11-12 19:39:17,604]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Reply received from server: RequestID is 1.2.1, Outcome.Processed, Balance is 0.000000
+[2014-11-12 19:39:17,604]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Request 1.2.2 has been sent out
+[2014-11-12 19:39:19,624]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Reply received from server: RequestID is 1.2.2, Outcome.Processed, Balance is 400.000000
+[2014-11-12 19:39:19,624]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Request 1.2.3 has been sent out
+[2014-11-12 19:39:26,626]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Client waiting for reply 1.2.3 TIMEDOUT!
+[2014-11-12 19:39:26,627]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Start retransmitting Request  1.2.3
+[2014-11-12 19:39:30,608]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Client received server fail from Master, starting to sleep.
+[2014-11-12 19:39:32,610]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Start retransmitting Request  1.2.3
+[2014-11-12 19:39:39,613]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Start retransmitting Request  1.2.3
+[2014-11-12 19:39:41,617]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Client received server fail from Master, starting to sleep.
+[2014-11-12 19:39:43,619]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Start retransmitting Request  1.2.3
+[2014-11-12 19:39:45,624]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Reply received from server: RequestID is 1.2.3, Outcome.Processed, Balance is 300.000000
+[2014-11-12 19:39:45,624]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Request 1.2.4 has been sent out
+[2014-11-12 19:39:47,635]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Reply received from server: RequestID is 1.2.4, Outcome.Processed, Balance is 400.000000
+[2014-11-12 19:39:47,635]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Request 1.2.5 has been sent out
+[2014-11-12 19:39:49,643]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Reply received from server: RequestID is 1.2.5, Outcome.Processed, Balance is 500.000000
+[2014-11-12 19:39:49,644]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Request 1.2.6 has been sent out
+[2014-11-12 19:39:51,654]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27801)]: Reply received from server: RequestID is 1.2.6, Outcome.Processed, Balance is 600.000000
