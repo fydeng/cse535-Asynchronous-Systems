@@ -54,6 +54,7 @@ Strength of DistAlgo:
 2. When dealing with the situation that both clients and servers needs to receive different kinds of messages, in DistAlgo, we implemented this by await() for different situations to be true and then handles them separately. However, in C++, we have to create  new threads for each new message, which adds the size of code too.
 
 ============ OTHER COMMENTS ============
+
 In order to facilitate testing in C++, in some cases where chain extension is not introduced, we still adds the new server in the configuration file by setting its startup-delay really big(which can be regarded as no server adding to the chain).In this way, the testing results are not affected at all.
 
 We designed a test case specially for client message loss, in other cases, we assume that there’s no message loss during the operation.
