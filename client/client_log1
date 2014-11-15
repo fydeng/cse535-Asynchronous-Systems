@@ -1,0 +1,14 @@
+[2014-11-15 14:12:10,836]Client[('Yaos-MacBook-Pro.local', 16104)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-15 14:12:10,846]Client[('Yaos-MacBook-Pro.local', 16104)]: Request 1.1.1 has been sent out
+[2014-11-15 14:12:12,862]Client[('Yaos-MacBook-Pro.local', 16104)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 0.000000
+[2014-11-15 14:12:12,863]Client[('Yaos-MacBook-Pro.local', 16104)]: Request 1.1.2 has been sent out
+[2014-11-15 14:12:14,878]Client[('Yaos-MacBook-Pro.local', 16104)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 400.000000
+[2014-11-15 14:12:14,878]Client[('Yaos-MacBook-Pro.local', 16104)]: Request 1.1.3 has been sent out
+[2014-11-15 14:12:16,889]Client[('Yaos-MacBook-Pro.local', 16104)]: Reply received from server: RequestID is 1.1.3, Outcome.Processed, Balance is 300.000000
+[2014-11-15 14:12:16,890]Client[('Yaos-MacBook-Pro.local', 16104)]: Request 1.1.4 has been sent out
+[2014-11-15 14:12:18,915]Client[('Yaos-MacBook-Pro.local', 16104)]: Reply received from server: RequestID is 1.1.4, Outcome.Processed, Balance is 400.000000
+[2014-11-15 14:12:18,915]Client[('Yaos-MacBook-Pro.local', 16104)]: Request 1.1.5 has been sent out
+[2014-11-15 14:12:20,925]Client[('Yaos-MacBook-Pro.local', 16104)]: Reply received from server: RequestID is 1.1.5, Outcome.Processed, Balance is 500.000000
+[2014-11-15 14:12:20,926]Client[('Yaos-MacBook-Pro.local', 16104)]: Request 1.1.6 has been sent out
+[2014-11-15 14:12:22,944]Client[('Yaos-MacBook-Pro.local', 16104)]: Reply received from server: RequestID is 1.1.6, Outcome.Processed, Balance is 600.000000
+[2014-11-15 14:12:22,945]Client[('Yaos-MacBook-Pro.local', 16104)]: All request has been sentout, client exits
