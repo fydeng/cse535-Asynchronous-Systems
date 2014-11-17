@@ -81,4 +81,4 @@ class Transfer_Ack(object):
         self.amount = float(amount)
 
     def __str__(self):
-        return ('Transfer Ack for %s, From Bank: %d Account: %d, To Bank: %d Account: %d, Amount is %f' % (self.reqID, self.from_bank, self.from_account, self.to_bank, self.to_account, self.amount))
+        return ('Transfer Ack for %s' % self.reqID)

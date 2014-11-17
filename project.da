@@ -273,9 +273,11 @@ class Server(process):
 
 	def proc_transfer_balance(transfer_ack):
 		outcome = Outcome.Processed
-		if transfer_ack.from_bank == transfer.ack.to_bank:
-			from_cur_balance = 0
-			to_cur_balance = 0
+		from_cur_balance = 0
+		to_cur_balance = 0
+		from_new_balance = 0
+		to_new_balance = 0
+		if transfer_ack.from_bank == transfer_ack.to_bank:
 			if self.AccountInfo.get(transfer_ack.from_account) != None:
 				from_cur_balance = self.AccountInfo[transfer_ack.from_account]
 			
@@ -285,12 +287,52 @@ class Server(process):
 			if self.procTrans.get(transfer_ack.reqID) != None:
 				if self.procTrans[transfer_ack.reqID].reqtype != transfer_ack.reqtype:
 					outcome = Outcome.InconsistentWithHistory
-				else:
-					pass
 				from_new_balance = from_cur_balance
-				return [from_new_balance]
+				to_new_balance = to_cur_balance
+			else:
+				if (from_cur_balance - transfer_ack.amount < 0):
+					from_new_balance = from_cur_balance
+					to_new_balance = to_cur_balance
+					outcome = Outcome.InsufficientFunds
+				else:
+					from_new_balance = from_cur_balance - transfer_ack.amount
+					to_new_balance = to_cur_balance + transfer_ack.amount
+			AccountInfo.update({transfer_ack.from_account:from_new_balance})
+			AccountInfo.update({transfer_ack.to_account:to_new_balance})
+			return [from_new_balance, to_new_balance, outcome]
 
+		else:
+			if transfer_ack.from_bank == self.bankName:
+				if self.AccountInfo.get(transfer_ack.from_account) != None:
+					from_cur_balance = self.AccountInfo[transfer_ack.from_account]
 
+				if self.procTrans.get(transfer_ack.reqID) != None:
+					if self.procTrans[transfer_ack.reqID].reqtype != transfer_ack.reqtype:
+						outcome = Outcome.InconsistentWithHistory
+					from_new_balance = from_cur_balance
+
+				else:
+					if (from_cur_balance - transfer_ack.amount < 0):
+						from_new_balance = from_cur_balance
+						outcome = Outcome.InsufficientFunds
+					else:
+						from_new_balance = from_cur_balance - transfer_ack.amount
+				AccountInfo.update({transfer_ack.from_account:from_new_balance})
+				return [from_new_balance, outcome]
+
+			else:
+				if self.AccountInfo.get(transfer_ack.to_account) != None:
+					to_cur_balance = self.AccountInfo[transfer_ack.to_account]
+
+				if self.procTrans.get(transfer_ack.reqID) != None:
+					if self.procTrans[transfer_ack.reqID].reqtype != transfer_ack.reqtype:
+						outcome = Outcome.InconsistentWithHistory
+					to_new_balance = to_cur_balance
+
+				else:
+					to_new_balance = to_cur_balance + transfer_ack.amount
+			AccountInfo.update({transfer_ack.to_account:to_new_balance})
+			return [to_new_balance, outcome]
 
 	def update_procTrans(reqID):
 		count_clear = 0
@@ -352,9 +394,19 @@ class Server(process):
 
 		if (self.next == None):
 			transfer_ack = Transfer_Ack(trans_req.reqID, trans_req.reqtype, trans_req.from_bank, trans_req.from_account, trans_req.to_bank, trans_req.to_account, trans_req.amount)
-			result = proc_balance(transfer_ack)
-			output(transfer_ack)
-			send(('Transfer_ACK', transfer_ack), to = self.prev)
+			result = proc_transfer_balance(transfer_ack)
+			new_balance = result[0]
+			outcome = result[1]
+			reply = Reply(trans_req.reqID,outcome,new_balance)
+			search_result = search_procTrans(trans_req.reqID)
+			update_procTrans(trans_req.reqID)
+			if len(result) == 3:
+				output(transfer_ack)
+				if search_result == False or (search_result == True and outcome != Outcome.Processed):
+					send(('REPLY', reply), to = trans_req.client_id)
+					output("Reply for Request "+ str(trans_req.reqID)+" has been sent to client: "+str(trans_req.client_id))
+					send(('Transfer_ACK', transfer_ack), to = self.prev)
+
 		else:
 			send(('Transfer_REQ', trans_req), to = self.next)
 
@@ -422,6 +474,11 @@ class Server(process):
 
 	def receive(msg=('Transfer_ACK', transfer_ack), from_= src):
 		output(str(transfer_ack) + ' has been received!')
+		search_result = search_procTrans(transfer_ack.reqID)
+		result = proc_transfer_balance(transfer_ack)
+		output('Account: ' + str(transfer_ack.from_account) + ' New balance is: ' + str(result[0]))
+		if len(result) == 3:
+			output('Account: ' + str(transfer_ack.to_account) + ' New balance is: ' + str(result[1]))
 		if prev != None:
 			send(('Transfer_ACK', transfer_ack), to = self.prev)
 

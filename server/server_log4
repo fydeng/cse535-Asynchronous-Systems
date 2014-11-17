@@ -1,3 +1,0 @@
-[2014-11-17 15:31:12,585]Server[('Yaos-MacBook-Pro.local', 34866)]: Server: Bank Name is: 2  Server IP is: 127.0.0.1:10004  Life time is: 200  Previous server is: None  Next server is: ('Yaos-MacBook-Pro.local', 28121)
-[2014-11-17 15:31:12,586]Server[('Yaos-MacBook-Pro.local', 34866)]: Head_srvs stored in server: {1: <Server('Yaos-MacBook-Pro.local', 24449)>, 2: <Server('Yaos-MacBook-Pro.local', 34866)>, 3: <Server('Yaos-MacBook-Pro.local', 17296)>}
-[2014-11-17 15:31:12,613]Server[('Yaos-MacBook-Pro.local', 34866)]: Tail_srvs stored in server: {1: <Server('Yaos-MacBook-Pro.local', 10791)>, 2: <Server('Yaos-MacBook-Pro.local', 11321)>, 3: <Server('Yaos-MacBook-Pro.local', 39010)>}
