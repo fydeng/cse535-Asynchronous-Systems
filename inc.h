@@ -22,8 +22,8 @@ const char *seperator = "-------------------------------------------------------
 enum Outcome {Processed, InconsistentWithHistory, InsufficientFunds};
 enum ReqType {Query, Deposit, Withdraw, Transfer};
 enum Source  {server, client};
-enum Noti_Type {Fail, Extension, New_Next};
-enum Sync_Type {Normal, SyncSent, SyncProc};
+enum Noti_Type {Fail, Extension, New_Next}; //types of notification from master
+enum Sync_Type {Normal, SyncSent, SyncProc}; //types of synchronization from previous server
 
 void tokenizer(string input, vector<string>& vStr) //tokenizer to split the attributes in configuration file
 {
@@ -268,7 +268,7 @@ public:
 
 };
 
-class Push_Notification
+class Push_Notification //class of push notification from master, packetize the notification from master to client/server, in case of server fail/chain extension
 {
 public:
     Noti_Type noti_type;
@@ -315,7 +315,7 @@ public:
             printf("Chain extension, new server(tail) 127.0.0.1:%d added\n%s\n", push->port_num, seperator);
         else
             if (push->port_num == -1)
-                printf("Tail server failed now I'm the new Tail\n");
+                printf("Tail server failed now I'm the new Tail\n%s\n", seperator);
             else
                 printf("Failed next server removed, new next server 127.0.0.1:%d updated\n%s\n", push->port_num, seperator);
         return cout;

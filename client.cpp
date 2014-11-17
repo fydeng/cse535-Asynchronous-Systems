@@ -196,13 +196,13 @@ static void *SendReq(void *arg) //each client launches this send request functio
                     displaychain(true, false);
                     if (result) //there is server removed
                     {
-                        sleep(2);
+                        sleep(fault_delay);
                         count_retrans = 0;
                         goto loop;
                     }
                     else
                     {
-                        sleep(10);
+                        sleep(fault_delay);
                         goto receiving;
                     }
                 }
@@ -212,7 +212,6 @@ static void *SendReq(void *arg) //each client launches this send request functio
                     reply->Depacketize(buf);
                     cout<<reply<<endl;
                 }
-        
             }
         }
     }

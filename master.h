@@ -1,21 +1,21 @@
 #include "server.h"
 #include "client.h"
 
-class Master
+class Master //class of master
 {
-	int sockfd_tcp;
-    int sockfd_udp;
-    struct sockaddr_in msaddr;
-	string ip_addr;
-	int port;
-	std::pair<string,int> mName;
-	std::map<int, std::list<Server*> > sChain;
-	std::map<int, std::list<Client*> > clients;
-    std::map<pair<int, int>, time_t> time_sheet;
+	int sockfd_tcp; //each master has two sockets: tcp socket and udp socket, tcp socket is used for communicating with server
+    int sockfd_udp; //udp socket is used for communicating with client
+    struct sockaddr_in msaddr; //struct socket address of master
+	string ip_addr; //master's ip address
+	int port; //master's port number
+	std::pair<string,int> mName; //master name
+	std::map<int, std::list<Server*> > sChain; //master stores all server topology
+	std::map<int, std::list<Client*> > clients; //master stores all clients
+    std::map<pair<int, int>, time_t> time_sheet; //master stores a time sheet of server, in order to record the newest ping of server, correspoding to its time, and check whether certain server fails
 
 public:
 
-	void Setipaddr(char *p)
+	void Setipaddr(char *p) //some basic functions for initialization, similar to server
 	{
 		ip_addr = p;
 	}
@@ -88,7 +88,7 @@ public:
 		}
 	}
 	void InitMS(ifstream &fin);
-	void Addserver(Server *s)
+	void Addserver(Server *s) //add server to its server chain
 	{
 		int bankname = s->GetbankName();		
 		std::map<int, std::list<Server*> >::iterator it;
@@ -104,7 +104,7 @@ public:
 			sChain.insert(std::pair<int,std::list<Server*> >(bankname,serverchain));
 		}
 	}
-	void Addclient(Client *c)
+	void Addclient(Client *c) //add client to its client chain
 	{
 		int bankname = c->GetbankName();		
 		std::map<int, std::list<Client*> >::iterator it;
@@ -120,7 +120,7 @@ public:
 			clients.insert(std::pair<int,std::list<Client*> >(bankname,clientchain));
 		}
     }
-    void update_time_sheet(pair<int,int> srv)
+    void update_time_sheet(pair<int,int> srv) //every time master receives ping from server, it updates the time sheet
     {
         time_t cur_time = time(NULL);
         for(map<pair<int, int>, time_t >::iterator it = time_sheet.begin(); it != time_sheet.end(); ++it)
@@ -148,7 +148,7 @@ public:
 	{
 		return clients;
 	}
-    Server * Search_Head_Server(int bankname)
+    Server * Search_Head_Server(int bankname) //search for head server in the server chain
     {
         map<int, list<Server*> >::iterator it = sChain.find(bankname);
         if (it == sChain.end())
@@ -158,7 +158,7 @@ public:
         }
         return it->second.front();
     }
-    bool Server_exists(pair<int, int> srv)
+    bool Server_exists(pair<int, int> srv) //check whether certain server exists
     {
         map<int, list<Server*> >::iterator it = sChain.find(srv.first);
         if (it == sChain.end())
@@ -174,7 +174,7 @@ public:
         }
         return false;
     }
-    Server * Search_Prev_Server(pair<int, int> srv, bool del)
+    Server * Search_Prev_Server(pair<int, int> srv, bool del) //search for the previous server of certain server
     {
         map<int, list<Server*> >::iterator it = sChain.find(srv.first);
         if (it == sChain.end())
@@ -195,7 +195,7 @@ public:
         }
         return NULL;
     }
-    Server * Search_Next_Server(Server *s)
+    Server * Search_Next_Server(Server *s) //search for the next server of certain server
     {
         map<int, list<Server*> >::iterator it = sChain.find(s->GetbankName());
         if (it == sChain.end())
@@ -229,8 +229,8 @@ public:
         //printf("%s\n",str.c_str());
         strcpy(send_msg, str.c_str());
     }
-    void server_notify(pair <int, int> srv, bool extension);
-    void client_notify(pair <int, int> srv, bool extension);
+    void server_notify(pair <int, int> srv, bool extension); //notify server of server fail/chain extension
+    void client_notify(pair <int, int> srv, bool extension); //notify client of server fail/chain extension
     void cal_next(int bankname)
     {
         map<int, list<Server*> >::iterator it1 = sChain.find(bankname);

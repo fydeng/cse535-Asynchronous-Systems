@@ -19,7 +19,6 @@ int failure_inteval;
 static void *handle_ping(void*);
 static void *probing(void *);
 static void depacketize(char *, pair<int, int> &);
-
 Master ms;
 int main(int argc, char **argv)
 {
@@ -41,19 +40,19 @@ int main(int argc, char **argv)
     char buf[MAXLINE];
     int i;
     pthread_t tid_probe;
-    Pthread_create(&tid_probe, NULL, &probing, NULL);
+    Pthread_create(&tid_probe, NULL, &probing, NULL); //create an another thread to timely probe the time_sheet in order to find the failed server
     while(1)
     {
         Signal(SIGINT, sig_int_handle);
         Signal(SIGTERM, sig_term_handle);
-        if (sigsetjmp(jmpbuf, 1)!=0 || sigsetjmp(jmpbuf, 2)!=0) //if SIGINT or SIGTERM signal caught, server close all sockets and exits
+        if (sigsetjmp(jmpbuf, 1)!=0 || sigsetjmp(jmpbuf, 2)!=0) //if SIGINT or SIGTERM signal caught, master close all sockets and exits
         {
             ms.Closesockets();
             cout<<"Master exits, all sockets are closed"<<endl;
             exit(1);
         }
         rset = allset;
-        if ((Select(maxfd, &rset, NULL, NULL, NULL)) < 1)
+        if ((Select(maxfd, &rset, NULL, NULL, NULL)) < 1) //master listen to its udp socket to receive ping from server
             continue;
         if (FD_ISSET(sockfd_udp, &rset))
         {
@@ -66,24 +65,24 @@ int main(int argc, char **argv)
             else
             {
                 pthread_t tid;
-                Pthread_create(&tid, NULL, &handle_ping, (void *)buf);
+                Pthread_create(&tid, NULL, &handle_ping, (void *)buf); //when received server ping, handle it
             }
         }
     }
 	return 1;
 }
 
-static void *handle_ping(void *arg)
+static void *handle_ping(void *arg) //master handle ping from server
 {
     Pthread_detach(pthread_self());
     char *buf = (char *)arg;
     pair <int, int> srv_name;
     depacketize(buf, srv_name);
     //printf("%s\n",seperator);
-    //printf("Ping received: 127.0.0.1:%d\n",srv_name.second);
+    printf("Ping received: 127.0.0.1:%d\n",srv_name.second);
     ms.update_time_sheet(srv_name);
     //ms.display_time_sheet();
-    if (!ms.Server_exists(srv_name))
+    if (!ms.Server_exists(srv_name)) //if the server doesn't exist, it means that new server joined, start chain extension
     {
         printf("New server joined:127.0.0.1:%d, chain extension start\n",srv_name.second);
         Server *s = new Server(srv_name);
@@ -93,7 +92,7 @@ static void *handle_ping(void *arg)
     }
 }
 
-static void *probing(void *arg)
+static void *probing(void *arg) //master probe the time_sheet in every 5 seconds
 {
     Pthread_detach(pthread_self());
     while (1)
@@ -103,7 +102,7 @@ static void *probing(void *arg)
         time_t cur_time = time(NULL);
         for(map<pair<int, int>, time_t >::iterator it = ms.Gettimesheet().begin(); it != ms.Gettimesheet().end(); ++it)
         {
-            if (cur_time - (it->second) > 5)
+            if (cur_time - (it->second) > 5) //if certain server's last ping from now is more than 5 seconds, it means the server fails, start notify client and server the failure
             {
                 printf("%s\n",seperator);
                 printf("Server 127.0.0.1:%d FAILS\n",it->first.second);
@@ -117,7 +116,7 @@ static void *probing(void *arg)
     }
 }
 
-void Master::server_notify(pair <int, int> srv, bool extension)
+void Master::server_notify(pair <int, int> srv, bool extension) //notify server of server fail/chain extension
 {
     Server *prev = Search_Prev_Server(srv, !extension);
     cal_next(srv.first);
@@ -152,7 +151,7 @@ void Master::server_notify(pair <int, int> srv, bool extension)
     }
 }
 
-void Master::client_notify(pair <int, int> srv, bool extension)
+void Master::client_notify(pair <int, int> srv, bool extension) //notify client of server fail or chain extension
 {
     char send_msg[MAXLINE];
     socklen_t len = sizeof(struct sockaddr_in);
@@ -162,11 +161,11 @@ void Master::client_notify(pair <int, int> srv, bool extension)
     for(list<Client *>::iterator it2 = it1->second.begin(); it2 != it1->second.end(); ++it2)
     {
         Sendto(sockfd_udp, send_msg, MAXLINE, 0, (SA*)&((*it2)->Getsockaddr()), len);
-        if (extension)
-            printf("Push notification of chain extension to all clients sent\n");
-        else
-            printf("Push notification of server fail to all clients sent\n");
     }
+    if (extension)
+        printf("Push notification of chain extension to all clients sent\n");
+    else
+        printf("Push notification of server fail to all clients sent\n");
 }
 
 static void depacketize(char *buf, pair<int, int> &sname)
@@ -192,7 +191,7 @@ static void depacketize(char *buf, pair<int, int> &sname)
     }
 }
 
-void Master::InitMS(ifstream &fin)
+void Master::InitMS(ifstream &fin) //init the master, including the server chain and client chain
 {
     char *input;
     string input_str;

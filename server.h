@@ -19,9 +19,9 @@ private:
 	std::map<string, Request *> procTrans; //server's processed transaction list
 	int startup_delay; //start-up delay of server
 	int life_time; //life time of server
-
+    int message_loss; //frequency when message loss occur
 public:
-	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),next(NULL),life_time(0){}
+	Server():bankName(0),startup_delay(0),sName(make_pair("",-1)),next(NULL),life_time(0), message_loss(0){}
     Server(pair<int, int> srv)
     {
         bankName = srv.first;
@@ -30,6 +30,7 @@ public:
         next = NULL;
         startup_delay = 0;
         life_time = 0;
+        message_loss = 0;
     }
 	void SetbankName(int bn)
     {
@@ -132,11 +133,14 @@ public:
     {
         return startup_delay;
     }
+    int Getmessageloss()
+    {
+        return message_loss;
+    }
     list <Request *> & GetsentTrans()
     {
         return sentTrans;
     }
-    
     map <string, Request *> & GetprocTrans()
     {
         return procTrans;
@@ -173,6 +177,10 @@ public:
 					break;
 				case 4:
 					Setlifetime(input);
+                    break;
+                case 5:
+                    message_loss = atoi(input);
+                    break;
 				default:
 					break;
 			}
@@ -329,6 +337,7 @@ public:
 		cout<<"server name: "<<s->sName.first<<":"<<s->sName.second<<endl;
 		cout<<"start up delay: "<<s->startup_delay<<endl;
 		cout<<"life time: "<<s->life_time<<endl;
+        cout<<"message loss frequency is: "<<s->message_loss<<endl;
         if (!(s->isTail()))
             cout<<"next is: "<<s->next->GetserverName().first<<":"<<s->next->GetserverName().second<<endl;
 		cout<<seperator<<endl;

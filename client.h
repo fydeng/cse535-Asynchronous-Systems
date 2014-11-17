@@ -13,6 +13,7 @@ float prob_getbalance;
 float prob_deposit;
 float prob_withdraw;
 float prob_transfer;
+int fault_delay; //fault delay when received push notification of server fail/chain extension from master, in order to wait for server synchronization sentTrans/procTrans
 
 void parse_config(string input_str) //parse configuration file to get configuration of clients
 {
@@ -52,8 +53,12 @@ void parse_config(string input_str) //parse configuration file to get configurat
                 else
                 {
                     random_req = false;
-                    cout<<"itemized request"<<endl<<endl;
+                    cout<<"itemized request"<<endl;
                 }
+                break;
+            case 4:
+                fault_delay = atoi(input);
+                cout<<"fault delay is: "<<fault_delay<<endl;
                 break;
 			default:
 				break;

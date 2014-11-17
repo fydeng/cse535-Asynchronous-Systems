@@ -69,7 +69,7 @@ int main(int argc, char **argv)
     fd_set allset, rset;
     socklen_t len = sizeof(struct sockaddr_in);
     char buf[MAXLINE];
-    int msg_count = 0;
+    int msg_count = 0, loss_frequency = 0;
 	while(fin.good())
 	{
 		getline(fin, input_str);
@@ -117,6 +117,8 @@ int main(int argc, char **argv)
             break;
         }
 	}
+    if (s->Getdelay() > 100)
+        exit(1);
     sleep(s->Getdelay());
 	cout<<"----------------Server starting---------------"<<endl;
 	cout<<s;
@@ -158,7 +160,7 @@ int main(int argc, char **argv)
             {
                 pthread_t tid;
                 int port = ntohs(cliaddr.sin_port);
-                if (port == ms->GetmsName().second)
+                if (port == ms->GetmsName().second) //when received notification from master, start handling master notifiction
                 {
                     printf("%s\npush notification received from master\n", seperator);
                     ARGS args(s, buf, NULL, -1);
@@ -166,8 +168,18 @@ int main(int argc, char **argv)
                     Pthread_join(tid, NULL);
                     continue;
                 }
-                msg_count++;
-                printf("No. %d message comes\n", msg_count);
+                loss_frequency++;
+                if (loss_frequency <= s->Getmessageloss() || s->Getmessageloss() == 0)
+                {
+                    msg_count++;
+                    printf("No. %d message comes\n", msg_count);
+                }
+                else
+                {
+                    printf("Packet loss\n");
+                    loss_frequency = 0;
+                    continue;
+                }
                 if (msg_count > (s->Getlifetime()))
                 {
                     printf("Life time expires, server exits\n");
@@ -201,14 +213,14 @@ int main(int argc, char **argv)
             	{
                     pthread_t tid;
                     Request *req = new Request(buf);
-                    if (req->Getsynctype() == SyncSent)
+                    if (req->Getsynctype() == SyncSent) //when received sentTrans synchronization, start handling sentTrans synchronization
                     {
                         ARGS args(s, buf, req, -1);
                         Pthread_create(&tid, NULL, &Sync_Sent, (void *)&args);
                         Pthread_join(tid, NULL);
                         continue;
                     }
-                    else if (req->Getsynctype() == SyncProc)
+                    else if (req->Getsynctype() == SyncProc) //when received procTrans synchronization, start handling procTrans synchronization
                     {
                         ARGS args(s, buf, req, -1);
                         Pthread_create(&tid, NULL, &Sync_Hist, (void *)&args);
@@ -235,7 +247,7 @@ int main(int argc, char **argv)
     return -1;
 }
 
-static void *Proc_master_notification(void *arg)
+static void *Proc_master_notification(void *arg) //process master notification
 {
     //Pthread_detach(pthread_self());
     struct ARGS *args = (struct ARGS *) arg;
@@ -243,17 +255,21 @@ static void *Proc_master_notification(void *arg)
     Push_Notification *noti = new Push_Notification(args->buf);
     s->Updatenext(noti->port_num);
     cout<<noti<<endl;
-    if (noti->noti_type == New_Next)
+    if (s->isTail())
+        //printf("I'm the new tail\n");
+        return NULL;
+    else if (noti->noti_type == New_Next)//when there is new next server set, start synchronize sentTrans and procTrans
     {
         Sync_sentTrans(s);
+        Sync_procTrans(s);
     }
-    else if (noti->noti_type == Extension)
+    else if (noti->noti_type == Extension)//when there is new server join(chain extension), start synchronize procTrans only
     {
         Sync_procTrans(s);
     }
 }
 
-static void Sync_sentTrans(Server *s)
+static void Sync_sentTrans(Server *s) //synchronize every request in sentTrans to next server
 {
     const int on = 1;
     int i;
@@ -271,18 +287,20 @@ static void Sync_sentTrans(Server *s)
         {
             printf("synchronous sentTrans connect to next error\n");
             //printf("next is:%d\n", s->Getnext()->GetserverName().second);
+            break;
         }
         (*it)->Packetize(sendbuf, SyncSent);
         i = write(sockfd, sendbuf, MAXLINE);
         if (i < 0)
         {
             printf("synchronous write to next error\n");
+            break;
         }
     }
     printf("SentTrans synchronization to new next server finished\n%s\n", seperator);
 }
 
-static void Sync_procTrans(Server *s)
+static void Sync_procTrans(Server *s) //synchronize every request in procTrans to next server
 {
     const int on = 1;
     int i;
@@ -300,6 +318,7 @@ static void Sync_procTrans(Server *s)
         {
             printf("synchronous procTrans connect to next error\n");
             //printf("next is:%d\n", s->Getnext()->GetserverName().second);
+            break;
         }
         (*it).second->Packetize(sendbuf, SyncProc);
         i = write(sockfd, sendbuf, MAXLINE);
@@ -311,7 +330,7 @@ static void Sync_procTrans(Server *s)
     printf("ProcTrans synchronization to new Tail finished\n%s\n", seperator);
 }
 
-static void *Sync_Sent(void *arg)
+static void *Sync_Sent(void *arg) //when received sentTrans synchronization, process them
 {
     const int on = 1;
     struct ARGS *args = (struct ARGS *) arg;
@@ -340,7 +359,7 @@ static void *Sync_Sent(void *arg)
     }
 }
 
-static void *Sync_Hist(void *arg)
+static void *Sync_Hist(void *arg) //when received procTrans synchronization, process them
 {
     //Pthread_detach(pthread_self());
     struct ARGS *args = (struct ARGS *) arg;

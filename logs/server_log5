@@ -2,7 +2,8 @@
 bank name: 1
 server name: 127.0.0.1:10005
 start up delay: 0
-life time: 20
+life time: 200
+message loss frequency is: 2
 -----------------------------------------------------------------
 No. 1 message comes
 Request from client: 127.0.0.1:20001
@@ -14,7 +15,7 @@ Query do not add to sent transaction
 -----------------------------------------------------------------
 Query do not add to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62857
+Synchronization connection from previous server: 127.0.0.1:64631
 No. 2 message comes
 Request type: Deposit Req ID: 1.1.2 Account number: 100 Amount: 400.000000
 
@@ -24,7 +25,7 @@ Request 1.1.2 has been added to sent transaction
 -----------------------------------------------------------------
 Request 1.1.2 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62861
+Synchronization connection from previous server: 127.0.0.1:64635
 No. 3 message comes
 Request type: Withdraw Req ID: 1.1.3 Account number: 100 Amount: 100.000000
 
@@ -34,7 +35,7 @@ Request 1.1.3 has been added to sent transaction
 -----------------------------------------------------------------
 Request 1.1.3 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62865
+Synchronization connection from previous server: 127.0.0.1:64640
 No. 4 message comes
 Request type: Deposit Req ID: 1.1.4 Account number: 100 Amount: 100.000000
 
@@ -44,7 +45,7 @@ Request 1.1.4 has been added to sent transaction
 -----------------------------------------------------------------
 Request 1.1.4 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62869
+Synchronization connection from previous server: 127.0.0.1:64644
 No. 5 message comes
 Request type: Deposit Req ID: 1.1.5 Account number: 100 Amount: 100.000000
 
@@ -54,7 +55,7 @@ Request 1.1.5 has been added to sent transaction
 -----------------------------------------------------------------
 Request 1.1.5 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62873
+Synchronization connection from previous server: 127.0.0.1:64648
 No. 6 message comes
 Request type: Deposit Req ID: 1.1.6 Account number: 100 Amount: 100.000000
 
@@ -65,16 +66,6 @@ Request 1.1.6 has been added to sent transaction
 Request 1.1.6 has been added to processed transaction
 -----------------------------------------------------------------
 No. 7 message comes
-Request from client: 127.0.0.1:20001
-Request type: getBalance Req ID: 1.1.7 Account number: 100 Amount: 0.000000
-
-Result: Processed Req ID: 1.1.7 Balance: 600.000000
-
-Query do not add to sent transaction
------------------------------------------------------------------
-Query do not add to processed transaction
------------------------------------------------------------------
-No. 8 message comes
 Request from client: 127.0.0.1:20002
 Request type: getBalance Req ID: 1.2.1 Account number: 200 Amount: 0.000000
 
@@ -84,95 +75,54 @@ Query do not add to sent transaction
 -----------------------------------------------------------------
 Query do not add to processed transaction
 -----------------------------------------------------------------
------------------------------------------------------------------
-push notification received from master
-Chain extension, new server(tail) 127.0.0.1:10006 added
------------------------------------------------------------------
-
------------------------------------------------------------------
-Now starting synchronizing procTrans to new Tail
-Request type: Deposit Req ID: 1.1.2 Account number: 100 Amount: 400.000000
-
-Request type: Withdraw Req ID: 1.1.3 Account number: 100 Amount: 100.000000
-
-Request type: Deposit Req ID: 1.1.4 Account number: 100 Amount: 100.000000
-
-Request type: Deposit Req ID: 1.1.5 Account number: 100 Amount: 100.000000
-
-Request type: Deposit Req ID: 1.1.6 Account number: 100 Amount: 100.000000
-
-ProcTrans synchronization to new Tail finished
------------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62882
------------------------------------------------------------------
-SentTrans synchronization received
+Synchronization connection from previous server: 127.0.0.1:64652
+No. 8 message comes
 Request type: Deposit Req ID: 1.2.2 Account number: 200 Amount: 400.000000
-
-SentTrans synchronization finished
------------------------------------------------------------------
-Request 1.2.2 has been added to sent transaction
------------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62886
-No. 9 message comes
-Request type: Deposit Req ID: 1.2.2 Account number: 200 Amount: 400.000000
-
-Request 1.2.2 has been added to sent transaction
------------------------------------------------------------------
-ACK for reqID: 1.2.2 has been received
 
 Result: Processed Req ID: 1.2.2 Balance: 400.000000
 
+Request 1.2.2 has been added to sent transaction
+-----------------------------------------------------------------
 Request 1.2.2 has been added to processed transaction
 -----------------------------------------------------------------
-Using ACK to clear old Request 1.2.2
-Request 1.2.2 is a duplicate request, do not add to processed transaction
------------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62890
-No. 10 message comes
+Synchronization connection from previous server: 127.0.0.1:64656
+No. 9 message comes
 Request type: Withdraw Req ID: 1.2.3 Account number: 200 Amount: 100.000000
-
-Request 1.2.3 has been added to sent transaction
------------------------------------------------------------------
-ACK for reqID: 1.2.3 has been received
 
 Result: Processed Req ID: 1.2.3 Balance: 300.000000
 
+Request 1.2.3 has been added to sent transaction
+-----------------------------------------------------------------
 Request 1.2.3 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62894
-No. 11 message comes
+Synchronization connection from previous server: 127.0.0.1:64660
+No. 10 message comes
 Request type: Deposit Req ID: 1.2.4 Account number: 200 Amount: 100.000000
-
-Request 1.2.4 has been added to sent transaction
------------------------------------------------------------------
-ACK for reqID: 1.2.4 has been received
 
 Result: Processed Req ID: 1.2.4 Balance: 400.000000
 
+Request 1.2.4 has been added to sent transaction
+-----------------------------------------------------------------
 Request 1.2.4 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62898
-No. 12 message comes
+Synchronization connection from previous server: 127.0.0.1:64664
+No. 11 message comes
 Request type: Deposit Req ID: 1.2.5 Account number: 200 Amount: 100.000000
-
-Request 1.2.5 has been added to sent transaction
------------------------------------------------------------------
-ACK for reqID: 1.2.5 has been received
 
 Result: Processed Req ID: 1.2.5 Balance: 500.000000
 
+Request 1.2.5 has been added to sent transaction
+-----------------------------------------------------------------
 Request 1.2.5 has been added to processed transaction
 -----------------------------------------------------------------
-Synchronization connection from previous server: 127.0.0.1:62902
-No. 13 message comes
+Synchronization connection from previous server: 127.0.0.1:64668
+No. 12 message comes
 Request type: Deposit Req ID: 1.2.6 Account number: 200 Amount: 100.000000
-
-Request 1.2.6 has been added to sent transaction
------------------------------------------------------------------
-ACK for reqID: 1.2.6 has been received
 
 Result: Processed Req ID: 1.2.6 Balance: 600.000000
 
+Request 1.2.6 has been added to sent transaction
+-----------------------------------------------------------------
 Request 1.2.6 has been added to processed transaction
 -----------------------------------------------------------------
 Server exits, all sockets are closed
