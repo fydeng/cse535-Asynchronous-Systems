@@ -30,12 +30,18 @@ PatternExpr_26 = da.pat.FreePattern('rclk')
 PatternExpr_28 = da.pat.TuplePattern([da.pat.ConstantPattern('newTail'), da.pat.FreePattern('newSrv')])
 PatternExpr_29 = da.pat.FreePattern('master')
 PatternExpr_30 = da.pat.FreePattern('rclk')
-PatternExpr_32 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
-PatternExpr_33 = da.pat.FreePattern('dst')
+PatternExpr_32 = da.pat.TuplePattern([da.pat.ConstantPattern('newHead'), da.pat.FreePattern('newSrv')])
+PatternExpr_33 = da.pat.FreePattern('master')
 PatternExpr_34 = da.pat.FreePattern('rclk')
-PatternExpr_36 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
-PatternExpr_37 = da.pat.FreePattern('dst')
+PatternExpr_36 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.FreePattern('newSrv')])
+PatternExpr_37 = da.pat.FreePattern('master')
 PatternExpr_38 = da.pat.FreePattern('rclk')
+PatternExpr_40 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
+PatternExpr_41 = da.pat.FreePattern('dst')
+PatternExpr_42 = da.pat.FreePattern('rclk')
+PatternExpr_44 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
+PatternExpr_45 = da.pat.FreePattern('dst')
+PatternExpr_46 = da.pat.FreePattern('rclk')
 import re
 import time
 import sys
@@ -124,9 +130,9 @@ class Master(da.DistProcess):
 
     def setup(self, srvDic, cliDic, filename, waitList):
         self.filename = filename
-        self.srvDic = srvDic
         self.cliDic = cliDic
         self.waitList = waitList
+        self.srvDic = srvDic
         self.timesheet = {}
         self.srvDict = self.srvDic
         self.cliDict = self.cliDic
@@ -141,23 +147,23 @@ class Master(da.DistProcess):
         self.output(('Client Dictory Stored in Master: ' + str(self.cliDict)))
         self.output(('Server Waitinglist Stored in Master: ' + str(self.waitList)))
         while True:
-            _st_label_181 = 0
+            _st_label_182 = 0
             self._timer_start()
-            while (_st_label_181 == 0):
-                _st_label_181 += 1
+            while (_st_label_182 == 0):
+                _st_label_182 += 1
                 if False:
                     pass
-                    _st_label_181 += 1
+                    _st_label_182 += 1
                 elif self._timer_expired:
                     self.checkSrv()
-                    _st_label_181 += 1
+                    _st_label_182 += 1
                 else:
-                    super()._label('_st_label_181', block=True, timeout=5)
-                    _st_label_181 -= 1
+                    super()._label('_st_label_182', block=True, timeout=5)
+                    _st_label_182 -= 1
             else:
-                if (_st_label_181 != 2):
+                if (_st_label_182 != 2):
                     continue
-            if (_st_label_181 != 2):
+            if (_st_label_182 != 2):
                 break
 
     def setup_logfile(self, filename):
@@ -261,7 +267,8 @@ class Master(da.DistProcess):
                     self._send(('extendChain', item[2]), item[0])
                 if (item[0] == new_tail[1]):
                     self._send(('new_server_join', item[1]), item[0])
-            self.output('Server notification has been sent')
+            self.output('Server notification of new server join(chain extension) has been sent')
+            self.output('Client notification of new server join(chain extension) has been sent')
     _Master_handler_0._labels = None
     _Master_handler_0._notlabels = None
 
@@ -272,15 +279,15 @@ class Server(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_2', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_3]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_3', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_4]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_4', PatternExpr_10, sources=[PatternExpr_11], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_5]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_5', PatternExpr_12, sources=[PatternExpr_13], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_6]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_6', PatternExpr_14, sources=[PatternExpr_15], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_7])])
 
     def setup(self, bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, filename):
-        self.filename = filename
-        self.bankName = bankName
-        self.master = master
-        self.life_time = life_time
-        self.startup_delay = startup_delay
-        self.serverIP = serverIP
-        self.next = next
         self.message_loss = message_loss
         self.prev = prev
+        self.life_time = life_time
+        self.serverIP = serverIP
+        self.bankName = bankName
+        self.next = next
+        self.startup_delay = startup_delay
+        self.master = master
+        self.filename = filename
         self.bankName = self.bankName
         self.serverIP = self.serverIP
         self.startup_delay = self.startup_delay
@@ -301,23 +308,23 @@ class Server(da.DistProcess):
         self.output(((((((((('Server: Bank Name is: ' + str(self.bankName)) + '  Server IP is: ') + str(self.serverIP)) + '  Life time is: ') + str(self.life_time)) + '  Previous server is: ') + str(self.prev)) + '  Next server is: ') + str(self.next)))
         ping = Ping(self.serverIP, self.bankName)
         while True:
-            _st_label_341 = 0
+            _st_label_350 = 0
             self._timer_start()
-            while (_st_label_341 == 0):
-                _st_label_341 += 1
+            while (_st_label_350 == 0):
+                _st_label_350 += 1
                 if False:
                     pass
-                    _st_label_341 += 1
+                    _st_label_350 += 1
                 elif self._timer_expired:
                     self._send(('PING', ping), self.master)
-                    _st_label_341 += 1
+                    _st_label_350 += 1
                 else:
-                    super()._label('_st_label_341', block=True, timeout=1)
-                    _st_label_341 -= 1
+                    super()._label('_st_label_350', block=True, timeout=1)
+                    _st_label_350 -= 1
             else:
-                if (_st_label_341 != 2):
+                if (_st_label_350 != 2):
                     continue
-            if (_st_label_341 != 2):
+            if (_st_label_350 != 2):
                 break
 
     def setup_logfile(self, filename):
@@ -390,12 +397,14 @@ class Server(da.DistProcess):
             return True
 
     def _Server_handler_1(self, req, src_id):
-        self.recTimes += 1
-        if (((self.recTimes <= self.message_loss) or (self.message_loss == 0)) and (not (src_id == self.prev))):
-            self.output((('Request ' + str(req.reqID)) + ' from client received! '))
-        else:
-            self.recTimes = 0
-            return
+        if (not (src_id == self.prev)):
+            self.recTimes += 1
+            if ((self.recTimes <= self.message_loss) or (self.message_loss == 0)):
+                self.output((('Request ' + str(req.reqID)) + ' from client received! '))
+            else:
+                self.output(('Packet loss, request ' + str(req.reqID)))
+                self.recTimes = 0
+                return
         if (self.life_time > 0):
             self.life_time = (self.life_time - 1)
             self.output(('The current life_time is: ' + str(self.life_time)))
@@ -424,10 +433,14 @@ class Server(da.DistProcess):
     _Server_handler_1._labels = None
     _Server_handler_1._notlabels = None
 
-    def _Server_handler_2(self, req, src_id):
+    def _Server_handler_2(self, src_id, req):
         self.output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
         if (not (req.reqtype == ReqType.Query)):
             self.sentTrans.append(req)
+            search_result = self.search_procTrans(req.reqID)
+            if (search_result == True):
+                ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
+                self._send(('ACK', ack), self.prev)
         self.output(('Request %s has been added to sent transaction' % req.reqID))
         if (not (self.next == None)):
             self._send(('SYNC', req), self.next)
@@ -438,12 +451,10 @@ class Server(da.DistProcess):
         self.output(('Synchronization of procTrans from the old tail ' + str(reqID)))
         if (not (req.reqtype == ReqType.Query)):
             ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
-            self.output(((((str(ack.reqtype) + ' ') + str(ack.account_num)) + ' ') + str(ack.amount)))
             self.sentTrans.append(req)
             result = self.proc_balance(ack)
             self.update_procTrans(reqID)
             self.output(((('Account: ' + str(ack.account_num)) + ' New balance is: ') + str(result[0])))
-            self.output(self.AccountInfo)
         if (not (self.next == None)):
             self._send(('SYNC_PROC', (reqID, req)), self.next)
     _Server_handler_3._labels = None
@@ -451,10 +462,11 @@ class Server(da.DistProcess):
 
     def _Server_handler_4(self, ack, next):
         self.output((str(ack) + ' has been received!'))
+        search_result = self.search_procTrans(ack.reqID)
         result = self.proc_balance(ack)
         self.output(((('Account: ' + str(ack.account_num)) + ' New balance is: ') + str(result[0])))
         self.update_procTrans(ack.reqID)
-        if (not (self.prev == None)):
+        if ((not (self.prev == None)) and (search_result == False)):
             self._send(('ACK', ack), self.prev)
     _Server_handler_4._labels = None
     _Server_handler_4._notlabels = None
@@ -466,23 +478,26 @@ class Server(da.DistProcess):
         if (not (self.next == None)):
             for i in range(len(self.sentTrans)):
                 req = self.sentTrans[i]
-                self.output(('Starting synchronize %s sentTrans to next server' % req.reqID))
+                self.output(('Starting synchronize %s sentTrans to new next server' % req.reqID))
                 self._send(('SYNC', req), self.next)
+            for (reqID, req) in self.procTrans.items():
+                self.output(('Starting synchronize %s procTrans to the new next server ' % reqID))
+                self._send(('SYNC_PROC', (reqID, req)), self.next)
         else:
             self.output("I'm the new tail!")
     _Server_handler_5._labels = None
     _Server_handler_5._notlabels = None
 
-    def _Server_handler_6(self, newSrv, master):
+    def _Server_handler_6(self, master, newSrv):
         self.output(((str(self.serverIP) + ' Received extendChain from master,setting my next to ') + str(newSrv)))
         self.next = newSrv
         for (reqID, req) in self.procTrans.items():
-            self.output('Starting synchronize procTrans to the new tail ', reqID)
+            self.output(('Starting synchronize %s procTrans to the new tail ' % reqID))
             self._send(('SYNC_PROC', (reqID, req)), self.next)
     _Server_handler_6._labels = None
     _Server_handler_6._notlabels = None
 
-    def _Server_handler_7(self, newprev, master):
+    def _Server_handler_7(self, master, newprev):
         self.output((" I'm the new joined server,setting my prev to " + str(newprev)))
         self.prev = newprev
         self.next = None
@@ -497,22 +512,24 @@ class Client(da.DistProcess):
         self._ClientReceivedEvent_5 = []
         self._ClientReceivedEvent_6 = []
         self._ClientReceivedEvent_7 = []
-        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_16, sources=[PatternExpr_17], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_8]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_18, sources=[PatternExpr_19], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_9]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_20, sources=[PatternExpr_21], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_10]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_3', PatternExpr_22, sources=[PatternExpr_23], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_11]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_4', PatternExpr_24, sources=[PatternExpr_25], destinations=None, timestamps=[PatternExpr_26], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_5', PatternExpr_28, sources=[PatternExpr_29], destinations=None, timestamps=[PatternExpr_30], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_6', PatternExpr_32, sources=[PatternExpr_33], destinations=None, timestamps=[PatternExpr_34], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_7', PatternExpr_36, sources=[PatternExpr_37], destinations=None, timestamps=[PatternExpr_38], record_history=True, handlers=[])])
+        self._ClientReceivedEvent_8 = []
+        self._ClientReceivedEvent_9 = []
+        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_16, sources=[PatternExpr_17], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_8]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_18, sources=[PatternExpr_19], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_9]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_20, sources=[PatternExpr_21], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_10]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_3', PatternExpr_22, sources=[PatternExpr_23], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_11]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_4', PatternExpr_24, sources=[PatternExpr_25], destinations=None, timestamps=[PatternExpr_26], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_5', PatternExpr_28, sources=[PatternExpr_29], destinations=None, timestamps=[PatternExpr_30], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_6', PatternExpr_32, sources=[PatternExpr_33], destinations=None, timestamps=[PatternExpr_34], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_7', PatternExpr_36, sources=[PatternExpr_37], destinations=None, timestamps=[PatternExpr_38], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_8', PatternExpr_40, sources=[PatternExpr_41], destinations=None, timestamps=[PatternExpr_42], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_9', PatternExpr_44, sources=[PatternExpr_45], destinations=None, timestamps=[PatternExpr_46], record_history=True, handlers=[])])
 
     def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, time_delay, master, head_srvs, tail_srvs, filename):
         self.ifRandom = ifRandom
-        self.filename = filename
-        self.bankName = bankName
-        self.head_srvs = head_srvs
-        self.master = master
-        self.ifRetrans = ifRetrans
-        self.time_delay = time_delay
         self.account_no = account_no
-        self.tail_srvs = tail_srvs
-        self.input_req = input_req
-        self.clientIP = clientIP
-        self.nRetrans = nRetrans
+        self.head_srvs = head_srvs
         self.timeout = timeout
+        self.tail_srvs = tail_srvs
+        self.bankName = bankName
+        self.nRetrans = nRetrans
+        self.ifRetrans = ifRetrans
+        self.clientIP = clientIP
+        self.master = master
+        self.filename = filename
+        self.input_req = input_req
+        self.time_delay = time_delay
         self.bankName = int(self.bankName)
         self.account_no = self.account_no
         self.clientIP = self.clientIP
@@ -544,63 +561,63 @@ class Client(da.DistProcess):
             time.sleep(self.time_delay)
             clk = self.logical_clock()
             self._send(('REQ', req), dst)
-            reply = rclk = dst = None
+            dst = reply = rclk = None
 
-            def ExistentialOpExpr_2():
-                nonlocal reply, rclk, dst
-                for (_, (rclk, _, dst), (_ConstantPattern92_, reply)) in self._ClientReceivedEvent_6:
-                    if (_ConstantPattern92_ == 'REPLY'):
+            def ExistentialOpExpr_4():
+                nonlocal dst, reply, rclk
+                for (_, (rclk, _, dst), (_ConstantPattern120_, reply)) in self._ClientReceivedEvent_8:
+                    if (_ConstantPattern120_ == 'REPLY'):
                         if (rclk > clk):
                             return True
                 return False
-            _st_label_447 = 0
+            _st_label_463 = 0
             self._timer_start()
-            while (_st_label_447 == 0):
-                _st_label_447 += 1
-                if ExistentialOpExpr_2():
+            while (_st_label_463 == 0):
+                _st_label_463 += 1
+                if ExistentialOpExpr_4():
                     self.replyDic.update({reply.reqID: reply})
                     continue
-                    _st_label_447 += 1
+                    _st_label_463 += 1
                 elif self._timer_expired:
                     self.output((('Client waiting for reply ' + str(req.reqID)) + ' TIMEDOUT!'))
                     self.resend(req)
-                    _st_label_447 += 1
+                    _st_label_463 += 1
                 else:
-                    super()._label('_st_label_447', block=True, timeout=self.timeout)
-                    _st_label_447 -= 1
+                    super()._label('_st_label_463', block=True, timeout=self.timeout)
+                    _st_label_463 -= 1
             else:
-                if (_st_label_447 != 2):
+                if (_st_label_463 != 2):
                     continue
-            if (_st_label_447 != 2):
+            if (_st_label_463 != 2):
                 break
         while (len(self.replyDic) < num_req):
             clk = self.logical_clock()
-            rclk = reply = dst = None
+            dst = rclk = reply = None
 
-            def ExistentialOpExpr_3():
-                nonlocal rclk, reply, dst
-                for (_, (rclk, _, dst), (_ConstantPattern106_, reply)) in self._ClientReceivedEvent_7:
-                    if (_ConstantPattern106_ == 'REPLY'):
+            def ExistentialOpExpr_5():
+                nonlocal dst, rclk, reply
+                for (_, (rclk, _, dst), (_ConstantPattern134_, reply)) in self._ClientReceivedEvent_9:
+                    if (_ConstantPattern134_ == 'REPLY'):
                         if (rclk > clk):
                             return True
                 return False
-            _st_label_454 = 0
-            while (_st_label_454 == 0):
-                _st_label_454 += 1
-                if ExistentialOpExpr_3():
+            _st_label_470 = 0
+            while (_st_label_470 == 0):
+                _st_label_470 += 1
+                if ExistentialOpExpr_5():
                     self.replyDic.update({reply.reqID: reply})
                     continue
-                    _st_label_454 += 1
+                    _st_label_470 += 1
                 elif self._timer_expired:
                     pass
-                    _st_label_454 += 1
+                    _st_label_470 += 1
                 else:
-                    super()._label('_st_label_454', block=True)
-                    _st_label_454 -= 1
+                    super()._label('_st_label_470', block=True)
+                    _st_label_470 -= 1
             else:
-                if (_st_label_454 != 2):
+                if (_st_label_470 != 2):
                     continue
-            if (_st_label_454 != 2):
+            if (_st_label_470 != 2):
                 break
         self.output('All request has been sentout, client exits')
 
@@ -656,7 +673,7 @@ class Client(da.DistProcess):
 
     def resend(self, req):
         times = 0
-        while (times <= self.nRetrans):
+        while True:
             self.output('Start retransmitting Request ', req.reqID)
             time.sleep(self.time_delay)
             clk = self.logical_clock()
@@ -665,10 +682,10 @@ class Client(da.DistProcess):
             else:
                 dst = self.head_srvs.get(self.bankName)
             self._send(('REQ', req), dst)
-            dst = reply = rclk = None
+            rclk = dst = reply = None
 
             def ExistentialOpExpr_0():
-                nonlocal dst, reply, rclk
+                nonlocal rclk, dst, reply
                 for (_, (rclk, _, dst), (_ConstantPattern64_, reply)) in self._ClientReceivedEvent_4:
                     if (_ConstantPattern64_ == 'REPLY'):
                         if (rclk > clk):
@@ -683,29 +700,57 @@ class Client(da.DistProcess):
                         if (rclk > clk):
                             return True
                 return False
-            _st_label_427 = 0
+            master = rclk = newSrv = None
+
+            def ExistentialOpExpr_2():
+                nonlocal master, rclk, newSrv
+                for (_, (rclk, _, master), (_ConstantPattern92_, newSrv)) in self._ClientReceivedEvent_6:
+                    if (_ConstantPattern92_ == 'newHead'):
+                        if (rclk > clk):
+                            return True
+                return False
+            master = newSrv = rclk = None
+
+            def ExistentialOpExpr_3():
+                nonlocal master, newSrv, rclk
+                for (_, (rclk, _, master), (_ConstantPattern106_, newSrv)) in self._ClientReceivedEvent_7:
+                    if (_ConstantPattern106_ == 'srvFail'):
+                        if (rclk > clk):
+                            return True
+                return False
+            _st_label_437 = 0
             self._timer_start()
-            while (_st_label_427 == 0):
-                _st_label_427 += 1
+            while (_st_label_437 == 0):
+                _st_label_437 += 1
                 if ExistentialOpExpr_0():
                     break
-                    _st_label_427 += 1
+                    _st_label_437 += 1
                 elif ExistentialOpExpr_1():
                     times = 0
                     continue
-                    _st_label_427 += 1
+                    _st_label_437 += 1
+                elif ExistentialOpExpr_2():
+                    times = 0
+                    continue
+                    _st_label_437 += 1
+                elif ExistentialOpExpr_3():
+                    times = 0
+                    continue
+                    _st_label_437 += 1
                 elif self._timer_expired:
                     times += 1
-                    _st_label_427 += 1
+                    if (times == self.nRetrans):
+                        self.output(('Retransmit time equals the RetransLimit, stop retransmitting Request ' + str(req.reqID)))
+                        break
+                    _st_label_437 += 1
                 else:
-                    super()._label('_st_label_427', block=True, timeout=self.timeout)
-                    _st_label_427 -= 1
+                    super()._label('_st_label_437', block=True, timeout=self.timeout)
+                    _st_label_437 -= 1
             else:
-                if (_st_label_427 != 2):
+                if (_st_label_437 != 2):
                     continue
-            if (_st_label_427 != 2):
+            if (_st_label_437 != 2):
                 break
-        self.output(('Retransmit time equals the RetransLimit, stop retransmitting Request ' + str(req.reqID)))
 
     def _Client_handler_8(self, reply, src_id):
         self.output(('Reply received from server: ' + str(reply)))
@@ -718,13 +763,14 @@ class Client(da.DistProcess):
     _Client_handler_9._labels = None
     _Client_handler_9._notlabels = None
 
-    def _Client_handler_10(self, newSrv, master):
+    def _Client_handler_10(self, master, newSrv):
         self.output(('Client setting new tail: ' + str(newSrv)))
         self.tail_srvs.update({self.bankName: newSrv})
+        time.sleep(self.time_delay)
     _Client_handler_10._labels = None
     _Client_handler_10._notlabels = None
 
-    def _Client_handler_11(self, newSrv, master):
+    def _Client_handler_11(self, master, newSrv):
         self.output('Client received server fail from Master, starting to sleep.')
         time.sleep(self.time_delay)
     _Client_handler_11._labels = None

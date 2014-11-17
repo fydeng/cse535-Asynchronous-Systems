@@ -1,2 +1,2 @@
-[2014-11-12 15:07:40,735]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 36726)]: Client: Bank Name is: 2  Account number is: 100
-[2014-11-12 15:07:40,737]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 36726)]: All request has been sentout, client exits
+[2014-11-12 20:11:09,124]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 14044)]: Client: Bank Name is: 2  Account number is: 100
+[2014-11-12 20:11:09,126]Client[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 14044)]: All request has been sentout, client exits

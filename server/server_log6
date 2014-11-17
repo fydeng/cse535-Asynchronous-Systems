@@ -1,2 +1,0 @@
-[2014-11-12 15:07:45,736]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 26671)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10006  Life time is: 200  Previous server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 28804)  Next server is: None
-[2014-11-12 15:07:46,748]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 26671)]:  I'm the new joined server,setting my prev to ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 28804)

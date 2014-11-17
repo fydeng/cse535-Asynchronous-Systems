@@ -129,7 +129,8 @@ class Master(process):
 					send(("extendChain",item[2]),to = item[0])
 				if item[0] == new_tail[1]:
 					send(("new_server_join", item[1]), to = item[0])
-			output("Server notification has been sent")
+			output("Server notification of new server join(chain extension) has been sent")
+			output("Client notification of new server join(chain extension) has been sent")
 
 	def flush_srvDict(bankname):
 		for i, item in enumerate(self.srvDict[bankname]):
@@ -301,12 +302,14 @@ class Server(process):
 			return True
 
 	def receive(msg=("REQ", req), from_= src_id):
-		self.recTimes += 1
-		if (self.recTimes <= self.message_loss or self.message_loss == 0):
-			output('Request ' + str(req.reqID) + ' from client received! ')
-		else:
-			self.recTimes = 0
-			return
+		if src_id != self.prev:
+			self.recTimes += 1
+			if self.recTimes <= self.message_loss or self.message_loss == 0:
+				output('Request ' + str(req.reqID) + ' from client received! ')
+			else:
+				output('Packet loss, request ' + str(req.reqID))
+				self.recTimes = 0
+				return
 
 		if(self.life_time > 0):
 			self.life_time = self.life_time-1
@@ -332,7 +335,7 @@ class Server(process):
 				send(('REPLY', reply), to = req.client_id)
 				output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
 				if (req.reqtype != ReqType.Query):
-					send(('ACK', ack), to = prev)
+					send(('ACK', ack), to = self.prev)
 					output(str(ack) + ' has been sent!')
 		else:
 			send(('REQ', req), to = self.next)
@@ -341,7 +344,13 @@ class Server(process):
 		output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
 		if req.reqtype != ReqType.Query:
 			self.sentTrans.append(req)
+			search_result = search_procTrans(req.reqID)
+			if (search_result == True):
+				ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
+				send(('ACK', ack), to = self.prev)
+		
 		output("Request %s has been added to sent transaction" % req.reqID)
+		
 		if self.next != None:
 			send(('SYNC', req), to = self.next)
 
@@ -349,22 +358,23 @@ class Server(process):
 		output('Synchronization of procTrans from the old tail '+str(reqID))
 		if req.reqtype != ReqType.Query:
 			ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
-			output(str(ack.reqtype) + ' ' + str(ack.account_num) + ' ' + str(ack.amount))
+			#output(str(ack.reqtype) + ' ' + str(ack.account_num) + ' ' + str(ack.amount))
 			self.sentTrans.append(req)
 			result = proc_balance(ack)
 			update_procTrans(reqID)
 			output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
-			output(self.AccountInfo)
+			#output(self.AccountInfo)
 
 		if self.next != None:
 			send(('SYNC_PROC', (reqID,req)), to = self.next)
 
 	def receive(msg=('ACK', ack), from_= next):
 		output(str(ack) + ' has been received!')
+		search_result = search_procTrans(ack.reqID)
 		result = proc_balance(ack)
 		output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
 		update_procTrans(ack.reqID)
-		if prev != None:
+		if prev != None and search_result == False:
 			send(('ACK', ack), to = prev)
 
 	def receive(msg=("srvFail",(prev,next)), from_ = master):
@@ -374,8 +384,11 @@ class Server(process):
 		if (self.next != None):
 			for i in range(len(self.sentTrans)):
 				req = self.sentTrans[i]
-				output("Starting synchronize %s sentTrans to next server" % req.reqID)
+				output("Starting synchronize %s sentTrans to new next server" % req.reqID)
 				send(('SYNC', req), to = self.next)
+			for reqID,req in self.procTrans.items():
+				output("Starting synchronize %s procTrans to the new next server " % reqID)
+				send(("SYNC_PROC", (reqID, req)),to = self.next)
 		else:
 			output("I'm the new tail!")
 
@@ -383,7 +396,7 @@ class Server(process):
 		output(str(self.serverIP)+" Received extendChain from master,setting my next to "+str(newSrv))
 		self.next = newSrv
 		for reqID,req in self.procTrans.items():
-			output("Starting synchronize procTrans to the new tail ",reqID)
+			output("Starting synchronize %s procTrans to the new tail " % reqID)
 			send(("SYNC_PROC",(reqID,req)),to = self.next)
 
 	def receive(msg=("new_server_join", newprev), from_ = master):
@@ -479,6 +492,7 @@ class Client(process):
 	def receive(msg=("newTail",newSrv),from_= master):
 		output("Client setting new tail: "+ str(newSrv))
 		self.tail_srvs.update({self.bankName:newSrv})
+		time.sleep(self.time_delay)
 
 	def receive(msg=("srvFail",newSrv),from_= master):
 		output("Client received server fail from Master, starting to sleep.")
@@ -486,7 +500,7 @@ class Client(process):
 
 	def resend(req):
 		times = 0
-		while times <= self.nRetrans:
+		while True:
 			output("Start retransmitting Request ", req.reqID)
 			time.sleep(self.time_delay)
 			clk = logical_clock()
@@ -501,9 +515,19 @@ class Client(process):
 				times = 0
 				#output('Master notification received, do not minus Retrans')
 				continue
+			elif some(received(('newHead',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
+				times = 0
+				#output('Master notification received, do not minus Retrans')
+				continue
+			elif some(received(('srvFail',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
+				times = 0
+				#output('Master notification received, do not minus Retrans')
+				continue
 			elif timeout(self.timeout):
 				times += 1
-		output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
+				if times == self.nRetrans:
+					output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
+					break
 
 	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
