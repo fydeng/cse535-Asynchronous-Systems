@@ -49,6 +49,7 @@ def parse_req(input_str):
     input_str = input_str.replace(' ','')
     input_str = re.sub('[()]','',input_str)
     strs = input_str.split(',')
+    reqID = strs[1]
     if(strs[0]=='getBalance'):
         reqtype = ReqType.Query
     elif(strs[0]=='deposit'):
@@ -57,7 +58,12 @@ def parse_req(input_str):
         reqtype = ReqType.Withdraw
     else:
         reqtype = ReqType.Transfer
-    reqID = strs[1]
+        from_bank = strs[2]
+        from_account = strs[3]
+        to_bank = strs[4]
+        to_account = strs[5]
+        amount = strs[6]
+        return [reqID, reqtype, from_bank, from_account, to_bank, to_account, amount]
     account_num = strs[2]
     if reqtype == ReqType.Query:
         amount = 0
@@ -265,6 +271,22 @@ class Server(process):
 		AccountInfo.update({ack.account_num:new_balance})		
 		return [new_balance, outcome]
 
+	def proc_transfer_balance(transfer_ack):
+		outcome = Outcome.Processed
+		if transfer_ack.from_bank == transfer.ack.to_bank:
+			if self.AccountInfo.get(transfer_ack.from_account) == None:
+				from_cur_balance = 0
+			else:
+				from_cur_balance = self.AccountInfo[transfer_ack.from_account]
+			
+			if self.AccountInfo.get(transfer_ack.to_account) == None:
+				to_cur_balance = 0
+			else:
+				to_cur_balance = self.AccountInfo[transfer_ack.to_account]
+
+			
+
+
 	def update_procTrans(reqID):
 		count_clear = 0
 		len_sentTrans = len(self.sentTrans)
@@ -302,7 +324,7 @@ class Server(process):
 		else:
 			return True
 
-	def receive(msg=("REQ", req), from_= src_id):
+	def pre_req(req,src_id):
 		if src_id != self.prev:
 			self.recTimes += 1
 			if self.recTimes <= self.message_loss or self.message_loss == 0:
@@ -311,14 +333,29 @@ class Server(process):
 				output('Packet loss, request ' + str(req.reqID))
 				self.recTimes = 0
 				return
-
 		if(self.life_time > 0):
-			self.life_time = self.life_time-1
+			self.life_time = self.life_time - 1
 			output('The current life_time is: '+ str(self.life_time))
 		elif(self.life_time==0):
 			output('Server: '+ str(self.serverIP) + ' has expired!')
 			sys.exit()		#which causes the server not sending reply back to the client
-		
+
+	def receive(msg=("Transfer_REQ",trans_req),from_= src_id):
+		pre_req(trans_req,src_id)
+		self.sentTrans.append(trans_req)
+		output(" Transfer Request %s has been added to sent transaction" % trans_req.reqID)
+
+		if (self.next == None):
+			transfer_ack = Transfer_Ack(trans_req.reqID, trans_req.reqtype, trans_req.from_bank, trans_req.from_account, trans_req.to_bank, trans_req.to_account, trans_req.amount)
+			result = proc_balance(transfer_ack)
+			output(transfer_ack)
+			send(('Transfer_ACK', transfer_ack), to = self.prev)
+		else:
+			send(('Transfer_REQ', trans_req), to = self.next)
+
+
+	def receive(msg=("REQ", req), from_= src_id):
+		pre_req(req,src_id)
 		if req.reqtype != ReqType.Query:
 			self.sentTrans.append(req)
 			output("Request %s has been added to sent transaction" % req.reqID)
@@ -377,6 +414,12 @@ class Server(process):
 		update_procTrans(ack.reqID)
 		if prev != None and search_result == False:
 			send(('ACK', ack), to = prev)
+
+	def receive(msg=('Transfer_ACK', transfer_ack), from_= src):
+		output(str(transfer_ack) + ' has been received!')
+		if prev != None:
+			send(('Transfer_ACK', transfer_ack), to = self.prev)
+
 
 	def receive(msg=("srvFail",(prev,next)), from_ = master):
 		self.prev = prev
@@ -478,6 +521,12 @@ class Client(process):
 			num_req = len(input_req)
 			for i in range(num_req):
 				strs = parse_req(input_req[i])
+				if strs[1] == ReqType.Transfer:
+					if strs[0].startswith(str(self.bankName)) and int(strs[3]) == int(self.account_no):
+						trans_req = TransferRequest(strs[0],strs[1],strs[2],strs[3],strs[4],strs[5], strs[6], client_id)
+						output(trans_req)
+						reqList.append(trans_req)
+					#output("This is Transfer Req, from_bank is: "+ str(strs[2])+ " from account is: "+str(strs[3])+" to bank is: "+ str(strs[4])+" to account is: "+ str(strs[5]))
 				if strs[0].startswith(str(self.bankName)) and int(strs[2]) == int(self.account_no):
 					req = Request(strs[0], strs[1], strs[2], strs[3], client_id)
 					reqList.append(req)
@@ -501,7 +550,7 @@ class Client(process):
 		output("Client received server fail from Master, starting to sleep.")
 		time.sleep(self.time_delay)
 
-	def resend(req):
+	def resend(req, transfer):
 		times = 0
 		while True:
 			output("Start retransmitting Request ", req.reqID)
@@ -511,7 +560,10 @@ class Client(process):
 				dst = self.tail_srvs.get(self.bankName)
 			else:
 				dst = self.head_srvs.get(self.bankName)
-			send(('REQ', req), to = dst)
+			if transfer:
+				send(('Transfer_REQ', req), to = dst)
+			else:
+				send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				break
 			elif some(received(('newTail',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
@@ -537,22 +589,35 @@ class Client(process):
 		reqList = init_req()
 		replyNum = 0
 		num_req = len(reqList)
+		sending_transfer = False
 		for i in range(num_req):
-			req = reqList[i]
-			if req.reqtype == ReqType.Query:
-				dst = self.tail_srvs.get(self.bankName)	
-			else:
-				dst = self.head_srvs.get(self.bankName)
-			output('Request ' + str(req.reqID) + ' has been sent out')
 			time.sleep(self.time_delay)
 			clk = logical_clock()
-			send(('REQ', req), to = dst)
+			if reqList[i].reqtype != ReqType.Transfer:
+				req = reqList[i]
+				if req.reqtype == ReqType.Query:
+					dst = self.tail_srvs.get(self.bankName)	
+				else:
+					dst = self.head_srvs.get(self.bankName)
+				sending_transfer = False
+				send(('REQ', req), to = dst)
+				output('Request ' + str(req.reqID) + ' has been sent out')
+			else:
+				trans_req = reqList[i]
+				output(trans_req)
+				dst = self.head_srvs.get(self.bankName)
+				sending_transfer = True
+				send(('Transfer_REQ', trans_req), to = dst)
+				output('Request ' + str(trans_req.reqID) + ' has been sent out')
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				replyDic.update({reply.reqID:reply})
 				continue
 			elif timeout(self.timeout):
 				output('Client waiting for reply '+str(req.reqID)+' TIMEDOUT!')
-				resend(req)
+				if sending_transfer == True:
+					resend(trans_req, True)
+				else:
+					resend(req, False)
 		while(len(replyDic)<num_req):
 			clk = logical_clock()
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
@@ -676,7 +741,7 @@ def main():
 	filename_client = './client/client_log'
 	master = new(Master)
 	setup(master,(srvDic, cliDic, filename_master, waitList))
-	start(master)
+	#start(master)
 	#######################################################################
 
 	#######################Initiate Servers################################

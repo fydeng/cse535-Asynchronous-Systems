@@ -1,2 +1,2 @@
-[2014-11-15 14:12:10,838]Client[('Yaos-MacBook-Pro.local', 29153)]: Client: Bank Name is: 3  Account number is: 100
-[2014-11-15 14:12:10,839]Client[('Yaos-MacBook-Pro.local', 29153)]: All request has been sentout, client exits
+[2014-11-17 15:31:12,592]Client[('Yaos-MacBook-Pro.local', 23137)]: Client: Bank Name is: 1  Account number is: 500
+[2014-11-17 15:31:12,610]Client[('Yaos-MacBook-Pro.local', 23137)]: All request has been sentout, client exits
