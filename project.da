@@ -274,17 +274,22 @@ class Server(process):
 	def proc_transfer_balance(transfer_ack):
 		outcome = Outcome.Processed
 		if transfer_ack.from_bank == transfer.ack.to_bank:
-			if self.AccountInfo.get(transfer_ack.from_account) == None:
-				from_cur_balance = 0
-			else:
+			from_cur_balance = 0
+			to_cur_balance = 0
+			if self.AccountInfo.get(transfer_ack.from_account) != None:
 				from_cur_balance = self.AccountInfo[transfer_ack.from_account]
 			
-			if self.AccountInfo.get(transfer_ack.to_account) == None:
-				to_cur_balance = 0
-			else:
+			if self.AccountInfo.get(transfer_ack.to_account) != None:
 				to_cur_balance = self.AccountInfo[transfer_ack.to_account]
-
 			
+			if self.procTrans.get(transfer_ack.reqID) != None:
+				if self.procTrans[transfer_ack.reqID].reqtype != transfer_ack.reqtype:
+					outcome = Outcome.InconsistentWithHistory
+				else:
+					pass
+				from_new_balance = from_cur_balance
+				return [from_new_balance]
+
 
 
 	def update_procTrans(reqID):
