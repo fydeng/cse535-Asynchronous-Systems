@@ -78,11 +78,11 @@ def parse_randomReq(input_str):
 	strs = input_str.split(',')
 	seed_num = int(strs[0])
 	num_req = int(strs[1])
-	prob_query = float(strs[2])
+	prob_transfer = float(strs[2])
 	prob_deposit = float(strs[3])
 	prob_withdraw = float(strs[4])
-	prob_transfer = float(strs[5])
-	return [seed_num, num_req, prob_query, prob_deposit, prob_withdraw, prob_transfer]
+	prob_query = float(strs[5])
+	return [seed_num, num_req, prob_transfer, prob_deposit, prob_withdraw, prob_query]
 
 class Master(process):
 	def setup(srvDic, cliDic, filename,waitList):
@@ -248,7 +248,7 @@ class Server(process):
 	def proc_balance(ack):
 		outcome = Outcome.Processed
 		if self.AccountInfo.get(ack.account_num) == None:
-			cur_balance = 0
+			cur_balance = 0.0
 		else:
 			cur_balance = self.AccountInfo[ack.account_num]
 		if self.procTrans.get(ack.reqID) != None:
@@ -273,10 +273,10 @@ class Server(process):
 
 	def proc_transfer_balance(transfer_ack):
 		outcome = Outcome.Processed
-		from_cur_balance = 0
-		to_cur_balance = 0
-		from_new_balance = 0
-		to_new_balance = 0
+		from_cur_balance = 0.0
+		to_cur_balance = 0.0
+		from_new_balance = 0.0
+		to_new_balance = 0.0
 		if transfer_ack.from_bank == transfer_ack.to_bank:
 			if self.AccountInfo.get(transfer_ack.from_account) != None:
 				from_cur_balance = self.AccountInfo[transfer_ack.from_account]
@@ -558,24 +558,34 @@ class Client(process):
 			strs = parse_randomReq(input_str)
 			seed_num = strs[0]
 			num_req = strs[1]
-			prob_query = strs[2]
+			prob_transfer = strs[2]
 			prob_deposit = strs[3]
 			prob_withdraw = strs[4]
-			prob_transfer = strs[5]
+			prob_query = strs[5]
 			random.seed(seed_num)
 			for i in range(num_req):
 				a = random.randint(1, 100)
 				a = float(a/100)
 				amount = random.randint(1, 10) * 100
-				if a < prob_query:
-					reqtype = ReqType.Query
-				elif a < (prob_query + prob_deposit):
+				random_bank = random.randint(1, 3)
+				random_account = random.randint(1, 6) * 100
+				reqID = str(self.bankName) + '.'+ str(self.account_no[0]) + '.' + str(i+1)
+				output("a is: "+str(a))
+				if a < prob_transfer:
+					reqtype = ReqType.Transfer
+					while random_bank == self.bankName and random_account == int(self.account_no):
+						random_bank = random.randint(1, 3)
+						random_account = random.randint(1, 6) * 100
+					trans_req = TransferRequest(reqID, reqtype, self.bankName, self.account_no, random_bank, random_account, amount,client_id)
+					output('Generating randomized request: '+ str(trans_req))
+					reqList.append(trans_req)
+					continue
+				elif a < (prob_transfer + prob_deposit):
 					reqtype = ReqType.Deposit
-				elif a < (prob_query + prob_deposit + prob_withdraw):
+				elif a < (prob_transfer + prob_deposit + prob_withdraw):
 					reqtype = ReqType.Withdraw
 				else:
-					reqtype = ReqType.Transfer
-				reqID = str(self.bankName) + '.'+ str(self.account_no[0]) + '.' + str(i+1)
+					reqtype = ReqType.Query					
 				req = Request(reqID,reqtype,self.account_no,amount,client_id)
 				output('Generating randomized request: '+ str(req))
 				reqList.append(req)
@@ -675,10 +685,11 @@ class Client(process):
 				replyDic.update({reply.reqID:reply})
 				continue
 			elif timeout(self.timeout):
-				output('Client waiting for reply '+str(req.reqID)+' TIMEDOUT!')
 				if sending_transfer == True:
+					output('Client waiting for reply '+str(trans_req.reqID)+' TIMEDOUT!')
 					resend(trans_req, True)
 				else:
+					output('Client waiting for reply '+str(req.reqID)+' TIMEDOUT!')
 					resend(req, False)
 		while(len(replyDic)<num_req):
 			clk = logical_clock()
