@@ -212,7 +212,7 @@ class Master(process):
 	
 
 class Server(process):
-	def setup(bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, filename):
+	def setup(bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, head_srvs, tail_srvs, filename):
 		self.bankName = bankName
 		self.serverIP = serverIP
 		self.startup_delay =startup_delay
@@ -221,6 +221,8 @@ class Server(process):
 		self.prev =prev
 		self.next = next
 		self.master =master
+		self.head_srvs = head_srvs
+		self.tail_srvs = tail_srvs
 		self.sentTrans = []
 		self.procTrans = {}
 		self.AccountInfo = {}
@@ -407,6 +409,8 @@ class Server(process):
 	def main():
 		time.sleep(self.startup_delay)
 		output('Server: Bank Name is: '+ str(self.bankName) + '  Server IP is: '+ str(self.serverIP) + '  Life time is: ' + str(self.life_time) + '  Previous server is: ' + str(self.prev) + '  Next server is: ' + str(self.next))
+		output('Head_srvs stored in server: '+ str(self.head_srvs))
+		output('Tail_srvs stored in server: '+ str(self.tail_srvs))
 		ping = Ping(self.serverIP,self.bankName)
 		while(True):
 			if await(False):
@@ -687,7 +691,7 @@ def main():
 			next = None
 		else:
 			next = servers[i+1]
-		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], message_loss[i], prev, next, master, server_name))
+		setup(servers[i],(bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], message_loss[i], prev, next, master, head_srvs, tail_srvs, server_name))
 	
 	start(servers)
 

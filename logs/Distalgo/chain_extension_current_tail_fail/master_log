@@ -1,0 +1,156 @@
+[2014-11-12 20:03:48,599]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Master  ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)  has started.
+[2014-11-12 20:03:48,601]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Server Dictory Stored in Master: defaultdict(<class 'list'>, {1: [[<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 19670)>, None, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37644)>, '127.0.0.1:10001'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37644)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 19670)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37913)>, '127.0.0.1:10002'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37913)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37644)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)>, '127.0.0.1:10003'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37913)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)>, '127.0.0.1:10004'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)>, None, '127.0.0.1:10005']]})
+[2014-11-12 20:03:48,607]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Client Dictory Stored in Master: defaultdict(<class 'list'>, {'2': [<Client('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29489)>, <Client('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 23418)>], '3': [<Client('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 27827)>, <Client('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24779)>], '1': [<Client('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)>, <Client('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)>]})
+[2014-11-12 20:03:48,607]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Server Waitinglist Stored in Master: [[1, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)>, None, '127.0.0.1:10006']]
+[2014-11-12 20:03:49,607]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10005
+[2014-11-12 20:03:49,609]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:49,610]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:49,610]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:49,611]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:50,609]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10005
+[2014-11-12 20:03:50,610]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:50,612]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:50,613]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:50,614]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:51,611]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:51,612]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10005
+[2014-11-12 20:03:51,612]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:51,614]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:51,614]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:52,613]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:52,614]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10005
+[2014-11-12 20:03:52,615]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:52,616]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:52,617]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:53,609]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: {('127.0.0.1:10003', 1): 1415840632.61649, ('127.0.0.1:10004', 1): 1415840632.617233, ('127.0.0.1:10002', 1): 1415840632.615335, ('127.0.0.1:10001', 1): 1415840632.613447, ('127.0.0.1:10005', 1): 1415840632.614324}
+[2014-11-12 20:03:53,615]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:53,616]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:53,617]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:53,618]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:54,608]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:03:54,608]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Server requested extending chain, adding new server 127.0.0.1:10006 to srvDic
+[2014-11-12 20:03:54,609]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: The current srvDic after chain extension is: defaultdict(<class 'list'>, {1: [[<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 19670)>, None, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37644)>, '127.0.0.1:10001'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37644)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 19670)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37913)>, '127.0.0.1:10002'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37913)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37644)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)>, '127.0.0.1:10003'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37913)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)>, '127.0.0.1:10004'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)>, '127.0.0.1:10005'], [<Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 32574)>, <Server('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)>, None, '127.0.0.1:10006']]})
+[2014-11-12 20:03:54,615]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Server notification of new server join(chain extension) has been sent
+[2014-11-12 20:03:54,616]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Client notification of new server join(chain extension) has been sent
+[2014-11-12 20:03:54,616]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:54,617]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:54,618]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:54,619]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:55,611]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:03:55,618]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:55,619]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:55,620]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:55,621]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:56,613]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:03:56,621]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:56,622]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:56,623]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:56,623]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:57,615]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:03:57,622]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:57,623]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:57,624]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:57,625]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:58,611]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: {('127.0.0.1:10006', 1): 1415840637.615943, ('127.0.0.1:10003', 1): 1415840637.625252, ('127.0.0.1:10004', 1): 1415840637.622271, ('127.0.0.1:10002', 1): 1415840637.623688, ('127.0.0.1:10001', 1): 1415840637.624624, ('127.0.0.1:10005', 1): 1415840632.614324}
+[2014-11-12 20:03:58,612]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Master has detected that Server 127.0.0.1:10005 has failed!
+[2014-11-12 20:03:58,613]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Sending server fail notification to client!
+[2014-11-12 20:03:58,616]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Sending server fail notification to server!
+[2014-11-12 20:03:58,617]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Sending server fail notification to server!
+[2014-11-12 20:03:58,618]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:03:58,622]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:58,623]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:58,624]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:03:58,624]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:59,618]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:03:59,625]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:03:59,626]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:03:59,627]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:03:59,629]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:00,619]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:00,627]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:00,628]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:00,629]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:00,630]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:01,622]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:01,628]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:01,630]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:01,631]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:01,632]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:02,624]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:02,632]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:02,633]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:02,633]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:02,634]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:03,618]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: {('127.0.0.1:10006', 1): 1415840642.62428, ('127.0.0.1:10003', 1): 1415840642.632235, ('127.0.0.1:10004', 1): 1415840642.633129, ('127.0.0.1:10002', 1): 1415840642.633912, ('127.0.0.1:10001', 1): 1415840642.634459}
+[2014-11-12 20:04:03,626]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:03,634]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:03,635]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:03,635]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:03,636]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:04,628]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:04,634]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:04,635]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:04,636]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:04,637]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:05,630]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:05,637]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:05,638]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:05,639]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:05,640]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:06,632]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:06,638]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:06,639]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:06,640]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:06,641]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:07,635]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:07,639]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:07,641]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:07,641]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:07,642]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:08,620]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: {('127.0.0.1:10006', 1): 1415840647.635048, ('127.0.0.1:10003', 1): 1415840647.641089, ('127.0.0.1:10004', 1): 1415840647.641953, ('127.0.0.1:10002', 1): 1415840647.639858, ('127.0.0.1:10001', 1): 1415840647.64273}
+[2014-11-12 20:04:08,637]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:08,642]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:08,642]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:08,643]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:08,644]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:09,638]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:09,644]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:09,645]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:09,646]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:09,647]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:10,640]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:10,647]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:10,648]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:10,649]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:10,650]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:11,642]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:11,649]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:11,650]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:11,651]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:11,652]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:12,644]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:12,652]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:12,653]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:12,653]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:12,654]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:13,622]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: {('127.0.0.1:10006', 1): 1415840652.644362, ('127.0.0.1:10003', 1): 1415840652.652036, ('127.0.0.1:10004', 1): 1415840652.653149, ('127.0.0.1:10002', 1): 1415840652.654429, ('127.0.0.1:10001', 1): 1415840652.653913}
+[2014-11-12 20:04:13,646]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:13,653]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:13,655]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:13,655]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:13,656]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:14,648]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:14,656]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:14,657]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:14,658]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:14,659]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:15,650]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:15,658]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:15,659]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:15,660]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:15,661]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002
+[2014-11-12 20:04:16,653]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10006
+[2014-11-12 20:04:16,660]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10003
+[2014-11-12 20:04:16,661]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10004
+[2014-11-12 20:04:16,662]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10001
+[2014-11-12 20:04:16,663]Master[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 37947)]: Received PING from: 127.0.0.1:10002

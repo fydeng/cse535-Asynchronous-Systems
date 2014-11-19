@@ -1,0 +1,12 @@
+[2014-11-12 19:43:35,862]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10003  Life time is: 2  Previous server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 39397)  Next server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 31800)
+[2014-11-12 19:43:39,886]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: The current life_time is: 1
+[2014-11-12 19:43:39,887]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Request 1.1.2 has been added to sent transaction
+[2014-11-12 19:43:39,889]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: The current life_time is: 0
+[2014-11-12 19:43:39,889]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Request 1.2.2 has been added to sent transaction
+[2014-11-12 19:43:39,897]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Ack for request 1.1.2 has been received!
+[2014-11-12 19:43:39,898]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Account: 100 New balance is: 400.0
+[2014-11-12 19:43:39,898]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Request 1.1.2 has been added to processed transaction
+[2014-11-12 19:43:39,901]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Ack for request 1.2.2 has been received!
+[2014-11-12 19:43:39,901]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Account: 200 New balance is: 400.0
+[2014-11-12 19:43:39,901]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Request 1.2.2 has been added to processed transaction
+[2014-11-12 19:43:41,902]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 18320)]: Server: 127.0.0.1:10003 has expired!

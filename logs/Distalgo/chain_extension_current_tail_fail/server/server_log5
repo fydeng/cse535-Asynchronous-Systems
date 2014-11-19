@@ -1,0 +1,8 @@
+[2014-11-12 20:03:48,600]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10005  Life time is: 2  Previous server is: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24657)  Next server is: None
+[2014-11-12 20:03:50,612]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: Request 1.2.1 from client received! 
+[2014-11-12 20:03:50,613]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: The current life_time is: 1
+[2014-11-12 20:03:50,615]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: Reply for Request 1.2.1 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 30831)
+[2014-11-12 20:03:50,616]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: Request 1.1.1 from client received! 
+[2014-11-12 20:03:50,617]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: The current life_time is: 0
+[2014-11-12 20:03:50,618]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: Reply for Request 1.1.1 has been sent to client: ('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 24514)
+[2014-11-12 20:03:52,630]Server[('hscnet-vlan1949-172-31-81-74.uhmc.sunysb.edu', 29736)]: Server: 127.0.0.1:10005 has expired!

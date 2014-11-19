@@ -278,16 +278,32 @@ class Server(da.DistProcess):
         super().__init__(parent, initq, channel, props)
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_2', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_3]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_3', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_4]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_4', PatternExpr_10, sources=[PatternExpr_11], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_5]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_5', PatternExpr_12, sources=[PatternExpr_13], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_6]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_6', PatternExpr_14, sources=[PatternExpr_15], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_7])])
 
+<<<<<<< HEAD
     def setup(self, bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, filename):
         self.message_loss = message_loss
         self.prev = prev
+=======
+    def setup(self, bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, head_srvs, tail_srvs, filename):
+        self.filename = filename
+        self.message_loss = message_loss
+        self.prev = prev
+        self.head_srvs = head_srvs
+        self.startup_delay = startup_delay
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
         self.life_time = life_time
         self.serverIP = serverIP
         self.bankName = bankName
+<<<<<<< HEAD
         self.next = next
         self.startup_delay = startup_delay
         self.master = master
         self.filename = filename
+=======
+        self.serverIP = serverIP
+        self.next = next
+        self.tail_srvs = tail_srvs
+        self.master = master
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
         self.bankName = self.bankName
         self.serverIP = self.serverIP
         self.startup_delay = self.startup_delay
@@ -296,6 +312,8 @@ class Server(da.DistProcess):
         self.prev = self.prev
         self.next = self.next
         self.master = self.master
+        self.head_srvs = self.head_srvs
+        self.tail_srvs = self.tail_srvs
         self.sentTrans = []
         self.procTrans = {}
         self.AccountInfo = {}
@@ -306,8 +324,11 @@ class Server(da.DistProcess):
     def main(self):
         time.sleep(self.startup_delay)
         self.output(((((((((('Server: Bank Name is: ' + str(self.bankName)) + '  Server IP is: ') + str(self.serverIP)) + '  Life time is: ') + str(self.life_time)) + '  Previous server is: ') + str(self.prev)) + '  Next server is: ') + str(self.next)))
+        self.output(('Head_srvs stored in server: ' + str(self.head_srvs)))
+        self.output(('Tail_srvs stored in server: ' + str(self.tail_srvs)))
         ping = Ping(self.serverIP, self.bankName)
         while True:
+<<<<<<< HEAD
             _st_label_350 = 0
             self._timer_start()
             while (_st_label_350 == 0):
@@ -325,6 +346,25 @@ class Server(da.DistProcess):
                 if (_st_label_350 != 2):
                     continue
             if (_st_label_350 != 2):
+=======
+            _st_label_353 = 0
+            self._timer_start()
+            while (_st_label_353 == 0):
+                _st_label_353 += 1
+                if False:
+                    pass
+                    _st_label_353 += 1
+                elif self._timer_expired:
+                    self._send(('PING', ping), self.master)
+                    _st_label_353 += 1
+                else:
+                    super()._label('_st_label_353', block=True, timeout=1)
+                    _st_label_353 -= 1
+            else:
+                if (_st_label_353 != 2):
+                    continue
+            if (_st_label_353 != 2):
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
                 break
 
     def setup_logfile(self, filename):
@@ -471,7 +511,7 @@ class Server(da.DistProcess):
     _Server_handler_4._labels = None
     _Server_handler_4._notlabels = None
 
-    def _Server_handler_5(self, next, prev, master):
+    def _Server_handler_5(self, master, next, prev):
         self.prev = prev
         self.next = next
         self.output((((' Received SrvFail from Master, Setting my prev to: ' + str(self.prev)) + ' and my next to: ') + str(self.next)))
@@ -488,7 +528,7 @@ class Server(da.DistProcess):
     _Server_handler_5._labels = None
     _Server_handler_5._notlabels = None
 
-    def _Server_handler_6(self, master, newSrv):
+    def _Server_handler_6(self, newSrv, master):
         self.output(((str(self.serverIP) + ' Received extendChain from master,setting my next to ') + str(newSrv)))
         self.next = newSrv
         for (reqID, req) in self.procTrans.items():
@@ -517,6 +557,7 @@ class Client(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_16, sources=[PatternExpr_17], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_8]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_18, sources=[PatternExpr_19], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_9]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_20, sources=[PatternExpr_21], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_10]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_3', PatternExpr_22, sources=[PatternExpr_23], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_11]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_4', PatternExpr_24, sources=[PatternExpr_25], destinations=None, timestamps=[PatternExpr_26], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_5', PatternExpr_28, sources=[PatternExpr_29], destinations=None, timestamps=[PatternExpr_30], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_6', PatternExpr_32, sources=[PatternExpr_33], destinations=None, timestamps=[PatternExpr_34], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_7', PatternExpr_36, sources=[PatternExpr_37], destinations=None, timestamps=[PatternExpr_38], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_8', PatternExpr_40, sources=[PatternExpr_41], destinations=None, timestamps=[PatternExpr_42], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_9', PatternExpr_44, sources=[PatternExpr_45], destinations=None, timestamps=[PatternExpr_46], record_history=True, handlers=[])])
 
     def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, time_delay, master, head_srvs, tail_srvs, filename):
+<<<<<<< HEAD
         self.ifRandom = ifRandom
         self.account_no = account_no
         self.head_srvs = head_srvs
@@ -530,6 +571,21 @@ class Client(da.DistProcess):
         self.filename = filename
         self.input_req = input_req
         self.time_delay = time_delay
+=======
+        self.filename = filename
+        self.nRetrans = nRetrans
+        self.time_delay = time_delay
+        self.ifRetrans = ifRetrans
+        self.input_req = input_req
+        self.head_srvs = head_srvs
+        self.ifRandom = ifRandom
+        self.bankName = bankName
+        self.clientIP = clientIP
+        self.timeout = timeout
+        self.account_no = account_no
+        self.tail_srvs = tail_srvs
+        self.master = master
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
         self.bankName = int(self.bankName)
         self.account_no = self.account_no
         self.clientIP = self.clientIP
@@ -570,6 +626,7 @@ class Client(da.DistProcess):
                         if (rclk > clk):
                             return True
                 return False
+<<<<<<< HEAD
             _st_label_463 = 0
             self._timer_start()
             while (_st_label_463 == 0):
@@ -589,6 +646,27 @@ class Client(da.DistProcess):
                 if (_st_label_463 != 2):
                     continue
             if (_st_label_463 != 2):
+=======
+            _st_label_466 = 0
+            self._timer_start()
+            while (_st_label_466 == 0):
+                _st_label_466 += 1
+                if ExistentialOpExpr_4():
+                    self.replyDic.update({reply.reqID: reply})
+                    continue
+                    _st_label_466 += 1
+                elif self._timer_expired:
+                    self.output((('Client waiting for reply ' + str(req.reqID)) + ' TIMEDOUT!'))
+                    self.resend(req)
+                    _st_label_466 += 1
+                else:
+                    super()._label('_st_label_466', block=True, timeout=self.timeout)
+                    _st_label_466 -= 1
+            else:
+                if (_st_label_466 != 2):
+                    continue
+            if (_st_label_466 != 2):
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
                 break
         while (len(self.replyDic) < num_req):
             clk = self.logical_clock()
@@ -601,6 +679,7 @@ class Client(da.DistProcess):
                         if (rclk > clk):
                             return True
                 return False
+<<<<<<< HEAD
             _st_label_470 = 0
             while (_st_label_470 == 0):
                 _st_label_470 += 1
@@ -618,6 +697,25 @@ class Client(da.DistProcess):
                 if (_st_label_470 != 2):
                     continue
             if (_st_label_470 != 2):
+=======
+            _st_label_473 = 0
+            while (_st_label_473 == 0):
+                _st_label_473 += 1
+                if ExistentialOpExpr_5():
+                    self.replyDic.update({reply.reqID: reply})
+                    continue
+                    _st_label_473 += 1
+                elif self._timer_expired:
+                    pass
+                    _st_label_473 += 1
+                else:
+                    super()._label('_st_label_473', block=True)
+                    _st_label_473 -= 1
+            else:
+                if (_st_label_473 != 2):
+                    continue
+            if (_st_label_473 != 2):
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
                 break
         self.output('All request has been sentout, client exits')
 
@@ -682,10 +780,17 @@ class Client(da.DistProcess):
             else:
                 dst = self.head_srvs.get(self.bankName)
             self._send(('REQ', req), dst)
+<<<<<<< HEAD
             rclk = dst = reply = None
 
             def ExistentialOpExpr_0():
                 nonlocal rclk, dst, reply
+=======
+            reply = rclk = dst = None
+
+            def ExistentialOpExpr_0():
+                nonlocal reply, rclk, dst
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
                 for (_, (rclk, _, dst), (_ConstantPattern64_, reply)) in self._ClientReceivedEvent_4:
                     if (_ConstantPattern64_ == 'REPLY'):
                         if (rclk > clk):
@@ -718,6 +823,7 @@ class Client(da.DistProcess):
                         if (rclk > clk):
                             return True
                 return False
+<<<<<<< HEAD
             _st_label_437 = 0
             self._timer_start()
             while (_st_label_437 == 0):
@@ -737,11 +843,33 @@ class Client(da.DistProcess):
                     times = 0
                     continue
                     _st_label_437 += 1
+=======
+            _st_label_440 = 0
+            self._timer_start()
+            while (_st_label_440 == 0):
+                _st_label_440 += 1
+                if ExistentialOpExpr_0():
+                    break
+                    _st_label_440 += 1
+                elif ExistentialOpExpr_1():
+                    times = 0
+                    continue
+                    _st_label_440 += 1
+                elif ExistentialOpExpr_2():
+                    times = 0
+                    continue
+                    _st_label_440 += 1
+                elif ExistentialOpExpr_3():
+                    times = 0
+                    continue
+                    _st_label_440 += 1
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
                 elif self._timer_expired:
                     times += 1
                     if (times == self.nRetrans):
                         self.output(('Retransmit time equals the RetransLimit, stop retransmitting Request ' + str(req.reqID)))
                         break
+<<<<<<< HEAD
                     _st_label_437 += 1
                 else:
                     super()._label('_st_label_437', block=True, timeout=self.timeout)
@@ -750,6 +878,16 @@ class Client(da.DistProcess):
                 if (_st_label_437 != 2):
                     continue
             if (_st_label_437 != 2):
+=======
+                    _st_label_440 += 1
+                else:
+                    super()._label('_st_label_440', block=True, timeout=self.timeout)
+                    _st_label_440 -= 1
+            else:
+                if (_st_label_440 != 2):
+                    continue
+            if (_st_label_440 != 2):
+>>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
                 break
 
     def _Client_handler_8(self, reply, src_id):
@@ -757,7 +895,7 @@ class Client(da.DistProcess):
     _Client_handler_8._labels = None
     _Client_handler_8._notlabels = None
 
-    def _Client_handler_9(self, master, newSrv):
+    def _Client_handler_9(self, newSrv, master):
         self.output(('Client setting new head: ' + str(newSrv)))
         self.head_srvs.update({self.bankName: newSrv})
     _Client_handler_9._labels = None
@@ -890,7 +1028,7 @@ def main():
             next = None
         else:
             next = servers[(i + 1)]
-        da.api.setup(servers[i], (bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], message_loss[i], prev, next, master, server_name))
+        da.api.setup(servers[i], (bankName_srv[i], serverIP[i], startup_delay[i], life_time[i], message_loss[i], prev, next, master, head_srvs, tail_srvs, server_name))
     da.api.start(servers)
     for i in range(num_cli):
         client_name = (filename_client + str((i + 1)))

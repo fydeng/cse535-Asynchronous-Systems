@@ -1,0 +1,82 @@
+===================== Phase 2 ============================
+Scenario 1:
+For this scenario, use config_1.txt
+No errors in processing balances, outcome are all processed
+
+Scenario 2:
+For this scenario, use config_2.txt
+Client sends the same request, servers should re-send the same reply and do NOT put it into processed transaction.
+
+Scenario 3:
+For this scenario, use config_3.txt
+Client send a different request with the same requestID, servers should reply with 'InconsistentWithHistory' and do NOT put it into processed transaction.
+
+Scenario 4:
+For this scenario, use config_4.txt
+Client send a 'withdraw' request and the amount is larger than the current balance, servers should reply with "InsufficientFunds"
+
+Scenario 5:
+For this scenario, use config_5.txt
+Generate randomized requests, servers should deal with it correctly.
+
+Scenario 6:
+For this scenario, use config_6.txt
+Servers get expired,i.e.: servers’ life time turned to zero. In this case, clients should timed-out and resend the same request
+
+===================== Phase 3 ============================
+Scenario 1:
+
+For this scenario, use message_loss.txt
+
+We simulate client message loss by adding another argument in the configuration file, which is when server received requests from client side as many times as it equals to this argument, it choose to disregard this request and then reset the received times.
+The expected outcome is that all requests get processed correctly and some of the requests (e.g. request 1.1.3 or 1.2.3, 1.1.5 or 1.2.5) get timed out and start retransmit request.
+
+Scenario 2:
+
+For this scenario, use head_fail.txt
+
+In this scenario, the head server fails after processing two requests. Master detects that the head fails and send notification to both clients and servers and they can handle these notifications correctly.
+The expected outcome is that all requests get processed correctly, client reset its head and server reset its previous and next server.
+
+Scenario 3:
+
+For this scenario, use tail_fail.txt
+
+In this scenario, the tail server fails after processing two requests. Master detects that the tail fails and send notification to both clients and servers and they can handle these notifications correctly.
+The expected outcome is that all requests get processed correctly, client reset its tail and server reset its previous and next server.
+
+Scenario 4:
+
+For this scenario, use internal_fail.txt
+
+In this scenario, the internal server fails after processing two requests. The predecessor of the failed server forward updates in sentTrans to its new next server (which is the next of the failed server) correctly.
+The expected outcome is that all requests get processed correctly, client received notification that the server fails and starts to sleep for some time (In this case, do NOT reset its head or tail) and server resets its previous and next server and can synchronize sentTrans to the updated servers.
+
+Scenario 5:
+
+For this scenario, use internal_predecessor_fail.txt
+
+In this scenario, the internal server (Let's say S) fails after processing two requests. The predecessor of the failed server (S-) fails too during removal of the failed server. S- and S+ received notification from master that S has failed. S- then started synchronize sentTrans to S+. When S- fails, the predecessor of S- get notification and started synchronize sentTrans to S+.
+The expected outcome is that all requests get processed correctly, client received server fail notification twice and starts to sleep for some time (In this case, do NOT reset its head or tail). S- and S+ can correctly synchronize corresponding sentTrans when S fails. And the predecessor of S- can also synchronize sentTrans to S+ when S- fails.
+
+Scenario 6:
+
+For this scenario, use internal_successor_fail.txt
+
+In this scenario, the internal server (Let's say S) fails after processing two requests. The successor of the failed server (S+) fails too during removal of the failed server. S- and S+ received notification from master that S has failed. S- then started synchronize sentTrans to S+. When S+ fails, S- get notification and started synchronize sentTrans to the successor of S+.
+The expected outcome is that all requests get processed correctly, client received server fail notification twice and starts to sleep for some time (In this case, do NOT reset its head or tail). S- and S+ can correctly synchronize corresponding sentTrans when S fails. And the S- can also synchronize sentTrans to the successor of S+ when S+ fails.
+
+Scenario 7:
+
+For this scenario, use chain_extension_current_tail_fail.txt
+
+In this scenario, server in the waiting list requested adding to the chain after sleeping for some time (startup_delay), master receives this request and adds this server to current srvList, record the time that this new server pings it and adds the time to its timesheet. Current tail receives chain extension notification and stops behaving as tail. The current tail started forwarding its sentTrans to the new tail. After then the current tail fails, the predecessor of current tail gets notification and started synchronize updates to the new tail.
+The expected outcome is that all requests get processed correctly, client firstly received new tail notification and then server fail notification, the new tail gets all the processedTrans and sentTrans from the current tail. When the current tail fails, it starts receiving updates from its new previous server.
+
+Scenario 8:
+
+For this scenario, use chain_extension_new_tail_fail.txt
+
+In this scenario, server in the waiting list requested adding to the chain after sleeping for some time (startup_delay), master receives this request and adds this server to current srvList, record the time that this new server pings it and adds the time to its timesheet. Current tail receives chain extension notification and stops behaving as tail. The current tail started forwarding its sentTrans to the new tail. After then this new tail fails, the current tail gets notification that set itself as tail again.
+The expected outcome is that all requests get processed correctly, client firstly received new tail notification and then new tail notification (because the new tail fails). The new tail gets all the processedTrans and sentTrans from the current tail. When the new tail fails, the current tail gets notification and reset itself as tail again.
+
