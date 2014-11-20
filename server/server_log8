@@ -1,0 +1,93 @@
+[2014-11-19 21:37:07,951]Server[('Fangyus-MacBook-Pro.local', 21536)]: Server: Bank Name is: 3  Server IP is: 127.0.0.1:10008  Life time is: 200  Previous server is: ('Fangyus-MacBook-Pro.local', 21524)  Next server is: ('Fangyus-MacBook-Pro.local', 24358)
+[2014-11-19 21:37:07,974]Server[('Fangyus-MacBook-Pro.local', 21536)]: Head_srvs stored in server: {1: <Server('Fangyus-MacBook-Pro.local', 27454)>, 2: <Server('Fangyus-MacBook-Pro.local', 31721)>, 3: <Server('Fangyus-MacBook-Pro.local', 21524)>}
+[2014-11-19 21:37:07,975]Server[('Fangyus-MacBook-Pro.local', 21536)]: Tail_srvs stored in server: {1: <Server('Fangyus-MacBook-Pro.local', 29052)>, 2: <Server('Fangyus-MacBook-Pro.local', 25896)>, 3: <Server('Fangyus-MacBook-Pro.local', 24358)>}
+[2014-11-19 21:37:09,991]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 199
+[2014-11-19 21:37:09,991]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.4.1 has been added to sent transaction
+[2014-11-19 21:37:10,002]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 198
+[2014-11-19 21:37:10,003]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.3.1 has been added to sent transaction
+[2014-11-19 21:37:10,007]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 197
+[2014-11-19 21:37:10,037]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.2.1 has been added to sent transaction
+[2014-11-19 21:37:10,040]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 196
+[2014-11-19 21:37:10,040]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.5.1 has been added to sent transaction
+[2014-11-19 21:37:10,042]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 195
+[2014-11-19 21:37:10,047]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.6.1 has been added to sent transaction
+[2014-11-19 21:37:10,050]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 194
+[2014-11-19 21:37:10,050]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.1.1 has been added to sent transaction
+[2014-11-19 21:37:10,053]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.4.1 has been received!
+[2014-11-19 21:37:10,054]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 400 New balance is: 600.0
+[2014-11-19 21:37:10,054]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.4.1 has been added to processed transaction
+[2014-11-19 21:37:10,063]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.3.1 has been received!
+[2014-11-19 21:37:10,074]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 300 New balance is: 600.0
+[2014-11-19 21:37:10,111]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.3.1 has been added to processed transaction
+[2014-11-19 21:37:10,138]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.2.1 has been received!
+[2014-11-19 21:37:10,147]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 200 New balance is: 600.0
+[2014-11-19 21:37:10,150]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.2.1 has been added to processed transaction
+[2014-11-19 21:37:10,154]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.5.1 has been received!
+[2014-11-19 21:37:10,154]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 500 New balance is: 600.0
+[2014-11-19 21:37:10,155]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.5.1 has been added to processed transaction
+[2014-11-19 21:37:10,158]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.6.1 has been received!
+[2014-11-19 21:37:10,158]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 600 New balance is: 600.0
+[2014-11-19 21:37:10,158]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.6.1 has been added to processed transaction
+[2014-11-19 21:37:10,160]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.1.1 has been received!
+[2014-11-19 21:37:10,160]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 100 New balance is: 600.0
+[2014-11-19 21:37:10,161]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.1.1 has been added to processed transaction
+[2014-11-19 21:37:12,046]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 193
+[2014-11-19 21:37:12,047]Server[('Fangyus-MacBook-Pro.local', 21536)]:  Transfer Request 3.4.2 has been added to sent transaction
+[2014-11-19 21:37:12,053]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.4.2 has been received!
+[2014-11-19 21:37:12,054]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 400 New balance is: 600.0
+[2014-11-19 21:37:12,056]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.4.2 has been sent
+[2014-11-19 21:37:12,068]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 192
+[2014-11-19 21:37:12,068]Server[('Fangyus-MacBook-Pro.local', 21536)]:  Transfer Request 3.3.2 has been added to sent transaction
+[2014-11-19 21:37:12,078]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 191
+[2014-11-19 21:37:12,079]Server[('Fangyus-MacBook-Pro.local', 21536)]:  Transfer Request 3.2.2 has been added to sent transaction
+[2014-11-19 21:37:12,081]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.3.2 has been received!
+[2014-11-19 21:37:12,107]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 300 New balance is: 600.0
+[2014-11-19 21:37:12,110]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.3.2 has been sent
+[2014-11-19 21:37:12,123]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.2.2 has been received!
+[2014-11-19 21:37:12,123]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 200 New balance is: 600.0
+[2014-11-19 21:37:12,125]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.2.2 has been sent
+[2014-11-19 21:37:12,132]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 190
+[2014-11-19 21:37:12,132]Server[('Fangyus-MacBook-Pro.local', 21536)]:  Transfer Request 3.6.2 has been added to sent transaction
+[2014-11-19 21:37:12,139]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 189
+[2014-11-19 21:37:12,140]Server[('Fangyus-MacBook-Pro.local', 21536)]:  Transfer Request 3.1.2 has been added to sent transaction
+[2014-11-19 21:37:12,178]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 188
+[2014-11-19 21:37:12,181]Server[('Fangyus-MacBook-Pro.local', 21536)]:  Transfer Request 3.5.2 has been added to sent transaction
+[2014-11-19 21:37:12,183]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.6.2 has been received!
+[2014-11-19 21:37:12,184]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 600 New balance is: 600.0
+[2014-11-19 21:37:12,186]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.6.2 has been sent
+[2014-11-19 21:37:12,187]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.1.2 has been received!
+[2014-11-19 21:37:12,187]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 100 New balance is: 600.0
+[2014-11-19 21:37:12,191]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.1.2 has been sent
+[2014-11-19 21:37:12,192]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.5.2 has been received!
+[2014-11-19 21:37:12,192]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 500 New balance is: 600.0
+[2014-11-19 21:37:12,193]Server[('Fangyus-MacBook-Pro.local', 21536)]: Transfer Ack for 3.5.2 has been sent
+[2014-11-19 21:37:14,060]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 187
+[2014-11-19 21:37:14,060]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.4.3 has been added to sent transaction
+[2014-11-19 21:37:14,068]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.4.3 has been received!
+[2014-11-19 21:37:14,069]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 400 New balance is: 0.0
+[2014-11-19 21:37:14,069]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.4.3 has been added to processed transaction
+[2014-11-19 21:37:14,114]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 186
+[2014-11-19 21:37:14,115]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.3.3 has been added to sent transaction
+[2014-11-19 21:37:14,123]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.3.3 has been received!
+[2014-11-19 21:37:14,124]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 300 New balance is: 0.0
+[2014-11-19 21:37:14,125]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.3.3 has been added to processed transaction
+[2014-11-19 21:37:14,131]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 185
+[2014-11-19 21:37:14,132]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.2.3 has been added to sent transaction
+[2014-11-19 21:37:14,138]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.2.3 has been received!
+[2014-11-19 21:37:14,138]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 200 New balance is: 0.0
+[2014-11-19 21:37:14,139]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.2.3 has been added to processed transaction
+[2014-11-19 21:37:14,195]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 184
+[2014-11-19 21:37:14,196]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.6.3 has been added to sent transaction
+[2014-11-19 21:37:14,202]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.6.3 has been received!
+[2014-11-19 21:37:14,202]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 600 New balance is: 0.0
+[2014-11-19 21:37:14,202]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.6.3 has been added to processed transaction
+[2014-11-19 21:37:14,212]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 183
+[2014-11-19 21:37:14,221]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.1.3 has been added to sent transaction
+[2014-11-19 21:37:14,227]Server[('Fangyus-MacBook-Pro.local', 21536)]: The current life_time is: 182
+[2014-11-19 21:37:14,228]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.5.3 has been added to sent transaction
+[2014-11-19 21:37:14,231]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.1.3 has been received!
+[2014-11-19 21:37:14,231]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 100 New balance is: 0.0
+[2014-11-19 21:37:14,232]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.1.3 has been added to processed transaction
+[2014-11-19 21:37:14,235]Server[('Fangyus-MacBook-Pro.local', 21536)]: Ack for request 3.5.3 has been received!
+[2014-11-19 21:37:14,235]Server[('Fangyus-MacBook-Pro.local', 21536)]: Account: 500 New balance is: 0.0
+[2014-11-19 21:37:14,236]Server[('Fangyus-MacBook-Pro.local', 21536)]: Request 3.5.3 has been added to processed transaction

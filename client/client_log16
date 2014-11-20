@@ -1,0 +1,17 @@
+[2014-11-19 21:37:07,959]Client[('Fangyus-MacBook-Pro.local', 10400)]: Client: Bank Name is: 3  Account number is: 400
+[2014-11-19 21:37:07,960]Client[('Fangyus-MacBook-Pro.local', 10400)]: a is: 0.3
+[2014-11-19 21:37:07,961]Client[('Fangyus-MacBook-Pro.local', 10400)]: Generating randomized request: RequestID is 3.4.1, ReqType.Deposit, Account number is 400, Amount is 600.000000
+[2014-11-19 21:37:07,963]Client[('Fangyus-MacBook-Pro.local', 10400)]: a is: 0.15
+[2014-11-19 21:37:07,964]Client[('Fangyus-MacBook-Pro.local', 10400)]: Generating randomized request: TransferRequestID is 3.4.2 ReqType.Transfer, From Bank: 3 Account: 400, To Bank: 2 Account: 100, Amount is 900.000000
+[2014-11-19 21:37:07,964]Client[('Fangyus-MacBook-Pro.local', 10400)]: a is: 0.65
+[2014-11-19 21:37:07,964]Client[('Fangyus-MacBook-Pro.local', 10400)]: Generating randomized request: RequestID is 3.4.3, ReqType.Withdraw, Account number is 400, Amount is 600.000000
+[2014-11-19 21:37:09,965]Client[('Fangyus-MacBook-Pro.local', 10400)]: RequestID is 3.4.1, ReqType.Deposit, Account number is 400, Amount is 600.000000
+[2014-11-19 21:37:09,971]Client[('Fangyus-MacBook-Pro.local', 10400)]: Request 3.4.1 has been sent out
+[2014-11-19 21:37:10,040]Client[('Fangyus-MacBook-Pro.local', 10400)]: Reply received from server: RequestID is 3.4.1, Outcome.Processed, Balance is 600.000000
+[2014-11-19 21:37:12,041]Client[('Fangyus-MacBook-Pro.local', 10400)]: TransferRequestID is 3.4.2 ReqType.Transfer, From Bank: 3 Account: 400, To Bank: 2 Account: 100, Amount is 900.000000
+[2014-11-19 21:37:12,043]Client[('Fangyus-MacBook-Pro.local', 10400)]: Request 3.4.2 has been sent out
+[2014-11-19 21:37:12,053]Client[('Fangyus-MacBook-Pro.local', 10400)]: Reply received from server: RequestID is 3.4.2, Outcome.InsufficientFunds, Balance is 600.000000
+[2014-11-19 21:37:14,055]Client[('Fangyus-MacBook-Pro.local', 10400)]: RequestID is 3.4.3, ReqType.Withdraw, Account number is 400, Amount is 600.000000
+[2014-11-19 21:37:14,057]Client[('Fangyus-MacBook-Pro.local', 10400)]: Request 3.4.3 has been sent out
+[2014-11-19 21:37:14,067]Client[('Fangyus-MacBook-Pro.local', 10400)]: Reply received from server: RequestID is 3.4.3, Outcome.Processed, Balance is 0.000000
+[2014-11-19 21:37:14,067]Client[('Fangyus-MacBook-Pro.local', 10400)]: All request has been sentout, client exits

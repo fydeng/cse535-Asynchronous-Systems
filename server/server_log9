@@ -1,0 +1,93 @@
+[2014-11-19 21:37:07,951]Server[('Fangyus-MacBook-Pro.local', 24358)]: Server: Bank Name is: 3  Server IP is: 127.0.0.1:10009  Life time is: 200  Previous server is: ('Fangyus-MacBook-Pro.local', 21536)  Next server is: None
+[2014-11-19 21:37:07,952]Server[('Fangyus-MacBook-Pro.local', 24358)]: Head_srvs stored in server: {1: <Server('Fangyus-MacBook-Pro.local', 27454)>, 2: <Server('Fangyus-MacBook-Pro.local', 31721)>, 3: <Server('Fangyus-MacBook-Pro.local', 21524)>}
+[2014-11-19 21:37:07,952]Server[('Fangyus-MacBook-Pro.local', 24358)]: Tail_srvs stored in server: {1: <Server('Fangyus-MacBook-Pro.local', 29052)>, 2: <Server('Fangyus-MacBook-Pro.local', 25896)>, 3: <Server('Fangyus-MacBook-Pro.local', 24358)>}
+[2014-11-19 21:37:10,004]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 199
+[2014-11-19 21:37:10,034]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.4.1 has been added to sent transaction
+[2014-11-19 21:37:10,035]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.4.1 has been added to processed transaction
+[2014-11-19 21:37:10,048]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.4.1 has been sent to client: ('Fangyus-MacBook-Pro.local', 10400)
+[2014-11-19 21:37:10,053]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.4.1 has been sent!
+[2014-11-19 21:37:10,054]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 198
+[2014-11-19 21:37:10,055]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.3.1 has been added to sent transaction
+[2014-11-19 21:37:10,055]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.3.1 has been added to processed transaction
+[2014-11-19 21:37:10,060]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.3.1 has been sent to client: ('Fangyus-MacBook-Pro.local', 15521)
+[2014-11-19 21:37:10,061]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.3.1 has been sent!
+[2014-11-19 21:37:10,064]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 197
+[2014-11-19 21:37:10,065]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.2.1 has been added to sent transaction
+[2014-11-19 21:37:10,065]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.2.1 has been added to processed transaction
+[2014-11-19 21:37:10,067]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.2.1 has been sent to client: ('Fangyus-MacBook-Pro.local', 24609)
+[2014-11-19 21:37:10,068]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.2.1 has been sent!
+[2014-11-19 21:37:10,070]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 196
+[2014-11-19 21:37:10,070]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.5.1 has been added to sent transaction
+[2014-11-19 21:37:10,071]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.5.1 has been added to processed transaction
+[2014-11-19 21:37:10,100]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.5.1 has been sent to client: ('Fangyus-MacBook-Pro.local', 31597)
+[2014-11-19 21:37:10,102]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.5.1 has been sent!
+[2014-11-19 21:37:10,103]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 195
+[2014-11-19 21:37:10,103]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.6.1 has been added to sent transaction
+[2014-11-19 21:37:10,104]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.6.1 has been added to processed transaction
+[2014-11-19 21:37:10,105]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.6.1 has been sent to client: ('Fangyus-MacBook-Pro.local', 10521)
+[2014-11-19 21:37:10,106]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.6.1 has been sent!
+[2014-11-19 21:37:10,108]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 194
+[2014-11-19 21:37:10,108]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.1.1 has been added to sent transaction
+[2014-11-19 21:37:10,108]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.1.1 has been added to processed transaction
+[2014-11-19 21:37:10,110]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.1.1 has been sent to client: ('Fangyus-MacBook-Pro.local', 27381)
+[2014-11-19 21:37:10,111]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.1.1 has been sent!
+[2014-11-19 21:37:12,049]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 193
+[2014-11-19 21:37:12,049]Server[('Fangyus-MacBook-Pro.local', 24358)]:  Transfer Request 3.4.2 has been added to sent transaction
+[2014-11-19 21:37:12,050]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.4.2 has been added to processed transaction
+[2014-11-19 21:37:12,051]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.4.2 has been sent to client: ('Fangyus-MacBook-Pro.local', 10400)
+[2014-11-19 21:37:12,052]Server[('Fangyus-MacBook-Pro.local', 24358)]: Transfer Ack for 3.4.2 has been sent
+[2014-11-19 21:37:12,072]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 192
+[2014-11-19 21:37:12,072]Server[('Fangyus-MacBook-Pro.local', 24358)]:  Transfer Request 3.3.2 has been added to sent transaction
+[2014-11-19 21:37:12,072]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.3.2 has been added to processed transaction
+[2014-11-19 21:37:12,073]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.3.2 has been sent to client: ('Fangyus-MacBook-Pro.local', 15521)
+[2014-11-19 21:37:12,075]Server[('Fangyus-MacBook-Pro.local', 24358)]: Transfer Ack for 3.3.2 has been sent
+[2014-11-19 21:37:12,081]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 191
+[2014-11-19 21:37:12,109]Server[('Fangyus-MacBook-Pro.local', 24358)]:  Transfer Request 3.2.2 has been added to sent transaction
+[2014-11-19 21:37:12,110]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.2.2 has been added to processed transaction
+[2014-11-19 21:37:12,114]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.2.2 has been sent to client: ('Fangyus-MacBook-Pro.local', 24609)
+[2014-11-19 21:37:12,115]Server[('Fangyus-MacBook-Pro.local', 24358)]: Transfer Ack for 3.2.2 has been sent
+[2014-11-19 21:37:12,138]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 190
+[2014-11-19 21:37:12,139]Server[('Fangyus-MacBook-Pro.local', 24358)]:  Transfer Request 3.6.2 has been added to sent transaction
+[2014-11-19 21:37:12,139]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.6.2 has been added to processed transaction
+[2014-11-19 21:37:12,142]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.6.2 has been sent to client: ('Fangyus-MacBook-Pro.local', 10521)
+[2014-11-19 21:37:12,181]Server[('Fangyus-MacBook-Pro.local', 24358)]: Transfer Ack for 3.6.2 has been sent
+[2014-11-19 21:37:12,182]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 189
+[2014-11-19 21:37:12,183]Server[('Fangyus-MacBook-Pro.local', 24358)]:  Transfer Request 3.1.2 has been added to sent transaction
+[2014-11-19 21:37:12,183]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.1.2 has been added to processed transaction
+[2014-11-19 21:37:12,184]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.1.2 has been sent to client: ('Fangyus-MacBook-Pro.local', 27381)
+[2014-11-19 21:37:12,185]Server[('Fangyus-MacBook-Pro.local', 24358)]: Transfer Ack for 3.1.2 has been sent
+[2014-11-19 21:37:12,187]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 188
+[2014-11-19 21:37:12,187]Server[('Fangyus-MacBook-Pro.local', 24358)]:  Transfer Request 3.5.2 has been added to sent transaction
+[2014-11-19 21:37:12,188]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.5.2 has been added to processed transaction
+[2014-11-19 21:37:12,189]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.5.2 has been sent to client: ('Fangyus-MacBook-Pro.local', 31597)
+[2014-11-19 21:37:12,190]Server[('Fangyus-MacBook-Pro.local', 24358)]: Transfer Ack for 3.5.2 has been sent
+[2014-11-19 21:37:14,063]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 187
+[2014-11-19 21:37:14,063]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.4.3 has been added to sent transaction
+[2014-11-19 21:37:14,064]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.4.3 has been added to processed transaction
+[2014-11-19 21:37:14,065]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.4.3 has been sent to client: ('Fangyus-MacBook-Pro.local', 10400)
+[2014-11-19 21:37:14,066]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.4.3 has been sent!
+[2014-11-19 21:37:14,117]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 186
+[2014-11-19 21:37:14,117]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.3.3 has been added to sent transaction
+[2014-11-19 21:37:14,117]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.3.3 has been added to processed transaction
+[2014-11-19 21:37:14,119]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.3.3 has been sent to client: ('Fangyus-MacBook-Pro.local', 15521)
+[2014-11-19 21:37:14,120]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.3.3 has been sent!
+[2014-11-19 21:37:14,133]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 185
+[2014-11-19 21:37:14,134]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.2.3 has been added to sent transaction
+[2014-11-19 21:37:14,134]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.2.3 has been added to processed transaction
+[2014-11-19 21:37:14,135]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.2.3 has been sent to client: ('Fangyus-MacBook-Pro.local', 24609)
+[2014-11-19 21:37:14,136]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.2.3 has been sent!
+[2014-11-19 21:37:14,197]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 184
+[2014-11-19 21:37:14,198]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.6.3 has been added to sent transaction
+[2014-11-19 21:37:14,198]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.6.3 has been added to processed transaction
+[2014-11-19 21:37:14,199]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.6.3 has been sent to client: ('Fangyus-MacBook-Pro.local', 10521)
+[2014-11-19 21:37:14,200]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.6.3 has been sent!
+[2014-11-19 21:37:14,224]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 183
+[2014-11-19 21:37:14,225]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.1.3 has been added to sent transaction
+[2014-11-19 21:37:14,225]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.1.3 has been added to processed transaction
+[2014-11-19 21:37:14,228]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.1.3 has been sent to client: ('Fangyus-MacBook-Pro.local', 27381)
+[2014-11-19 21:37:14,229]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.1.3 has been sent!
+[2014-11-19 21:37:14,230]Server[('Fangyus-MacBook-Pro.local', 24358)]: The current life_time is: 182
+[2014-11-19 21:37:14,231]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.5.3 has been added to sent transaction
+[2014-11-19 21:37:14,231]Server[('Fangyus-MacBook-Pro.local', 24358)]: Request 3.5.3 has been added to processed transaction
+[2014-11-19 21:37:14,232]Server[('Fangyus-MacBook-Pro.local', 24358)]: Reply for Request 3.5.3 has been sent to client: ('Fangyus-MacBook-Pro.local', 31597)
+[2014-11-19 21:37:14,234]Server[('Fangyus-MacBook-Pro.local', 24358)]: Ack for request 3.5.3 has been sent!

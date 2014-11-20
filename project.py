@@ -2,46 +2,50 @@
 import da
 PatternExpr_0 = da.pat.TuplePattern([da.pat.ConstantPattern('PING'), da.pat.FreePattern('ping')])
 PatternExpr_1 = da.pat.FreePattern('src_id')
-PatternExpr_2 = da.pat.TuplePattern([da.pat.ConstantPattern('REQ'), da.pat.FreePattern('req')])
+PatternExpr_2 = da.pat.TuplePattern([da.pat.ConstantPattern('Transfer_REQ'), da.pat.FreePattern('trans_req')])
 PatternExpr_3 = da.pat.FreePattern('src_id')
-PatternExpr_4 = da.pat.TuplePattern([da.pat.ConstantPattern('SYNC'), da.pat.FreePattern('req')])
+PatternExpr_4 = da.pat.TuplePattern([da.pat.ConstantPattern('REQ'), da.pat.FreePattern('req')])
 PatternExpr_5 = da.pat.FreePattern('src_id')
-PatternExpr_6 = da.pat.TuplePattern([da.pat.ConstantPattern('SYNC_PROC'), da.pat.TuplePattern([da.pat.FreePattern('reqID'), da.pat.FreePattern('req')])])
+PatternExpr_6 = da.pat.TuplePattern([da.pat.ConstantPattern('SYNC'), da.pat.FreePattern('req')])
 PatternExpr_7 = da.pat.FreePattern('src_id')
-PatternExpr_8 = da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.FreePattern('ack')])
-PatternExpr_9 = da.pat.FreePattern('next')
-PatternExpr_10 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.TuplePattern([da.pat.FreePattern('prev'), da.pat.FreePattern('next')])])
-PatternExpr_11 = da.pat.FreePattern('master')
-PatternExpr_12 = da.pat.TuplePattern([da.pat.ConstantPattern('extendChain'), da.pat.FreePattern('newSrv')])
-PatternExpr_13 = da.pat.FreePattern('master')
-PatternExpr_14 = da.pat.TuplePattern([da.pat.ConstantPattern('new_server_join'), da.pat.FreePattern('newprev')])
+PatternExpr_8 = da.pat.TuplePattern([da.pat.ConstantPattern('SYNC_PROC'), da.pat.TuplePattern([da.pat.FreePattern('reqID'), da.pat.FreePattern('req')])])
+PatternExpr_9 = da.pat.FreePattern('src_id')
+PatternExpr_10 = da.pat.TuplePattern([da.pat.ConstantPattern('ACK'), da.pat.FreePattern('ack')])
+PatternExpr_11 = da.pat.FreePattern('next')
+PatternExpr_12 = da.pat.TuplePattern([da.pat.ConstantPattern('Transfer_ACK'), da.pat.FreePattern('transfer_ack')])
+PatternExpr_13 = da.pat.FreePattern('src')
+PatternExpr_14 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.TuplePattern([da.pat.FreePattern('prev'), da.pat.FreePattern('next')])])
 PatternExpr_15 = da.pat.FreePattern('master')
-PatternExpr_16 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
-PatternExpr_17 = da.pat.FreePattern('src_id')
-PatternExpr_18 = da.pat.TuplePattern([da.pat.ConstantPattern('newHead'), da.pat.FreePattern('newSrv')])
+PatternExpr_16 = da.pat.TuplePattern([da.pat.ConstantPattern('extendChain'), da.pat.FreePattern('newSrv')])
+PatternExpr_17 = da.pat.FreePattern('master')
+PatternExpr_18 = da.pat.TuplePattern([da.pat.ConstantPattern('new_server_join'), da.pat.FreePattern('newprev')])
 PatternExpr_19 = da.pat.FreePattern('master')
-PatternExpr_20 = da.pat.TuplePattern([da.pat.ConstantPattern('newTail'), da.pat.FreePattern('newSrv')])
-PatternExpr_21 = da.pat.FreePattern('master')
-PatternExpr_22 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.FreePattern('newSrv')])
+PatternExpr_20 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
+PatternExpr_21 = da.pat.FreePattern('src_id')
+PatternExpr_22 = da.pat.TuplePattern([da.pat.ConstantPattern('newHead'), da.pat.FreePattern('newSrv')])
 PatternExpr_23 = da.pat.FreePattern('master')
-PatternExpr_24 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
-PatternExpr_25 = da.pat.FreePattern('dst')
-PatternExpr_26 = da.pat.FreePattern('rclk')
-PatternExpr_28 = da.pat.TuplePattern([da.pat.ConstantPattern('newTail'), da.pat.FreePattern('newSrv')])
-PatternExpr_29 = da.pat.FreePattern('master')
+PatternExpr_24 = da.pat.TuplePattern([da.pat.ConstantPattern('newTail'), da.pat.FreePattern('newSrv')])
+PatternExpr_25 = da.pat.FreePattern('master')
+PatternExpr_26 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.FreePattern('newSrv')])
+PatternExpr_27 = da.pat.FreePattern('master')
+PatternExpr_28 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
+PatternExpr_29 = da.pat.FreePattern('dst')
 PatternExpr_30 = da.pat.FreePattern('rclk')
-PatternExpr_32 = da.pat.TuplePattern([da.pat.ConstantPattern('newHead'), da.pat.FreePattern('newSrv')])
+PatternExpr_32 = da.pat.TuplePattern([da.pat.ConstantPattern('newTail'), da.pat.FreePattern('newSrv')])
 PatternExpr_33 = da.pat.FreePattern('master')
 PatternExpr_34 = da.pat.FreePattern('rclk')
-PatternExpr_36 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.FreePattern('newSrv')])
+PatternExpr_36 = da.pat.TuplePattern([da.pat.ConstantPattern('newHead'), da.pat.FreePattern('newSrv')])
 PatternExpr_37 = da.pat.FreePattern('master')
 PatternExpr_38 = da.pat.FreePattern('rclk')
-PatternExpr_40 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
-PatternExpr_41 = da.pat.FreePattern('dst')
+PatternExpr_40 = da.pat.TuplePattern([da.pat.ConstantPattern('srvFail'), da.pat.FreePattern('newSrv')])
+PatternExpr_41 = da.pat.FreePattern('master')
 PatternExpr_42 = da.pat.FreePattern('rclk')
 PatternExpr_44 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
 PatternExpr_45 = da.pat.FreePattern('dst')
 PatternExpr_46 = da.pat.FreePattern('rclk')
+PatternExpr_48 = da.pat.TuplePattern([da.pat.ConstantPattern('REPLY'), da.pat.FreePattern('reply')])
+PatternExpr_49 = da.pat.FreePattern('dst')
+PatternExpr_50 = da.pat.FreePattern('rclk')
 import re
 import time
 import sys
@@ -93,6 +97,7 @@ def parse_req(input_str):
     input_str = input_str.replace(' ', '')
     input_str = re.sub('[()]', '', input_str)
     strs = input_str.split(',')
+    reqID = strs[1]
     if (strs[0] == 'getBalance'):
         reqtype = ReqType.Query
     elif (strs[0] == 'deposit'):
@@ -101,7 +106,12 @@ def parse_req(input_str):
         reqtype = ReqType.Withdraw
     else:
         reqtype = ReqType.Transfer
-    reqID = strs[1]
+        from_bank = strs[2]
+        from_account = strs[3]
+        to_bank = strs[4]
+        to_account = strs[5]
+        amount = strs[6]
+        return [reqID, reqtype, from_bank, from_account, to_bank, to_account, amount]
     account_num = strs[2]
     if (reqtype == ReqType.Query):
         amount = 0
@@ -116,11 +126,11 @@ def parse_randomReq(input_str):
     strs = input_str.split(',')
     seed_num = int(strs[0])
     num_req = int(strs[1])
-    prob_query = float(strs[2])
+    prob_transfer = float(strs[2])
     prob_deposit = float(strs[3])
     prob_withdraw = float(strs[4])
-    prob_transfer = float(strs[5])
-    return [seed_num, num_req, prob_query, prob_deposit, prob_withdraw, prob_transfer]
+    prob_query = float(strs[5])
+    return [seed_num, num_req, prob_transfer, prob_deposit, prob_withdraw, prob_query]
 
 class Master(da.DistProcess):
 
@@ -129,10 +139,10 @@ class Master(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_MasterReceivedEvent_0', PatternExpr_0, sources=[PatternExpr_1], destinations=None, timestamps=None, record_history=None, handlers=[self._Master_handler_0])])
 
     def setup(self, srvDic, cliDic, filename, waitList):
-        self.filename = filename
-        self.cliDic = cliDic
-        self.waitList = waitList
         self.srvDic = srvDic
+        self.cliDic = cliDic
+        self.filename = filename
+        self.waitList = waitList
         self.timesheet = {}
         self.srvDict = self.srvDic
         self.cliDict = self.cliDic
@@ -147,23 +157,23 @@ class Master(da.DistProcess):
         self.output(('Client Dictory Stored in Master: ' + str(self.cliDict)))
         self.output(('Server Waitinglist Stored in Master: ' + str(self.waitList)))
         while True:
-            _st_label_182 = 0
+            _st_label_188 = 0
             self._timer_start()
-            while (_st_label_182 == 0):
-                _st_label_182 += 1
+            while (_st_label_188 == 0):
+                _st_label_188 += 1
                 if False:
                     pass
-                    _st_label_182 += 1
+                    _st_label_188 += 1
                 elif self._timer_expired:
                     self.checkSrv()
-                    _st_label_182 += 1
+                    _st_label_188 += 1
                 else:
-                    super()._label('_st_label_182', block=True, timeout=5)
-                    _st_label_182 -= 1
+                    super()._label('_st_label_188', block=True, timeout=5)
+                    _st_label_188 -= 1
             else:
-                if (_st_label_182 != 2):
+                if (_st_label_188 != 2):
                     continue
-            if (_st_label_182 != 2):
+            if (_st_label_188 != 2):
                 break
 
     def setup_logfile(self, filename):
@@ -238,7 +248,7 @@ class Master(da.DistProcess):
             del self.timesheet[srv]
             self.updateSrvInfo(srv)
 
-    def _Master_handler_0(self, ping, src_id):
+    def _Master_handler_0(self, src_id, ping):
         cur_ticks = time.time()
         flag = False
         self.output(('Received PING from: ' + str(ping.serverIP)))
@@ -276,34 +286,20 @@ class Server(da.DistProcess):
 
     def __init__(self, parent, initq, channel, props):
         super().__init__(parent, initq, channel, props)
-        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_2', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_3]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_3', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_4]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_4', PatternExpr_10, sources=[PatternExpr_11], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_5]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_5', PatternExpr_12, sources=[PatternExpr_13], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_6]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_6', PatternExpr_14, sources=[PatternExpr_15], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_7])])
+        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_2', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_3]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_3', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_4]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_4', PatternExpr_10, sources=[PatternExpr_11], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_5]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_5', PatternExpr_12, sources=[PatternExpr_13], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_6]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_6', PatternExpr_14, sources=[PatternExpr_15], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_7]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_7', PatternExpr_16, sources=[PatternExpr_17], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_8]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_8', PatternExpr_18, sources=[PatternExpr_19], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_9])])
 
-<<<<<<< HEAD
-    def setup(self, bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, filename):
-        self.message_loss = message_loss
-        self.prev = prev
-=======
     def setup(self, bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, head_srvs, tail_srvs, filename):
         self.filename = filename
-        self.message_loss = message_loss
         self.prev = prev
-        self.head_srvs = head_srvs
-        self.startup_delay = startup_delay
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
-        self.life_time = life_time
-        self.serverIP = serverIP
+        self.next = next
         self.bankName = bankName
-<<<<<<< HEAD
-        self.next = next
         self.startup_delay = startup_delay
+        self.life_time = life_time
         self.master = master
-        self.filename = filename
-=======
         self.serverIP = serverIP
-        self.next = next
         self.tail_srvs = tail_srvs
-        self.master = master
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+        self.message_loss = message_loss
+        self.head_srvs = head_srvs
         self.bankName = self.bankName
         self.serverIP = self.serverIP
         self.startup_delay = self.startup_delay
@@ -328,43 +324,23 @@ class Server(da.DistProcess):
         self.output(('Tail_srvs stored in server: ' + str(self.tail_srvs)))
         ping = Ping(self.serverIP, self.bankName)
         while True:
-<<<<<<< HEAD
-            _st_label_350 = 0
+            _st_label_462 = 0
             self._timer_start()
-            while (_st_label_350 == 0):
-                _st_label_350 += 1
+            while (_st_label_462 == 0):
+                _st_label_462 += 1
                 if False:
                     pass
-                    _st_label_350 += 1
+                    _st_label_462 += 1
                 elif self._timer_expired:
                     self._send(('PING', ping), self.master)
-                    _st_label_350 += 1
+                    _st_label_462 += 1
                 else:
-                    super()._label('_st_label_350', block=True, timeout=1)
-                    _st_label_350 -= 1
+                    super()._label('_st_label_462', block=True, timeout=1)
+                    _st_label_462 -= 1
             else:
-                if (_st_label_350 != 2):
+                if (_st_label_462 != 2):
                     continue
-            if (_st_label_350 != 2):
-=======
-            _st_label_353 = 0
-            self._timer_start()
-            while (_st_label_353 == 0):
-                _st_label_353 += 1
-                if False:
-                    pass
-                    _st_label_353 += 1
-                elif self._timer_expired:
-                    self._send(('PING', ping), self.master)
-                    _st_label_353 += 1
-                else:
-                    super()._label('_st_label_353', block=True, timeout=1)
-                    _st_label_353 -= 1
-            else:
-                if (_st_label_353 != 2):
-                    continue
-            if (_st_label_353 != 2):
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+            if (_st_label_462 != 2):
                 break
 
     def setup_logfile(self, filename):
@@ -380,7 +356,7 @@ class Server(da.DistProcess):
     def proc_balance(self, ack):
         outcome = Outcome.Processed
         if (self.AccountInfo.get(ack.account_num) == None):
-            cur_balance = 0
+            cur_balance = 0.0
         else:
             cur_balance = self.AccountInfo[ack.account_num]
         if (not (self.procTrans.get(ack.reqID) == None)):
@@ -401,6 +377,59 @@ class Server(da.DistProcess):
                 new_balance = (cur_balance - ack.amount)
         self.AccountInfo.update({ack.account_num: new_balance})
         return [new_balance, outcome]
+
+    def proc_transfer_balance(self, transfer_ack):
+        outcome = Outcome.Processed
+        from_cur_balance = 0.0
+        to_cur_balance = 0.0
+        from_new_balance = 0.0
+        to_new_balance = 0.0
+        if (transfer_ack.from_bank == transfer_ack.to_bank):
+            if (not (self.AccountInfo.get(transfer_ack.from_account) == None)):
+                from_cur_balance = self.AccountInfo[transfer_ack.from_account]
+            if (not (self.AccountInfo.get(transfer_ack.to_account) == None)):
+                to_cur_balance = self.AccountInfo[transfer_ack.to_account]
+            if (not (self.procTrans.get(transfer_ack.reqID) == None)):
+                if (not (self.procTrans[transfer_ack.reqID].reqtype == transfer_ack.reqtype)):
+                    outcome = Outcome.InconsistentWithHistory
+                from_new_balance = from_cur_balance
+                to_new_balance = to_cur_balance
+            elif ((from_cur_balance - transfer_ack.amount) < 0):
+                from_new_balance = from_cur_balance
+                to_new_balance = to_cur_balance
+                outcome = Outcome.InsufficientFunds
+            else:
+                from_new_balance = (from_cur_balance - transfer_ack.amount)
+                to_new_balance = (to_cur_balance + transfer_ack.amount)
+            self.AccountInfo.update({transfer_ack.from_account: from_new_balance})
+            self.AccountInfo.update({transfer_ack.to_account: to_new_balance})
+            return [outcome, from_new_balance, to_new_balance]
+        else:
+            if (transfer_ack.from_bank == self.bankName):
+                if (not (self.AccountInfo.get(transfer_ack.from_account) == None)):
+                    from_cur_balance = self.AccountInfo[transfer_ack.from_account]
+                if (not (self.procTrans.get(transfer_ack.reqID) == None)):
+                    if (not (self.procTrans[transfer_ack.reqID].reqtype == transfer_ack.reqtype)):
+                        outcome = Outcome.InconsistentWithHistory
+                    from_new_balance = from_cur_balance
+                elif ((from_cur_balance - transfer_ack.amount) < 0):
+                    from_new_balance = from_cur_balance
+                    outcome = Outcome.InsufficientFunds
+                else:
+                    from_new_balance = (from_cur_balance - transfer_ack.amount)
+                self.AccountInfo.update({transfer_ack.from_account: from_new_balance})
+                return [outcome, from_new_balance]
+            else:
+                if (not (self.AccountInfo.get(transfer_ack.to_account) == None)):
+                    to_cur_balance = self.AccountInfo[transfer_ack.to_account]
+                if (not (self.procTrans.get(transfer_ack.reqID) == None)):
+                    if (not (self.procTrans[transfer_ack.reqID].reqtype == transfer_ack.reqtype)):
+                        outcome = Outcome.InconsistentWithHistory
+                    to_new_balance = to_cur_balance
+                else:
+                    to_new_balance = (to_cur_balance + transfer_ack.amount)
+            self.AccountInfo.update({transfer_ack.to_account: to_new_balance})
+            return [outcome, to_new_balance]
 
     def update_procTrans(self, reqID):
         count_clear = 0
@@ -436,7 +465,7 @@ class Server(da.DistProcess):
         else:
             return True
 
-    def _Server_handler_1(self, req, src_id):
+    def pre_req(self, req, src_id):
         if (not (src_id == self.prev)):
             self.recTimes += 1
             if ((self.recTimes <= self.message_loss) or (self.message_loss == 0)):
@@ -451,6 +480,46 @@ class Server(da.DistProcess):
         elif (self.life_time == 0):
             self.output((('Server: ' + str(self.serverIP)) + ' has expired!'))
             sys.exit()
+
+    def _Server_handler_1(self, trans_req, src_id):
+        self.pre_req(trans_req, src_id)
+        self.sentTrans.append(trans_req)
+        self.output((' Transfer Request %s has been added to sent transaction' % trans_req.reqID))
+        if (self.next == None):
+            transfer_ack = Transfer_Ack(trans_req.reqID, trans_req.reqtype, trans_req.from_bank, trans_req.from_account, trans_req.to_bank, trans_req.to_account, trans_req.amount, trans_req.client_id)
+            result = self.proc_transfer_balance(transfer_ack)
+            search_result = self.search_procTrans(trans_req.reqID)
+            self.update_procTrans(trans_req.reqID)
+            outcome = result[0]
+            new_balance = result[1]
+            reply = Reply(trans_req.reqID, outcome, new_balance)
+            if (len(result) == 3):
+                if ((search_result == False) or ((search_result == True) and (not (outcome == Outcome.Processed)))):
+                    self._send(('REPLY', reply), trans_req.client_id)
+                    self.output(((('Reply for Request ' + str(trans_req.reqID)) + ' has been sent to client: ') + str(trans_req.client_id)))
+                    self._send(('Transfer_ACK', transfer_ack), self.prev)
+                    self.output((str(transfer_ack) + ' has been sent'))
+            elif (len(result) == 2):
+                if (transfer_ack.from_bank == self.bankName):
+                    if (not (outcome == Outcome.Processed)):
+                        self._send(('REPLY', reply), trans_req.client_id)
+                        self.output(((('Reply for Request ' + str(trans_req.reqID)) + ' has been sent to client: ') + str(trans_req.client_id)))
+                        self._send(('Transfer_ACK', transfer_ack), self.prev)
+                        self.output((str(transfer_ack) + ' has been sent'))
+                    elif (search_result == False):
+                        dst = self.head_srvs.get(trans_req.to_bank)
+                        self._send(('Transfer_REQ', trans_req), dst)
+                        self.output((str(trans_req) + ' has been relayed to the destination bank'))
+                elif (transfer_ack.to_bank == self.bankName):
+                    self._send(('Transfer_ACK', transfer_ack), self.prev)
+                    self.output((str(transfer_ack) + ' has been sent'))
+        else:
+            self._send(('Transfer_REQ', trans_req), self.next)
+    _Server_handler_1._labels = None
+    _Server_handler_1._notlabels = None
+
+    def _Server_handler_2(self, src_id, req):
+        self.pre_req(req, src_id)
         if (not (req.reqtype == ReqType.Query)):
             self.sentTrans.append(req)
             self.output(('Request %s has been added to sent transaction' % req.reqID))
@@ -470,10 +539,10 @@ class Server(da.DistProcess):
                     self.output((str(ack) + ' has been sent!'))
         else:
             self._send(('REQ', req), self.next)
-    _Server_handler_1._labels = None
-    _Server_handler_1._notlabels = None
+    _Server_handler_2._labels = None
+    _Server_handler_2._notlabels = None
 
-    def _Server_handler_2(self, src_id, req):
+    def _Server_handler_3(self, req, src_id):
         self.output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
         if (not (req.reqtype == ReqType.Query)):
             self.sentTrans.append(req)
@@ -484,10 +553,10 @@ class Server(da.DistProcess):
         self.output(('Request %s has been added to sent transaction' % req.reqID))
         if (not (self.next == None)):
             self._send(('SYNC', req), self.next)
-    _Server_handler_2._labels = None
-    _Server_handler_2._notlabels = None
+    _Server_handler_3._labels = None
+    _Server_handler_3._notlabels = None
 
-    def _Server_handler_3(self, src_id, req, reqID):
+    def _Server_handler_4(self, req, reqID, src_id):
         self.output(('Synchronization of procTrans from the old tail ' + str(reqID)))
         if (not (req.reqtype == ReqType.Query)):
             ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
@@ -497,10 +566,10 @@ class Server(da.DistProcess):
             self.output(((('Account: ' + str(ack.account_num)) + ' New balance is: ') + str(result[0])))
         if (not (self.next == None)):
             self._send(('SYNC_PROC', (reqID, req)), self.next)
-    _Server_handler_3._labels = None
-    _Server_handler_3._notlabels = None
+    _Server_handler_4._labels = None
+    _Server_handler_4._notlabels = None
 
-    def _Server_handler_4(self, ack, next):
+    def _Server_handler_5(self, ack, next):
         self.output((str(ack) + ' has been received!'))
         search_result = self.search_procTrans(ack.reqID)
         result = self.proc_balance(ack)
@@ -508,10 +577,34 @@ class Server(da.DistProcess):
         self.update_procTrans(ack.reqID)
         if ((not (self.prev == None)) and (search_result == False)):
             self._send(('ACK', ack), self.prev)
-    _Server_handler_4._labels = None
-    _Server_handler_4._notlabels = None
+    _Server_handler_5._labels = None
+    _Server_handler_5._notlabels = None
 
-    def _Server_handler_5(self, master, next, prev):
+    def _Server_handler_6(self, transfer_ack, src):
+        self.output((str(transfer_ack) + ' has been received!'))
+        search_result = self.search_procTrans(transfer_ack.reqID)
+        result = self.proc_transfer_balance(transfer_ack)
+        self.output(((('Account: ' + str(transfer_ack.from_account)) + ' New balance is: ') + str(result[1])))
+        if (len(result) == 3):
+            self.output(((('Account: ' + str(transfer_ack.to_account)) + ' New balance is: ') + str(result[2])))
+        else:
+            if (self.next == None):
+                outcome = result[0]
+                new_balance = result[1]
+                reply = Reply(transfer_ack.reqID, outcome, new_balance)
+                self._send(('REPLY', reply), transfer_ack.client_id)
+                self.output(((('Reply for Request ' + str(transfer_ack.reqID)) + ' has been sent to client: ') + str(transfer_ack.client_id)))
+            if (not (self.prev == None)):
+                self._send(('Transfer_ACK', transfer_ack), self.prev)
+                self.output((str(transfer_ack) + ' has been sent'))
+            elif (self.bankName == transfer_ack.to_bank):
+                dst = self.tail_srvs.get(transfer_ack.from_bank)
+                self._send(('Transfer_ACK', transfer_ack), dst)
+                self.output((str(transfer_ack) + ' has been relayed to the source bank'))
+    _Server_handler_6._labels = None
+    _Server_handler_6._notlabels = None
+
+    def _Server_handler_7(self, next, prev, master):
         self.prev = prev
         self.next = next
         self.output((((' Received SrvFail from Master, Setting my prev to: ' + str(self.prev)) + ' and my next to: ') + str(self.next)))
@@ -525,24 +618,24 @@ class Server(da.DistProcess):
                 self._send(('SYNC_PROC', (reqID, req)), self.next)
         else:
             self.output("I'm the new tail!")
-    _Server_handler_5._labels = None
-    _Server_handler_5._notlabels = None
+    _Server_handler_7._labels = None
+    _Server_handler_7._notlabels = None
 
-    def _Server_handler_6(self, newSrv, master):
+    def _Server_handler_8(self, master, newSrv):
         self.output(((str(self.serverIP) + ' Received extendChain from master,setting my next to ') + str(newSrv)))
         self.next = newSrv
         for (reqID, req) in self.procTrans.items():
             self.output(('Starting synchronize %s procTrans to the new tail ' % reqID))
             self._send(('SYNC_PROC', (reqID, req)), self.next)
-    _Server_handler_6._labels = None
-    _Server_handler_6._notlabels = None
+    _Server_handler_8._labels = None
+    _Server_handler_8._notlabels = None
 
-    def _Server_handler_7(self, master, newprev):
+    def _Server_handler_9(self, master, newprev):
         self.output((" I'm the new joined server,setting my prev to " + str(newprev)))
         self.prev = newprev
         self.next = None
-    _Server_handler_7._labels = None
-    _Server_handler_7._notlabels = None
+    _Server_handler_9._labels = None
+    _Server_handler_9._notlabels = None
 
 class Client(da.DistProcess):
 
@@ -554,38 +647,22 @@ class Client(da.DistProcess):
         self._ClientReceivedEvent_7 = []
         self._ClientReceivedEvent_8 = []
         self._ClientReceivedEvent_9 = []
-        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_16, sources=[PatternExpr_17], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_8]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_18, sources=[PatternExpr_19], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_9]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_20, sources=[PatternExpr_21], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_10]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_3', PatternExpr_22, sources=[PatternExpr_23], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_11]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_4', PatternExpr_24, sources=[PatternExpr_25], destinations=None, timestamps=[PatternExpr_26], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_5', PatternExpr_28, sources=[PatternExpr_29], destinations=None, timestamps=[PatternExpr_30], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_6', PatternExpr_32, sources=[PatternExpr_33], destinations=None, timestamps=[PatternExpr_34], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_7', PatternExpr_36, sources=[PatternExpr_37], destinations=None, timestamps=[PatternExpr_38], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_8', PatternExpr_40, sources=[PatternExpr_41], destinations=None, timestamps=[PatternExpr_42], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_9', PatternExpr_44, sources=[PatternExpr_45], destinations=None, timestamps=[PatternExpr_46], record_history=True, handlers=[])])
+        self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_0', PatternExpr_20, sources=[PatternExpr_21], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_10]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_1', PatternExpr_22, sources=[PatternExpr_23], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_11]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_2', PatternExpr_24, sources=[PatternExpr_25], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_12]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_3', PatternExpr_26, sources=[PatternExpr_27], destinations=None, timestamps=None, record_history=None, handlers=[self._Client_handler_13]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_4', PatternExpr_28, sources=[PatternExpr_29], destinations=None, timestamps=[PatternExpr_30], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_5', PatternExpr_32, sources=[PatternExpr_33], destinations=None, timestamps=[PatternExpr_34], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_6', PatternExpr_36, sources=[PatternExpr_37], destinations=None, timestamps=[PatternExpr_38], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_7', PatternExpr_40, sources=[PatternExpr_41], destinations=None, timestamps=[PatternExpr_42], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_8', PatternExpr_44, sources=[PatternExpr_45], destinations=None, timestamps=[PatternExpr_46], record_history=True, handlers=[]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ClientReceivedEvent_9', PatternExpr_48, sources=[PatternExpr_49], destinations=None, timestamps=[PatternExpr_50], record_history=True, handlers=[])])
 
     def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, time_delay, master, head_srvs, tail_srvs, filename):
-<<<<<<< HEAD
-        self.ifRandom = ifRandom
         self.account_no = account_no
-        self.head_srvs = head_srvs
-        self.timeout = timeout
-        self.tail_srvs = tail_srvs
-        self.bankName = bankName
-        self.nRetrans = nRetrans
-        self.ifRetrans = ifRetrans
         self.clientIP = clientIP
-        self.master = master
-        self.filename = filename
         self.input_req = input_req
-        self.time_delay = time_delay
-=======
-        self.filename = filename
-        self.nRetrans = nRetrans
-        self.time_delay = time_delay
-        self.ifRetrans = ifRetrans
-        self.input_req = input_req
-        self.head_srvs = head_srvs
         self.ifRandom = ifRandom
+        self.filename = filename
+        self.ifRetrans = ifRetrans
+        self.nRetrans = nRetrans
         self.bankName = bankName
-        self.clientIP = clientIP
-        self.timeout = timeout
-        self.account_no = account_no
-        self.tail_srvs = tail_srvs
         self.master = master
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+        self.tail_srvs = tail_srvs
+        self.time_delay = time_delay
+        self.timeout = timeout
+        self.head_srvs = head_srvs
         self.bankName = int(self.bankName)
         self.account_no = self.account_no
         self.clientIP = self.clientIP
@@ -607,115 +684,88 @@ class Client(da.DistProcess):
         reqList = self.init_req()
         replyNum = 0
         num_req = len(reqList)
+        sending_transfer = False
         for i in range(num_req):
-            req = reqList[i]
-            if (req.reqtype == ReqType.Query):
-                dst = self.tail_srvs.get(self.bankName)
-            else:
-                dst = self.head_srvs.get(self.bankName)
-            self.output((('Request ' + str(req.reqID)) + ' has been sent out'))
             time.sleep(self.time_delay)
             clk = self.logical_clock()
-            self._send(('REQ', req), dst)
+            if (not (reqList[i].reqtype == ReqType.Transfer)):
+                req = reqList[i]
+                if (req.reqtype == ReqType.Query):
+                    dst = self.tail_srvs.get(self.bankName)
+                else:
+                    dst = self.head_srvs.get(self.bankName)
+                self.output(req)
+                sending_transfer = False
+                self._send(('REQ', req), dst)
+                self.output((('Request ' + str(req.reqID)) + ' has been sent out'))
+            else:
+                trans_req = reqList[i]
+                self.output(trans_req)
+                dst = self.head_srvs.get(self.bankName)
+                sending_transfer = True
+                self._send(('Transfer_REQ', trans_req), dst)
+                self.output((('Request ' + str(trans_req.reqID)) + ' has been sent out'))
             dst = reply = rclk = None
 
             def ExistentialOpExpr_4():
                 nonlocal dst, reply, rclk
-                for (_, (rclk, _, dst), (_ConstantPattern120_, reply)) in self._ClientReceivedEvent_8:
-                    if (_ConstantPattern120_ == 'REPLY'):
+                for (_, (rclk, _, dst), (_ConstantPattern128_, reply)) in self._ClientReceivedEvent_8:
+                    if (_ConstantPattern128_ == 'REPLY'):
                         if (rclk > clk):
                             return True
                 return False
-<<<<<<< HEAD
-            _st_label_463 = 0
+            _st_label_601 = 0
             self._timer_start()
-            while (_st_label_463 == 0):
-                _st_label_463 += 1
+            while (_st_label_601 == 0):
+                _st_label_601 += 1
                 if ExistentialOpExpr_4():
                     self.replyDic.update({reply.reqID: reply})
                     continue
-                    _st_label_463 += 1
+                    _st_label_601 += 1
                 elif self._timer_expired:
-                    self.output((('Client waiting for reply ' + str(req.reqID)) + ' TIMEDOUT!'))
-                    self.resend(req)
-                    _st_label_463 += 1
+                    if (sending_transfer == True):
+                        self.output((('Client waiting for reply ' + str(trans_req.reqID)) + ' TIMEDOUT!'))
+                        self.resend(trans_req, True)
+                    else:
+                        self.output((('Client waiting for reply ' + str(req.reqID)) + ' TIMEDOUT!'))
+                        self.resend(req, False)
+                    _st_label_601 += 1
                 else:
-                    super()._label('_st_label_463', block=True, timeout=self.timeout)
-                    _st_label_463 -= 1
+                    super()._label('_st_label_601', block=True, timeout=self.timeout)
+                    _st_label_601 -= 1
             else:
-                if (_st_label_463 != 2):
+                if (_st_label_601 != 2):
                     continue
-            if (_st_label_463 != 2):
-=======
-            _st_label_466 = 0
-            self._timer_start()
-            while (_st_label_466 == 0):
-                _st_label_466 += 1
-                if ExistentialOpExpr_4():
-                    self.replyDic.update({reply.reqID: reply})
-                    continue
-                    _st_label_466 += 1
-                elif self._timer_expired:
-                    self.output((('Client waiting for reply ' + str(req.reqID)) + ' TIMEDOUT!'))
-                    self.resend(req)
-                    _st_label_466 += 1
-                else:
-                    super()._label('_st_label_466', block=True, timeout=self.timeout)
-                    _st_label_466 -= 1
-            else:
-                if (_st_label_466 != 2):
-                    continue
-            if (_st_label_466 != 2):
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+            if (_st_label_601 != 2):
                 break
         while (len(self.replyDic) < num_req):
             clk = self.logical_clock()
-            dst = rclk = reply = None
+            dst = reply = rclk = None
 
             def ExistentialOpExpr_5():
-                nonlocal dst, rclk, reply
-                for (_, (rclk, _, dst), (_ConstantPattern134_, reply)) in self._ClientReceivedEvent_9:
-                    if (_ConstantPattern134_ == 'REPLY'):
+                nonlocal dst, reply, rclk
+                for (_, (rclk, _, dst), (_ConstantPattern142_, reply)) in self._ClientReceivedEvent_9:
+                    if (_ConstantPattern142_ == 'REPLY'):
                         if (rclk > clk):
                             return True
                 return False
-<<<<<<< HEAD
-            _st_label_470 = 0
-            while (_st_label_470 == 0):
-                _st_label_470 += 1
+            _st_label_611 = 0
+            while (_st_label_611 == 0):
+                _st_label_611 += 1
                 if ExistentialOpExpr_5():
                     self.replyDic.update({reply.reqID: reply})
                     continue
-                    _st_label_470 += 1
+                    _st_label_611 += 1
                 elif self._timer_expired:
                     pass
-                    _st_label_470 += 1
+                    _st_label_611 += 1
                 else:
-                    super()._label('_st_label_470', block=True)
-                    _st_label_470 -= 1
+                    super()._label('_st_label_611', block=True)
+                    _st_label_611 -= 1
             else:
-                if (_st_label_470 != 2):
+                if (_st_label_611 != 2):
                     continue
-            if (_st_label_470 != 2):
-=======
-            _st_label_473 = 0
-            while (_st_label_473 == 0):
-                _st_label_473 += 1
-                if ExistentialOpExpr_5():
-                    self.replyDic.update({reply.reqID: reply})
-                    continue
-                    _st_label_473 += 1
-                elif self._timer_expired:
-                    pass
-                    _st_label_473 += 1
-                else:
-                    super()._label('_st_label_473', block=True)
-                    _st_label_473 -= 1
-            else:
-                if (_st_label_473 != 2):
-                    continue
-            if (_st_label_473 != 2):
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+            if (_st_label_611 != 2):
                 break
         self.output('All request has been sentout, client exits')
 
@@ -737,24 +787,34 @@ class Client(da.DistProcess):
             strs = parse_randomReq(input_str)
             seed_num = strs[0]
             num_req = strs[1]
-            prob_query = strs[2]
+            prob_transfer = strs[2]
             prob_deposit = strs[3]
             prob_withdraw = strs[4]
-            prob_transfer = strs[5]
+            prob_query = strs[5]
             random.seed(seed_num)
             for i in range(num_req):
                 a = random.randint(1, 100)
                 a = float((a / 100))
                 amount = (random.randint(1, 10) * 100)
-                if (a < prob_query):
-                    reqtype = ReqType.Query
-                elif (a < (prob_query + prob_deposit)):
+                random_bank = random.randint(1, 3)
+                random_account = (random.randint(1, 6) * 100)
+                reqID = ((((str(self.bankName) + '.') + str(self.account_no[0])) + '.') + str((i + 1)))
+                self.output(('a is: ' + str(a)))
+                if (a < prob_transfer):
+                    reqtype = ReqType.Transfer
+                    while ((random_bank == self.bankName) and (random_account == int(self.account_no))):
+                        random_bank = random.randint(1, 3)
+                        random_account = (random.randint(1, 6) * 100)
+                    trans_req = TransferRequest(reqID, reqtype, self.bankName, self.account_no, random_bank, random_account, amount, client_id)
+                    self.output(('Generating randomized request: ' + str(trans_req)))
+                    reqList.append(trans_req)
+                    continue
+                elif (a < (prob_transfer + prob_deposit)):
                     reqtype = ReqType.Deposit
-                elif (a < ((prob_query + prob_deposit) + prob_withdraw)):
+                elif (a < ((prob_transfer + prob_deposit) + prob_withdraw)):
                     reqtype = ReqType.Withdraw
                 else:
-                    reqtype = ReqType.Transfer
-                reqID = ((((str(self.bankName) + '.') + str(self.account_no[0])) + '.') + str((i + 1)))
+                    reqtype = ReqType.Query
                 req = Request(reqID, reqtype, self.account_no, amount, client_id)
                 self.output(('Generating randomized request: ' + str(req)))
                 reqList.append(req)
@@ -762,6 +822,10 @@ class Client(da.DistProcess):
             num_req = len(self.input_req)
             for i in range(num_req):
                 strs = parse_req(self.input_req[i])
+                if (strs[1] == ReqType.Transfer):
+                    if (strs[0].startswith(str(self.bankName)) and (int(strs[3]) == int(self.account_no))):
+                        trans_req = TransferRequest(strs[0], strs[1], strs[2], strs[3], strs[4], strs[5], strs[6], client_id)
+                        reqList.append(trans_req)
                 if (strs[0].startswith(str(self.bankName)) and (int(strs[2]) == int(self.account_no))):
                     req = Request(strs[0], strs[1], strs[2], strs[3], client_id)
                     reqList.append(req)
@@ -769,7 +833,7 @@ class Client(da.DistProcess):
                     pass
         return reqList
 
-    def resend(self, req):
+    def resend(self, req, transfer):
         times = 0
         while True:
             self.output('Start retransmitting Request ', req.reqID)
@@ -779,140 +843,103 @@ class Client(da.DistProcess):
                 dst = self.tail_srvs.get(self.bankName)
             else:
                 dst = self.head_srvs.get(self.bankName)
-            self._send(('REQ', req), dst)
-<<<<<<< HEAD
-            rclk = dst = reply = None
+            if transfer:
+                self._send(('Transfer_REQ', req), dst)
+            else:
+                self._send(('REQ', req), dst)
+            dst = reply = rclk = None
 
             def ExistentialOpExpr_0():
-                nonlocal rclk, dst, reply
-=======
-            reply = rclk = dst = None
-
-            def ExistentialOpExpr_0():
-                nonlocal reply, rclk, dst
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
-                for (_, (rclk, _, dst), (_ConstantPattern64_, reply)) in self._ClientReceivedEvent_4:
-                    if (_ConstantPattern64_ == 'REPLY'):
-                        if (rclk > clk):
-                            return True
-                return False
-            master = newSrv = rclk = None
-
-            def ExistentialOpExpr_1():
-                nonlocal master, newSrv, rclk
-                for (_, (rclk, _, master), (_ConstantPattern78_, newSrv)) in self._ClientReceivedEvent_5:
-                    if (_ConstantPattern78_ == 'newTail'):
+                nonlocal dst, reply, rclk
+                for (_, (rclk, _, dst), (_ConstantPattern72_, reply)) in self._ClientReceivedEvent_4:
+                    if (_ConstantPattern72_ == 'REPLY'):
                         if (rclk > clk):
                             return True
                 return False
             master = rclk = newSrv = None
 
-            def ExistentialOpExpr_2():
+            def ExistentialOpExpr_1():
                 nonlocal master, rclk, newSrv
-                for (_, (rclk, _, master), (_ConstantPattern92_, newSrv)) in self._ClientReceivedEvent_6:
-                    if (_ConstantPattern92_ == 'newHead'):
+                for (_, (rclk, _, master), (_ConstantPattern86_, newSrv)) in self._ClientReceivedEvent_5:
+                    if (_ConstantPattern86_ == 'newTail'):
                         if (rclk > clk):
                             return True
                 return False
-            master = newSrv = rclk = None
+            newSrv = rclk = master = None
+
+            def ExistentialOpExpr_2():
+                nonlocal newSrv, rclk, master
+                for (_, (rclk, _, master), (_ConstantPattern100_, newSrv)) in self._ClientReceivedEvent_6:
+                    if (_ConstantPattern100_ == 'newHead'):
+                        if (rclk > clk):
+                            return True
+                return False
+            rclk = master = newSrv = None
 
             def ExistentialOpExpr_3():
-                nonlocal master, newSrv, rclk
-                for (_, (rclk, _, master), (_ConstantPattern106_, newSrv)) in self._ClientReceivedEvent_7:
-                    if (_ConstantPattern106_ == 'srvFail'):
+                nonlocal rclk, master, newSrv
+                for (_, (rclk, _, master), (_ConstantPattern114_, newSrv)) in self._ClientReceivedEvent_7:
+                    if (_ConstantPattern114_ == 'srvFail'):
                         if (rclk > clk):
                             return True
                 return False
-<<<<<<< HEAD
-            _st_label_437 = 0
+            _st_label_565 = 0
             self._timer_start()
-            while (_st_label_437 == 0):
-                _st_label_437 += 1
+            while (_st_label_565 == 0):
+                _st_label_565 += 1
                 if ExistentialOpExpr_0():
                     break
-                    _st_label_437 += 1
+                    _st_label_565 += 1
                 elif ExistentialOpExpr_1():
                     times = 0
                     continue
-                    _st_label_437 += 1
+                    _st_label_565 += 1
                 elif ExistentialOpExpr_2():
                     times = 0
                     continue
-                    _st_label_437 += 1
+                    _st_label_565 += 1
                 elif ExistentialOpExpr_3():
                     times = 0
                     continue
-                    _st_label_437 += 1
-=======
-            _st_label_440 = 0
-            self._timer_start()
-            while (_st_label_440 == 0):
-                _st_label_440 += 1
-                if ExistentialOpExpr_0():
-                    break
-                    _st_label_440 += 1
-                elif ExistentialOpExpr_1():
-                    times = 0
-                    continue
-                    _st_label_440 += 1
-                elif ExistentialOpExpr_2():
-                    times = 0
-                    continue
-                    _st_label_440 += 1
-                elif ExistentialOpExpr_3():
-                    times = 0
-                    continue
-                    _st_label_440 += 1
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+                    _st_label_565 += 1
                 elif self._timer_expired:
                     times += 1
                     if (times == self.nRetrans):
                         self.output(('Retransmit time equals the RetransLimit, stop retransmitting Request ' + str(req.reqID)))
                         break
-<<<<<<< HEAD
-                    _st_label_437 += 1
+                    _st_label_565 += 1
                 else:
-                    super()._label('_st_label_437', block=True, timeout=self.timeout)
-                    _st_label_437 -= 1
+                    super()._label('_st_label_565', block=True, timeout=self.timeout)
+                    _st_label_565 -= 1
             else:
-                if (_st_label_437 != 2):
+                if (_st_label_565 != 2):
                     continue
-            if (_st_label_437 != 2):
-=======
-                    _st_label_440 += 1
-                else:
-                    super()._label('_st_label_440', block=True, timeout=self.timeout)
-                    _st_label_440 -= 1
-            else:
-                if (_st_label_440 != 2):
-                    continue
-            if (_st_label_440 != 2):
->>>>>>> d500cffe36c672bd0e9eb544da1086a9061da8c9
+            if (_st_label_565 != 2):
                 break
 
-    def _Client_handler_8(self, reply, src_id):
+    def _Client_handler_10(self, reply, src_id):
         self.output(('Reply received from server: ' + str(reply)))
-    _Client_handler_8._labels = None
-    _Client_handler_8._notlabels = None
-
-    def _Client_handler_9(self, newSrv, master):
-        self.output(('Client setting new head: ' + str(newSrv)))
-        self.head_srvs.update({self.bankName: newSrv})
-    _Client_handler_9._labels = None
-    _Client_handler_9._notlabels = None
-
-    def _Client_handler_10(self, master, newSrv):
-        self.output(('Client setting new tail: ' + str(newSrv)))
-        self.tail_srvs.update({self.bankName: newSrv})
-        time.sleep(self.time_delay)
     _Client_handler_10._labels = None
     _Client_handler_10._notlabels = None
 
     def _Client_handler_11(self, master, newSrv):
-        self.output('Client received server fail from Master, starting to sleep.')
-        time.sleep(self.time_delay)
+        self.output(('Client setting new head: ' + str(newSrv)))
+        self.head_srvs.update({self.bankName: newSrv})
     _Client_handler_11._labels = None
     _Client_handler_11._notlabels = None
+
+    def _Client_handler_12(self, newSrv, master):
+        self.output(('Client setting new tail: ' + str(newSrv)))
+        self.tail_srvs.update({self.bankName: newSrv})
+        time.sleep(self.time_delay)
+    _Client_handler_12._labels = None
+    _Client_handler_12._notlabels = None
+
+    def _Client_handler_13(self, newSrv, master):
+        self.output('Client received server fail from Master, starting to sleep.')
+        time.sleep(self.time_delay)
+    _Client_handler_13._labels = None
+    _Client_handler_13._notlabels = None
 
 def main():
     srvDic = collections.defaultdict(list)
@@ -1017,7 +1044,6 @@ def main():
     filename_client = './client/client_log'
     master = da.api.new(Master)
     da.api.setup(master, (srvDic, cliDic, filename_master, waitList))
-    da.api.start(master)
     for i in range(num_srv):
         server_name = (filename_server + str((i + 1)))
         if ((i == 0) or (not (bankName_srv[i] == bankName_srv[(i - 1)]))):
