@@ -12,7 +12,10 @@ class Request(object):
         self.amount = float(amount)
         self.client_id = client_id
     def __str__(self):
-        return "RequestID is %s, %s, Account number is %d, Amount is %f" %(self.reqID, self.reqtype, self.account_num, self.amount)
+        if self.reqtype == ReqType.Query:
+            return "RequestID is %s, %s, Account number is %d" %(self.reqID, self.reqtype, self.account_num)
+        else:
+            return "RequestID is %s, %s, Account number is %d, Amount is %f" %(self.reqID, self.reqtype, self.account_num, self.amount)
 
 class TransferRequest(object):
     def __init__(self,reqID, reqtype, from_bank,from_account,to_bank,to_account,amount,client_id):

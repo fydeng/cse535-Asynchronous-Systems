@@ -15,7 +15,10 @@ class Request(object):
         self.client_id = client_id
 
     def __str__(self):
-        return ('RequestID is %s, %s, Account number is %d, Amount is %f' % (self.reqID, self.reqtype, self.account_num, self.amount))
+        if (self.reqtype == ReqType.Query):
+            return ('RequestID is %s, %s, Account number is %d' % (self.reqID, self.reqtype, self.account_num))
+        else:
+            return ('RequestID is %s, %s, Account number is %d, Amount is %f' % (self.reqID, self.reqtype, self.account_num, self.amount))
 
 class TransferRequest(object):
 
