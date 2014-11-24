@@ -756,7 +756,6 @@ class Client(process):
 				send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				#output("retransmit received reply")
-				replyDic.update({reply.reqID:reply})
 				time == self.nRetrans
 				break
 			elif some(received(('Transfer_Reply',transfer_reply),from_= dst,clk=rclk),has=(rclk>clk)):

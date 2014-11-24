@@ -1,0 +1,28 @@
+[2014-11-24 11:36:15,016]Server[('fydeng', 39099)]: Server: Bank Name is: 1  Server IP is: 127.0.0.1:10002  Life time is: 200  Previous server is: ('fydeng', 27824)  Next server is: ('fydeng', 33305)
+[2014-11-24 11:36:15,017]Server[('fydeng', 39099)]: Head_srvs stored in server: {1: <Server('fydeng', 27824)>, 2: <Server('fydeng', 29164)>, 3: <Server('fydeng', 25376)>}
+[2014-11-24 11:36:15,017]Server[('fydeng', 39099)]: Tail_srvs stored in server: {1: <Server('fydeng', 33305)>, 2: <Server('fydeng', 14486)>, 3: <Server('fydeng', 32884)>}
+[2014-11-24 11:36:17,044]Server[('fydeng', 39099)]: The current life_time is: 199
+[2014-11-24 11:36:17,044]Server[('fydeng', 39099)]: Request 1.1.1 has been added to sent transaction
+[2014-11-24 11:36:17,052]Server[('fydeng', 39099)]: Ack for request 1.1.1 has been received!
+[2014-11-24 11:36:17,052]Server[('fydeng', 39099)]: Account: 100 New balance is: 400.0
+[2014-11-24 11:36:17,053]Server[('fydeng', 39099)]: Request 1.1.1 has been added to processed transaction
+[2014-11-24 11:36:19,067]Server[('fydeng', 39099)]: The current life_time is: 198
+[2014-11-24 11:36:19,068]Server[('fydeng', 39099)]: Transfer Request 1.1.2 has been added to sent transaction
+[2014-11-24 11:36:23,077]Server[('fydeng', 39099)]: The current life_time is: 197
+[2014-11-24 11:36:23,078]Server[('fydeng', 39099)]: Transfer Request 1.1.2 has been added to sent transaction
+[2014-11-24 11:36:25,029]Server[('fydeng', 39099)]: Received tailFail from master, setting new tail in bank: 1 to: ('fydeng', 39099)
+[2014-11-24 11:36:25,037]Server[('fydeng', 39099)]: Received SrvFail from Master, Setting my prev to: ('fydeng', 27824) and my next to: None
+[2014-11-24 11:36:25,038]Server[('fydeng', 39099)]: I'm the new tail!
+[2014-11-24 11:36:25,044]Server[('fydeng', 39099)]: Received headFail from master, setting new head in bank: 2 to: ('fydeng', 19993)
+[2014-11-24 11:36:29,034]Server[('fydeng', 39099)]: The current life_time is: 196
+[2014-11-24 11:36:29,034]Server[('fydeng', 39099)]: Transfer Request 1.1.2 has been added to sent transaction
+[2014-11-24 11:36:29,037]Server[('fydeng', 39099)]: TransferRequestID is 1.1.2 ReqType.Transfer, From Bank: 1 Account: 100, To Bank: 2 Account: 200, Amount is 100.000000 has been relayed to the destination bank
+[2014-11-24 11:36:29,055]Server[('fydeng', 39099)]: Transfer Ack for 1.1.2 has been received!
+[2014-11-24 11:36:29,055]Server[('fydeng', 39099)]: Account: 100 New balance is: 300.0
+[2014-11-24 11:36:29,055]Server[('fydeng', 39099)]: Request 1.1.2 has been added to processed transaction
+[2014-11-24 11:36:29,056]Server[('fydeng', 39099)]: Using ACK to clear old req  1.1.2
+[2014-11-24 11:36:29,056]Server[('fydeng', 39099)]: Duplicate request, don't add to processed transaction
+[2014-11-24 11:36:29,056]Server[('fydeng', 39099)]: Using ACK to clear old req  1.1.2
+[2014-11-24 11:36:29,058]Server[('fydeng', 39099)]: Duplicate request, don't add to processed transaction
+[2014-11-24 11:36:29,060]Server[('fydeng', 39099)]: Reply for Request 1.1.2 has been sent to client: ('fydeng', 39807)
+[2014-11-24 11:36:29,062]Server[('fydeng', 39099)]: Transfer Ack for 1.1.2 has been sent

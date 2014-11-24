@@ -1,0 +1,5 @@
+[2014-11-24 11:36:15,019]Server[('fydeng', 32884)]: Server: Bank Name is: 3  Server IP is: 127.0.0.1:10009  Life time is: 200  Previous server is: ('fydeng', 29367)  Next server is: None
+[2014-11-24 11:36:15,019]Server[('fydeng', 32884)]: Head_srvs stored in server: {1: <Server('fydeng', 27824)>, 2: <Server('fydeng', 29164)>, 3: <Server('fydeng', 25376)>}
+[2014-11-24 11:36:15,020]Server[('fydeng', 32884)]: Tail_srvs stored in server: {1: <Server('fydeng', 33305)>, 2: <Server('fydeng', 14486)>, 3: <Server('fydeng', 32884)>}
+[2014-11-24 11:36:25,035]Server[('fydeng', 32884)]: Received tailFail from master, setting new tail in bank: 1 to: ('fydeng', 39099)
+[2014-11-24 11:36:25,051]Server[('fydeng', 32884)]: Received headFail from master, setting new head in bank: 2 to: ('fydeng', 19993)

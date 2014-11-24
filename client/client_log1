@@ -1,0 +1,12 @@
+[2014-11-24 11:36:15,031]Client[('fydeng', 39807)]: Client: Bank Name is: 1  Account number is: 100
+[2014-11-24 11:36:17,035]Client[('fydeng', 39807)]: RequestID is 1.1.1, ReqType.Deposit, Account number is 100, Amount is 400.000000
+[2014-11-24 11:36:17,038]Client[('fydeng', 39807)]: Request 1.1.1 has been sent out
+[2014-11-24 11:36:17,052]Client[('fydeng', 39807)]: Reply received from server: RequestID is 1.1.1, Outcome.Processed, Balance is 400.000000
+[2014-11-24 11:36:19,054]Client[('fydeng', 39807)]: TransferRequestID is 1.1.2 ReqType.Transfer, From Bank: 1 Account: 100, To Bank: 2 Account: 200, Amount is 100.000000
+[2014-11-24 11:36:19,058]Client[('fydeng', 39807)]: Request 1.1.2 has been sent out
+[2014-11-24 11:36:21,062]Client[('fydeng', 39807)]: Client waiting for reply 1.1.2 TIMEDOUT!
+[2014-11-24 11:36:21,063]Client[('fydeng', 39807)]: Start retransmitting Request  1.1.2
+[2014-11-24 11:36:25,021]Client[('fydeng', 39807)]: Client setting new tail: ('fydeng', 39099)
+[2014-11-24 11:36:27,023]Client[('fydeng', 39807)]: Start retransmitting Request  1.1.2
+[2014-11-24 11:36:29,062]Client[('fydeng', 39807)]: Reply received from server: RequestID is 1.1.2, Outcome.Processed, Balance is 300.000000
+[2014-11-24 11:36:29,062]Client[('fydeng', 39807)]: All request has been sentout, client exits
