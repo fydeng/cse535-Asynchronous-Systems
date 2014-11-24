@@ -151,9 +151,9 @@ class Master(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_MasterReceivedEvent_0', PatternExpr_0, sources=[PatternExpr_1], destinations=None, timestamps=None, record_history=None, handlers=[self._Master_handler_0])])
 
     def setup(self, srvDic, cliDic, srvList, filename, waitList):
-        self.waitList = waitList
-        self.srvList = srvList
         self.srvDic = srvDic
+        self.srvList = srvList
+        self.waitList = waitList
         self.cliDic = cliDic
         self.filename = filename
         self.timesheet = {}
@@ -311,16 +311,16 @@ class Server(da.DistProcess):
         self._events.extend([da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_0', PatternExpr_2, sources=[PatternExpr_3], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_1]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_1', PatternExpr_4, sources=[PatternExpr_5], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_2]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_2', PatternExpr_6, sources=[PatternExpr_7], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_3]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_3', PatternExpr_8, sources=[PatternExpr_9], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_4]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_4', PatternExpr_10, sources=[PatternExpr_11], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_5]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_5', PatternExpr_12, sources=[PatternExpr_13], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_6]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_6', PatternExpr_14, sources=[PatternExpr_15], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_7]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_7', PatternExpr_16, sources=[PatternExpr_17], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_8]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_8', PatternExpr_18, sources=[PatternExpr_19], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_9]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_9', PatternExpr_20, sources=[PatternExpr_21], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_10]), da.pat.EventPattern(da.pat.ReceivedEvent, '_ServerReceivedEvent_10', PatternExpr_22, sources=[PatternExpr_23], destinations=None, timestamps=None, record_history=None, handlers=[self._Server_handler_11])])
 
     def setup(self, bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, head_srvs, tail_srvs, filename):
-        self.message_loss = message_loss
-        self.next = next
-        self.master = master
-        self.life_time = life_time
         self.filename = filename
-        self.prev = prev
-        self.tail_srvs = tail_srvs
-        self.startup_delay = startup_delay
+        self.next = next
+        self.life_time = life_time
         self.serverIP = serverIP
+        self.message_loss = message_loss
+        self.master = master
+        self.tail_srvs = tail_srvs
         self.bankName = bankName
+        self.startup_delay = startup_delay
+        self.prev = prev
         self.head_srvs = head_srvs
         self.bankName = self.bankName
         self.serverIP = self.serverIP
@@ -742,17 +742,17 @@ class Client(da.DistProcess):
 
     def setup(self, bankName, account_no, clientIP, input_req, ifRetrans, timeout, nRetrans, ifRandom, time_delay, master, head_srvs, tail_srvs, filename):
         self.input_req = input_req
-        self.master = master
+        self.ifRetrans = ifRetrans
+        self.timeout = timeout
         self.time_delay = time_delay
         self.filename = filename
-        self.tail_srvs = tail_srvs
-        self.ifRetrans = ifRetrans
-        self.clientIP = clientIP
-        self.nRetrans = nRetrans
-        self.timeout = timeout
         self.ifRandom = ifRandom
         self.account_no = account_no
+        self.nRetrans = nRetrans
+        self.master = master
+        self.tail_srvs = tail_srvs
         self.bankName = bankName
+        self.clientIP = clientIP
         self.head_srvs = head_srvs
         self.bankName = int(self.bankName)
         self.account_no = self.account_no

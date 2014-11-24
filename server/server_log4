@@ -1,6 +1,0 @@
-[2014-11-24 11:36:15,018]Server[('fydeng', 29164)]: Server: Bank Name is: 2  Server IP is: 127.0.0.1:10004  Life time is: 1  Previous server is: None  Next server is: ('fydeng', 19993)
-[2014-11-24 11:36:15,018]Server[('fydeng', 29164)]: Head_srvs stored in server: {1: <Server('fydeng', 27824)>, 2: <Server('fydeng', 29164)>, 3: <Server('fydeng', 25376)>}
-[2014-11-24 11:36:15,020]Server[('fydeng', 29164)]: Tail_srvs stored in server: {1: <Server('fydeng', 33305)>, 2: <Server('fydeng', 14486)>, 3: <Server('fydeng', 32884)>}
-[2014-11-24 11:36:19,076]Server[('fydeng', 29164)]: Request 1.1.2 from client received! 
-[2014-11-24 11:36:19,077]Server[('fydeng', 29164)]: The current life_time is: 0
-[2014-11-24 11:36:19,077]Server[('fydeng', 29164)]: Server: 127.0.0.1:10004 has expired!
