@@ -1,0 +1,18 @@
+[2014-11-24 17:39:59,462]Client[('Fangyus-MacBook-Pro.local', 31167)]: Client: Bank Name is: 2  Account number is: 100
+[2014-11-24 17:39:59,463]Client[('Fangyus-MacBook-Pro.local', 31167)]: Generating randomized request: RequestID is 2.1.1, ReqType.Deposit, Account number is 100, Amount is 400.000000
+[2014-11-24 17:39:59,464]Client[('Fangyus-MacBook-Pro.local', 31167)]: Generating randomized request: TransferRequestID is 2.1.2 ReqType.Transfer, From Bank: 2 Account: 100, To Bank: 3 Account: 500, Amount is 100.000000
+[2014-11-24 17:39:59,464]Client[('Fangyus-MacBook-Pro.local', 31167)]: Generating randomized request: RequestID is 2.1.3, ReqType.Withdraw, Account number is 100, Amount is 400.000000
+[2014-11-24 17:39:59,465]Client[('Fangyus-MacBook-Pro.local', 31167)]: Generating randomized request: RequestID is 2.1.4, ReqType.Query, Account number is 100
+[2014-11-24 17:40:01,467]Client[('Fangyus-MacBook-Pro.local', 31167)]: RequestID is 2.1.1, ReqType.Deposit, Account number is 100, Amount is 400.000000
+[2014-11-24 17:40:01,476]Client[('Fangyus-MacBook-Pro.local', 31167)]: Request 2.1.1 has been sent out
+[2014-11-24 17:40:01,525]Client[('Fangyus-MacBook-Pro.local', 31167)]: Reply received from server: RequestID is 2.1.1, Outcome.Processed, Balance is 400.000000
+[2014-11-24 17:40:03,530]Client[('Fangyus-MacBook-Pro.local', 31167)]: TransferRequestID is 2.1.2 ReqType.Transfer, From Bank: 2 Account: 100, To Bank: 3 Account: 500, Amount is 100.000000
+[2014-11-24 17:40:03,532]Client[('Fangyus-MacBook-Pro.local', 31167)]: Request 2.1.2 has been sent out
+[2014-11-24 17:40:03,596]Client[('Fangyus-MacBook-Pro.local', 31167)]: Reply received from server: RequestID is 2.1.2, Outcome.Processed, Balance is 300.000000
+[2014-11-24 17:40:05,597]Client[('Fangyus-MacBook-Pro.local', 31167)]: RequestID is 2.1.3, ReqType.Withdraw, Account number is 100, Amount is 400.000000
+[2014-11-24 17:40:05,599]Client[('Fangyus-MacBook-Pro.local', 31167)]: Request 2.1.3 has been sent out
+[2014-11-24 17:40:05,610]Client[('Fangyus-MacBook-Pro.local', 31167)]: Reply received from server: RequestID is 2.1.3, Outcome.InsufficientFunds, Balance is 300.000000
+[2014-11-24 17:40:07,610]Client[('Fangyus-MacBook-Pro.local', 31167)]: RequestID is 2.1.4, ReqType.Query, Account number is 100
+[2014-11-24 17:40:07,614]Client[('Fangyus-MacBook-Pro.local', 31167)]: Request 2.1.4 has been sent out
+[2014-11-24 17:40:07,618]Client[('Fangyus-MacBook-Pro.local', 31167)]: Reply received from server: RequestID is 2.1.4, Outcome.Processed, Balance is 300.000000
+[2014-11-24 17:40:07,618]Client[('Fangyus-MacBook-Pro.local', 31167)]: All request has been sentout, client exits

@@ -1,0 +1,35 @@
+[2014-11-24 17:39:59,468]Client[('Fangyus-MacBook-Pro.local', 31343)]: Client: Bank Name is: 3  Account number is: 500
+[2014-11-24 17:39:59,470]Client[('Fangyus-MacBook-Pro.local', 31343)]: Generating randomized request: RequestID is 3.5.1, ReqType.Deposit, Account number is 500, Amount is 400.000000
+[2014-11-24 17:39:59,470]Client[('Fangyus-MacBook-Pro.local', 31343)]: Generating randomized request: TransferRequestID is 3.5.2 ReqType.Transfer, From Bank: 3 Account: 500, To Bank: 1 Account: 500, Amount is 100.000000
+[2014-11-24 17:39:59,470]Client[('Fangyus-MacBook-Pro.local', 31343)]: Generating randomized request: RequestID is 3.5.3, ReqType.Withdraw, Account number is 500, Amount is 500.000000
+[2014-11-24 17:39:59,471]Client[('Fangyus-MacBook-Pro.local', 31343)]: Generating randomized request: RequestID is 3.5.4, ReqType.Withdraw, Account number is 500, Amount is 600.000000
+[2014-11-24 17:40:01,473]Client[('Fangyus-MacBook-Pro.local', 31343)]: RequestID is 3.5.1, ReqType.Deposit, Account number is 500, Amount is 400.000000
+[2014-11-24 17:40:01,490]Client[('Fangyus-MacBook-Pro.local', 31343)]: Request 3.5.1 has been sent out
+[2014-11-24 17:40:01,585]Client[('Fangyus-MacBook-Pro.local', 31343)]: Reply received from server: RequestID is 3.5.1, Outcome.Processed, Balance is 400.000000
+[2014-11-24 17:40:03,590]Client[('Fangyus-MacBook-Pro.local', 31343)]: TransferRequestID is 3.5.2 ReqType.Transfer, From Bank: 3 Account: 500, To Bank: 1 Account: 500, Amount is 100.000000
+[2014-11-24 17:40:03,591]Client[('Fangyus-MacBook-Pro.local', 31343)]: Request 3.5.2 has been sent out
+[2014-11-24 17:40:03,686]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 2.6.2, From Bank: 2 Account: 600, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 500.000000
+[2014-11-24 17:40:05,689]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 1.5.2, From Bank: 1 Account: 500, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 600.000000
+[2014-11-24 17:40:07,693]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 3.1.2, From Bank: 3 Account: 100, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 700.000000
+[2014-11-24 17:40:09,696]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 2.1.2, From Bank: 2 Account: 100, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 800.000000
+[2014-11-24 17:40:11,700]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 3.6.2, From Bank: 3 Account: 600, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 900.000000
+[2014-11-24 17:40:13,703]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 1.1.2, From Bank: 1 Account: 100, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1000.000000
+[2014-11-24 17:40:15,707]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 2.2.2, From Bank: 2 Account: 200, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1100.000000
+[2014-11-24 17:40:17,710]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 1.3.2, From Bank: 1 Account: 300, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1200.000000
+[2014-11-24 17:40:19,713]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 2.3.2, From Bank: 2 Account: 300, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1300.000000
+[2014-11-24 17:40:21,717]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 3.2.2, From Bank: 3 Account: 200, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1400.000000
+[2014-11-24 17:40:23,720]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 2.4.2, From Bank: 2 Account: 400, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1500.000000
+[2014-11-24 17:40:25,724]Client[('Fangyus-MacBook-Pro.local', 31343)]: Reply received from server: RequestID is 3.5.2, Outcome.Processed, Balance is 1400.000000
+[2014-11-24 17:40:27,726]Client[('Fangyus-MacBook-Pro.local', 31343)]: RequestID is 3.5.3, ReqType.Withdraw, Account number is 500, Amount is 500.000000
+[2014-11-24 17:40:27,727]Client[('Fangyus-MacBook-Pro.local', 31343)]: Request 3.5.3 has been sent out
+[2014-11-24 17:40:27,735]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 2.5.2, From Bank: 2 Account: 500, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1500.000000
+[2014-11-24 17:40:29,739]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 1.2.2, From Bank: 1 Account: 200, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1600.000000
+[2014-11-24 17:40:31,742]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 3.4.2, From Bank: 3 Account: 400, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1700.000000
+[2014-11-24 17:40:33,745]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 3.3.2, From Bank: 3 Account: 300, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1800.000000
+[2014-11-24 17:40:35,749]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 1.4.2, From Bank: 1 Account: 400, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 1900.000000
+[2014-11-24 17:40:37,752]Client[('Fangyus-MacBook-Pro.local', 31343)]: Former transfer received from server notification: TransferRequestID is 1.6.2, From Bank: 1 Account: 600, To Bank: 3 Account: 500, Amount is 100.000000, Your current balance is 2000.000000
+[2014-11-24 17:40:39,755]Client[('Fangyus-MacBook-Pro.local', 31343)]: Reply received from server: RequestID is 3.5.3, Outcome.Processed, Balance is 1500.000000
+[2014-11-24 17:40:41,757]Client[('Fangyus-MacBook-Pro.local', 31343)]: RequestID is 3.5.4, ReqType.Withdraw, Account number is 500, Amount is 600.000000
+[2014-11-24 17:40:41,758]Client[('Fangyus-MacBook-Pro.local', 31343)]: Request 3.5.4 has been sent out
+[2014-11-24 17:40:41,766]Client[('Fangyus-MacBook-Pro.local', 31343)]: Reply received from server: RequestID is 3.5.4, Outcome.Processed, Balance is 900.000000
+[2014-11-24 17:40:41,766]Client[('Fangyus-MacBook-Pro.local', 31343)]: All request has been sentout, client exits

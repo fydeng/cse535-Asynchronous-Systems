@@ -6,7 +6,7 @@ import logging
 from init import *
 import random
 
-def parse_config(input_str):#parse the configuration of client
+def parse_config(input_str):
     input_str = input_str.replace(' ','')
     strs = input_str.split(',')
     if int(strs[0])!= 0:
@@ -26,7 +26,7 @@ def parse_config(input_str):#parse the configuration of client
     time_delay = int(strs[4])
     return [retrans, retrans_interval, retrans_time, ifRandom, time_delay]
 
-def parse_server(input_str):#parse the information of each server
+def parse_server(input_str):
 		input_str =input_str.strip()
 		input_str =input_str.replace(' ','')
 		str =input_str.split(',')
@@ -37,7 +37,7 @@ def parse_server(input_str):#parse the information of each server
 		message_loss = int(str[4])
 		return [bankName,serverIP, startup_delay,life_time,message_loss]
 
-def parse_client(input_str):#parse the information of each client
+def parse_client(input_str):
 		input_str = input_str.replace(' ','')
 		str = input_str.split(',')
 		bankName = str[0]
@@ -45,7 +45,7 @@ def parse_client(input_str):#parse the information of each client
 		clientIP = str[2]
 		return [bankName,account_no,clientIP]
 
-def parse_req(input_str):#parse the request of each client
+def parse_req(input_str):
     input_str = input_str.replace(' ','')
     input_str = re.sub('[()]','',input_str)
     strs = input_str.split(',')
@@ -71,7 +71,7 @@ def parse_req(input_str):#parse the request of each client
         amount = strs[3]
     return [reqID,reqtype,account_num,amount]
 
-def parse_randomReq(input_str):#parse the configuration of randomly generating request, including seed number, number of requests, the probability of each operation
+def parse_randomReq(input_str):
 	input_str = input_str.strip()
 	input_str = input_str.replace(' ','')
 	input_str = re.sub('[()]','',input_str)
@@ -84,7 +84,7 @@ def parse_randomReq(input_str):#parse the configuration of randomly generating r
 	prob_query = float(strs[5])
 	return [seed_num, num_req, prob_withdraw, prob_transfer, prob_deposit, prob_query]
 
-class Master(process):#class of master process
+class Master(process):
 	def setup(srvDic, cliDic, srvList, filename, waitList):
 		self.timesheet ={}
 		self.srvDict = srvDic
@@ -95,7 +95,7 @@ class Master(process):#class of master process
 		self.filename = filename
 		setup_logfile(self.filename)
 
-	def setup_logfile(filename):#ouput master's log to seperate file
+	def setup_logfile(filename):
 		rootlog = logging.getLogger('')
 		filelvl = logging.INFO
 		fh = logging.FileHandler(filename)
@@ -105,7 +105,7 @@ class Master(process):#class of master process
 		rootlog._filelvl = filelvl
 		rootlog.addHandler(fh)	
 
-	def receive(msg=("PING",ping), from_=src_id):#process the ping message from server every second
+	def receive(msg=("PING",ping), from_=src_id):
 		cur_ticks = time.time()
 		flag = False
 		output("Received PING from: "+ str(ping.serverIP))
@@ -138,7 +138,7 @@ class Master(process):#class of master process
 			output("Server notification of new server join(chain extension) has been sent")
 			output("Client notification of new server join(chain extension) has been sent")
 
-	def flush_srvDict(bankname):#flush the server dictionary(information of server chain) stored inside master
+	def flush_srvDict(bankname):
 		for i, item in enumerate(self.srvDict[bankname]):
 			if len(self.srvDict[bankname]) == 1:
 				item[1] = None
@@ -155,7 +155,7 @@ class Master(process):#class of master process
 				item[1] = srvDict[bankname][i-1][0]
 				item[2] = srvDict[bankname][i+1][0]
 
-	def infoCli(bankName,type,newSrv):#inform the client of failure of server
+	def infoCli(bankName,type,newSrv):
 		for cli in self.cliDict[str(bankName)]:
 			if type == "head":
 				send(("newHead",newSrv),to = cli)
@@ -165,7 +165,7 @@ class Master(process):#class of master process
 				send(("srvFail",newSrv),to = cli)
 		#output("Client notification has been sent")
 
-	def updateSrvInfo(srv):#when server fails, update the server dictionary regarding head/tail/intertal server fails and notify corresponding(previous/next) server
+	def updateSrvInfo(srv):
 		port = srv[0]
 		bankName = srv[1]
 		for item in self.srvDict[bankName]:
@@ -197,7 +197,7 @@ class Master(process):#class of master process
 			else:
 				pass
 
-	def checkSrv():#every 5 seconds the master checks the time sheet, if there is a ping which is more than 5 seconds from now, this server fails
+	def checkSrv():
 		cur_ticks = time.time()
 		#time_chec = logical_clock()
 		#output('Current time is ' +  str(cur_ticks))
@@ -212,7 +212,7 @@ class Master(process):#class of master process
 			updateSrvInfo(srv)
 			#output("Server notification has been sent")
 		
-	def main():#main function of master
+	def main():
 		output('Master  '+ str(self.id) +'  has started.')
 		output("Server Dictory Stored in Master: "+ str(self.srvDict))
 		output("Client Dictory Stored in Master: "+ str(self.cliDict))
@@ -226,7 +226,7 @@ class Master(process):#class of master process
 				checkSrv()
 	
 
-class Server(process):#class of server process
+class Server(process):
 	def setup(bankName, serverIP, startup_delay, life_time, message_loss, prev, next, master, head_srvs, tail_srvs, filename):
 		self.bankName = bankName
 		self.serverIP = serverIP
@@ -246,7 +246,7 @@ class Server(process):#class of server process
 		self.recTimes = 0
 		setup_logfile(self.filename)
 
-	def setup_logfile(filename):#output server log to a seperate file
+	def setup_logfile(filename):
 		rootlog = logging.getLogger('')
 		filelvl = logging.INFO
 		fh = logging.FileHandler(filename)
@@ -256,7 +256,7 @@ class Server(process):#class of server process
 		rootlog._filelvl = filelvl
 		rootlog.addHandler(fh)	
 
-	def proc_balance(ack):#when ack comes, server process the acknowledged request, calculate the balance and give the outcome
+	def proc_balance(ack):
 		outcome = Outcome.Processed
 		if self.AccountInfo.get(ack.account_num) == None:
 			cur_balance = 0.0
@@ -282,7 +282,7 @@ class Server(process):#class of server process
 		AccountInfo.update({ack.account_num:new_balance})		
 		return [new_balance, outcome]
 
-	def proc_transfer_balance(transfer_ack):#when transfer_ack comes, server calculates the balance of corresponding transfer requests and gives the outcome
+	def proc_transfer_balance(transfer_ack):
 		outcome = Outcome.Processed
 		from_cur_balance = 0.0
 		to_cur_balance = 0.0
@@ -345,7 +345,7 @@ class Server(process):#class of server process
 			AccountInfo.update({transfer_ack.to_account:to_new_balance})
 			return [outcome, to_new_balance]
 
-	def check_sufficient_funds(transfer_ack):#check whether the from client has the sufficient funds to process the transfer operation, if not, the transfer request cannot be relayed to the destination server chain
+	def check_sufficient_funds(transfer_ack):
 		from_cur_balance = 0.0
 		if self.AccountInfo.get(transfer_ack.from_account) != None:
 				from_cur_balance = self.AccountInfo[transfer_ack.from_account]
@@ -359,7 +359,7 @@ class Server(process):#class of server process
 			else:
 				return True
 
-	def update_procTrans(reqID):#when ack comes, the server delete the correspoding request in sent transaction list and adds it the processed transaction list, including using ack to clear old requests
+	def update_procTrans(reqID):
 		count_clear = 0
 		len_sentTrans = len(self.sentTrans)
 		del_list = []
@@ -389,14 +389,14 @@ class Server(process):#class of server process
 					self.sentTrans.pop(j)
 					break
 
-	def search_procTrans(reqID):#search for the corresponding request in processed transaction list
+	def search_procTrans(reqID):
 		proc_req = self.procTrans.get(reqID)
 		if proc_req == None:
 			return False
 		else:
 			return True
 
-	def pre_req(req,src_id):#when each request comes, the server simulation the packet loss and compare the life-time, if the life-time equals the limit, the server fails
+	def pre_req(req,src_id):
 		if src_id != self.prev:
 			self.recTimes += 1
 			if self.recTimes <= self.message_loss or self.message_loss == 0:
@@ -412,7 +412,7 @@ class Server(process):#class of server process
 			output('Server: '+ str(self.serverIP) + ' has expired!')
 			sys.exit()		#which causes the server not sending reply back to the client
 
-	def receive(msg=("Transfer_REQ",trans_req),from_= src_id):#when server receives the transfer request, process it
+	def receive(msg=("Transfer_REQ",trans_req),from_= src_id):
 		pre_req(trans_req,src_id)
 		self.sentTrans.append(trans_req)
 		output("Transfer Request %s has been added to sent transaction" % trans_req.reqID)
@@ -465,7 +465,7 @@ class Server(process):#class of server process
 			send(('Transfer_REQ', trans_req), to = self.next)
 
 
-	def receive(msg=("REQ", req), from_= src_id):#when server receives general requests(deposit, withdraw and query), process it
+	def receive(msg=("REQ", req), from_= src_id):
 		pre_req(req,src_id)
 		if req.reqtype != ReqType.Query:
 			self.sentTrans.append(req)
@@ -503,7 +503,7 @@ class Server(process):#class of server process
 		else:
 			send(('REQ', req), to = self.next)
 
-	def receive(msg=("SYNC", req), from_= src_id):#when server receives the synchronization of requests in sent transactions, process it
+	def receive(msg=("SYNC", req), from_= src_id):
 		output('Synchronization of sentTrans from previous server received! ReqID is ', req.reqID)
 		if req.reqtype != ReqType.Query:
 			self.sentTrans.append(req)
@@ -520,7 +520,7 @@ class Server(process):#class of server process
 		if self.next != None:
 			send(('SYNC', req), to = self.next)
 
-	def receive(msg=("SYNC_PROC",(reqID,req)), from_ = src_id):#when server receives the synchronization of requests in processed transactions, process it
+	def receive(msg=("SYNC_PROC",(reqID,req)), from_ = src_id):
 		output('Synchronization of procTrans from the old tail '+str(reqID))
 		if req.reqtype == ReqType.Transfer:
 			transfer_ack = Transfer_Ack(req.reqID, req.reqtype, req.from_bank, req.from_account, req.to_bank, req.to_account, req.amount, req.client_id)
@@ -540,7 +540,7 @@ class Server(process):#class of server process
 		if self.next != None:
 			send(('SYNC_PROC', (reqID,req)), to = self.next)
 
-	def receive(msg=('ACK', ack), from_= next):#when server receives the ack of general requests, process it
+	def receive(msg=('ACK', ack), from_= next):
 		output(str(ack) + ' has been received!')
 		search_result = search_procTrans(ack.reqID)
 		result = proc_balance(ack)
@@ -549,7 +549,7 @@ class Server(process):#class of server process
 		if prev != None and search_result == False:
 			send(('ACK', ack), to = prev)
 
-	def receive(msg=('Transfer_ACK', transfer_ack), from_= src):#when server receives the ack of transfer requests, process it
+	def receive(msg=('Transfer_ACK', transfer_ack), from_= src):
 		output(str(transfer_ack) + ' has been received!')
 		search_result = search_procTrans(transfer_ack.reqID)
 		result = proc_transfer_balance(transfer_ack)
@@ -588,7 +588,7 @@ class Server(process):#class of server process
 				send(('Transfer_ACK', transfer_ack), to = dst)
 				output(str(transfer_ack) + " has been relayed to the source bank")
 
-	def receive(msg=("srvFail",(prev,next)), from_ = master):#when server receives the notification of master concerning the server failure, process it
+	def receive(msg=("srvFail",(prev,next)), from_ = master):
 		self.prev = prev
 		self.next = next
 		output("Received SrvFail from Master, Setting my prev to: "+str(self.prev)+" and my next to: "+str(self.next))
@@ -603,27 +603,27 @@ class Server(process):#class of server process
 		else:
 			output("I'm the new tail!")
 
-	def receive(msg=("headFail",(bank,newSrv)), from_ = master):#when server receives the notification of master concerning the head server failure, process it
+	def receive(msg=("headFail",(bank,newSrv)), from_ = master):
 		self.head_srvs.update({bank:newSrv})
 		output("Received headFail from master, setting new head in bank: " + str(bank)+" to: "+str(newSrv))
 
-	def receive(msg=("tailFail",(bank,newSrv)), from_ = master):#when server receives the notification of master concerning the tail server failure, process it
+	def receive(msg=("tailFail",(bank,newSrv)), from_ = master):
 		self.tail_srvs.update({bank:newSrv})
 		output("Received tailFail from master, setting new tail in bank: " + str(bank)+" to: "+str(newSrv))
 
-	def receive(msg=("extendChain",newSrv),from_ = master):#when server receives the notification of master concerning extending server in this chain(new tail server joined), process it
+	def receive(msg=("extendChain",newSrv),from_ = master):
 		output(str(self.serverIP)+" Received extendChain from master,setting my next to "+str(newSrv))
 		self.next = newSrv
 		for reqID,req in self.procTrans.items():
 			output("Starting synchronize %s procTrans to the new tail " % reqID)
 			send(("SYNC_PROC",(reqID,req)),to = self.next)
 
-	def receive(msg=("new_server_join", newprev), from_ = master):#when new joined server receives the notification its previous server, process it
+	def receive(msg=("new_server_join", newprev), from_ = master):
 		output(" I'm the new joined server,setting my prev to "+str(newprev))
 		self.prev = newprev
 		self.next = None
 
-	def main():#main function of server
+	def main():
 		time.sleep(self.startup_delay)
 		output('Server: Bank Name is: '+ str(self.bankName) + '  Server IP is: '+ str(self.serverIP) + '  Life time is: ' + str(self.life_time) + '  Previous server is: ' + str(self.prev) + '  Next server is: ' + str(self.next))
 		output('Head_srvs stored in server: '+ str(self.head_srvs))
@@ -635,7 +635,7 @@ class Server(process):#class of server process
 			elif(timeout(1)):
 				send(('PING', ping), to = self.master)
 			
-class Client(process):#class of client process
+class Client(process):
 	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,time_delay,master,head_srvs,tail_srvs, filename):
 		self.bankName = int(bankName)
 		self.account_no = account_no
@@ -653,7 +653,7 @@ class Client(process):#class of client process
 		self.filename = filename
 		setup_logfile(self.filename)
 
-	def setup_logfile(filename):#output client's log to a seperate file
+	def setup_logfile(filename):
 		rootlog = logging.getLogger('')
 		filelvl = logging.INFO
 		fh = logging.FileHandler(filename)
@@ -663,7 +663,7 @@ class Client(process):#class of client process
 		rootlog._filelvl = filelvl
 		rootlog.addHandler(fh)	
 
-	def init_req():#initialize the request, including the itemized requests and randomized requests. pseudo-random number generation is implemented in randomized requests generation
+	def init_req():
 		reqList =[]
 		client_id = self.id
 		if ifRandom == True:
@@ -719,28 +719,28 @@ class Client(process):#class of client process
 					pass
 		return reqList
 
-	def receive(msg=('REPLY', reply), from_= src_id):#when receives reply from server, output it
+	def receive(msg=('REPLY', reply), from_= src_id):
 		output('Reply received from server: '+ str(reply))
 
-	def receive(msg=('Transfer_Reply', transfer_reply), from_= _):#when receives transfer reply from server, output it 
+	def receive(msg=('Transfer_Reply', transfer_reply), from_= src_id):
 		output('Former transfer received from server notification: '+ str(transfer_reply))
 		time.sleep(self.time_delay)
 
-	def receive(msg=("newHead",newSrv),from_= master):#when receives notification of master concerning the new head server, update the head server list
+	def receive(msg=("newHead",newSrv),from_= master):
 		output("Client setting new head: "+ str(newSrv))
 		self.head_srvs.update({self.bankName:newSrv})
 		time.sleep(self.time_delay)
 
-	def receive(msg=("newTail",newSrv),from_= master):#when receives notification of master concerning the new head server, update the tail server list
+	def receive(msg=("newTail",newSrv),from_= master):
 		output("Client setting new tail: "+ str(newSrv))
 		self.tail_srvs.update({self.bankName:newSrv})
 		time.sleep(self.time_delay)
 
-	def receive(msg=("srvFail",newSrv),from_= master):#when receives notification of master concerning the server failure, delay some time in order to wait for the failure process of server chain(sent transaction synchronization)
+	def receive(msg=("srvFail",newSrv),from_= master):
 		output("Client received server fail from Master, starting to sleep.")
 		time.sleep(self.time_delay)
 
-	def resend(req, transfer):#resend the request
+	def resend(req, transfer):
 		times = 0
 		while True:
 			output("Start retransmitting Request ", req.reqID)
@@ -756,10 +756,9 @@ class Client(process):#class of client process
 				send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				#output("retransmit received reply")
-				replyDic.update({reply.reqID:reply})
-				times = self.nRetrans
+				time == self.nRetrans
 				break
-			elif some(received(('Transfer_Reply',transfer_reply),from_= _,clk=rclk),has=(rclk>clk)):
+			elif some(received(('Transfer_Reply',transfer_reply),from_= dst,clk=rclk),has=(rclk>clk)):
 				times = 0
 				#output("retransmit request received transfer reply")
 				continue
@@ -781,7 +780,7 @@ class Client(process):#class of client process
 					output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
 					break
 
-	def main():#main function of client, send each request in request list and wait for the reply
+	def main():
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
 		reqList = init_req()
 		replyNum = 0
@@ -789,7 +788,7 @@ class Client(process):#class of client process
 		sending_transfer = False
 		i = 0
 		#remain = False
-		while i < num_req:
+		for i in range(num_req):
 			time.sleep(self.time_delay)
 			clk = logical_clock()
 			if reqList[i].reqtype != ReqType.Transfer:
@@ -813,34 +812,27 @@ class Client(process):#class of client process
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				replyDic.update({reply.reqID:reply})
 				#output("general request received reply")
-				i += 1
 				continue
-			elif some(received(('Transfer_Reply',transfer_reply),from_= _,clk=rclk),has=(rclk>clk)):#after received transfer reply, keeps awaiting for the general reply
+			elif some(received(('Transfer_Reply',transfer_reply),from_= dst,clk=rclk),has=(rclk>clk)):
 				#output("general request received transfer reply")
-				if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
-					replyDic.update({reply.reqID:reply})
-					i += 1
 				continue
-			elif timeout(self.timeout):#if timeout, go to resend
+			elif timeout(self.timeout):
 				if sending_transfer == True:
 					output('Client waiting for reply '+str(trans_req.reqID)+' TIMEDOUT!')
 					resend(trans_req, True)
 				else:
 					output('Client waiting for reply '+str(req.reqID)+' TIMEDOUT!')
 					resend(req, False)
-				i += 1
 		while(len(replyDic)<num_req):
 			clk = logical_clock()
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				replyDic.update({reply.reqID:reply})
 				continue
-			elif some(received(('Transfer_Reply',transfer_reply),from_= _,clk=rclk),has=(rclk>clk)):
-				continue
-			elif timeout(self.timeout):
-				break
+			else:
+				pass
 		output("All request has been sentout, client exits")
 
-def main():#main function of the function, do some initialization and start master/server/client processes
+def main():
 	srvDic = collections.defaultdict(list)
 	cliDic = collections.defaultdict(list)
 	serversList =[]		#stores all server processes in a list
@@ -906,7 +898,7 @@ def main():#main function of the function, do some initialization and start mast
 		life_time.append(srvList[i][3])
 		message_loss.append(srvList[i][4])
 
-	for i in range(num_srv):#initialize the server dictionalry for master
+	for i in range(num_srv):
 		if i == 0 or bankName_srv[i]!= bankName_srv[i-1]:
 			prev = None
 		else:
