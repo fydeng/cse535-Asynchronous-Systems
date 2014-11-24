@@ -408,7 +408,7 @@ class Server(process):
 		if(self.life_time > 0):
 			self.life_time = self.life_time - 1
 			output('The current life_time is: '+ str(self.life_time))
-		elif(self.life_time == 0):
+		if(self.life_time == 0):
 			output('Server: '+ str(self.serverIP) + ' has expired!')
 			sys.exit()		#which causes the server not sending reply back to the client
 
@@ -449,6 +449,9 @@ class Server(process):
 						dst = self.head_srvs.get(trans_req.to_bank)
 						send(('Transfer_REQ', trans_req), to = dst)
 						output(str(trans_req) + " has been relayed to the destination bank")
+						if(self.life_time == 1):
+							output("Tail server fails after sending transfer request to destination bank.")
+							sys.exit()
 				
 				elif transfer_ack.to_bank == self.bankName:
 					result = proc_transfer_balance(transfer_ack)
@@ -456,7 +459,6 @@ class Server(process):
 					send(('Transfer_ACK', transfer_ack), to = self.prev)
 					output(str(transfer_ack) + " has been sent")
 					transfer_reply = TransferReply(trans_req, result[1])
-					#output(str(transfer_reply))
 					transfer_list.append(transfer_reply)
 
 		else:
@@ -681,7 +683,6 @@ class Client(process):
 				random_bank = random.randint(1, 3)
 				random_account = random.randint(1, 6) * 100
 				reqID = str(self.bankName) + '.'+ str(self.account_no[0]) + '.' + str(i+1)
-				output("a is: "+str(a))
 				if a < prob_withdraw:
 					reqtype = ReqType.Withdraw
 				elif a < (prob_withdraw + prob_transfer):
