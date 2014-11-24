@@ -635,7 +635,7 @@ class Server(process):#class of server process
 			elif(timeout(1)):
 				send(('PING', ping), to = self.master)
 			
-class Client(process):
+class Client(process):#class of client process
 	def setup(bankName,account_no,clientIP,input_req,ifRetrans,timeout,nRetrans,ifRandom,time_delay,master,head_srvs,tail_srvs, filename):
 		self.bankName = int(bankName)
 		self.account_no = account_no
@@ -653,7 +653,7 @@ class Client(process):
 		self.filename = filename
 		setup_logfile(self.filename)
 
-	def setup_logfile(filename):
+	def setup_logfile(filename):#output client's log to a seperate file
 		rootlog = logging.getLogger('')
 		filelvl = logging.INFO
 		fh = logging.FileHandler(filename)
@@ -663,7 +663,7 @@ class Client(process):
 		rootlog._filelvl = filelvl
 		rootlog.addHandler(fh)	
 
-	def init_req():
+	def init_req():#initialize the request, including the itemized requests and randomized requests. pseudo-random number generation is implemented in randomized requests generation
 		reqList =[]
 		client_id = self.id
 		if ifRandom == True:
@@ -719,28 +719,28 @@ class Client(process):
 					pass
 		return reqList
 
-	def receive(msg=('REPLY', reply), from_= src_id):
+	def receive(msg=('REPLY', reply), from_= src_id):#when receives reply from server, output it
 		output('Reply received from server: '+ str(reply))
 
-	def receive(msg=('Transfer_Reply', transfer_reply), from_= src_id):
+	def receive(msg=('Transfer_Reply', transfer_reply), from_= src_id):#when receives transfer reply from server, output it 
 		output('Former transfer received from server notification: '+ str(transfer_reply))
 		time.sleep(self.time_delay)
 
-	def receive(msg=("newHead",newSrv),from_= master):
+	def receive(msg=("newHead",newSrv),from_= master):#when receives notification of master concerning the new head server, update the head server list
 		output("Client setting new head: "+ str(newSrv))
 		self.head_srvs.update({self.bankName:newSrv})
 		time.sleep(self.time_delay)
 
-	def receive(msg=("newTail",newSrv),from_= master):
+	def receive(msg=("newTail",newSrv),from_= master):#when receives notification of master concerning the new head server, update the tail server list
 		output("Client setting new tail: "+ str(newSrv))
 		self.tail_srvs.update({self.bankName:newSrv})
 		time.sleep(self.time_delay)
 
-	def receive(msg=("srvFail",newSrv),from_= master):
+	def receive(msg=("srvFail",newSrv),from_= master):#when receives notification of master concerning the server failure, delay some time in order to wait for the failure process of server chain(sent transaction synchronization)
 		output("Client received server fail from Master, starting to sleep.")
 		time.sleep(self.time_delay)
 
-	def resend(req, transfer):
+	def resend(req, transfer):#resend the request
 		times = 0
 		while True:
 			output("Start retransmitting Request ", req.reqID)
@@ -781,7 +781,7 @@ class Client(process):
 					output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
 					break
 
-	def main():
+	def main():#main function of client, send each request in request list and wait for the reply
 		output('Client: Bank Name is: '+str(self.bankName)+ '  Account number is: '+ str(self.account_no))
 		reqList = init_req()
 		replyNum = 0
