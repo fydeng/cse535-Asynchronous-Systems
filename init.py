@@ -35,6 +35,21 @@ class TransferRequest(object):
     def __str__(self):
         return ('TransferRequestID is %s %s, From Bank: %d Account: %d, To Bank: %d Account: %d, Amount is %f' % (self.reqID, self.reqtype, self.from_bank, self.from_account, self.to_bank, self.to_account, self.amount))
 
+class TransferReply(object):
+
+    def __init__(self, transfer_req, to_balance):
+        self.reqID = transfer_req.reqID
+        self.reqtype = transfer_req.reqtype
+        self.from_bank = int(transfer_req.from_bank)
+        self.from_account = int(transfer_req.from_account)
+        self.to_bank = int(transfer_req.to_bank)
+        self.to_account = int(transfer_req.to_account)
+        self.amount = float(transfer_req.amount)
+        self.to_balance = float(to_balance)
+
+    def __str__(self):
+        return ('TransferRequestID is %s, From Bank: %d Account: %d, To Bank: %d Account: %d, Amount is %f, Your current balance is %f' % (self.reqID, self.from_bank, self.from_account, self.to_bank, self.to_account, self.amount, self.to_balance))
+
 class InitReq(object):
 
     def __init__(self, src, srcName, bankName):

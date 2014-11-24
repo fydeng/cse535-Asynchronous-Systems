@@ -239,6 +239,7 @@ class Server(process):
 		self.head_srvs = head_srvs
 		self.tail_srvs = tail_srvs
 		self.sentTrans = []
+		self.transfer_list = []
 		self.procTrans = {}
 		self.AccountInfo = {}
 		self.filename = filename
@@ -344,6 +345,20 @@ class Server(process):
 			AccountInfo.update({transfer_ack.to_account:to_new_balance})
 			return [outcome, to_new_balance]
 
+	def check_sufficient_funds(transfer_ack):
+		from_cur_balance = 0.0
+		if self.AccountInfo.get(transfer_ack.from_account) != None:
+				from_cur_balance = self.AccountInfo[transfer_ack.from_account]
+
+		if self.procTrans.get(transfer_ack.reqID) != None:
+				return False
+
+		else:
+			if (from_cur_balance - transfer_ack.amount < 0):
+				return False
+			else:
+				return True
+
 	def update_procTrans(reqID):
 		count_clear = 0
 		len_sentTrans = len(self.sentTrans)
@@ -401,25 +416,30 @@ class Server(process):
 		pre_req(trans_req,src_id)
 		self.sentTrans.append(trans_req)
 		output("Transfer Request %s has been added to sent transaction" % trans_req.reqID)
+		transfer_ack = Transfer_Ack(trans_req.reqID, trans_req.reqtype, trans_req.from_bank, trans_req.from_account, trans_req.to_bank, trans_req.to_account, trans_req.amount, trans_req.client_id)
+		search_result = search_procTrans(trans_req.reqID)
 
 		if (self.next == None):
-			transfer_ack = Transfer_Ack(trans_req.reqID, trans_req.reqtype, trans_req.from_bank, trans_req.from_account, trans_req.to_bank, trans_req.to_account, trans_req.amount, trans_req.client_id)
-			result = proc_transfer_balance(transfer_ack)
-			search_result = search_procTrans(trans_req.reqID)
-			update_procTrans(trans_req.reqID)
-			outcome = result[0]
-			new_balance = result[1]
-			reply = Reply(trans_req.reqID,outcome,new_balance)
-			if len(result) == 3:
+			if trans_req.from_bank == trans_req.to_bank:
+				result = proc_transfer_balance(transfer_ack)
+				update_procTrans(trans_req.reqID)
+				reply = Reply(trans_req.reqID, result[0], result[1])
 				if search_result == False or (search_result == True and outcome != Outcome.Processed):
 					send(('REPLY', reply), to = trans_req.client_id)
 					output("Reply for Request "+ str(trans_req.reqID)+" has been sent to client: "+str(trans_req.client_id))
+					transfer_reply = TransferReply(trans_req, result[2])
+					#output(str(transfer_reply))
+					transfer_list.append(transfer_reply)
 					send(('Transfer_ACK', transfer_ack), to = self.prev)
 					output(str(transfer_ack) + " has been sent")
 
-			elif len(result) == 2:
+			else:
 				if transfer_ack.from_bank == self.bankName:
-					if outcome != Outcome.Processed:
+					check_funds = check_sufficient_funds(transfer_ack)
+					if check_funds == False:
+						result = proc_transfer_balance(transfer_ack)
+						update_procTrans(trans_req.reqID)
+						reply = Reply(trans_req.reqID,result[0],result[1])
 						send(('REPLY', reply), to = trans_req.client_id)
 						output("Reply for Request "+ str(trans_req.reqID)+" has been sent to client: "+str(trans_req.client_id))
 						send(('Transfer_ACK', transfer_ack), to = self.prev)
@@ -431,8 +451,13 @@ class Server(process):
 						output(str(trans_req) + " has been relayed to the destination bank")
 				
 				elif transfer_ack.to_bank == self.bankName:
+					result = proc_transfer_balance(transfer_ack)
+					update_procTrans(trans_req.reqID)
 					send(('Transfer_ACK', transfer_ack), to = self.prev)
 					output(str(transfer_ack) + " has been sent")
+					transfer_reply = TransferReply(trans_req, result[1])
+					#output(str(transfer_reply))
+					transfer_list.append(transfer_reply)
 
 		else:
 			send(('Transfer_REQ', trans_req), to = self.next)
@@ -453,12 +478,26 @@ class Server(process):
 
 			search_result = search_procTrans(req.reqID)
 			update_procTrans(req.reqID)
-			if search_result == False or (search_result == True and outcome != Outcome.Processed):
-				send(('REPLY', reply), to = req.client_id)
-				output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
-				if (req.reqtype != ReqType.Query):
-					send(('ACK', ack), to = self.prev)
-					output(str(ack) + ' has been sent!')
+			#if search_result == False or (search_result == True and outcome != Outcome.Processed):
+			del_list = []
+			for i in range(len(transfer_list)):
+				if transfer_list[i].to_account == req.account_num:
+					output(str(transfer_list[i]))
+					send(("Transfer_Reply", transfer_list[i]), to = req.client_id)
+					output("Former transfer has been sent to client")
+					del_list.append(transfer_list[i])
+					
+			for i in range(len(del_list)):
+				for j in range(len(self.transfer_list)):
+					if del_list[i].reqID == self.transfer_list[j].reqID:
+						self.transfer_list.pop(j)
+						break
+			send(('REPLY', reply), to = req.client_id)
+			output("Reply for Request "+ str(req.reqID)+" has been sent to client: "+str(req.client_id))
+
+			if (req.reqtype != ReqType.Query):
+				send(('ACK', ack), to = self.prev)
+				output(str(ack) + ' has been sent!')
 		else:
 			send(('REQ', req), to = self.next)
 
@@ -468,8 +507,11 @@ class Server(process):
 			self.sentTrans.append(req)
 			search_result = search_procTrans(req.reqID)
 			if (search_result == True):
-				ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
-				send(('ACK', ack), to = self.prev)
+				if req.reqtype == ReqType.Transfer:
+					transfer_ack = Transfer_Ack(req.reqID, req.reqtype, req.from_bank, req.from_account, req.to_bank, req.to_account, req.amount, req.client_id)
+					send(('Transfer_ACK', transfer_ack), to = self.prev)
+				else:
+					send(('ACK', ack), to = self.prev)
 		
 		output("Request %s has been added to sent transaction" % req.reqID)
 		
@@ -478,7 +520,13 @@ class Server(process):
 
 	def receive(msg=("SYNC_PROC",(reqID,req)), from_ = src_id):
 		output('Synchronization of procTrans from the old tail '+str(reqID))
-		if req.reqtype != ReqType.Query:
+		if req.reqtype == ReqType.Transfer:
+			transfer_ack = Transfer_Ack(req.reqID, req.reqtype, req.from_bank, req.from_account, req.to_bank, req.to_account, req.amount, req.client_id)
+			self.sentTrans.append(req)
+			result = proc_transfer_balance(req)
+			update_procTrans(reqID)
+			output('Account: ' + str(ack.account_num) + ' New balance is: ' + str(result[0]))
+		elif req.reqtype != ReqType.Query:
 			ack = Ack(req.reqID, req.reqtype, req.account_num, req.amount)
 			#output(str(ack.reqtype) + ' ' + str(ack.account_num) + ' ' + str(ack.amount))
 			self.sentTrans.append(req)
@@ -504,6 +552,7 @@ class Server(process):
 		search_result = search_procTrans(transfer_ack.reqID)
 		result = proc_transfer_balance(transfer_ack)
 		output('Account: ' + str(transfer_ack.from_account) + ' New balance is: ' + str(result[1]))
+		update_procTrans(transfer_ack.reqID)
 		if len(result) == 3:
 			output('Account: ' + str(transfer_ack.to_account) + ' New balance is: ' + str(result[2]))
 		
@@ -512,6 +561,19 @@ class Server(process):
 				outcome = result[0]
 				new_balance = result[1]
 				reply = Reply(transfer_ack.reqID,outcome,new_balance)
+				del_list = []
+				for i in range(len(transfer_list)):
+					if transfer_list[i].to_account == transfer_ack.from_account:
+						output(str(transfer_list[i]))
+						send(("Transfer_Reply", transfer_list[i]), to = transfer_ack.client_id)
+						output("Former received transfer has been sent to client")
+						del_list.append(transfer_list[i])
+					
+				for i in range(len(del_list)):
+					for j in range(len(self.transfer_list)):
+						if del_list[i].reqID == self.transfer_list[j].reqID:
+							self.transfer_list.pop(j)
+							break
 				send(('REPLY', reply), to = transfer_ack.client_id)
 				output("Reply for Request "+ str(transfer_ack.reqID)+" has been sent to client: "+str(transfer_ack.client_id))
 
@@ -659,9 +721,14 @@ class Client(process):
 	def receive(msg=('REPLY', reply), from_= src_id):
 		output('Reply received from server: '+ str(reply))
 
+	def receive(msg=('Transfer_Reply', transfer_reply), from_= src_id):
+		output('Former transfer received from server notification: '+ str(transfer_reply))
+		time.sleep(self.time_delay)
+
 	def receive(msg=("newHead",newSrv),from_= master):
 		output("Client setting new head: "+ str(newSrv))
 		self.head_srvs.update({self.bankName:newSrv})
+		time.sleep(self.time_delay)
 
 	def receive(msg=("newTail",newSrv),from_= master):
 		output("Client setting new tail: "+ str(newSrv))
@@ -687,7 +754,13 @@ class Client(process):
 			else:
 				send(('REQ', req), to = dst)
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
+				#output("retransmit received reply")
+				time == self.nRetrans
 				break
+			elif some(received(('Transfer_Reply',transfer_reply),from_= dst,clk=rclk),has=(rclk>clk)):
+				times = 0
+				#output("retransmit request received transfer reply")
+				continue
 			elif some(received(('newTail',newSrv),from_= master,clk=rclk),has=(rclk>clk)):
 				times = 0
 				#output('Master notification received, do not minus Retrans')
@@ -702,7 +775,7 @@ class Client(process):
 				continue
 			elif timeout(self.timeout):
 				times += 1
-				if times == self.nRetrans:
+				if times >= self.nRetrans:
 					output('Retransmit time equals the RetransLimit, stop retransmitting Request '+str(req.reqID))
 					break
 
@@ -712,6 +785,8 @@ class Client(process):
 		replyNum = 0
 		num_req = len(reqList)
 		sending_transfer = False
+		i = 0
+		#remain = False
 		for i in range(num_req):
 			time.sleep(self.time_delay)
 			clk = logical_clock()
@@ -732,8 +807,13 @@ class Client(process):
 				sending_transfer = True
 				send(('Transfer_REQ', trans_req), to = dst)
 				output('Request ' + str(trans_req.reqID) + ' has been sent out')
+
 			if await(some(received(('REPLY', reply),from_= dst,clk=rclk),has=(rclk>clk))):
 				replyDic.update({reply.reqID:reply})
+				#output("general request received reply")
+				continue
+			elif some(received(('Transfer_Reply',transfer_reply),from_= dst,clk=rclk),has=(rclk>clk)):
+				#output("general request received transfer reply")
 				continue
 			elif timeout(self.timeout):
 				if sending_transfer == True:
