@@ -981,4 +981,3 @@ def main():#main function of the function, do some initialization and start mast
 
 	start(clients)
 	#######################################################################
-	
